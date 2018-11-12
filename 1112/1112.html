@@ -1,0 +1,36 @@
+<html>
+    <head>
+	<title>It's all good, man</title>
+	<link rel="stylesheet" type="text/css" href="../adventuresintechland.css"/>
+    </head>
+    <body>
+	<p><a href="../index.html">Index</a></p>
+	<p>18/11/12, second day in a row</p>
+	<h1>What I did today...</h1>
+	<ul>
+	    <li>I fixed the "open in Emacs" applescript so as to use an elisp expression instead of UI scripting to open the file (or an empty buffer when no file is selected).</li>
+	    <li>I created the separate css file and referenced it in all the project files.</li>
+	    <li>I modified my .emacs.el so that emacs opens html? files in web-mode, which has tag auto-closing.</li>
+	    <li>I found a way to html-ize the applescripts so that I can link to an html file instead of a plain applescript file. The solution is to convert the embedded .rtf file to html with textutil on the command line:<br/> <code>$ textutil -convert html /path/to/rtf_file.rtf</code></li>
+	    <li>Shane Stanley proposed some <a href="https://forum.latenightsw.com/t/html-ize-scripts/1660">ASObjC code</a> to do that for packages that don't have an embedded .rtf file. The CSS and HTML are slightly different from the textutil solution but the rendering is the same.</li>
+	</ul>
+	<p>I'm going to re-link yesterday's script before the modification along with the new version, both html-ized:</p>
+	<ul>
+	    <li>new <a href="./new <textfile.html">&lt;textfile</a> code</li>
+	    <li>old <a href="./old <textfile.html">&lt;textfile</a> code</li>
+	</ul>
+	<p>So, basically I have my workflow all set up:
+	    <ol>
+		<li>I use &lt;textfile to create an html file in the day's folder</li>
+		<li>I edit it in emacs web-mode</li>
+		<li>I check everything and commit with GitHub Desktop</li>
+	    </ol>
+	    Now I need to:
+	    <ul>
+		<li>applescript the creation of folder structures for each day including a simple html template</li>
+		<li>eventually check the links automatically</li>
+	    </ul>
+	    I can do that later this week, and then revert to freecodecamp.</p>
+	<p><a href="../index.html">Index</a></p>
+    </body>
+</html>
