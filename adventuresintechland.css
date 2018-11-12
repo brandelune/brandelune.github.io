@@ -1,0 +1,22 @@
+body  {
+    background-color: #ffffff;
+    color: #1a1a1a;
+    font-family: sans-serif;
+    margin: 1em;
+}
+
+h1 {
+    text-align: center;
+}
+
+p {
+    text-align: justify;
+}
+
+.important {
+    border: 1px solid red;
+}
+
+a, code {
+    font-family: monospace;   
+}
