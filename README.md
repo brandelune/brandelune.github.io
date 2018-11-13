@@ -10,3 +10,5 @@ That starts with web "design". I'm doing the freeCodeCamp course and I'm going t
 I'll probably also put other things, applescript, emacs lisp, and a few other things.
 
 Nobody but me is reading this readme file, so let me wish myself good luck :)
+
+\#10000daysofcode

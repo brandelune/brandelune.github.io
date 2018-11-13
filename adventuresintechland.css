@@ -1,9 +1,35 @@
+/* Layout */
+
+.navigation {
+    display: flex;
+    justify-content: flex-start;
+}
+
+
+/* Box    */
+
+body {
+    margin: 1em;
+}
+
+.navigation a {
+    padding: 0 1em;
+    border: 1px solid black;
+}
+
+.important {
+    border: 1px solid red;
+}
+
+
+/* Text   */
+
 body  {
     background-color: #ffffff;
     color: #1a1a1a;
     font-family: sans-serif;
-    margin: 1em;
 }
+
 
 h1 {
     text-align: center;
@@ -13,10 +39,18 @@ p {
     text-align: justify;
 }
 
-.important {
-    border: 1px solid red;
-}
-
 a, code {
     font-family: monospace;   
+}
+
+a[rel=prev]::after {
+    content: " <";
+}
+
+a[rel=next]::before {
+    content: "> ";
+}
+
+.navigation a {
+    text-decoration: none;
 }
