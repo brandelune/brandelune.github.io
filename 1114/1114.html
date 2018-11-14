@@ -1,22 +1,56 @@
 <html>
     <head>
-	<title></title>
+	<title>I am your father!</title>
 	<link rel="stylesheet" type="text/css" href="../adventuresintechland.css"/>
     </head>
     <body>
-	We're not there yet...
-	<!-- <p class="navigation">
-	     <a href="../111/111.html" hreflang="en" rel="prev">111</a>
-	     <a href="../index.html" hreflang="en">#10000daysofcode</a>
-	     <a href="../111/111.html" hreflang="en" rel="next">111</a>
-	     </p>
-	     <p>18/mm/dd,  day in a row</p>
-	     <h1></h1>
+	<p class="navigation">
+	    <a href="../1113/1113.html" hreflang="en" rel="prev">1113</a>
+	    <a href="../index.html" hreflang="en">index</a>
+	    <a href="../111/1115.html" hreflang="en" rel="next">1115</a>
+	</p> 
+	<p>18/11/14, fourth day in a row</p>
 
-	     <p class="navigation">
-	     <a href="../111/111.html" hreflang="en" rel="prev">111</a>
-	     <a href="../index.html" hreflang="en">#10000daysofcode</a>
-	     <a href="../111/111.html" hreflang="en" rel="next">111</a>
-	     </p> -->
+	<h1>I am your father!</h1>
+	<p>I started learning Chinese in January. I thought my "experience" in learning languages would allow me to do it my way. So I bought a few books and asked a student at the local university to help me with the pronounciation. It didn't work out. So I decided to use yet another book, one that I had brought from France and that my father had used there for a few years. The funny thing is that they had this sentence in one of the first lessons: "I am your father!" and I thought right away about Luke when Darth Vader asks him to join forces, etc. There was no obvious reference to Star Wars in the book, so I checked the scene on youtube and in Chinese it goes like this: "<ruby>我是你爹<rp> (</rp><rt>wǒ shì nǐ diē</rt><rp>)</rp></ruby>", although I found places where it was "<ruby>我是你父亲<rp> (</rp><rt>wǒ shì nǐ fùqīn</rt><rp>)</rp></ruby>". I had to stop during the summer, then I got busy, and I'm only resuming next week. Right now, the only things I remember are "<ruby>你好<rp> (</rp><rt></rt><rp>)</rp>" and "我是你父亲". Hopefully I'll be better at web things...</p>
+	
+	<h2>What's new?</h2>
+	<p>After committing my changes yesterday, or rather just before, I thought it would be nice if I could commit from emacs instead of working in Github Desktop, and I recalled that there was that wonderful <code>magit-mode</code> that was kind of sitting there unused. So I launched it, did not know what to do with the thing and decided to check the manual. And the manual was a pain. So I decided to tweet about that and I thought, maybe I could tweet from emacs, and so I checked which mode would work best and I installed <code>twittering</code>. And I started playing with the thing, and then I thought it would be nice if I could split my screen so that it looks like my current Tweetdeck setting, and I tried, and then I tried to reproduce the complex search queries and for some reason I could not, and eventually I lost half a day.</p>
+
+	<p>But, I eventually checked <code>magit</code>'s refcard and then everything was clear, and I commited my work, and I'm ready to do the same today. Except that this time I'd like to also push to Github directly from magit.</p>
+
+	<p>Also, I installed <code>projectile</code>, which is a project files management system. I'm not sure yet how to use it since for now just changing the buffer was enough, but if it exists and if it is so popular, there must be a reason.</p>
+
+	<p>I watched this video found in Rachel Andrew's latest "CSS Layout News": <a href="https://xotv.me/channels/22-important/vod_videos/1205-important-slash-slash-basecamp-dot-com-css-grid">!important // basecamp.com [CSS Grid]</a> where the author talks about "<a href="https://en.wikipedia.org/wiki/Progressive_enhancement">progressive enhancement</a>" (the term is already 15 years old), which means building the site with common contents and enhance it progressively with higher level technics supported in more recent browsers. The video itself shows how the basecamp site uses grid and flex layout together. It also shows how to use Firefox developper tools. A fascinating 11:45 mn video. (<span class="todo">Need to check FireFox developer tools, and Safari/Chrome too.)</span></p>
+
+	<p>Since I'm checking a lot of blogs (exclusively those I can access through RSS) I decided to, well, do that in emacs too. So I just installed the <code>elfeed</code> package and it's telling me that I have 4865 unread articles all the way back to 2001... However, I can filter on keywords, like CSS, JS, PHP, etc. so I guess that's an improvement over NetNewsReader. <span class="todo">I need to check the manual too...</span></p>
+
+	<h2>Any progress?</h2>
+	<p>The freecodecamp tasks were not extremely exciting today. I was interested by the <code>box-shadow</code> thing so I added some to the <code>rt</code> tag in the ruby strings here. <span class="todo">I wanted to do that on the navigation but since the navigation tag is a <code>p</code> it would jus run accross the page instead of sticking to the with of the navigation. That something I need to check too</span>.</p>
+
+	<p>I'm also adding <code>todo</code> and <code>done</code> classes to the pages so that I remember what I need to check. <span class="todo>" I'll probably need a way to collect all the items to make a list for the top page</span>.</p>
+
+	<p>And thanks to that <code>todo</code> class that I just added, I ended up discovering that <code>text-decoration</code> is not supported in Safari when used as a shortcut for <code>text-decoration-style</code>, <code>text-decoration-line</code> and  <code>text-decoratuin-color</code> and requires a <code>-webkit</code> prefix. Also <code>line-through</code> does not seem to be supported when associated with style and color values... Weird. But that's cool because thanks to that I just added my first prefixed CSS rule ever! The updated CSS is <a href="../adventuresintechland.css">here</a>.</p>
+	
+	<h2>What I need to check</h2>
+	<ul>
+	    <li class="todo">pushing to github from emacs</li>
+	    <li class="todo">inserting a tag right and left of a selection (<code>web-mode</code>? <code>html-mode</code>?).
+		<code>html-mode</code> has a <code>html-href-anchor</code> that does that for a link, and other commands for various specific tags, but I'm not seeing anything generic...
+	    </li>
+	    <li class="todo">eventually some php to manage all the links</li>
+	</ul>
+
+	<h2>Notes</h2>
+	<ul>
+	    <li>Interesting to see how forcing myself to work inside emacs is actually the best way to become able to use it smoothly.</li>
+	    <li>Xah Lee has this very interesting remark about navigation in the file that I can't find on his site right now where he says that the best navigation in emacs is the interactive search. <code>isearch</code> moves the cursor around the page and drives you exactly where you need to me. Changing the search query during a search can be a bit tricky sometimes, <span class="todo">but I just need to check the manual</span>.</li>
+	</ul>
+	
+	<p class="navigation">
+	    <a href="../1113/1113.html" hreflang="en" rel="prev">1113</a>
+	    <a href="../index.html" hreflang="en">index</a>
+	    <a href="../1115/1115.html" hreflang="en" rel="next">1115</a>
+	</p>
     </body>
 </html>
