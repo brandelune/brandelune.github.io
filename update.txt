@@ -1,0 +1,4 @@
+1) open the mmdd.html template
+2) change the links to the previous/next posts
+3) update index.html
+4) create a css with a new name
