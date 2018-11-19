@@ -20,6 +20,17 @@
     justify-content: flex-start;
 }
 
+.left {
+	flex-flow: row wrap;
+	 }
+
+.right {
+flex-flow: row wrap;
+	}
+
+.layout {
+display: flex;
+}
 
 /*************/
 /* Box       */
