@@ -13,24 +13,36 @@
 /* Layout    */
 /*************/
 
-
-
 .navigation {
     display: flex;
     justify-content: flex-start;
 }
 
+.layout {
+    display: flex;
+}
+
+@media (max-width: 30em) {
+    .layout {
+	display: flex;
+	flex-direction: column;
+    }
+    
+}
+
+
+.layout div {
+    margin: 1em;
+}
+
 .left {
-	flex-flow: row wrap;
-	 }
+
+}
 
 .right {
-flex-flow: row wrap;
-	}
 
-.layout {
-display: flex;
 }
+
 
 /*************/
 /* Box       */
@@ -51,8 +63,7 @@ code {
 }
 
 h2+ul {
-    width:50%;
-    box-shadow: 0 -5px 5px rgba(0,0,0,0.19), 0 1px 1px rgba(0,0,0,0.23);    
+    box-shadow: 0 -5px 5px rgba(0,0,0,0.19), 0 1px 1px rgba(0,0,0,0.23);
 }
 
 /*************/
