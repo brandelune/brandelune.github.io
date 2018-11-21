@@ -2,7 +2,7 @@ echo "<!doctype html>
 <html>
   <head>
     <title>Css index</title>
-    <link rel=\"stylesheet\" type=\"text/css\" media=\"screen\" href=\"./css/adventuresintechland1118.css\" />
+    <link rel=\"stylesheet\" type=\"text/css\" media=\"screen\" href=\"./2018/adventuresintechland1118.css\" />
     <meta charset=\"utf-8\" />
   </head>
   <body>
