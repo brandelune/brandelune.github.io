@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title>index.sh</title>
+<meta name="generator" content="emacs 27.0.50; htmlfontify 0.21" />
+<style type="text/css"><!-- 
+body { font-family: Loma;  font-stretch: normal;  font-weight: 500;  font-style: normal;  color: #000000;  background: #ffffff;  font-size: 14pt;  text-decoration: none; }
+span.default   { font-family: Loma;  font-stretch: normal;  font-weight: 500;  font-style: normal;  color: #000000;  background: #ffffff;  font-size: 14pt;  text-decoration: none; }
+span.default a { font-family: Loma;  font-stretch: normal;  font-weight: 500;  font-style: normal;  color: #000000;  background: #ffffff;  font-size: 14pt;  text-decoration: underline; }
+span.string   { color: #8b2252;  font-family: Loma;  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #ffffff;  font-size: 14pt;  text-decoration: none; }
+span.string a { color: #8b2252;  font-family: Loma;  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #ffffff;  font-size: 14pt;  text-decoration: underline; }
+span.builtin   { color: #483d8b;  font-family: Loma;  font-stretch: normal;  font-weight: bold;  font-style: normal;  background: #ffffff;  font-size: 14pt;  text-decoration: none; }
+span.builtin a { color: #483d8b;  font-family: Loma;  font-stretch: normal;  font-weight: bold;  font-style: normal;  background: #ffffff;  font-size: 14pt;  text-decoration: underline; }
+ --></style>
+
+    <script type="text/javascript"><!--
+  // this function is needed to work around
+  // a bug in IE related to element attributes
+  function hasClass(obj)
+  {
+      var result = false;
+      if (obj.getAttributeNode("class") != null)
+      {
+          result = obj.getAttributeNode("class").value;
+      }
+      return result;
+  }
+
+  function stripe(id)
+  {
+      // the flag we'll use to keep track of
+      // whether the current row is odd or even
+      var even = false;
+
+      // if arguments are provided to specify the colors
+      // of the even & odd rows, then use them;
+      // otherwise use the following defaults:
+      var evenColor = arguments[1] ? arguments[1] : "#fff";
+      var oddColor  = arguments[2] ? arguments[2] : "#ddd";
+
+      // obtain a reference to the desired table
+      // if no such table exists, abort
+      var table = document.getElementById(id);
+      if (! table) { return; }
+
+      // by definition, tables can have more than one tbody
+      // element, so we'll have to get the list of child
+      // &lt;tbody&gt;s
+      var tbodies = table.getElementsByTagName("tbody");
+
+      // and iterate through them...
+      for (var h = 0; h < tbodies.length; h++)
+      {
+          // find all the &lt;tr&gt; elements...
+          var trs = tbodies[h].getElementsByTagName("tr");
+
+          // ... and iterate through them
+          for (var i = 0; i < trs.length; i++)
+          {
+              // avoid rows that have a class attribute
+              // or backgroundColor style
+              if (! hasClass(trs[i]) &&
+                  ! trs[i].style.backgroundColor)
+              {
+                  // get all the cells in this row...
+                  var tds = trs[i].getElementsByTagName("td");
+
+                  // and iterate through them...
+                  for (var j = 0; j < tds.length; j++)
+                  {
+                      var mytd = tds[j];
+
+                      // avoid cells that have a class attribute
+                      // or backgroundColor style
+                      if (! hasClass(mytd) &&
+                          ! mytd.style.backgroundColor)
+                      {
+                          mytd.style.backgroundColor =
+                            even ? evenColor : oddColor;
+                      }
+                  }
+              }
+              // flip from odd to even, or vice-versa
+              even =  ! even;
+          }
+      }
+  }
+
+  function toggle_invis( name )
+  {
+      var filter =
+        { acceptNode:
+          function( node )
+          { var classname = node.id;
+            if( classname )
+            { var classbase = classname.substr( 0, name.length );
+              if( classbase == name ) { return NodeFilter.FILTER_ACCEPT; } }
+            return NodeFilter.FILTER_SKIP; } };
+      var walker = document.createTreeWalker( document.body           ,
+                                              NodeFilter.SHOW_ELEMENT ,
+                                              filter                  ,
+                                              false                   );
+      while( walker.nextNode() )
+      {
+          var e = walker.currentNode;
+          if( e.style.display == "none" ) { e.style.display = "inline"; }
+          else                            { e.style.display = "none";   }
+      }
+  }
+--> </script>
+  </head>
+  <body onload="stripe('index'); return true;">
+
+<pre><span class="builtin">echo</span> <span class="string">&quot;&lt;!doctype html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;Css index&lt;/title&gt;
+    &lt;link rel=\&quot;stylesheet\&quot; type=\&quot;text/css\&quot; media=\&quot;screen\&quot; href=\&quot;./2018/adventuresintechland.css\&quot; /&gt;
+    &lt;meta charset=\&quot;utf-8\&quot; /&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;a href=\&quot;../index.html\&quot;&gt;..&lt;/a&gt;&lt;br /&gt;
+    &lt;table&gt;
+      &lt;thead&gt;
+        &lt;tr&gt;&lt;th&gt;size (b)&lt;/th&gt;&lt;th&gt;creation date&lt;/th&gt;&lt;th&gt;name&lt;/th&gt;&lt;/tr&gt;
+      &lt;/thead&gt;
+      &lt;tbody&gt;&quot;</span> | <span class="builtin">cat</span> &gt; index.html ; <span class="builtin">ls -l</span> 2018 | <span class="builtin">grep</span> css | <span class="builtin">cut -d</span> <span class="string">&quot; &quot;</span> -f 8-12 | <span class="builtin">sort -t</span> <span class="string">&quot; &quot;</span> -k 2 | <span class="builtin">awk</span> <span class="string">'{print &quot;          &lt;tr&gt;&lt;td&gt;&quot; $1 &quot;&lt;/td&gt;&lt;td&gt;&quot; $2 &quot; &quot; $3 &quot; &quot; $4 &quot;&lt;/td&gt;&lt;td&gt;&lt;a href=\&quot;./2018/&quot; $5 &quot;\&quot;&gt;&quot; $5 &quot;&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;&quot;}'</span> | <span class="builtin">cat</span> &gt;&gt; index.html ; <span class="builtin">echo</span> <span class="string">&quot;      &lt;/tbody&gt;
+    &lt;/table&gt;
+  &lt;/body&gt;
+&lt;/html&gt;&quot;</span> | <span class="builtin">cat</span> &gt;&gt; index.html
+</pre>
+
+ </body>
+</html>

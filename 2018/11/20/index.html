@@ -1,24 +1,29 @@
 <html>
     <head>
-	<title></title>
-	<link rel="stylesheet" type="text/css" href="../../../css/2018/adventuresintechland.css"/>
+	<title>Awk, my god!</title>
+	<link rel="stylesheet" type="text/css" href="../../../css/2018/adventuresintechland1120.css"/>
     </head>
     <body>
 	<p class="navigation">
-	     <a href="../../11/19/index.html" hreflang="en" rel="prev">11</a>
+	     <a href="../../11/19/index.html" hreflang="en" rel="prev">1119</a>
 	     <a href="../../../index.html" hreflang="en">index</a>
-	     <a href="../../11/21/index.html" hreflang="en" rel="next">11</a>
+	     <a href="../../11/21/index.html" hreflang="en" rel="next">1121</a>
 	     </p> 
 	     <p>18/11/20, tenth day in a row</p>
 
 	     <h1>Awk, my god!</h1>
-	     Yesterday I tried this automation that checked the contents of /css and created an html index from the data. I used unix commands, pipes, redirection, sed, and I managed to have something that worked from the command line
-	     <h2></h2>	
+	     <p>Yesterday I tried this automation that checked the contents of /css and created an html index from the data. I used unix commands, pipes, redirection, <a href="https://en.wikipedia.org/wiki/Sed" target="blank">sed</a>, and I managed to have something that worked from the command line, but for some reason (escapes maybe?) I could not make it run from a script. I went to bed to sleep on that. In the morning, I remembered that there was another amazing tool on my machine and that I should probably try it. <a href="https://en.wikipedia.org/wiki/AWK" target="blank">awk</a> is a truly interesing language especially for what I needed: an <code>ls</code> output is made of a number of fields and having to parse that with sed was painsakingly difficult while awk automatically recognized the fields and proposed easy syntax to manipulate them. In about half an hour I had my script, tested and packaged.</p>
+	     <h2>What did I do?</h2>
+	     <ul>
+	       <li>Not much besides for writing the script and testing it.</li>
+	       <li>No FreeCodeCamp</li>
+	     </ul>
 
+	     <p>The script is here: <a href="../../../code/index.sh.html" hreflang="awk" target="blank">index.sh</a>. There are probably lots of ways to improve it. I'll investigate that another day. For now, it automatically creates the index for the 2018 css files.</p>
 	     <p class="navigation">
-	     <a href="../../11/19/.html" hreflang="en" rel="prev">11</a>
+	     <a href="../../11/19/index.html" hreflang="en" rel="prev">1119</a>
 	     <a href="../../../index.html" hreflang="en">index</a>
-	     <a href="../../11/21/.html" hreflang="en" rel="next">11</a>
+	     <a href="../../11/21/index.html" hreflang="en" rel="next">1121</a>
 	     </p>
     </body>
 </html>
