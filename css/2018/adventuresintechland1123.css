@@ -66,9 +66,12 @@ h2+ul {
     box-shadow: 0 -5px 5px rgba(0,0,0,0.19), 0 1px 1px rgba(0,0,0,0.23);
 }
 
-.rubyRendering {
-    max-height: 3em;
-    max-width: 70%;
+.rubyRenderingW {
+    height: 2em;
+}
+
+.rubyRenderingF {
+    width: 3em;
 }
 
 /*************/
