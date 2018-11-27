@@ -57,7 +57,7 @@ p {
     text-align: justify;
 }
 
-a, code {
+a, code, table {
     font-family: monospace;   
 }
 
