@@ -1,8 +1,10 @@
 ;; code pour créer mes squelettes de HTML
 
-(defun dailyIndex (myDate)
+(defun dailyIndex (myDate myTitle mySubtitle)
   (interactive (list
-                (read-number "Date: " (string-to-number (format-time-string "%d")))))
+                (read-number "Date: " (string-to-number (format-time-string "%d")))
+		(read-string "Title: " )
+		(read-string "Sub-title: ")))
   (setq siteRoot "/Users/suzume/Documents/Code/brandelune.github.io/")
   (setq baseCSSPath (format "../../../css/%s/" (format-time-string "%Y")))
   (setq baseCSSFile "adventuresintechland.css")
@@ -34,9 +36,9 @@
 	    <a href=\"../../../index.html\" hreflang=\"en\">index</a>
 	    <a href=\"%6$s\" hreflang=\"en\" rel=\"next\">%7$s</a>
 	</p> 
-	<p>%8$s, %9$s day in a row</p>
+	<p>%8$s, ...th day in a row</p>
 	<h1>%1$s</h1>
-	<h2>%10$s</h2>	
+	<h2>%9$s</h2>	
 
 	<p class=\"navigation\">
 	    <a href=\"%4$s\" hreflang=\"en\" rel=\"prev\">%5$s</a>
@@ -45,7 +47,7 @@
 	</p>
     </body>
 </html>"
-		"titre"          ;;  1$
+		myTitle          ;;  1$
 		baseCSSLink      ;;  2$
 		dailyCSSLink     ;;  3$
 		previousDayLink  ;;  4$
@@ -53,11 +55,11 @@
 		nextDayLink      ;;  6$
 		nextDate         ;;  7$
 		todayDate        ;;  8$
-		"..."            ;;  9$
-		"titre"          ;;  1$
-		"sous-titre"     ;; 10$
+		mySubtitle       ;;  9$
+		myTitle          ;;  1$
 		))
-  (write-region todayTemplate nil todayIndex)
+  
+  (write-region todayTemplate nil todayIndex nil nil nil t)
   (make-empty-file todayCSS)
-  (find-file todayIndex)
-  (find-file todayCSS))
+  (find-file todayCSS)
+  (find-file todayIndex))
