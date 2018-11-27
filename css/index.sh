@@ -1,8 +1,12 @@
-echo "<!doctype html>
+#!/bin/sh
+
+outputFile="index.html"
+
+htmlHead="<!doctype html>
 <html>
   <head>
     <title>Css index</title>
-    <link rel=\"stylesheet\" type=\"text/css\" media=\"screen\" href=\"./2018/adventuresintechland1118.css\" />
+    <link rel=\"stylesheet\" type=\"text/css\" media=\"screen\" href=\"./2018/adventuresintechland.css\" />
     <meta charset=\"utf-8\" />
   </head>
   <body>
@@ -11,7 +15,17 @@ echo "<!doctype html>
       <thead>
         <tr><th>size (b)</th><th>creation date</th><th>name</th></tr>
       </thead>
-      <tbody>" | cat > index.html ; ls -l 2018 | grep css | cut -d " " -f 8-12 | sort -t " " -k 2 | awk '{print "          <tr><td>" $1 "</td><td>" $2 " " $3 " " $4 "</td><td><a href=\"./2018/" $5 "\">" $5 "</a></td></tr>"}' | cat >> index.html ; echo "      </tbody>
+      <tbody>"
+
+htmlTail="      </tbody>
     </table>
   </body>
-</html>" | cat >> index.html
+</html>"
+
+echo "$htmlHead" > $outputFile ; 
+
+ls -l * | grep css | sort -k 9 | awk '{print "          <tr><td class="size">" $5 "</td>\
+<td class="date">" $6 " " $7 " " $8 "</td>\
+<td class="link"><a href=\"./2018/" $9 "\">" $9 "</a></td></tr>"}' | cat >> $outputFile ;
+
+echo "$htmlTail" >> $outputFile
