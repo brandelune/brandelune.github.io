@@ -30,16 +30,19 @@
         <link rel=\"stylesheet\" type=\"text/css\" href=\"%3$s\" class=\"dailyCSS\"/>
     </head>
     <body>
-	We're not there yet...
 	<p class=\"navigation\">
 	    <a href=\"%4$s\" hreflang=\"en\" rel=\"prev\">%5$s</a>
 	    <a href=\"../../../index.html\" hreflang=\"en\">index</a>
 	    <a href=\"%6$s\" hreflang=\"en\" rel=\"next\">%7$s</a>
-	</p> 
+	</p>
 	<p>%8$s, ...th day in a row</p>
 	<h1>%1$s</h1>
-	<h2>%9$s</h2>	
-
+        <p></p>
+	<h2>%9$s</h2>
+        <ul>
+            <li></li>
+            <li></li>
+        </ul>
 	<p class=\"navigation\">
 	    <a href=\"%4$s\" hreflang=\"en\" rel=\"prev\">%5$s</a>
 	    <a href=\"../../../index.html\" hreflang=\"en\">index</a>
@@ -63,3 +66,5 @@
   (make-empty-file todayCSS)
   (find-file todayCSS)
   (find-file todayIndex))
+
+
