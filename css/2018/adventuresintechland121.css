@@ -14,7 +14,7 @@ div.bg_img{
 div.bg_img::after {
   content: "";
   background: no-repeat center 80% url(../../2018/12/1/d529rt.png);
-  background-position: top 50px right -10px;
+  background-position: left;
   opacity: 0.2;
   top: 0;
   left: 0;
