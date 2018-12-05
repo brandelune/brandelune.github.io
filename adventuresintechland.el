@@ -10,32 +10,7 @@
 ;; I used the "closest" assumption because I'm either writing the blog late, or outputing future days templates for preparation.
 
 
-(defun getmyDates (myFloatTime)
-  (interactive)
-  (setq myFloatTime 1549905450)
-  (setq yesterDay (nth 4 (decode-time (- myFloatTime 84600))))
-  (setq	toDay (nth 4 (decode-time myFloatTime)))
-	 (toMorrow (nth 4 (decode-time (+ myFloatTime 84600)))))
-  ;; 	(lastMonth (nth 5 (decode-time (- myFloatTime 2592000))))
-  ;; 	(thisMonth (nth 5 (decode-time)))
-  ;; 	(nextMonth (nth 5 (decode-time (+ myFloatTime 2592000))))
-  ;; 	(lastYear (nth 6 (decode-time (- myFloatTime 31536000))))
-  ;; 	(thisYear (nth 6 (decode-time)))
-  ;; 	(nextYear (nth 6 (decode-time (+ myFloatTime 31536000))))
-  ;; 	(yesterdayDate (list yesterDay (if (= 1 today) lastMonth thisMonth) (if (and (= 1 today) (= 1 thisMonth)) lastYear thisYear)))
-  ;; 	(todayDate (list today thisMonth thisYear))
-  ;; 	(tomorrowDate (list toMorrow (if (= 1 toMorrow) nextMonth thisMonth) (if (and (= 1 toMorrow) (= 1 nextMonth)) nextYear thisYear))))
-  ;; 	   (list yesterdayDate todayDate tomorrowDate)))
-  ;; 	)
-    toMorrow))
-
-(getmyDates 1)
-
 (defun getMyDate (myDay)
-  ;; computes the date based on the assumption that the figure I entered is close to the day I enter it.
-  ;; namely, if I write a blog article, it will be for a day I did not write about within the past few days
-  ;; or to prepare an entry in the coming few days.
-  
   (interactive)
   (if (or (> 1 myDay) (< 32 myDay))
       (setq ((myDay (nth 3 (decode-time))))
@@ -89,10 +64,7 @@
 	(setq myMonth (nth 4 myDateNextMonth)
 	      myYear (nth 5 myDateNextMonth))))
     ;; et voilà
-    ;; j'ai une liste avec une date valide qui correspond à la date souhaité pour l'entrée du blog.
-    ;; maintenant je dois obtenir la veille et le lendemain
-    
-    (setq (list myDay myMonth myYear)))
+    (setq (list myDay myMonth myYear))))
 
 (defun dailyIndex (myDate myTitle mySubtitle)
   (interactive (list
@@ -112,7 +84,7 @@
   (setq nextDate (format "%s%s" (format-time-string "%m") nextDay))
   (setq nextDayLink (format "../../%s/%s/index.html" (format-time-string "%m") nextDay))
   (setq todayDate (format "%s/%s/%s" (format-time-string "%Y") (format-time-string "%m") myDate))
-  (setq todayPath (concat siteRoot todayDate))
+  (setq todayPath (concat siteRoot todayDate "/"))
   (setq todayCSS (concat siteRoot "css/" (format-time-string "%Y") "/" dailyCSSFile))
   (setq todayIndex (concat todayPath "index.html"))
 
