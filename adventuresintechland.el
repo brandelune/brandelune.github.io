@@ -9,87 +9,110 @@
 ;; When I launch the template for a given day, it creates links for the previous day and the next day
 ;; I used the "closest" assumption because I'm either writing the blog late, or outputing future days templates for preparation.
 
-
-(defun getMyDate (myDay)
-  (interactive)
+(defun getMyDates (myDay)
+  ;; if the number is not between 1 and 31, the value defaults to today's date
   (if (or (> 1 myDay) (< 32 myDay))
-      (setq ((myDay (nth 3 (decode-time))))
-	    myDay))
+      (setq myDay (nth 3 (decode-time))))
 
-  (let* ((decoded-now (decode-time (float-time)))
-	 (myDateLastMonth (copy-sequence decoded-now))
-	 (myDateThisMonth (copy-sequence decoded-now))
-	 (myDateNextMonth (copy-sequence decoded-now))
-	 (encoded-now (encode-time decoded-now 'integer))))
-  
-  ;; need to create "last month", "next month", "last year", "next year"
-  ;; 1 day is 84600 seconds
-  ;; 1 month is approximately 2,592,000 seconds
-  ;; 1 year is approximately 31,536,000 seconds
-  (let ((yesterDay (nth 3 (decode-time (- (float-time) 84600)))) ;; not used in the function
-	(toMorrow (nth 3 (decode-time (+ (float-time) 84600)))) ;; not used in the function
-	(lastMonth (nth 4 (decode-time (- (float-time) 2592000))))
-	(thisMonth (nth 4 (decode-time))) ;; not used in the function
-	(nextMonth (nth 4 (decode-time (+ (float-time) 2592000))))
-	(lastYear (nth 5 (decode-time (- (float-time) 31536000))))
-	(thisYear (nth 5 (decode-time))) ;; not used in the function
-	(nextYear (nth 5 (decode-time (+ (float-time) 31536000)))))
+  (let* ((now (decode-time (float-time)))
+         (myDatelastMonth (copy-sequence now))
+         (myDatethisMonth (copy-sequence now))
+         (myDatenextMonth (copy-sequence now))
+         (now (encode-time now 'integer))
+
+         ;; need to create "last month", "next month", "last year", "next year"
+         ;; 1 day is 84600 seconds
+         ;; 1 month is approximately 2,592,000 seconds
+         ;; 1 year is approximately 31,536,000 seconds
+
+         (yesterDay (nth 3 (decode-time (- (float-time) 84600))))
+         (toMorrow (nth 3 (decode-time (+ (float-time) 84600))))
+         (lastMonth (nth 4 (decode-time (- (float-time) 2592000))))
+         (thisMonth (nth 4 (decode-time)))
+         (nextMonth (nth 4 (decode-time (+ (float-time) 2592000))))
+         (lastYear (nth 5 (decode-time (- (float-time) 31536000))))
+         (thisYear (nth 5 (decode-time)))
+         (nextYear (nth 5 (decode-time (+ (float-time) 31536000)))))
 
     ;; create the data for last month
-    (setf (nth 3 myDateLastMonth) myDay)
-    (setf (nth 4 myDateLastMonth) lastMonth)
+    (setf (nth 3 myDatelastMonth) myDay)
+    (setf (nth 4 myDatelastMonth) lastMonth)
     (if (= lastMonth 12)
-	(setf (nth 5 myDateLastMonth) lastYear))
-    
+        (setf (nth 5 myDatelastMonth) lastYear))
+
     ;; create the data for this month
-    (setf (nth 3 myDateThisMonth) myDay)
+    (setf (nth 3 myDatethisMonth) myDay)
 
     ;; create the data for next month
-    (setf (nth 3 myDateNextMonth) myDay)
-    (setf (nth 4 myDateNextMonth) nextMonth)
+    (setf (nth 3 myDatenextMonth) myDay)
+    (setf (nth 4 myDatenextMonth) nextMonth)
     (if (= nextMonth 12)
-	(setf (nth 5 myDateNextMonth) nextYear)))
+        (setf (nth 5 myDatenextMonth) nextYear))
 
   ;; compare the dates to find the closest
-  (let (( a (abs (- now (encode-time myDateLastMonth 'integer))))
-	(b (abs (- now (encode-time myDateThisMonth 'integer))))
-	(c (abs (- (encode-time myDateNextMonth 'integer)))))
+  (let ((toLastMonth (abs (- now (encode-time myDatelastMonth 'integer))))
+        (toThisMonth (abs (- now (encode-time myDatethisMonth 'integer))))
+        (toNextMonth (abs (- (encode-time myDatenextMonth 'integer)))))
 
-    (if (and (< a b) (< b c))
-	(setq myMonth (nth 4 myDateLastMonth)
-	      myYear (nth 5 myDateLastMonth))
-      (if (and (< b a) (< b c))
-	  (setq myMonth (nth 4 myDateThisMonth)
-		myYear (nth 5 myDateThisMonth))
-	(setq myMonth (nth 4 myDateNextMonth)
-	      myYear (nth 5 myDateNextMonth))))
-    ;; et voilà
-    (setq (list myDay myMonth myYear))))
+    (if (and (< toLastMonth toThisMonth)
+             (< toThisMonth toNextMonth))
+        (setq myMonth (nth 4 myDatelastMonth)
+              myYear (nth 5 myDatelastMonth))
+      (if (and (<= toThisMonth toLastMonth)
+               (< toThisMonth toNextMonth))
+          (setq myMonth (nth 4 myDatethisMonth)
+                myYear (nth 5 myDatethisMonth))
+        (setq myMonth (nth 4 myDatenextMonth)
+              myYear (nth 5 myDatenextMonth)))))
+  ;; et voilà
+  (encode-time (list 0 0 12 myDay myMonth myYear nil nil 32400) 'integer)))
 
-(defun dailyIndex (myDate myTitle mySubtitle)
+
+(defun dailyTemplate (myDay myTitle mySubtitle)
   (interactive (list
                 (read-number "Date: " (string-to-number (format-time-string "%d")))
 		(read-string "Title: " )
 		(read-string "Sub-title: ")))
-  (setq siteRoot "/Users/suzume/Documents/Code/brandelune.github.io/")
-  (setq baseCSSPath (format "../../../css/%s/" (format-time-string "%Y")))
-  (setq baseCSSFile "adventuresintechland.css")
-  (setq dailyCSSFile (format "adventuresintechland%s%s.css" (format-time-string "%m") myDate))
-  (setq baseCSSLink (concat baseCSSPath baseCSSFile))
-  (setq dailyCSSLink (concat baseCSSPath dailyCSSFile))
-  (setq previousDay (- myDate 1))
-  (setq previousDate (format "%s%s" (format-time-string "%m") previousDay))
-  (setq previousDayLink (format "../../%s/%s/index.html" (format-time-string "%m") previousDay))
-  (setq nextDay (+ myDate 1))
-  (setq nextDate (format "%s%s" (format-time-string "%m") nextDay))
-  (setq nextDayLink (format "../../%s/%s/index.html" (format-time-string "%m") nextDay))
-  (setq todayDate (format "%s/%s/%s" (format-time-string "%Y") (format-time-string "%m") myDate))
-  (setq todayPath (concat siteRoot todayDate "/"))
-  (setq todayCSS (concat siteRoot "css/" (format-time-string "%Y") "/" dailyCSSFile))
-  (setq todayIndex (concat todayPath "index.html"))
 
-  (setq todayTemplate
-	(format "<html>
+  (let* ((myToday (getMyDates myDay))
+	 (myTomorrow (+ myToday 84600))
+	 (myYesterday (- myToday 84600))
+	 (siteRoot "/Users/suzume/Documents/Code/brandelune.github.io/")
+	 (baseCSSPath (format "../../../css/%s/"
+			      (format-time-string "%Y" myToday)))
+	 (baseCSSFile "adventuresintechland.css")
+	 (dailyCSSFile (format "adventuresintechland%s%s.css"
+			       (format-time-string "%m" myToday)
+			       (format-time-string "%d" myToday)))
+	 (baseCSSLink (concat baseCSSPath baseCSSFile))
+	 (dailyCSSLink (concat baseCSSPath dailyCSSFile))
+	 
+	 (previousDay (format-time-string "%d" myYesterday))
+	 (previousDate (format "%s%s"
+			       (format-time-string "%m" myYesterday)
+			       previousDay))
+	 (previousDayLink (format "../../%s/%s/index.html"
+				  (format-time-string "%m" myYesterday)
+				  previousDay))
+
+	 (nextDay (format-time-string "%d" myTomorrow))
+	 (nextDate (format "%s%s"
+			   (format-time-string "%m" myTomorrow)
+			   nextDay))
+	 (nextDayLink (format "../../%s/%s/index.html"
+			      (format-time-string "%m" myTomorrow)
+			      nextDay))
+
+	 (todayDate (format "%s/%s/%s"
+			    (format-time-string "%Y" myToday)
+			    (format-time-string "%m" myToday)
+			    (format-time-string "%d" myToday)))
+	 (todayPath (concat siteRoot todayDate "/"))
+	 (todayCSS (concat siteRoot "css/" (format-time-string "%Y" myToday) "/" dailyCSSFile))
+	 (todayIndex (concat todayPath "index.html"))
+
+	 (todayTemplate
+	  (format "<html>
     <head>
 	<title>%1$s</title>
 	<link rel=\"stylesheet\" type=\"text/css\" href=\"%2$s\" class=\"baseCSS\"/>
@@ -116,21 +139,18 @@
 	</p>
     </body>
 </html>"
-		myTitle          ;;  1$
-		baseCSSLink      ;;  2$
-		dailyCSSLink     ;;  3$
-		previousDayLink  ;;  4$
-		previousDate     ;;  5$
-		nextDayLink      ;;  6$
-		nextDate         ;;  7$
-		todayDate        ;;  8$
-		mySubtitle       ;;  9$
-		myTitle          ;;  1$
-		))
+		  myTitle          ;;  1$
+		  baseCSSLink      ;;  2$
+		  dailyCSSLink     ;;  3$
+		  previousDayLink  ;;  4$
+		  previousDate     ;;  5$
+		  nextDayLink      ;;  6$
+		  nextDate         ;;  7$
+		  todayDate        ;;  8$
+		  mySubtitle       ;;  9$
+		  myTitle          ;;  1$
+		  )))
   
-  (write-region todayTemplate nil todayIndex nil nil nil t)
-  (make-empty-file todayCSS)
-  (find-file todayCSS)
-  (find-file todayIndex))
-
-
+    (write-region todayTemplate nil todayIndex nil t nil t)
+    (make-empty-file todayCSS)
+    (find-file todayIndex)))

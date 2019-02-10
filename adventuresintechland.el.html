@@ -1,0 +1,116 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<!-- Created by htmlize-1.55 in css mode. -->
+<html>
+  <head>
+    <title>adventuresintechland.el</title>
+    <style type="text/css">
+    <!--
+      .comment {
+        /* font-lock-comment-face */
+        color: brown;
+      }
+      .comment-delimiter {
+        /* font-lock-comment-delimiter-face */
+        color: brown;
+      }
+      .newFunctionName {
+        /* font-lock-function-name-face */
+        color: green;
+      }
+      .specialForm {
+		color: purple;
+		font-weight: bold;
+      }
+      
+      .variable {
+		color: blue;
+      }
+      
+      .newlyDefinedVariable {
+		color: blue;
+        font-weight: bold;
+      }
+      
+      .keyword {
+        /* font-lock-keyword-face */
+        color: black;
+        font-weight: bold;
+      }
+      
+      .argument {
+      color: red;
+      }
+      
+      .parens {
+      color: darkgrey;
+      font-weight: 100;
+      }
+    -->
+    </style>
+  </head>
+  <body>
+    <pre>
+<span class="comment-delimiter">;; </span><span class="comment">I've put in bold characters the symbols that were newly defined.</span>
+
+(<span class="keyword">defun</span> <span class="newlyDefinedSymbol">getMyDate</span> (<span class="symbol">myDay</span>)
+  (<span class="keyword">interactive</span>)
+  (<span class="keyword">if</span> (<span class="keyword">or</span> (<span class="function-name">&gt;</span> 1 <span class="symbol">myDay</span>) (<span class="function-name">&lt;</span> 32 <span class="symbol">myDay</span>))
+      (<span class="keyword">setq</span> ((<span class="newlyDefinedSymbol">myDay</span> (<span class="function-name">nth</span> 3 (<span class="function-name">decode-time</span>))))
+            <span class="symbol">myDay</span>))
+
+  (<span class="keyword">let*</span> ((<span class="newlyDefinedSymbol">decoded-now</span> (<span class="function-name">decode-time</span> (<span class="function-name">float-time</span>)))
+         <span class="comment-delimiter">;; </span><span class="comment">(float-time) returns something like this: 1544152174.443882</span>
+         <span class="comment-delimiter">;; </span><span class="comment">(decode-time) transforms that into something like this: (34 10 12 7 12 2018 5 nil 32400)</span>
+         <span class="comment-delimiter">;; </span><span class="comment">which is a list of the following format (ss mm hh dd mm yyyy ....), the "...." is not relevant here</span>
+         <span class="comment-delimiter">;; </span><span class="comment">but you noticed that I'm writing this comment on the 7th...</span>
+         (<span class="newlyDefinedSymbol">myDate<span class="symbol">lastMonth</span></span> (<span class="function-name">copy-sequence</span> <span class="symbol">decoded-now</span>))
+         (<span class="newlyDefinedSymbol">myDate<span class="symbol">thisMonth</span></span> (<span class="function-name">copy-sequence</span> <span class="symbol">decoded-now</span>))
+         (<span class="newlyDefinedSymbol">myDate<span class="symbol">nextMonth</span></span> (<span class="function-name">copy-sequence</span> <span class="symbol">decoded-now</span>))
+         (<span class="newlyDefinedSymbol">encoded-now</span> (<span class="function-name">encode-time</span> <span class="symbol">decoded-now</span> '<span class="keyword">integer</span>))))
+  
+  <span class="comment-delimiter">;; </span><span class="comment">need to create "last month", "next month", "last year", "next year"</span>
+  <span class="comment-delimiter">;; </span><span class="comment">1 day is 84600 seconds</span>
+  <span class="comment-delimiter">;; </span><span class="comment">1 month is approximately 2,592,000 seconds</span>
+  <span class="comment-delimiter">;; </span><span class="comment">1 year is approximately 31,536,000 seconds</span>
+  (<span class="keyword">let</span> ((<span class="newlyDefinedSymbol">yesterDay</span> (<span class="function-name">nth</span> 3 (<span class="function-name">decode-time</span> (<span class="function-name">-</span> (<span class="function-name">float-time</span>) 84600)))) <span class="comment-delimiter">;; </span><span class="comment">not used in the function</span>
+        (<span class="newlyDefinedSymbol">toMorrow</span> (<span class="function-name">nth</span> 3 (<span class="function-name">decode-time</span> (<span class="function-name">+</span> (<span class="function-name">float-time</span>) 84600)))) <span class="comment-delimiter">;; </span><span class="comment">not used in the function</span>
+        (<span class="newlyDefinedSymbol">lastMonth</span> (<span class="function-name">nth</span> 4 (<span class="function-name">decode-time</span> (<span class="function-name">-</span> (<span class="function-name">float-time</span>) 2592000))))
+        (<span class="newlyDefinedSymbol">thisMonth</span> (<span class="function-name">nth</span> 4 (<span class="function-name">decode-time</span>))) <span class="comment-delimiter">;; </span><span class="comment">not used in the function</span>
+        (<span class="newlyDefinedSymbol">nextMonth</span> (<span class="function-name">nth</span> 4 (<span class="function-name">decode-time</span> (<span class="function-name">+</span> (<span class="function-name">float-time</span>) 2592000))))
+        (<span class="newlyDefinedSymbol">lastYear</span> (<span class="function-name">nth</span> 5 (<span class="function-name">decode-time</span> (<span class="function-name">-</span> (<span class="function-name">float-time</span>) 31536000))))
+        (<span class="newlyDefinedSymbol">thisYear</span> (<span class="function-name">nth</span> 5 (<span class="function-name">decode-time</span>))) <span class="comment-delimiter">;; </span><span class="comment">not used in the function</span>
+        (<span class="newlyDefinedSymbol">nextYear</span> (<span class="function-name">nth</span> 5 (<span class="function-name">decode-time</span> (<span class="function-name">+</span> (<span class="function-name">float-time</span>) 31536000)))))
+
+    <span class="comment-delimiter">;; </span><span class="comment">create the data for last month</span>
+    (<span class="keyword">setf</span> (<span class="function-name">nth</span> 3 <span class="symbol">myDate<span class="symbol">lastMonth</span></span>) <span class="symbol">myDay</span>)
+    (<span class="keyword">setf</span> (<span class="function-name">nth</span> 4 <span class="symbol">myDate<span class="symbol">lastMonth</span></span>) <span class="symbol">lastMonth</span>)
+    (<span class="keyword">if</span> (<span class="function-name">=</span> <span class="symbol">lastMonth</span> 12)
+        (<span class="keyword">setf</span> (<span class="function-name">nth</span> 5 <span class="symbol">myDate<span class="symbol">lastMonth</span></span>) <span class="symbol">lastYear</span>))
+    
+    <span class="comment-delimiter">;; </span><span class="comment">create the data for this month</span>
+    (<span class="keyword">setf</span> (<span class="function-name">nth</span> 3 <span class="symbol">myDate<span class="symbol">thisMonth</span></span>) <span class="symbol">myDay</span>)
+
+    <span class="comment-delimiter">;; </span><span class="comment">create the data for next month</span>
+    (<span class="keyword">setf</span> (<span class="function-name">nth</span> 3 <span class="symbol">myDate<span class="symbol">nextMonth</span></span>) <span class="symbol">myDay</span>)
+    (<span class="keyword">setf</span> (<span class="function-name">nth</span> 4 <span class="symbol">myDate<span class="symbol">nextMonth</span></span>) <span class="symbol">nextMonth</span>)
+    (<span class="keyword">if</span> (<span class="function-name">=</span> <span class="symbol">nextMonth</span> 12)
+        (<span class="keyword">setf</span> (<span class="function-name">nth</span> 5 <span class="symbol">myDate<span class="symbol">nextMonth</span></span>) <span class="symbol">nextYear</span>)))
+
+  <span class="comment-delimiter">;; </span><span class="comment">compare the dates to find the closest</span>
+  (<span class="keyword">let</span> ((<span class="newlyDefinedSymbol">a</span> (<span class="function-name">abs</span> (<span class="function-name">-</span> <span class="symbol">encoded-now</span> (<span class="function-name">encode-time</span> <span class="symbol">myDate<span class="symbol">lastMonth</span></span> '<span class="keyword">integer</span>))))
+        (<span class="newlyDefinedSymbol">b</span> (<span class="function-name">abs</span> (<span class="function-name">-</span> <span class="symbol">encoded-now</span> (<span class="function-name">encode-time</span> <span class="symbol">myDate<span class="symbol">thisMonth</span></span> '<span class="keyword">integer</span>))))
+        (<span class="newlyDefinedSymbol">c</span> (<span class="function-name">abs</span> (<span class="function-name">-</span> (<span class="function-name">encode-time</span> <span class="symbol">myDate<span class="symbol">nextMonth</span></span> '<span class="keyword">integer</span>)))))
+
+    (<span class="keyword">if</span> (<span class="keyword">and</span> (<span class="function-name">&lt;</span> <span class="symbol">a</span> <span class="symbol">b</span>) (<span class="function-name">&lt;</span> <span class="symbol">b</span> <span class="symbol">c</span>))
+        (<span class="keyword">setq</span> <span class="newlyDefinedSymbol">myMonth</span> (<span class="function-name">nth</span> 4 <span class="symbol">myDate<span class="symbol">lastMonth</span></span>)
+              <span class="newlyDefinedSymbol">myYear</span> (<span class="function-name">nth</span> 5 <span class="symbol">myDate<span class="symbol">lastMonth</span></span>))
+      (<span class="keyword">if</span> (<span class="keyword">and</span> (<span class="function-name">&lt;</span> <span class="symbol">b</span> <span class="symbol">a</span>) (<span class="function-name">&lt;</span> <span class="symbol">b</span> <span class="symbol">c</span>))
+          (<span class="keyword">setq</span> <span class="newlyDefinedSymbol">myMonth</span> (<span class="function-name">nth</span> 4 <span class="symbol">myDate<span class="symbol">thisMonth</span></span>)
+                <span class="newlyDefinedSymbol">myYear</span> (<span class="function-name">nth</span> 5 <span class="symbol">myDate<span class="symbol">thisMonth</span></span>))
+        (<span class="keyword">setq</span> <span class="newlyDefinedSymbol">myMonth</span> (<span class="function-name">nth</span> 4 <span class="symbol">myDate<span class="symbol">nextMonth</span></span>)
+              <span class="newlyDefinedSymbol">myYear</span> (<span class="function-name">nth</span> 5 <span class="symbol">myDate<span class="symbol">nextMonth</span></span>))))
+    <span class="comment-delimiter">;; </span><span class="comment">et voil&#224;</span>
+    (<span class="keyword">setq</span> <span class="newlyDefinedSymbol">myDate</span> (<span class="function-name">list</span> <span class="symbol">myDay</span> <span class="symbol">myMonth</span> <span class="symbol">myYear</span>))))
+</pre>
+  </body>
+</html>

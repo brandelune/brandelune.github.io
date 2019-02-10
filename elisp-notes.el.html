@@ -1,0 +1,122 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<!-- Created by htmlize-1.55 in css mode. -->
+<html>
+  <head>
+    <title>elisp-notes.el</title>
+    <style type="text/css">
+    <!--
+      .comment {
+        /* font-lock-comment-face */
+        color: brown;
+      }
+      .comment-delimiter {
+        /* font-lock-comment-delimiter-face */
+        color: brown;
+      }
+      .newFunctionName {
+        /* font-lock-function-name-face */
+        color: green;
+      }
+      .specialForm {
+		color: purple;
+		font-weight: bold;
+      }
+      
+      .variable {
+		color: blue;
+      }
+      
+      .newlyDefinedVariable {
+		color: blue;
+        font-weight: bold;
+      }
+      
+      .keyword {
+        /* font-lock-keyword-face */
+        color: black;
+        font-weight: bold;
+      }
+      
+      .argument {
+      color: red;
+      }
+      
+      .parens {
+      color: darkgrey;
+      font-weight: 100;
+      }
+
+    -->
+    </style>
+  </head>
+  <body>
+    <pre>
+<span class="comment-delimiter">;; </span><span class="comment">The function takes a date d and returns a <span class="parens">(</span>d m y<span class="parens">)</span> list where <span class="parens">(</span>d m y<span class="parens">)</span> is the closest day to today</span>
+<span class="comment-delimiter">;; </span><span class="comment">For ex, today is 2018/12/3</span>
+<span class="comment-delimiter">;; </span><span class="comment">d=1 -&gt; <span class="parens">(</span>1 12 2018<span class="parens">)</span></span>
+<span class="comment-delimiter">;; </span><span class="comment">d=30 -&gt; <span class="parens">(</span>30 11 2018<span class="parens">)</span></span>
+<span class="comment-delimiter">;; </span><span class="comment">d=15 -&gt; <span class="parens">(</span>15 12 2018<span class="parens">)</span></span>
+<span class="comment-delimiter">;; </span><span class="comment">I use the function in a template for a blog that I write one page a day.</span>
+<span class="comment-delimiter">;; </span><span class="comment">When I launch the template for a given day, it creates links for the previous day and the next day</span>
+<span class="comment-delimiter">;; </span><span class="comment">I used the "closest" assumption because I'm either writing the blog late, or outputing future days templates for preparation.</span>
+
+<span class="parens">(</span><span class="keyword">defun</span> <span class="newFunctionName">getMyDate</span> <span class="parens">(</span><span class="newlyDefinedVariable">myDay</span><span class="parens">)</span> 
+  <span class="parens">(</span><span class="specialForm">interactive</span><span class="parens">)</span>
+  <span class="parens">(</span><span class="specialForm">if</span> <span class="parens">(</span><span class="specialForm">or</span> <span class="parens">(</span><span class="keyword">&gt;</span> <span class="argument">1</span> <span class="variable">myDay</span><span class="parens">)</span> <span class="parens">(</span><span class="keyword">&lt;</span> <span class="argument">32</span> <span class="variable">myDay</span><span class="parens">)</span><span class="parens">)</span>
+      <span class="parens">(</span><span class="specialForm">setq</span> <span class="newlyDefinedVariable">myDay</span> <span class="parens">(</span><span class="keyword">nth</span> <span class="argument">3</span> <span class="parens">(</span><span class="keyword">decode-time</span><span class="parens">)</span><span class="parens">)</span><span class="parens">)</span><span class="parens">)</span>
+  
+  <span class="parens">(</span><span class="specialForm">let*</span> <span class="parens">(</span><span class="parens">(</span><span class="newlyDefinedVariable">now</span> <span class="parens">(</span><span class="keyword">decode-time</span> <span class="parens">(</span><span class="keyword">float-time</span><span class="parens">)</span><span class="parens">)</span><span class="parens">)</span>
+         <span class="parens">(</span><span class="newlyDefinedVariable">myDatelastMonth</span> <span class="parens">(</span><span class="keyword">copy-sequence</span> <span class="variable">now</span><span class="parens">)</span><span class="parens">)</span>
+         <span class="parens">(</span><span class="newlyDefinedVariable">myDatethisMonth</span> <span class="parens">(</span><span class="keyword">copy-sequence</span> <span class="variable">now</span><span class="parens">)</span><span class="parens">)</span>
+         <span class="parens">(</span><span class="newlyDefinedVariable">myDatenextMonth</span> <span class="parens">(</span><span class="keyword">copy-sequence</span> <span class="variable">now</span><span class="parens">)</span><span class="parens">)</span>
+         <span class="parens">(</span><span class="newlyDefinedVariable">now</span> <span class="parens">(</span><span class="keyword">encode-time</span> <span class="variable">now</span> <span class="keyword">'</span><span class="argument">integer</span><span class="parens">)</span><span class="parens">)</span>
+         
+         <span class="comment-delimiter">;; </span><span class="comment">need to create "last month", "next month", "last year", "next year"</span>
+         <span class="comment-delimiter">;; </span><span class="comment">1 day is 84600 seconds</span>
+         <span class="comment-delimiter">;; </span><span class="comment">1 month is approximately 2,592,000 seconds</span>
+         <span class="comment-delimiter">;; </span><span class="comment">1 year is approximately 31,536,000 seconds</span>
+         
+         <span class="parens">(</span><span class="newlyDefinedVariable">yesterDay</span> <span class="parens">(</span><span class="keyword">nth</span> <span class="argument">3</span> <span class="parens">(</span><span class="keyword">decode-time</span> <span class="parens">(</span><span class="keyword">-</span> <span class="parens">(</span><span class="keyword">float-time</span><span class="parens">)</span> <span class="argument">84600</span><span class="parens">)</span><span class="parens">)</span><span class="parens">)</span><span class="parens">)</span>
+         <span class="parens">(</span><span class="newlyDefinedVariable">toMorrow</span> <span class="parens">(</span><span class="keyword">nth</span> <span class="argument">3</span> <span class="parens">(</span><span class="keyword">decode-time</span> <span class="parens">(</span><span class="keyword">+</span> <span class="parens">(</span><span class="keyword">float-time</span><span class="parens">)</span> <span class="argument">84600</span><span class="parens">)</span><span class="parens">)</span><span class="parens">)</span><span class="parens">)</span>
+         <span class="parens">(</span><span class="newlyDefinedVariable">lastMonth</span> <span class="parens">(</span><span class="keyword">nth</span> <span class="argument">4</span> <span class="parens">(</span><span class="keyword">decode-time</span> <span class="parens">(</span><span class="keyword">-</span> <span class="parens">(</span><span class="keyword">float-time</span><span class="parens">)</span> <span class="argument">2592000</span><span class="parens">)</span><span class="parens">)</span><span class="parens">)</span><span class="parens">)</span>
+         <span class="parens">(</span><span class="newlyDefinedVariable">thisMonth</span> <span class="parens">(</span><span class="keyword">nth</span> <span class="argument">4</span> <span class="parens">(</span><span class="keyword">decode-time</span><span class="parens">)</span><span class="parens">)</span><span class="parens">)</span>
+         <span class="parens">(</span><span class="newlyDefinedVariable">nextMonth</span> <span class="parens">(</span><span class="keyword">nth</span> <span class="argument">4</span> <span class="parens">(</span><span class="keyword">decode-time</span> <span class="parens">(</span><span class="keyword">+</span> <span class="parens">(</span><span class="keyword">float-time</span><span class="parens">)</span> <span class="argument">2592000</span><span class="parens">)</span><span class="parens">)</span><span class="parens">)</span><span class="parens">)</span>
+         <span class="parens">(</span><span class="newlyDefinedVariable">lastYear</span> <span class="parens">(</span><span class="keyword">nth</span> <span class="argument">5</span> <span class="parens">(</span><span class="keyword">decode-time</span> <span class="parens">(</span><span class="keyword">-</span> <span class="parens">(</span><span class="keyword">float-time</span><span class="parens">)</span> <span class="argument">31536000</span><span class="parens">)</span><span class="parens">)</span><span class="parens">)</span><span class="parens">)</span>
+         <span class="parens">(</span><span class="newlyDefinedVariable">thisYear</span> <span class="parens">(</span><span class="keyword">nth</span> <span class="argument">5</span> <span class="parens">(</span><span class="keyword">decode-time</span><span class="parens">)</span><span class="parens">)</span><span class="parens">)</span>
+         <span class="parens">(</span><span class="newlyDefinedVariable">nextYear</span> <span class="parens">(</span><span class="keyword">nth</span> <span class="argument">5</span> <span class="parens">(</span><span class="keyword">decode-time</span> <span class="parens">(</span><span class="keyword">+</span> <span class="parens">(</span><span class="keyword">float-time</span><span class="parens">)</span> <span class="argument">31536000</span><span class="parens">)</span><span class="parens">)</span><span class="parens">)</span><span class="parens">)</span><span class="parens">)</span>
+    
+    <span class="comment-delimiter">;; </span><span class="comment">create the data for last month</span>
+    <span class="parens">(</span><span class="keyword">setf</span> <span class="parens">(</span><span class="keyword">nth</span> <span class="argument">3</span> <span class="variable">myDatelastMonth</span><span class="parens">)</span> <span class="variable">myDay</span><span class="parens">)</span>
+    <span class="parens">(</span><span class="keyword">setf</span> <span class="parens">(</span><span class="keyword">nth</span> <span class="argument">4</span> <span class="variable">myDatelastMonth</span><span class="parens">)</span> <span class="variable">lastMonth</span><span class="parens">)</span>
+    <span class="parens">(</span><span class="specialForm">if</span> <span class="parens">(</span><span class="keyword">=</span> <span class="variable">lastMonth</span> <span class="argument">12</span><span class="parens">)</span>
+        <span class="parens">(</span><span class="keyword">setf</span> <span class="parens">(</span><span class="keyword">nth</span> <span class="argument">5</span> <span class="variable">myDatelastMonth</span><span class="parens">)</span> <span class="variable">lastYear</span><span class="parens">)</span><span class="parens">)</span>
+    
+    <span class="comment-delimiter">;; </span><span class="comment">create the data for this month</span>
+    <span class="parens">(</span><span class="keyword">setf</span> <span class="parens">(</span><span class="keyword">nth</span> <span class="argument">3</span> <span class="variable">myDatethisMonth</span><span class="parens">)</span> <span class="variable">myDay</span><span class="parens">)</span>
+    
+    <span class="comment-delimiter">;; </span><span class="comment">create the data for next month</span>
+    <span class="parens">(</span><span class="keyword">setf</span> <span class="parens">(</span><span class="keyword">nth</span> <span class="argument">3</span> <span class="variable">myDatenextMonth</span><span class="parens">)</span> <span class="variable">myDay</span><span class="parens">)</span>
+    <span class="parens">(</span><span class="keyword">setf</span> <span class="parens">(</span><span class="keyword">nth</span> <span class="argument">4</span> <span class="variable">myDatenextMonth</span><span class="parens">)</span> <span class="variable">nextMonth</span><span class="parens">)</span>
+    <span class="parens">(</span><span class="specialForm">if</span> <span class="parens">(</span><span class="keyword">=</span> <span class="variable">nextMonth</span> <span class="argument">12</span><span class="parens">)</span>
+        <span class="parens">(</span><span class="keyword">setf</span> <span class="parens">(</span><span class="keyword">nth</span> <span class="argument">5</span> <span class="variable">myDatenextMonth</span><span class="parens">)</span> <span class="variable">nextYear</span><span class="parens">)</span><span class="parens">)</span><span class="parens">)</span>
+  
+         <span class="comment-delimiter">;; </span><span class="comment">compare the dates to find the closest</span>
+  <span class="parens">(</span><span class="specialForm">let</span> <span class="parens">(</span><span class="parens">(</span><span class="newlyDefinedVariable">toLastMonth</span> <span class="parens">(</span><span class="keyword">abs</span> <span class="parens">(</span><span class="keyword">-</span> <span class="variable">now</span> <span class="parens">(</span><span class="keyword">encode-time</span> <span class="variable">myDatelastMonth</span> <span class="keyword">'</span><span class="argument">integer</span><span class="parens">)</span><span class="parens">)</span><span class="parens">)</span><span class="parens">)</span>
+        <span class="parens">(</span><span class="newlyDefinedVariable">toThisMonth</span> <span class="parens">(</span><span class="keyword">abs</span> <span class="parens">(</span><span class="keyword">-</span> <span class="variable">now</span> <span class="parens">(</span><span class="keyword">encode-time</span> <span class="variable">myDatethisMonth</span> <span class="keyword">'</span><span class="argument">integer</span><span class="parens">)</span><span class="parens">)</span><span class="parens">)</span><span class="parens">)</span>
+        <span class="parens">(</span><span class="newlyDefinedVariable">toNextMonth</span> <span class="parens">(</span><span class="keyword">abs</span> <span class="parens">(</span><span class="keyword">-</span> <span class="parens">(</span><span class="keyword">encode-time</span> <span class="variable">myDatenextMonth</span> <span class="keyword">'</span><span class="argument">integer</span><span class="parens">)</span><span class="parens">)</span><span class="parens">)</span><span class="parens">)</span><span class="parens">)</span>
+    
+    <span class="parens">(</span><span class="specialForm">if</span> <span class="parens">(</span><span class="specialForm">and</span> <span class="parens">(</span><span class="keyword">&lt;</span> <span class="variable">toLastMonth</span> <span class="variable">toThisMonth</span><span class="parens">)</span>
+                    <span class="parens">(</span><span class="keyword">&lt;</span> <span class="variable">toThisMonth</span> <span class="variable">toNextMonth</span><span class="parens">)</span><span class="parens">)</span>
+        <span class="parens">(</span><span class="specialForm">setq</span> <span class="newlyDefinedVariable">myMonth</span> <span class="parens">(</span><span class="keyword">nth</span> <span class="argument">4</span> <span class="variable">myDatelastMonth</span><span class="parens">)</span>
+              <span class="newlyDefinedVariable">myYear</span> <span class="parens">(</span><span class="keyword">nth</span> <span class="argument">5</span> <span class="variable">myDatelastMonth</span><span class="parens">)</span><span class="parens">)</span>
+      <span class="parens">(</span><span class="specialForm">if</span> <span class="parens">(</span><span class="specialForm">and</span> <span class="parens">(</span><span class="keyword">&lt;=</span> <span class="variable">toThisMonth</span> <span class="variable">toLastMonth</span><span class="parens">)</span>
+               <span class="parens">(</span><span class="keyword">&lt;</span> <span class="variable">toThisMonth</span> <span class="variable">toNextMonth</span><span class="parens">)</span><span class="parens">)</span>
+          <span class="parens">(</span><span class="specialForm">setq</span> <span class="newlyDefinedVariable">myMonth</span> <span class="parens">(</span><span class="keyword">nth</span> <span class="argument">4</span> <span class="variable">myDatethisMonth</span><span class="parens">)</span>
+                <span class="newlyDefinedVariable">myYear</span> <span class="parens">(</span><span class="keyword">nth</span> <span class="argument">5</span> <span class="variable">myDatethisMonth</span><span class="parens">)</span><span class="parens">)</span>
+               <span class="parens">(</span><span class="specialForm">setq</span> <span class="newlyDefinedVariable">myMonth</span> <span class="parens">(</span><span class="keyword">nth</span> <span class="argument">4</span> <span class="variable">myDatenextMonth</span><span class="parens">)</span>
+                     <span class="newlyDefinedVariable">myYear</span> <span class="parens">(</span><span class="keyword">nth</span> <span class="argument">5</span> <span class="variable">myDatenextMonth</span><span class="parens">)</span><span class="parens">)</span><span class="parens">)</span><span class="parens">)</span><span class="parens">)</span>
+  <span class="comment-delimiter">;; </span><span class="comment">et voil&#224;</span>
+  <span class="parens">(</span><span class="specialForm">setq</span> <span class="newlyDefinedVariable">myDate</span> <span class="parens">(</span><span class="keyword">list</span> <span class="variable">myDay</span> <span class="variable">myMonth</span> <span class="variable">myYear</span><span class="parens">)</span><span class="parens">)</span><span class="parens">)</span>
+</pre>
+  </body>
+</html>
