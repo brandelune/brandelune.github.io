@@ -81,7 +81,8 @@
 	 (baseCSSPath (format "../../../css/%s/"
 			      (format-time-string "%Y" myToday)))
 	 (baseCSSFile "adventuresintechland.css")
-	 (dailyCSSFile (format "adventuresintechland%s%s.css"
+	 (dailyCSSFile (format "adventuresintechland%s%s%s.css"
+			       (format-time-string "%y" myToday)
 			       (format-time-string "%m" myToday)
 			       (format-time-string "%d" myToday)))
 	 (baseCSSLink (concat baseCSSPath baseCSSFile))
@@ -151,6 +152,8 @@
 		  myTitle          ;;  1$
 		  )))
   
-    (write-region todayTemplate nil todayIndex nil t nil t)
-    (make-empty-file todayCSS)
-    (find-file todayIndex)))
+    (make-empty-file todayIndex t)
+    (write-region todayTemplate nil todayIndex nil nil t nil)
+    (make-empty-file todayCSS t)))
+
+(make-empty-file "/Users/suzume/Documents/Code/brandelune.github.io/2019/02/12/index.html" t)
