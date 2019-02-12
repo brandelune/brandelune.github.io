@@ -158,7 +158,7 @@
     (find-file todayCSS)
     (find-file todayIndex)))
 
-(dailyTemplate 11 "Back to the web!" "The hardest has yet to come...")
+(dailyTemplate 12 "Simple HTML" "Notes")
 (setq debug-on-error t)
 (debug-on-entry 'dailyTemplate)
 (make-empty-file "/Users/suzume/Documents/Code/brandelune.github.io/2019/02/12/index.html" t)
