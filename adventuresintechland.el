@@ -151,9 +151,14 @@
 		  mySubtitle       ;;  9$
 		  myTitle          ;;  1$
 		  )))
-  
+    (make-empty-file todayCSS t)
+    (write-region (format "/* CSS template for %s */" todayDate) nil todayCSS nil 0 nil nil)
     (make-empty-file todayIndex t)
-    (write-region todayTemplate nil todayIndex nil nil t nil)
-    (make-empty-file todayCSS t)))
+    (write-region todayTemplate nil todayIndex nil 0 nil nil)
+    (find-file todayCSS)
+    (find-file todayIndex)))
 
+(dailyTemplate 11 "Back to the web!" "The hardest has yet to come...")
+(setq debug-on-error t)
+(debug-on-entry 'dailyTemplate)
 (make-empty-file "/Users/suzume/Documents/Code/brandelune.github.io/2019/02/12/index.html" t)
