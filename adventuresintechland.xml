@@ -217,6 +217,13 @@
       <pubDate>Tue, 12 Feb 2019 12:00:00 GMT</pubDate>
       <description>I'm doing lesson 11 from Basic HTML at FreeCodeCamp.</description>
     </item>
+    <item>
+      <title>RSS feed!</title>
+      <link>https://brandelune.github.io/2019/02/13/index.html</link>
+      <guid>https://brandelune.github.io/2019/02/13/index.html</guid>
+      <pubDate>Wed, 13 Nov 2019 18:00:00 GMT</pubDate>
+      <description>As I wrote the other day on dev.to, I've been subscribing to a lot of "web design" and various tech feeds recently. And I thought, why not have my own RSS feed for this wonderful hand-typed web-thing that I'm building at the moment?</description>
+    </item>
     <!--
     <item>
       <title></title>
