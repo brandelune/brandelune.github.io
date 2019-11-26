@@ -1,0 +1,39 @@
+<html>
+    <head>
+	<title>Basic git workflow for that page</title>
+	<link rel="stylesheet" type="text/css" href="../../../css/2019/adventuresintechland.css" class="baseCSS"/>
+        <link rel="stylesheet" type="text/css" href="../../../css/2019/adventuresintechland190213.css" class="dailyCSS"/>
+    </head>
+    <body>
+	<p class="navigation">
+	    <a href="../../11/24/index.html" hreflang="en" rel="prev">1124</a>
+	    <a href="../../../index.html" hreflang="en">index</a>
+	    <a href="../../11/26/index.html" hreflang="en" rel="next">1126</a>
+	</p>
+	<p>2019/11/25, second day</p>
+	<h1>Learning again</h1>
+	<p>Well, the last 9 months were not spent in a vacuum of things so some of the stuff actually did stick. I'm much more proficient with <code>emacs</code> (and I can find information about my issues when I need), and even though I've not used it much, I feel like <code>git</code> it less of an issue now.</p>
+	<p>I've checked my old elisp based template system and thigs don't work anymore, but before working on that, I need to make sure I get the basic tasks right. So here is...</p>
+	<h1>My basic git workflow</h1>
+        <p>As github help <a href="https://help.github.com/en/github/working-with-github-pages/about-github-pages#project-pages-sites">says</a>, user pages are published from the <code>master</code> branch. But as the same help also <a href="https://help.github.com/en/github/setting-up-and-managing-your-github-profile/why-are-my-contributions-not-showing-up-on-my-profile">says</a>, only data pushed to <code>gh-pages</code> will count as github brownies... But now that I'm reading the help again, it seems I got this wrong anyway...</p>
+	<p>Whatever, what I've learned to do still holds, even if it's just redundant. So here is my basic <code>git</code> workflow, that I register here, for the day when I'll need to verify how it goes.</p>
+	<ul>
+	    <li><code>git checkout "gh-pages"</code></li>
+	    <li><code>git status</code></li>
+	    <li><code>git add *</code></li>
+	    <li><code>git commit -m "commit message"</code></li>
+	    <li><code>git push origin</code></li>
+	    <li><code>git checkout "master"</code></li>
+	    <li><code>git merge gh-pages</code></li>
+	    <li><code>git push origin</code></li>
+	    <li><code>git checkout "gh-pages"</code></li>
+	</ul>
+	<p>There is a lot of redundancy I suppose, and I guess the next step is to do that in emacs/magit.</p>
+	<p>Ok, enough for today, I'm already behind schedule for publishing...</p>
+	    <p class="navigation">
+	    <a href="../../11/24/index.html" hreflang="en" rel="prev">1124</a>
+	    <a href="../../../index.html" hreflang="en">index</a>
+	    <a href="../../11/26/index.html" hreflang="en" rel="next">1126</a>
+	</p>
+    </body>
+</html>
