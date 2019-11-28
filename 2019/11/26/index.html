@@ -1,0 +1,39 @@
+<html>
+    <head>
+        <title>Where is my template!</title>
+        <link rel="stylesheet" type="text/css" href="../../../css/2019/adventuresintechland.css" class="baseCSS"/>
+        <link rel="stylesheet" type="text/css" href="../../../css/2019/adventuresintechland1126.css" class="dailyCSS"/>
+    </head>
+    <body>
+        <p class="navigation">
+            <a href="../../11/25/index.html" hreflang="en" rel="prev">1125</a>
+            <a href="../../../index.html" hreflang="en">index</a>
+            <a href="../../11/27/index.html" hreflang="en" rel="next">1127</a>
+        </p> 
+        <p>2019/11/26, third day</p>
+        <h1>Where is my template!</h1>
+	<p>As I wrote yesterday, I had a template in elisp that created the basic links and page structure. The one that's available on the site is only the first version since, as I described last year, I had found that the obvious edge cases had not been taken into account: the day before 12/01 is <em>not</em> 12/00...</p>
+	<p>The problem is, when I read my code after a year, I was not sure how it worked anymore. The only hint I had was that the main function (<code>dailyIndex</code>) required 3 arguments: a "myDate", a  "myTitle" and a "mySubtitle"...</p>
+	<h2>Debugging my code</h2>
+	<p>When I first ran it after about a year, I tried:</p>
+	<p><code>(dailyIndex 1126 "Stuff" "SubStuff")</code></p>
+	<p>And something clearly had gone wrong because I was getting messages that some file was not existing, etc. I decided to check the code, but I could not really remember the way I had designed it, and even though it's only a few lines I could not really make much sense of it (that's the problem with not being a code "native" you can write things by reading the documentation and doing a lot of testing, but it doesn't stick.)</p>
+	<p>What I've learned to do with AppleScript is to debug my code by stepping through it and see how the variables evolve. Of course, emacs can do that too, even if it doesn't look quite like Script Debugger...</p>
+	<p>To know how to do that, I had to read chapter 18 of the Emacs Lisp manual, "Debugging Lisp Programs". Unless you are used to programming and debugging, nothing there is obvious. Keep that in mind when you start reading. The first thing I had to find was how to debug <em>right</em> from the start. That was easy enough: "<em>Entering the Debugger on a Function Call</em>" was what I was looking for:</p>
+	<p><code>M-x debug-on-entry dailyIndex</code></p>
+	<p>just did what I needed to achieve. I could also cancel it after the debuging by calling <code>M-x cancel-debug-on-entry</code>, either with no argument, or with my function name. Then I needed to actually step through the code. "<em>Debugger commands</em>" gave me all the information I needed:</p>
+	<dl>
+	    <dt>d</dt><dd>Continue execution, but enter the debugger the next time any Lisp function is called. This allows you to step through the subexpressions of an expression, seeing what values the subexpressions compute, and what else they do.</dd>
+	    <dt>e</dt><dd>Read a Lisp expression in the minibuffer, evaluate it (with the relevant lexical environment, if applicable), and print the value in the echo area.</dd>
+	</dl>
+	<p>Now, I launch the debugger as I launch my function, I can step through it by hitting <em>d</em>, I can see the debugger display various values and other things I don't understand, and when I want to make sure a value I need is properly set, I can hit <em>e</em>, enter the minibuffer and evaluate the variable I want, etc.</p>
+	<p>Thanks to that, I was able to identify the error I was making. It was not an implementation error (besides for the edge case described above), more of a documentation error: I did not mention to my future self that "myDate" was supposed to be a "day" date (like "26") not a month-day date like I did ("1126").</p>
+	<p>Now I'm all set and I'll probably be working on my "new" elisp code, the one that deals with edge cases, and if I remember well, the issues were that elisp does <em>not</em> have good tools to work with dates, which forced me to do a lot of computation to find arbitrary dates. But we'll see that another day.</p>
+
+        <p class="navigation">
+            <a href="../../11/25/index.html" hreflang="en" rel="prev">1125</a>
+            <a href="../../../index.html" hreflang="en">index</a>
+            <a href="../../11/27/index.html" hreflang="en" rel="next">1127</a>
+        </p>
+    </body>
+</html>

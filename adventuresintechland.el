@@ -18,7 +18,7 @@
          (myDatelastMonth (copy-sequence now))
          (myDatethisMonth (copy-sequence now))
          (myDatenextMonth (copy-sequence now))
-         (now (encode-time now 'integer))
+         (now (encode-time now))
 
          ;; need to create "last month", "next month", "last year", "next year"
          ;; 1 day is 84600 seconds
@@ -50,9 +50,9 @@
         (setf (nth 5 myDatenextMonth) nextYear))
 
   ;; compare the dates to find the closest
-  (let ((toLastMonth (abs (- now (encode-time myDatelastMonth 'integer))))
-        (toThisMonth (abs (- now (encode-time myDatethisMonth 'integer))))
-        (toNextMonth (abs (- (encode-time myDatenextMonth 'integer)))))
+  (let ((toLastMonth (abs (- now (encode-time myDatelastMonth))))
+        (toThisMonth (abs (- now (encode-time myDatethisMonth))))
+        (toNextMonth (abs (- (encode-time myDatenextMonth)))))
 
     (if (and (< toLastMonth toThisMonth)
              (< toThisMonth toNextMonth))
@@ -65,7 +65,7 @@
         (setq myMonth (nth 4 myDatenextMonth)
               myYear (nth 5 myDatenextMonth)))))
   ;; et voilà
-  (encode-time (list 0 0 12 myDay myMonth myYear nil nil 32400) 'integer)))
+  (encode-time (list 0 0 12 myDay myMonth myYear nil nil 32400))))
 
 
 (defun dailyTemplate (myDay myTitle mySubtitle)
@@ -158,7 +158,7 @@
     (find-file todayCSS)
     (find-file todayIndex)))
 
-(dailyTemplate 13 "Simple HTML 2" "Notes")
+(dailyTemplate 25 "My git workflow" "Notes")
 (setq debug-on-error t)
 (debug-on-entry 'dailyTemplate)
-(make-empty-file "/Users/suzume/Documents/Code/brandelune.github.io/2019/02/12/index.html" t)
+(make-empty-file "/Users/suzume/Documents/Code/brandelune.github.io/2019/11/25/index.html" t)

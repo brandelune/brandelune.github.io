@@ -1,0 +1,18 @@
+#+TODO: TODO(t) | DONE(d!)
+* administrative stuff
+** DONE create a todo file
+   - State "DONE"       from "TODO"       [2019-11-28 Thu 22:28]
+** DONE make a check list of all the tasks required in publishing the pages
+   - State "DONE"       from "TODO"       [2019-11-28 Thu 22:35]
+*** create the folder for that day
+*** run adventuresintechland_old.el (for now) to create the template
+*** fill the template with the stuff I did
+*** edit the main index:
+**** [last day] x 2
+**** logbook + nb of documented days
+*** create the rss entry in adventuresintechland.xml
+*** commit everything
+** TODO gather all the todos written in older pages
+** TODO check how to customize org export because the HTML is ugly
+* code
+** TODO make sure the elisp template creates the appropriate folder structure
