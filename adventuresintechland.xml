@@ -247,6 +247,21 @@ So, let me make a list of things I can be relatively proud of and of things I re
       <pubDate>Wed, 26 Nov 2019 18:00:00 GMT</pubDate>
       <description>I've been checking the code I wrote last year, found that I did not know how to use it anymore, and decided to check the emacs debugging tools. Now I can step through my code, and evaluate arbitrary expressions while the code is being debugged!</description>
     </item>
+    <item>
+      <title>all those things TODO</title>
+      <link>https://brandelune.github.io/2019/11/27/index.html</link>
+      <guid>https://brandelune.github.io/2019/11/27/index.html</guid>
+      <pubDate>Wed, 27 Nov 2019 18:00:00 GMT</pubDate>
+      <description>I simply created an org file to keep track of all the things I need to do. The file is also hosted on the site, and I'm going to need to change how the HTML output looks...</description>
+    </item>
+    <item>
+      <title>Lots of org-mode</title>
+      <link>https://brandelune.github.io/2019/11/29/index.html</link>
+      <guid>https://brandelune.github.io/2019/11/29/index.html</guid>
+      <pubDate>Wed, 29 Nov 2019 18:00:00 GMT</pubDate>
+      <description>Modifying my org file for HTML export. All sorts of things to tweak in the manual, pretty cool. But I also need to add a specific CSS for the headings themselves.</description>
+    </item>
+
     <!--
     <item>
       <title></title>

@@ -1,18 +1,55 @@
+#+TITLE: My adventures in tech land - TODO file
+#+OPTIONS: num:0
 #+TODO: TODO(t) | DONE(d!)
+
+* TODO daily entries
+  DEADLINE: <2019-11-30 Sat ++1d>
+  :PROPERTIES:
+  :LAST_REPEAT: [2019-11-29 Fri 20:26]
+  :END:
+  - State "DONE"       from "TODO"       [2019-11-29 Fri 20:26]
+** create the folder for that day                                    :finder:
+** run =adventuresintechland_old.el= (for now) to create the template :emacs:
+** fill the template with the stuff I did                                :me:
+** edit the main index:                                                  :me:
+*** [last day] x 2
+*** logbook + nb of documented days
+** create the rss entry in adventuresintechland.xml                      :me:
+** commit everything                                                    :git:
+*** git checkout "gh-pages"
+*** git status
+*** git add *
+*** git commit -m "commit message"
+*** git push origin
+*** git checkout "master"
+*** git merge gh-pages
+*** git push origin
+*** git checkout "gh-pages"
+
+
+* code
+** TODO (19/11/29) link this todo file to all the daily files         :elisp:
+** TODO (19/11/26) create daily folder structure and html template    :elisp:
+** TODO (18/11/11) add autocompletion for html/css                    :emacs:
+** TODO (18/11/12) check the links automatically                      :shell:
+** TODO (18/11/13) "project" manager for all the files                :emacs:
+** TODO (18/11/13) automatically create daily links             :elisp:shell:
+** TODO (18/11/14) FireFox/Safari/Chrome developer tools            :browser:
+** TODO (18/11/14) elfeed manual                                      :emacs:
+** TODO (18/11/14) pushing to github from emacs                       :emacs:
+** TODO (18/11/14) tag insertion right and left of selection          :emacs:
+** TODO (18/11/14) isearch manual                                     :emacs:
+** TODO (18/11/17) check git merge                                      :git:
+** TODO (18/11/18) Automate CSS index generation                      :shell:
+** TODO (18/11/18) automated index creation for readings              :shell:
+
+
 * administrative stuff
-** DONE create a todo file
-   - State "DONE"       from "TODO"       [2019-11-28 Thu 22:28]
 ** DONE make a check list of all the tasks required in publishing the pages
    - State "DONE"       from "TODO"       [2019-11-28 Thu 22:35]
-*** create the folder for that day
-*** run adventuresintechland_old.el (for now) to create the template
-*** fill the template with the stuff I did
-*** edit the main index:
-**** [last day] x 2
-**** logbook + nb of documented days
-*** create the rss entry in adventuresintechland.xml
-*** commit everything
-** TODO gather all the todos written in older pages
+** DONE create a todo file
+   - State "DONE"       from "TODO"       [2019-11-28 Thu 22:28]
+** DONE gather all the todos written in older pages
+   - State "DONE"       from "TODO"       [2019-11-29 Fri 18:28]
 ** TODO check how to customize org export because the HTML is ugly
-* code
-** TODO make sure the elisp template creates the appropriate folder structure
+   What I don't like is how the headings are HTML headers. The ToC alone would be sufficient for what I need. 
