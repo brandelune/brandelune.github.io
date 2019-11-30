@@ -28,6 +28,7 @@
 
 
 * code
+** TODO (19/11/29) the RSS feed does not work anymore                   :xml:
 ** TODO (19/11/29) link this todo file to all the daily files         :elisp:
 ** TODO (19/11/26) create daily folder structure and html template    :elisp:
 ** TODO (18/11/11) add autocompletion for html/css                    :emacs:
