@@ -18,7 +18,7 @@
   (setq nextDay (+ myDate 1))
   (setq nextDate (format "%s%s" (format-time-string "%m") nextDay))
   (setq nextDayLink (format "../../%s/%s/index.html" (format-time-string "%m") nextDay))
-  (setq todayDate (format "%s/%s/%s/" (format-time-string "%Y") (format-time-string "%m") myDate))
+  (setq todayDate (format "%s/%s/%s" (format-time-string "%Y") (format-time-string "%m") myDate))
   (setq todayPath (concat siteRoot todayDate))
   (setq todayCSS (concat siteRoot "css/" (format-time-string "%Y") "/" dailyCSSFile))
   (setq todayIndex (concat todayPath "index.html"))
@@ -37,7 +37,7 @@
             <a href=\"../../../adventuresintechland.html\" hreflang=\"en\">todo</a>
             <a href=\"%6$s\" hreflang=\"en\" rel=\"next\">%7$s</a>
         </p> 
-        <p>%8$s, ...th day in a row</p>
+        <p>%8$s, ...th day</p>
         <h1>%1$s</h1>
         <h2>%9$s</h2>   
 
