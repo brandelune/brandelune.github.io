@@ -1,5 +1,8 @@
 (dailyIndex 29 "not there yet..." "")
 
+(defun myPreviousDay (myDate)
+  (- myDate 1))
+
 (defun dailyIndex (myDate myTitle mySubtitle)
   (interactive (list
                 (read-number "Date: " (string-to-number (format-time-string "%d")))
@@ -11,7 +14,7 @@
   (setq dailyCSSFile (format "adventuresintechland%s%s.css" (format-time-string "%m") myDate))
   (setq baseCSSLink (concat baseCSSPath baseCSSFile))
   (setq dailyCSSLink (concat baseCSSPath dailyCSSFile))
-  (setq previousDay (- myDate 1))
+  (setq previousDay (myPreviousDay myDate))
   (setq previousDate (format "%s%s" (format-time-string "%m") previousDay))
   (setq previousDayLink (format "../../%s/%s/index.html" (format-time-string "%m") previousDay))
   (setq nextDay (+ myDate 1))
