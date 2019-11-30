@@ -1,5 +1,3 @@
-(dailyIndex 29 "not there yet..." "")
-
 (defun myPreviousDay (myDate)
   (- myDate 1))
 
@@ -36,6 +34,7 @@
         <p class=\"navigation\">
             <a href=\"%4$s\" hreflang=\"en\" rel=\"prev\">%5$s</a>
             <a href=\"../../../index.html\" hreflang=\"en\">index</a>
+            <a href=\"../../../adventuresintechland.html\" hreflang=\"en\">todo</a>
             <a href=\"%6$s\" hreflang=\"en\" rel=\"next\">%7$s</a>
         </p> 
         <p>%8$s, ...th day in a row</p>
@@ -45,6 +44,7 @@
         <p class=\"navigation\">
             <a href=\"%4$s\" hreflang=\"en\" rel=\"prev\">%5$s</a>
             <a href=\"../../../index.html\" hreflang=\"en\">index</a>
+            <a href=\"../../../adventuresintechland.html\" hreflang=\"en\">todo</a>
             <a href=\"%6$s\" hreflang=\"en\" rel=\"next\">%7$s</a>
         </p>
     </body>
@@ -68,3 +68,4 @@
 
 
 
+(dailyIndex 30 "not there yet..." "")
