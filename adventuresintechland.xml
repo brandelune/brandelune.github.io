@@ -228,23 +228,21 @@
       <title>Restarting from scratch</title>
       <link>https://brandelune.github.io/2019/11/24/index.html</link>
       <guid>https://brandelune.github.io/2019/11/24/index.html</guid>
-      <pubDate>Wed, 24 Nov 2019 18:00:00 GMT</pubDate>
-      <description>It's a bit heartbreaking to read previous entries and see how happy I was to start something new again, after so many years. Although there are also things I am happy I did, the last few months were a mess.
-
-So, let me make a list of things I can be relatively proud of and of things I really should reflect on.</description>
+      <pubDate>Sun, 24 Nov 2019 18:00:00 GMT</pubDate>
+      <description>It's a bit heartbreaking to read previous entries and see how happy I was to start something new again, after so many years. Although there are also things I am happy I did, the last few months were a mess. So, let me make a list of things I can be relatively proud of and of things I really should reflect on.</description>
     </item>
     <item>
-      <title>Restarting from scratch</title>
+      <title>My basic git workflow</title>
       <link>https://brandelune.github.io/2019/11/25/index.html</link>
       <guid>https://brandelune.github.io/2019/11/25/index.html</guid>
-      <pubDate>Wed, 25 Nov 2019 18:00:00 GMT</pubDate>
+      <pubDate>Mon, 25 Nov 2019 18:00:00 GMT</pubDate>
       <description>Learning again, not exactly from where I started, but not exactly from where I left either. A quick brush up of my git workflow, just to make sure it's somewhere I can easily find...</description>
     </item>
     <item>
       <title>Where is my template!</title>
       <link>https://brandelune.github.io/2019/11/26/index.html</link>
       <guid>https://brandelune.github.io/2019/11/26/index.html</guid>
-      <pubDate>Wed, 26 Nov 2019 18:00:00 GMT</pubDate>
+      <pubDate>Tue, 26 Nov 2019 18:00:00 GMT</pubDate>
       <description>I've been checking the code I wrote last year, found that I did not know how to use it anymore, and decided to check the emacs debugging tools. Now I can step through my code, and evaluate arbitrary expressions while the code is being debugged!</description>
     </item>
     <item>
@@ -258,7 +256,7 @@ So, let me make a list of things I can be relatively proud of and of things I re
       <title>Lots of org-mode</title>
       <link>https://brandelune.github.io/2019/11/29/index.html</link>
       <guid>https://brandelune.github.io/2019/11/29/index.html</guid>
-      <pubDate>Wed, 29 Nov 2019 18:00:00 GMT</pubDate>
+      <pubDate>Fri, 29 Nov 2019 18:00:00 GMT</pubDate>
       <description>Modifying my org file for HTML export. All sorts of things to tweak in the manual, pretty cool. But I also need to add a specific CSS for the headings themselves.</description>
     </item>
     <item>
