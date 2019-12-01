@@ -18,6 +18,8 @@
 ** edit the main index:                                                  :me:
 *** [last day] x 2
 *** logbook + nb of documented days
+** update adventuresintechland.org
+** export adventuresintechland.org.html
 ** create the rss entry in adventuresintechland.xml                      :me:
 ** commit everything                                                    :git:
 *** git checkout "gh-pages"
