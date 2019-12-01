@@ -19,7 +19,7 @@
   (setq nextDate (format "%s%s" (format-time-string "%m") nextDay))
   (setq nextDayLink (format "../../%s/%s/index.html" (format-time-string "%m") nextDay))
   (setq todayDate (format "%s/%s/%s" (format-time-string "%Y") (format-time-string "%m") myDate))
-  (setq todayPath (concat siteRoot todayDate))
+  (setq todayPath (concat siteRoot todayDate "/"))
   (setq todayCSS (concat siteRoot "css/" (format-time-string "%Y") "/" dailyCSSFile))
   (setq todayIndex (concat todayPath "index.html"))
   (setq todayTemplate
