@@ -1,0 +1,29 @@
+.outline-2, .outline-3, .outline-4, .todo, h3, h4 {
+    font-size: 1em;
+    font-family: monospace;
+}
+
+.FIX {
+    color:red;
+}
+
+.CODE {
+    color:orange;
+}
+
+.CHECK {
+    color:magenta;
+}
+
+.outline-3 {
+    margin-left: 4em;
+}
+
+.outline-4 {
+    margin-left: 4em;
+}
+
+hr {
+    width: 50%;
+    
+}
