@@ -30,7 +30,6 @@
 *** git push origin
 *** git checkout "gh-pages"
 
-
 * code
 ** FIX (19/12/01) just got bitten by the date edge cases...           :elisp:
 ** FIX (19/11/29) the RSS feed does not work anymore                    :xml:
@@ -53,7 +52,6 @@ Just added a link into the elisp template.
 ** DONE (18/11/14) pushing to github from emacs                       :emacs:
    - State "DONE"       from "TODO"       [2019-12-01 Sun 08:44]
 Using magit is not that hard.
-
 
 * administrative stuff
 ** DONE make a check list of all the tasks required in publishing the pages
