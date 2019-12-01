@@ -32,6 +32,7 @@
 
 
 * code
+** FIX (19/12/01) just got bitten by the date edge cases...           :elisp:
 ** FIX (19/11/29) the RSS feed does not work anymore                    :xml:
 ** CODE (19/11/26) create daily folder structure and html template    :elisp:
 ** CODE (18/11/18) automated index creation for readings              :shell:
