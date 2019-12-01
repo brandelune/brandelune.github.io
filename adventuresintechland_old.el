@@ -22,6 +22,18 @@
   (setq todayPath (concat siteRoot todayDate "/"))
   (setq todayCSS (concat siteRoot "css/" (format-time-string "%Y") "/" dailyCSSFile))
   (setq todayIndex (concat todayPath "index.html"))
+  (setq todayNavigation
+	(format "<p class=\"navigation\">
+            <a href=\"%1$s\" hreflang=\"en\" rel=\"prev\">%2$s</a>
+            <a href=\"../../../index.html\" hreflang=\"en\">index</a>
+            <a href=\"../../../adventuresintechland.org.html\" hreflang=\"en\">todo</a>
+            <a href=\"%3$s\" hreflang=\"en\" rel=\"next\">%4$s</a>
+        </p>"
+		previousDayLink  ;;  1$
+                previousDate     ;;  2$
+                nextDayLink      ;;  3$
+                nextDate         ;;  4$
+))
   (setq todayTemplate
         (format "<html>
     <head>
@@ -30,35 +42,23 @@
         <link rel=\"stylesheet\" type=\"text/css\" href=\"%3$s\" class=\"dailyCSS\"/>
     </head>
     <body>
-        <p class=\"navigation\">
-            <a href=\"%4$s\" hreflang=\"en\" rel=\"prev\">%5$s</a>
-            <a href=\"../../../index.html\" hreflang=\"en\">index</a>
-            <a href=\"../../../adventuresintechland.html\" hreflang=\"en\">todo</a>
-            <a href=\"%6$s\" hreflang=\"en\" rel=\"next\">%7$s</a>
-        </p> 
-        <p>%8$s, ...th day</p>
-        <h1>%1$s</h1>
-        <h2>%9$s</h2>   
-        We're not there yet...
+        %6$s
 
-        <p class=\"navigation\">
-            <a href=\"%4$s\" hreflang=\"en\" rel=\"prev\">%5$s</a>
-            <a href=\"../../../index.html\" hreflang=\"en\">index</a>
-            <a href=\"../../../adventuresintechland.html\" hreflang=\"en\">todo</a>
-            <a href=\"%6$s\" hreflang=\"en\" rel=\"next\">%7$s</a>
-        </p>
+        <p><em>Adventures in Tech Land, Season 2, %4$s, day ...</em></p>
+        <h1>%1$s</h1>
+        <h2>%5$s</h2>   
+        <p>We're not there yet...</p>
+
+        %6$s
     </body>
 </html>"
                 myTitle          ;;  1$
                 baseCSSLink      ;;  2$
                 dailyCSSLink     ;;  3$
-                previousDayLink  ;;  4$
-                previousDate     ;;  5$
-                nextDayLink      ;;  6$
-                nextDate         ;;  7$
-                todayDate        ;;  8$
-                mySubtitle       ;;  9$
-                myTitle          ;;  1$
+                todayDate        ;;  4$
+                mySubtitle       ;;  5$
+
+		todayNavigation  ;;  6$
                 ))
   
   (write-region todayTemplate nil todayIndex nil nil nil t)
@@ -68,4 +68,4 @@
 
 
 
-(dailyIndex 1 "org export" "back to css")
+(dailyIndex 2 "org export" "back to css")
