@@ -37,14 +37,14 @@
 ** CODE (18/11/18) automated index creation for readings              :shell:
 ** CODE (18/11/18) Automate CSS index generation                      :shell:
 The index.sh script exists but needs to be run automatically.
+** CODE (18/11/13) automatically create daily links             :elisp:shell:
+** CODE (18/11/12) check the links automatically                      :shell:
 ** CHECK (18/11/17) check git merge                                     :git:
 ** CHECK (18/11/14) tag insertion right and left of selection         :emacs:
 ** CHECK (18/11/14) FireFox/Safari/Chrome developer tools           :browser:
 ** CHECK (18/11/14) elfeed manual                                     :emacs:
 ** CHECK (18/11/14) isearch manual                                    :emacs:
-** CODE (18/11/13) automatically create daily links             :elisp:shell:
 ** CHECK (18/11/13) "project" manager for all the files               :emacs:
-** CODE (18/11/12) check the links automatically                      :shell:
 ** CHECK (18/11/11) add autocompletion for html/css                   :emacs:
 ** DONE (19/11/29) link this todo file to all the daily files    :elisp:html:
    - State "DONE"       from "TODO"       [2019-12-01 Sun 08:44]
