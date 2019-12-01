@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2019-11-29 Fri 20:28 -->
+<!-- 2019-12-01 Sun 09:23 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>My adventures in tech land - TODO file</title>
@@ -180,6 +180,7 @@
   .org-svg { width: 90%; }
   /*]]>*/-->
 </style>
+<link rel="stylesheet" type="text/css" href="./adventuresintechland.org.css" />
 <script type="text/javascript">
 /*
 @licstart  The following is the entire license notice for the
@@ -228,216 +229,248 @@ for the JavaScript code in this tag.
 </script>
 </head>
 <body>
-<div id="content">
+<div id="org-div-home-and-up">
+ <a accesskey="h" href=".."> UP </a>
+ |
+ <a accesskey="H" href="./index.html"> HOME </a>
+</div><div id="content">
 <h1 class="title">My adventures in tech land - TODO file</h1>
 <div id="table-of-contents">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org8bc19bd"><span class="todo TODO">TODO</span> daily entries</a>
+<li><a href="#org7794d8f"><span class="todo TODO">TODO</span> daily entries</a>
 <ul>
-<li><a href="#orgf728b6c">create the folder for that day&#xa0;&#xa0;&#xa0;<span class="tag"><span class="finder">finder</span></span></a></li>
-<li><a href="#org7c00fd1">run <code>adventuresintechland_old.el</code> (for now) to create the template&#xa0;&#xa0;&#xa0;<span class="tag"><span class="emacs">emacs</span></span></a></li>
-<li><a href="#orgc37bbd9">fill the template with the stuff I did&#xa0;&#xa0;&#xa0;<span class="tag"><span class="me">me</span></span></a></li>
-<li><a href="#org498572a">edit the main index:&#xa0;&#xa0;&#xa0;<span class="tag"><span class="me">me</span></span></a>
+<li><a href="#org15fd4db">create the folder for that day&#xa0;&#xa0;&#xa0;<span class="tag"><span class="finder">finder</span></span></a></li>
+<li><a href="#org30c3c53">run <code>adventuresintechland_old.el</code> (for now) to create the template&#xa0;&#xa0;&#xa0;<span class="tag"><span class="emacs">emacs</span></span></a></li>
+<li><a href="#org483f016">fill the template with the stuff I did&#xa0;&#xa0;&#xa0;<span class="tag"><span class="me">me</span></span></a></li>
+<li><a href="#org3e05009">edit the main index:&#xa0;&#xa0;&#xa0;<span class="tag"><span class="me">me</span></span></a>
 <ul>
-<li><a href="#org761b03f">[last day] x 2</a></li>
-<li><a href="#org7ad6abc">logbook + nb of documented days</a></li>
+<li><a href="#org5dc301b">[last day] x 2</a></li>
+<li><a href="#org0de1b57">logbook + nb of documented days</a></li>
 </ul>
 </li>
-<li><a href="#orgc99be15">create the rss entry in adventuresintechland.xml&#xa0;&#xa0;&#xa0;<span class="tag"><span class="me">me</span></span></a></li>
-<li><a href="#org678d99e">commit everything&#xa0;&#xa0;&#xa0;<span class="tag"><span class="git">git</span></span></a>
+<li><a href="#orgff816f6">create the rss entry in adventuresintechland.xml&#xa0;&#xa0;&#xa0;<span class="tag"><span class="me">me</span></span></a></li>
+<li><a href="#org69338a3">commit everything&#xa0;&#xa0;&#xa0;<span class="tag"><span class="git">git</span></span></a>
 <ul>
-<li><a href="#org1fd67fe">git checkout "gh-pages"</a></li>
-<li><a href="#org4f6cf78">git status</a></li>
-<li><a href="#org76b7674">git add *</a></li>
-<li><a href="#org2d55d41">git commit -m "commit message"</a></li>
-<li><a href="#org2567598">git push origin</a></li>
-<li><a href="#orgf6a64e5">git checkout "master"</a></li>
-<li><a href="#org58abf2c">git merge gh-pages</a></li>
-<li><a href="#orgaf345ec">git push origin</a></li>
-<li><a href="#org4d84ea3">git checkout "gh-pages"</a></li>
+<li><a href="#org52edd9d">git checkout "gh-pages"</a></li>
+<li><a href="#orgc29a076">git status</a></li>
+<li><a href="#orgb7e60bc">git add *</a></li>
+<li><a href="#org5964ad7">git commit -m "commit message"</a></li>
+<li><a href="#org854a0c8">git push origin</a></li>
+<li><a href="#orgb817b2a">git checkout "master"</a></li>
+<li><a href="#org4789528">git merge gh-pages</a></li>
+<li><a href="#orgb8edb15">git push origin</a></li>
+<li><a href="#org0acdcce">git checkout "gh-pages"</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#orgd8032be">code</a>
+<li><a href="#orgf64219c">code</a>
 <ul>
-<li><a href="#orgdb519f0"><span class="todo TODO">TODO</span> (19/11/29) link this todo file to all the daily files&#xa0;&#xa0;&#xa0;<span class="tag"><span class="elisp">elisp</span></span></a></li>
-<li><a href="#org4f0adf8"><span class="todo TODO">TODO</span> (19/11/26) create daily folder structure and html template&#xa0;&#xa0;&#xa0;<span class="tag"><span class="elisp">elisp</span></span></a></li>
-<li><a href="#org0a4e8a4"><span class="todo TODO">TODO</span> (18/11/11) add autocompletion for html/css&#xa0;&#xa0;&#xa0;<span class="tag"><span class="emacs">emacs</span></span></a></li>
-<li><a href="#org25a010a"><span class="todo TODO">TODO</span> (18/11/12) check the links automatically&#xa0;&#xa0;&#xa0;<span class="tag"><span class="shell">shell</span></span></a></li>
-<li><a href="#orgf4f08fd"><span class="todo TODO">TODO</span> (18/11/13) "project" manager for all the files&#xa0;&#xa0;&#xa0;<span class="tag"><span class="emacs">emacs</span></span></a></li>
-<li><a href="#org8d7caf8"><span class="todo TODO">TODO</span> (18/11/13) automatically create daily links&#xa0;&#xa0;&#xa0;<span class="tag"><span class="elisp">elisp</span>&#xa0;<span class="shell">shell</span></span></a></li>
-<li><a href="#orgfe5ff00"><span class="todo TODO">TODO</span> (18/11/14) FireFox/Safari/Chrome developer tools&#xa0;&#xa0;&#xa0;<span class="tag"><span class="browser">browser</span></span></a></li>
-<li><a href="#org5095630"><span class="todo TODO">TODO</span> (18/11/14) elfeed manual&#xa0;&#xa0;&#xa0;<span class="tag"><span class="emacs">emacs</span></span></a></li>
-<li><a href="#org8f291af"><span class="todo TODO">TODO</span> (18/11/14) pushing to github from emacs&#xa0;&#xa0;&#xa0;<span class="tag"><span class="emacs">emacs</span></span></a></li>
-<li><a href="#org35f7d3d"><span class="todo TODO">TODO</span> (18/11/14) tag insertion right and left of selection&#xa0;&#xa0;&#xa0;<span class="tag"><span class="emacs">emacs</span></span></a></li>
-<li><a href="#orge6f19d5"><span class="todo TODO">TODO</span> (18/11/14) isearch manual&#xa0;&#xa0;&#xa0;<span class="tag"><span class="emacs">emacs</span></span></a></li>
-<li><a href="#orgad9e564"><span class="todo TODO">TODO</span> (18/11/17) check git merge&#xa0;&#xa0;&#xa0;<span class="tag"><span class="git">git</span></span></a></li>
-<li><a href="#org7720465"><span class="todo TODO">TODO</span> (18/11/18) Automate CSS index generation&#xa0;&#xa0;&#xa0;<span class="tag"><span class="shell">shell</span></span></a></li>
-<li><a href="#org15af1e7"><span class="todo TODO">TODO</span> (18/11/18) automated index creation for readings&#xa0;&#xa0;&#xa0;<span class="tag"><span class="shell">shell</span></span></a></li>
+<li><a href="#orgdd25662"><span class="todo FIX">FIX</span> (19/11/29) the RSS feed does not work anymore&#xa0;&#xa0;&#xa0;<span class="tag"><span class="xml">xml</span></span></a></li>
+<li><a href="#orgf990818"><span class="todo CODE">CODE</span> (19/11/26) create daily folder structure and html template&#xa0;&#xa0;&#xa0;<span class="tag"><span class="elisp">elisp</span></span></a></li>
+<li><a href="#orgd4f3665"><span class="todo CODE">CODE</span> (18/11/18) automated index creation for readings&#xa0;&#xa0;&#xa0;<span class="tag"><span class="shell">shell</span></span></a></li>
+<li><a href="#orga30bb6a"><span class="todo CODE">CODE</span> (18/11/18) Automate CSS index generation&#xa0;&#xa0;&#xa0;<span class="tag"><span class="shell">shell</span></span></a></li>
+<li><a href="#orgbf99d74"><span class="todo CHECK">CHECK</span> (18/11/17) check git merge&#xa0;&#xa0;&#xa0;<span class="tag"><span class="git">git</span></span></a></li>
+<li><a href="#org067a536"><span class="todo CHECK">CHECK</span> (18/11/14) tag insertion right and left of selection&#xa0;&#xa0;&#xa0;<span class="tag"><span class="emacs">emacs</span></span></a></li>
+<li><a href="#org997f2da"><span class="todo CHECK">CHECK</span> (18/11/14) FireFox/Safari/Chrome developer tools&#xa0;&#xa0;&#xa0;<span class="tag"><span class="browser">browser</span></span></a></li>
+<li><a href="#org08d23a1"><span class="todo CHECK">CHECK</span> (18/11/14) elfeed manual&#xa0;&#xa0;&#xa0;<span class="tag"><span class="emacs">emacs</span></span></a></li>
+<li><a href="#orgf516540"><span class="todo CHECK">CHECK</span> (18/11/14) isearch manual&#xa0;&#xa0;&#xa0;<span class="tag"><span class="emacs">emacs</span></span></a></li>
+<li><a href="#org2fbf1dd"><span class="todo CODE">CODE</span> (18/11/13) automatically create daily links&#xa0;&#xa0;&#xa0;<span class="tag"><span class="elisp">elisp</span>&#xa0;<span class="shell">shell</span></span></a></li>
+<li><a href="#org18948b9"><span class="todo CHECK">CHECK</span> (18/11/13) "project" manager for all the files&#xa0;&#xa0;&#xa0;<span class="tag"><span class="emacs">emacs</span></span></a></li>
+<li><a href="#org2e76a4a"><span class="todo CODE">CODE</span> (18/11/12) check the links automatically&#xa0;&#xa0;&#xa0;<span class="tag"><span class="shell">shell</span></span></a></li>
+<li><a href="#orgb4f8521"><span class="todo CHECK">CHECK</span> (18/11/11) add autocompletion for html/css&#xa0;&#xa0;&#xa0;<span class="tag"><span class="emacs">emacs</span></span></a></li>
+<li><a href="#org4f1b224"><span class="done DONE">DONE</span> (19/11/29) link this todo file to all the daily files&#xa0;&#xa0;&#xa0;<span class="tag"><span class="elisp">elisp</span>&#xa0;<span class="html">html</span></span></a></li>
+<li><a href="#org2592069"><span class="done DONE">DONE</span> (18/11/14) pushing to github from emacs&#xa0;&#xa0;&#xa0;<span class="tag"><span class="emacs">emacs</span></span></a></li>
 </ul>
 </li>
-<li><a href="#orgf811ca0">administrative stuff</a>
+<li><a href="#orgaa1a816">administrative stuff</a>
 <ul>
-<li><a href="#org922ad2f"><span class="done DONE">DONE</span> make a check list of all the tasks required in publishing the pages</a></li>
-<li><a href="#org9327617"><span class="done DONE">DONE</span> create a todo file</a></li>
-<li><a href="#org01f1c72"><span class="done DONE">DONE</span> gather all the todos written in older pages</a></li>
-<li><a href="#orgef91364"><span class="todo TODO">TODO</span> check how to customize org export because the HTML is ugly</a></li>
+<li><a href="#orgf5e51e3"><span class="done DONE">DONE</span> make a check list of all the tasks required in publishing the pages</a></li>
+<li><a href="#orgedadf87"><span class="done DONE">DONE</span> create a todo file</a></li>
+<li><a href="#orgea02af1"><span class="done DONE">DONE</span> gather all the todos written in older pages</a></li>
+<li><a href="#org1cd7a5d"><span class="done DONE">DONE</span> check how to customize org export because the HTML is ugly</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
-
-<div id="outline-container-org8bc19bd" class="outline-2">
-<h2 id="org8bc19bd"><span class="todo TODO">TODO</span> daily entries</h2>
-<div class="outline-text-2" id="text-org8bc19bd">
+<hr />
+<div id="outline-container-org7794d8f" class="outline-2">
+<h2 id="org7794d8f"><span class="todo TODO">TODO</span> daily entries</h2>
+<div class="outline-text-2" id="text-org7794d8f">
 <ul class="org-ul">
 <li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2019-11-29 Fri 20:26]</span></span></li>
 </ul>
 </div>
-<div id="outline-container-orgf728b6c" class="outline-3">
-<h3 id="orgf728b6c">create the folder for that day&#xa0;&#xa0;&#xa0;<span class="tag"><span class="finder">finder</span></span></h3>
+<div id="outline-container-org15fd4db" class="outline-3">
+<h3 id="org15fd4db">create the folder for that day&#xa0;&#xa0;&#xa0;<span class="tag"><span class="finder">finder</span></span></h3>
 </div>
-<div id="outline-container-org7c00fd1" class="outline-3">
-<h3 id="org7c00fd1">run <code>adventuresintechland_old.el</code> (for now) to create the template&#xa0;&#xa0;&#xa0;<span class="tag"><span class="emacs">emacs</span></span></h3>
+<div id="outline-container-org30c3c53" class="outline-3">
+<h3 id="org30c3c53">run <code>adventuresintechland_old.el</code> (for now) to create the template&#xa0;&#xa0;&#xa0;<span class="tag"><span class="emacs">emacs</span></span></h3>
 </div>
-<div id="outline-container-orgc37bbd9" class="outline-3">
-<h3 id="orgc37bbd9">fill the template with the stuff I did&#xa0;&#xa0;&#xa0;<span class="tag"><span class="me">me</span></span></h3>
+<div id="outline-container-org483f016" class="outline-3">
+<h3 id="org483f016">fill the template with the stuff I did&#xa0;&#xa0;&#xa0;<span class="tag"><span class="me">me</span></span></h3>
 </div>
-<div id="outline-container-org498572a" class="outline-3">
-<h3 id="org498572a">edit the main index:&#xa0;&#xa0;&#xa0;<span class="tag"><span class="me">me</span></span></h3>
-<div class="outline-text-3" id="text-org498572a">
+<div id="outline-container-org3e05009" class="outline-3">
+<h3 id="org3e05009">edit the main index:&#xa0;&#xa0;&#xa0;<span class="tag"><span class="me">me</span></span></h3>
+<div class="outline-text-3" id="text-org3e05009">
 </div>
-<div id="outline-container-org761b03f" class="outline-4">
-<h4 id="org761b03f">[last day] x 2</h4>
+<div id="outline-container-org5dc301b" class="outline-4">
+<h4 id="org5dc301b">[last day] x 2</h4>
 </div>
-<div id="outline-container-org7ad6abc" class="outline-4">
-<h4 id="org7ad6abc">logbook + nb of documented days</h4>
+<div id="outline-container-org0de1b57" class="outline-4">
+<h4 id="org0de1b57">logbook + nb of documented days</h4>
 </div>
 </div>
-<div id="outline-container-orgc99be15" class="outline-3">
-<h3 id="orgc99be15">create the rss entry in adventuresintechland.xml&#xa0;&#xa0;&#xa0;<span class="tag"><span class="me">me</span></span></h3>
+<div id="outline-container-orgff816f6" class="outline-3">
+<h3 id="orgff816f6">create the rss entry in adventuresintechland.xml&#xa0;&#xa0;&#xa0;<span class="tag"><span class="me">me</span></span></h3>
 </div>
-<div id="outline-container-org678d99e" class="outline-3">
-<h3 id="org678d99e">commit everything&#xa0;&#xa0;&#xa0;<span class="tag"><span class="git">git</span></span></h3>
-<div class="outline-text-3" id="text-org678d99e">
+<div id="outline-container-org69338a3" class="outline-3">
+<h3 id="org69338a3">commit everything&#xa0;&#xa0;&#xa0;<span class="tag"><span class="git">git</span></span></h3>
+<div class="outline-text-3" id="text-org69338a3">
 </div>
-<div id="outline-container-org1fd67fe" class="outline-4">
-<h4 id="org1fd67fe">git checkout "gh-pages"</h4>
+<div id="outline-container-org52edd9d" class="outline-4">
+<h4 id="org52edd9d">git checkout "gh-pages"</h4>
 </div>
-<div id="outline-container-org4f6cf78" class="outline-4">
-<h4 id="org4f6cf78">git status</h4>
+<div id="outline-container-orgc29a076" class="outline-4">
+<h4 id="orgc29a076">git status</h4>
 </div>
-<div id="outline-container-org76b7674" class="outline-4">
-<h4 id="org76b7674">git add *</h4>
+<div id="outline-container-orgb7e60bc" class="outline-4">
+<h4 id="orgb7e60bc">git add *</h4>
 </div>
-<div id="outline-container-org2d55d41" class="outline-4">
-<h4 id="org2d55d41">git commit -m "commit message"</h4>
+<div id="outline-container-org5964ad7" class="outline-4">
+<h4 id="org5964ad7">git commit -m "commit message"</h4>
 </div>
-<div id="outline-container-org2567598" class="outline-4">
-<h4 id="org2567598">git push origin</h4>
+<div id="outline-container-org854a0c8" class="outline-4">
+<h4 id="org854a0c8">git push origin</h4>
 </div>
-<div id="outline-container-orgf6a64e5" class="outline-4">
-<h4 id="orgf6a64e5">git checkout "master"</h4>
+<div id="outline-container-orgb817b2a" class="outline-4">
+<h4 id="orgb817b2a">git checkout "master"</h4>
 </div>
-<div id="outline-container-org58abf2c" class="outline-4">
-<h4 id="org58abf2c">git merge gh-pages</h4>
+<div id="outline-container-org4789528" class="outline-4">
+<h4 id="org4789528">git merge gh-pages</h4>
 </div>
-<div id="outline-container-orgaf345ec" class="outline-4">
-<h4 id="orgaf345ec">git push origin</h4>
+<div id="outline-container-orgb8edb15" class="outline-4">
+<h4 id="orgb8edb15">git push origin</h4>
 </div>
-<div id="outline-container-org4d84ea3" class="outline-4">
-<h4 id="org4d84ea3">git checkout "gh-pages"</h4>
+<div id="outline-container-org0acdcce" class="outline-4">
+<h4 id="org0acdcce">git checkout "gh-pages"</h4>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-orgf64219c" class="outline-2">
+<h2 id="orgf64219c">code</h2>
+<div class="outline-text-2" id="text-orgf64219c">
+</div>
+<div id="outline-container-orgdd25662" class="outline-3">
+<h3 id="orgdd25662"><span class="todo FIX">FIX</span> (19/11/29) the RSS feed does not work anymore&#xa0;&#xa0;&#xa0;<span class="tag"><span class="xml">xml</span></span></h3>
+</div>
+<div id="outline-container-orgf990818" class="outline-3">
+<h3 id="orgf990818"><span class="todo CODE">CODE</span> (19/11/26) create daily folder structure and html template&#xa0;&#xa0;&#xa0;<span class="tag"><span class="elisp">elisp</span></span></h3>
+</div>
+<div id="outline-container-orgd4f3665" class="outline-3">
+<h3 id="orgd4f3665"><span class="todo CODE">CODE</span> (18/11/18) automated index creation for readings&#xa0;&#xa0;&#xa0;<span class="tag"><span class="shell">shell</span></span></h3>
+</div>
+<div id="outline-container-orga30bb6a" class="outline-3">
+<h3 id="orga30bb6a"><span class="todo CODE">CODE</span> (18/11/18) Automate CSS index generation&#xa0;&#xa0;&#xa0;<span class="tag"><span class="shell">shell</span></span></h3>
+<div class="outline-text-3" id="text-orga30bb6a">
+<p>
+The index.sh script exists but needs to be run automatically.
+</p>
+</div>
+</div>
+<div id="outline-container-orgbf99d74" class="outline-3">
+<h3 id="orgbf99d74"><span class="todo CHECK">CHECK</span> (18/11/17) check git merge&#xa0;&#xa0;&#xa0;<span class="tag"><span class="git">git</span></span></h3>
+</div>
+<div id="outline-container-org067a536" class="outline-3">
+<h3 id="org067a536"><span class="todo CHECK">CHECK</span> (18/11/14) tag insertion right and left of selection&#xa0;&#xa0;&#xa0;<span class="tag"><span class="emacs">emacs</span></span></h3>
+</div>
+<div id="outline-container-org997f2da" class="outline-3">
+<h3 id="org997f2da"><span class="todo CHECK">CHECK</span> (18/11/14) FireFox/Safari/Chrome developer tools&#xa0;&#xa0;&#xa0;<span class="tag"><span class="browser">browser</span></span></h3>
+</div>
+<div id="outline-container-org08d23a1" class="outline-3">
+<h3 id="org08d23a1"><span class="todo CHECK">CHECK</span> (18/11/14) elfeed manual&#xa0;&#xa0;&#xa0;<span class="tag"><span class="emacs">emacs</span></span></h3>
+</div>
+<div id="outline-container-orgf516540" class="outline-3">
+<h3 id="orgf516540"><span class="todo CHECK">CHECK</span> (18/11/14) isearch manual&#xa0;&#xa0;&#xa0;<span class="tag"><span class="emacs">emacs</span></span></h3>
+</div>
+<div id="outline-container-org2fbf1dd" class="outline-3">
+<h3 id="org2fbf1dd"><span class="todo CODE">CODE</span> (18/11/13) automatically create daily links&#xa0;&#xa0;&#xa0;<span class="tag"><span class="elisp">elisp</span>&#xa0;<span class="shell">shell</span></span></h3>
+</div>
+<div id="outline-container-org18948b9" class="outline-3">
+<h3 id="org18948b9"><span class="todo CHECK">CHECK</span> (18/11/13) "project" manager for all the files&#xa0;&#xa0;&#xa0;<span class="tag"><span class="emacs">emacs</span></span></h3>
+</div>
+<div id="outline-container-org2e76a4a" class="outline-3">
+<h3 id="org2e76a4a"><span class="todo CODE">CODE</span> (18/11/12) check the links automatically&#xa0;&#xa0;&#xa0;<span class="tag"><span class="shell">shell</span></span></h3>
+</div>
+<div id="outline-container-orgb4f8521" class="outline-3">
+<h3 id="orgb4f8521"><span class="todo CHECK">CHECK</span> (18/11/11) add autocompletion for html/css&#xa0;&#xa0;&#xa0;<span class="tag"><span class="emacs">emacs</span></span></h3>
+</div>
+<div id="outline-container-org4f1b224" class="outline-3">
+<h3 id="org4f1b224"><span class="done DONE">DONE</span> (19/11/29) link this todo file to all the daily files&#xa0;&#xa0;&#xa0;<span class="tag"><span class="elisp">elisp</span>&#xa0;<span class="html">html</span></span></h3>
+<div class="outline-text-3" id="text-org4f1b224">
+<ul class="org-ul">
+<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2019-12-01 Sun 08:44]</span></span></li>
+</ul>
+<p>
+Just added a link into the elisp template.
+</p>
+</div>
+</div>
+<div id="outline-container-org2592069" class="outline-3">
+<h3 id="org2592069"><span class="done DONE">DONE</span> (18/11/14) pushing to github from emacs&#xa0;&#xa0;&#xa0;<span class="tag"><span class="emacs">emacs</span></span></h3>
+<div class="outline-text-3" id="text-org2592069">
+<ul class="org-ul">
+<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2019-12-01 Sun 08:44]</span></span></li>
+</ul>
+<p>
+Using magit is not that hard.
+</p>
 </div>
 </div>
 </div>
 
 
-<div id="outline-container-orgd8032be" class="outline-2">
-<h2 id="orgd8032be">code</h2>
-<div class="outline-text-2" id="text-orgd8032be">
+<div id="outline-container-orgaa1a816" class="outline-2">
+<h2 id="orgaa1a816">administrative stuff</h2>
+<div class="outline-text-2" id="text-orgaa1a816">
 </div>
-<div id="outline-container-orgdb519f0" class="outline-3">
-<h3 id="orgdb519f0"><span class="todo TODO">TODO</span> (19/11/29) link this todo file to all the daily files&#xa0;&#xa0;&#xa0;<span class="tag"><span class="elisp">elisp</span></span></h3>
-</div>
-<div id="outline-container-org4f0adf8" class="outline-3">
-<h3 id="org4f0adf8"><span class="todo TODO">TODO</span> (19/11/26) create daily folder structure and html template&#xa0;&#xa0;&#xa0;<span class="tag"><span class="elisp">elisp</span></span></h3>
-</div>
-<div id="outline-container-org0a4e8a4" class="outline-3">
-<h3 id="org0a4e8a4"><span class="todo TODO">TODO</span> (18/11/11) add autocompletion for html/css&#xa0;&#xa0;&#xa0;<span class="tag"><span class="emacs">emacs</span></span></h3>
-</div>
-<div id="outline-container-org25a010a" class="outline-3">
-<h3 id="org25a010a"><span class="todo TODO">TODO</span> (18/11/12) check the links automatically&#xa0;&#xa0;&#xa0;<span class="tag"><span class="shell">shell</span></span></h3>
-</div>
-<div id="outline-container-orgf4f08fd" class="outline-3">
-<h3 id="orgf4f08fd"><span class="todo TODO">TODO</span> (18/11/13) "project" manager for all the files&#xa0;&#xa0;&#xa0;<span class="tag"><span class="emacs">emacs</span></span></h3>
-</div>
-<div id="outline-container-org8d7caf8" class="outline-3">
-<h3 id="org8d7caf8"><span class="todo TODO">TODO</span> (18/11/13) automatically create daily links&#xa0;&#xa0;&#xa0;<span class="tag"><span class="elisp">elisp</span>&#xa0;<span class="shell">shell</span></span></h3>
-</div>
-<div id="outline-container-orgfe5ff00" class="outline-3">
-<h3 id="orgfe5ff00"><span class="todo TODO">TODO</span> (18/11/14) FireFox/Safari/Chrome developer tools&#xa0;&#xa0;&#xa0;<span class="tag"><span class="browser">browser</span></span></h3>
-</div>
-<div id="outline-container-org5095630" class="outline-3">
-<h3 id="org5095630"><span class="todo TODO">TODO</span> (18/11/14) elfeed manual&#xa0;&#xa0;&#xa0;<span class="tag"><span class="emacs">emacs</span></span></h3>
-</div>
-<div id="outline-container-org8f291af" class="outline-3">
-<h3 id="org8f291af"><span class="todo TODO">TODO</span> (18/11/14) pushing to github from emacs&#xa0;&#xa0;&#xa0;<span class="tag"><span class="emacs">emacs</span></span></h3>
-</div>
-<div id="outline-container-org35f7d3d" class="outline-3">
-<h3 id="org35f7d3d"><span class="todo TODO">TODO</span> (18/11/14) tag insertion right and left of selection&#xa0;&#xa0;&#xa0;<span class="tag"><span class="emacs">emacs</span></span></h3>
-</div>
-<div id="outline-container-orge6f19d5" class="outline-3">
-<h3 id="orge6f19d5"><span class="todo TODO">TODO</span> (18/11/14) isearch manual&#xa0;&#xa0;&#xa0;<span class="tag"><span class="emacs">emacs</span></span></h3>
-</div>
-<div id="outline-container-orgad9e564" class="outline-3">
-<h3 id="orgad9e564"><span class="todo TODO">TODO</span> (18/11/17) check git merge&#xa0;&#xa0;&#xa0;<span class="tag"><span class="git">git</span></span></h3>
-</div>
-<div id="outline-container-org7720465" class="outline-3">
-<h3 id="org7720465"><span class="todo TODO">TODO</span> (18/11/18) Automate CSS index generation&#xa0;&#xa0;&#xa0;<span class="tag"><span class="shell">shell</span></span></h3>
-</div>
-<div id="outline-container-org15af1e7" class="outline-3">
-<h3 id="org15af1e7"><span class="todo TODO">TODO</span> (18/11/18) automated index creation for readings&#xa0;&#xa0;&#xa0;<span class="tag"><span class="shell">shell</span></span></h3>
-</div>
-</div>
-
-
-<div id="outline-container-orgf811ca0" class="outline-2">
-<h2 id="orgf811ca0">administrative stuff</h2>
-<div class="outline-text-2" id="text-orgf811ca0">
-</div>
-<div id="outline-container-org922ad2f" class="outline-3">
-<h3 id="org922ad2f"><span class="done DONE">DONE</span> make a check list of all the tasks required in publishing the pages</h3>
-<div class="outline-text-3" id="text-org922ad2f">
+<div id="outline-container-orgf5e51e3" class="outline-3">
+<h3 id="orgf5e51e3"><span class="done DONE">DONE</span> make a check list of all the tasks required in publishing the pages</h3>
+<div class="outline-text-3" id="text-orgf5e51e3">
 <ul class="org-ul">
 <li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2019-11-28 Thu 22:35]</span></span></li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org9327617" class="outline-3">
-<h3 id="org9327617"><span class="done DONE">DONE</span> create a todo file</h3>
-<div class="outline-text-3" id="text-org9327617">
+<div id="outline-container-orgedadf87" class="outline-3">
+<h3 id="orgedadf87"><span class="done DONE">DONE</span> create a todo file</h3>
+<div class="outline-text-3" id="text-orgedadf87">
 <ul class="org-ul">
 <li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2019-11-28 Thu 22:28]</span></span></li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org01f1c72" class="outline-3">
-<h3 id="org01f1c72"><span class="done DONE">DONE</span> gather all the todos written in older pages</h3>
-<div class="outline-text-3" id="text-org01f1c72">
+<div id="outline-container-orgea02af1" class="outline-3">
+<h3 id="orgea02af1"><span class="done DONE">DONE</span> gather all the todos written in older pages</h3>
+<div class="outline-text-3" id="text-orgea02af1">
 <ul class="org-ul">
 <li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2019-11-29 Fri 18:28]</span></span></li>
 </ul>
 </div>
 </div>
-<div id="outline-container-orgef91364" class="outline-3">
-<h3 id="orgef91364"><span class="todo TODO">TODO</span> check how to customize org export because the HTML is ugly</h3>
-<div class="outline-text-3" id="text-orgef91364">
+<div id="outline-container-org1cd7a5d" class="outline-3">
+<h3 id="org1cd7a5d"><span class="done DONE">DONE</span> check how to customize org export because the HTML is ugly</h3>
+<div class="outline-text-3" id="text-org1cd7a5d">
+<ul class="org-ul">
+<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2019-12-01 Sun 08:42]</span></span></li>
+</ul>
 <p>
-What I don't like is how the headings are HTML headers. The ToC alone would be sufficient for what I need. 
+What I don't like is how the headings are HTML headers. The ToC alone would be sufficient for what I need. I did some css and it looks much better. With lots of room for improvement.
 </p>
 </div>
 </div>
@@ -445,7 +478,7 @@ What I don't like is how the headings are HTML headers. The ToC alone would be s
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Jean-Christophe Helary</p>
-<p class="date">Created: 2019-11-29 Fri 20:28</p>
+<p class="date">Created: 2019-12-01 Sun 09:23</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

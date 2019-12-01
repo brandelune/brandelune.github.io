@@ -1,7 +1,11 @@
-#+TITLE: My adventures in tech land - TODO file
+#+TODO: TODO(t) FIX(f) CODE(c) CHECK(e) | DONE(d!)
 #+OPTIONS: num:0
-#+TODO: TODO(t) | DONE(d!)
+#+TITLE: My adventures in tech land - TODO file
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="./adventuresintechland.org.css" /> 
+#+HTML_LINK_HOME:  ./index.html
+#+HTML_LINK_UP: ..
 
+----------
 * TODO daily entries
   DEADLINE: <2019-11-30 Sat ++1d>
   :PROPERTIES:
@@ -28,21 +32,26 @@
 
 
 * code
-** TODO (19/11/29) the RSS feed does not work anymore                   :xml:
-** TODO (19/11/29) link this todo file to all the daily files         :elisp:
-** TODO (19/11/26) create daily folder structure and html template    :elisp:
-** TODO (18/11/11) add autocompletion for html/css                    :emacs:
-** TODO (18/11/12) check the links automatically                      :shell:
-** TODO (18/11/13) "project" manager for all the files                :emacs:
-** TODO (18/11/13) automatically create daily links             :elisp:shell:
-** TODO (18/11/14) FireFox/Safari/Chrome developer tools            :browser:
-** TODO (18/11/14) elfeed manual                                      :emacs:
-** TODO (18/11/14) pushing to github from emacs                       :emacs:
-** TODO (18/11/14) tag insertion right and left of selection          :emacs:
-** TODO (18/11/14) isearch manual                                     :emacs:
-** TODO (18/11/17) check git merge                                      :git:
-** TODO (18/11/18) Automate CSS index generation                      :shell:
-** TODO (18/11/18) automated index creation for readings              :shell:
+** FIX (19/11/29) the RSS feed does not work anymore                    :xml:
+** CODE (19/11/26) create daily folder structure and html template    :elisp:
+** CODE (18/11/18) automated index creation for readings              :shell:
+** CODE (18/11/18) Automate CSS index generation                      :shell:
+The index.sh script exists but needs to be run automatically.
+** CHECK (18/11/17) check git merge                                     :git:
+** CHECK (18/11/14) tag insertion right and left of selection         :emacs:
+** CHECK (18/11/14) FireFox/Safari/Chrome developer tools           :browser:
+** CHECK (18/11/14) elfeed manual                                     :emacs:
+** CHECK (18/11/14) isearch manual                                    :emacs:
+** CODE (18/11/13) automatically create daily links             :elisp:shell:
+** CHECK (18/11/13) "project" manager for all the files               :emacs:
+** CODE (18/11/12) check the links automatically                      :shell:
+** CHECK (18/11/11) add autocompletion for html/css                   :emacs:
+** DONE (19/11/29) link this todo file to all the daily files    :elisp:html:
+   - State "DONE"       from "TODO"       [2019-12-01 Sun 08:44]
+Just added a link into the elisp template.
+** DONE (18/11/14) pushing to github from emacs                       :emacs:
+   - State "DONE"       from "TODO"       [2019-12-01 Sun 08:44]
+Using magit is not that hard.
 
 
 * administrative stuff
@@ -52,5 +61,6 @@
    - State "DONE"       from "TODO"       [2019-11-28 Thu 22:28]
 ** DONE gather all the todos written in older pages
    - State "DONE"       from "TODO"       [2019-11-29 Fri 18:28]
-** TODO check how to customize org export because the HTML is ugly
-   What I don't like is how the headings are HTML headers. The ToC alone would be sufficient for what I need. 
+** DONE check how to customize org export because the HTML is ugly
+   - State "DONE"       from "TODO"       [2019-12-01 Sun 08:42]
+   What I don't like is how the headings are HTML headers. The ToC alone would be sufficient for what I need. I did some css and it looks much better. With lots of room for improvement.
