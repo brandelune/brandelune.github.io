@@ -59,6 +59,11 @@ p {
     text-align: justify;
 }
 
+
+/*************/
+/* Links     */
+/*************/
+
 a, code, table {
     font-family: monospace;   
 }
@@ -74,6 +79,11 @@ a[rel=next]::before {
 .navigation a {
     text-decoration: none;
 }
+
+
+/*************/
+/* todo      */
+/*************/
 
 .todo::before {
     content: "TODO: ";
@@ -108,4 +118,14 @@ a[rel=next]::before {
     -webkit-text-decoration: underline var(--important-color);
 }
 
+/*************/
+/* Magit     */
+/*************/
 
+.magit-output {
+    font-family: monospace;
+}
+
+.magit-output span {
+    color: grey;
+}
