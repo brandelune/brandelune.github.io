@@ -1,4 +1,5 @@
-#+TODO: TODO(t) FIX(f) CODE(c) CHECK(e) | DONE(d!)
+#+TODO: TODO(t) | DONE(d!)
+#+TODO: FIX(f) CODE(c) CHECK(e) | DONE(d!)
 #+OPTIONS: num:0
 #+TITLE: My adventures in tech land - TODO file
 #+HTML_HEAD: <link rel="stylesheet" type="text/css" href="./adventuresintechland.org.css" /> 
