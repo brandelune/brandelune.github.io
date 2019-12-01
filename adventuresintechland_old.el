@@ -44,7 +44,7 @@
     <body>
         %6$s
 
-        <p><em>Adventures in Tech Land, Season 2, %4$s, day ...</em></p>
+        <p><em>Adventures in Tech Land, Season 2<br />%4$s, day ...</em></p>
         <h1>%1$s</h1>
         <h2>%5$s</h2>   
         <p>We're not there yet...</p>
