@@ -261,12 +261,19 @@ So, let me make a list of things I can be relatively proud of and of things I re
       <pubDate>Wed, 29 Nov 2019 18:00:00 GMT</pubDate>
       <description>Modifying my org file for HTML export. All sorts of things to tweak in the manual, pretty cool. But I also need to add a specific CSS for the headings themselves.</description>
     </item>
-
+    <item>
+      <title>org export</title>
+      <link>https://brandelune.github.io/2019/12/01/index.html</link>
+      <guid>https://brandelune.github.io/2019/12/01/index.html</guid>
+      <pubDate>Sun, 1 Dec 2019 18:00:00 GMT</pubDate>
+      <description>I spent most of the day working on org-mode export to HTML. My CSS is rusty but I've mostly worked with magit and I'm significantly better at it now.</description>
+    </item>
+    
     <!--
     <item>
       <title></title>
-      <link></link>
-      <guid></guid>
+      <link>https://brandelune.github.io/2019/</link>
+      <guid>https://brandelune.github.io/2019/</guid>
       <pubDate></pubDate>
       <description></description>
     </item>
