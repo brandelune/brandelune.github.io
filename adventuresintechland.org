@@ -35,13 +35,10 @@
 *** git checkout "gh-pages"
 
 * code
+
 ** FIX (19/12/01) just got bitten by the date edge cases...           :elisp:
 ** FIX (19/11/29) the RSS feed does not work anymore                    :xml:
-** CODE (19/12/01) add web-mode hook for html files                   :elisp:
 ** CODE (19/12/01) capture directly to adventuresintechland.org       :elisp:
-** CHECK (19/12/01) github contributions don't appear                :github:
-** CHECK (19/12/01) fix commit messages ?                             :magit:
-** CODE (19/12/01) add a "0" to single digit days in the page title   :elisp:
 ** CODE (19/12/01) automatically generate "nth day"                   :elisp:
 ** CODE (19/11/26) create daily folder structure and html template    :elisp:
 ** CODE (18/11/18) automated index creation for readings              :shell:
@@ -49,6 +46,9 @@
 The index.sh script exists but needs to be run automatically.
 ** CODE (18/11/13) automatically create daily links             :elisp:shell:
 ** CODE (18/11/12) check the links automatically                      :shell:
+** CHECK (19/12/03) check git revert                                    :git:
+** CHECK (19/12/01) how to fix commit messages ?                  :magit:git:
+I was thinking that had to do with the "amend" command, but maybe not...
 ** CHECK (18/11/17) check git merge                                     :git:
 ** CHECK (18/11/14) tag insertion right and left of selection         :emacs:
 ** CHECK (18/11/14) FireFox/Safari/Chrome developer tools           :browser:
@@ -56,6 +56,29 @@ The index.sh script exists but needs to be run automatically.
 ** CHECK (18/11/14) isearch manual                                    :emacs:
 ** CHECK (18/11/13) "project" manager for all the files               :emacs:
 ** CHECK (18/11/11) add autocompletion for html/css                   :emacs:
+** DONE (19/12/01) add a "0" to single digit days in the page title   :elisp:
+I externalized the date creation function to check for days < 10 and I had to create a "0 padding" function because number-to-string does not take options to format the resulting string. The function is written in C so way above what I can do... 
+   - State "DONE"       from "CHECK"      [2019-12-03 Tue 12:28]
+** DONE (19/12/04) add .emacs.d/init.el to git repository         :git:emacs:
+   - State "DONE"       from "CHECK"      [2019-12-04 Wed 07:40]
+** DONE (19/12/02) link to exported org file is not correct           :elisp:
+I'm trying to revert that instead of just fixing something that should not have been modified in the first place, but I'm finding the revert function not trivial to use (understand ?). The Magit manual expects the user to understand what a revert is I guess. I'll have to check the Pro Git book later.
+   - State "DONE"       from "CHECK"      [2019-12-03 Tue 07:04]
+** DONE (19/12/01) add web-mode hook for html files                   :elisp:
+The web-mode manual, or rather home page gives all sorts of relevant settings that I had just to copy to my .emacs.el file to fix this item.
+http://web-mode.org/
+   - State "DONE"       from "CHECK"      [2019-12-03 Tue 07:04]
+** DONE (19/12/01) github contributions don't appear                 :github:
+   - State "DONE"       from "CHECK"      [2019-12-03 Tue 08:16]
+registered email problem ?
+I checked that on 19/12/02, I'll see later of that works.
+Ok, I saw that my commit messages included an old email, but I had changed of mail not only on github but also on this machine.
+So I checked Pro Git and found the following command:
+git config --list --show-origin
+and sure enough, that old mail was listed at file:.git/config. It did not occur to me right away that this .git thing was representing the *local* repository so I had some head scratching moments here but here again, Pro Git had an instance of that string that made clear the parameter was local to the repository, so the fix was to use:
+git config --local user.email [my email]
+Et voilà, now I should be able to see my "contributions" to my own repository appear as green dots on my profile.
+Interesting to see how that little playful option (the green dots) helped me figure out a relatively important issue.
 ** DONE (19/11/29) link this todo file to all the daily files    :elisp:html:
    - State "DONE"       from "TODO"       [2019-12-01 Sun 08:44]
 Just added a link into the elisp template.
