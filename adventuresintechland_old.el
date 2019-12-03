@@ -1,9 +1,20 @@
-(defun myPreviousDay (myDate)
-  (- myDate 1))
+(defun my0Padding (myDigit)
+  (if (< myDigit 10)
+      (format "0%s" myDigit)
+    myDigit))
+
+(defun myPreviousDayString (myDate)
+  (my0Padding (- (string-to-number myDate) 1)))
+
+(defun myNextDayString (myDate)
+  (my0Padding (+ (string-to-number myDate) 1)))
+
+(defun myMmDd (myDate)
+  )
 
 (defun dailyIndex (myDate myTitle mySubtitle)
   (interactive (list
-                (read-number "Date: " (string-to-number (format-time-string "%d")))
+                (read-string "Date: " (format-time-string "%d"))
                 (read-string "Title: " )
                 (read-string "Sub-title: ")))
   (setq siteRoot "/Users/suzume/Documents/Code/brandelune.github.io/")
@@ -12,10 +23,10 @@
   (setq dailyCSSFile (format "adventuresintechland%s%s.css" (format-time-string "%m") myDate))
   (setq baseCSSLink (concat baseCSSPath baseCSSFile))
   (setq dailyCSSLink (concat baseCSSPath dailyCSSFile))
-  (setq previousDay (myPreviousDay myDate))
+  (setq previousDay (myPreviousDayString myDate))
   (setq previousDate (format "%s%s" (format-time-string "%m") previousDay))
   (setq previousDayLink (format "../../%s/%s/index.html" (format-time-string "%m") previousDay))
-  (setq nextDay (+ myDate 1))
+  (setq nextDay (myNextDayString myDate))
   (setq nextDate (format "%s%s" (format-time-string "%m") nextDay))
   (setq nextDayLink (format "../../%s/%s/index.html" (format-time-string "%m") nextDay))
   (setq todayDate (format "%s/%s/%s" (format-time-string "%Y") (format-time-string "%m") myDate))
