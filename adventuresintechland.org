@@ -8,10 +8,11 @@
 
 ----------
 * TODO daily entries
-  DEADLINE: <2019-12-02 Mon ++1d>
+  DEADLINE: <2019-12-05 Thu ++1d>
   :PROPERTIES:
-  :LAST_REPEAT: [2019-12-01 Sun 11:49]
+  :LAST_REPEAT: [2019-12-04 Wed 08:31]
   :END:
+  - State "DONE"       from "TODO"       [2019-12-04 Wed 08:31]
   - State "DONE"       from "TODO"       [2019-12-01 Sun 11:49]
   - State "DONE"       from "TODO"       [2019-11-29 Fri 20:26]
 ** create the folder for that day                                    :finder:
@@ -35,7 +36,6 @@
 *** git checkout "gh-pages"
 
 * code
-
 ** FIX (19/12/01) just got bitten by the date edge cases...           :elisp:
 ** FIX (19/11/29) the RSS feed does not work anymore                    :xml:
 ** CODE (19/12/01) capture directly to adventuresintechland.org       :elisp:

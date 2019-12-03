@@ -261,10 +261,17 @@
     </item>
     <item>
       <title>org export</title>
-      <link>https://brandelune.github.io/2019/12/01/index.html</link>
-      <guid>https://brandelune.github.io/2019/12/01/index.html</guid>
+      <link>https://brandelune.github.io/2019/12/1/index.html</link>
+      <guid>https://brandelune.github.io/2019/12/1/index.html</guid>
       <pubDate>Sun, 1 Dec 2019 18:00:00 GMT</pubDate>
       <description>I spent most of the day working on org-mode export to HTML. My CSS is rusty but I've mostly worked with magit and I'm significantly better at it now.</description>
+    </item>
+    <item>
+      <title>Lots of stuff</title>
+      <link>https://brandelune.github.io/2019/12/03/index.html</link>
+      <guid>https://brandelune.github.io/2019/12/03/index.html</guid>
+      <pubDate>Wed, 3 Dec 2019 18:00:00 GMT</pubDate>
+      <description>Some refactoring of the template code, lots of git/github related tasks, nothing (yet) on HTML/CSS/JS but it's becoming again a regular thing and I like that.</description>
     </item>
     
     <!--
