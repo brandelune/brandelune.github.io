@@ -26,7 +26,7 @@
 	(format "<p class=\"navigation\">
             <a href=\"%1$s\" hreflang=\"en\" rel=\"prev\">%2$s</a>
             <a href=\"../../../index.html\" hreflang=\"en\">index</a>
-            <a href=\"../../../adventuresintechland.org.html\" hreflang=\"en\">todo</a>
+            <a href=\"../../../adventuresintechland.html\" hreflang=\"en\">todo</a>
             <a href=\"%3$s\" hreflang=\"en\" rel=\"next\">%4$s</a>
         </p>"
 		previousDayLink  ;;  1$
