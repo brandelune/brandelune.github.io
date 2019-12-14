@@ -9,8 +9,7 @@
 (defun myNextDayString (myDate)
   (my0Padding (+ (string-to-number myDate) 1)))
 
-(defun myMmDd (myDate)
-  )
+;;;;;; compute dates for edge cases
 
 (defun dailyIndex (myDate myTitle mySubtitle)
   (interactive (list
@@ -78,6 +77,3 @@
   (find-file todayCSS)
   (find-file todayIndex))
 
-
-
-(dailyIndex 2 "org export" "back to css")
