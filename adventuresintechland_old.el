@@ -71,9 +71,9 @@
 		todayNavigation  ;;  6$
                 ))
   
-  (make-empty-file todayIndex t)
-  (write-region todayTemplate nil todayIndex nil t nil t)
-  (make-empty-file todayCSS)
+  (write-region "" nil todayCSS nil t nil t)
   (find-file todayCSS)
+  (make-directory todayPath)
+  (write-region todayTemplate nil todayIndex nil t nil t)
   (find-file todayIndex))
 
