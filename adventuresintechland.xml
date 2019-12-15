@@ -270,7 +270,7 @@
       <title>Lots of stuff</title>
       <link>https://brandelune.github.io/2019/12/03/index.html</link>
       <guid>https://brandelune.github.io/2019/12/03/index.html</guid>
-      <pubDate>Wed, 3 Dec 2019 18:00:00 GMT</Pubdate>
+      <pubDate>Wed, 3 Dec 2019 18:00:00 GMT</pubDate>
       <description>Some refactoring of the template code, lots of git/github related tasks, nothing (yet) on HTML/CSS/JS but it's becoming again a regular thing and I like that.</description>
     </item>
     <item>
