@@ -7,6 +7,7 @@
     <category>Web development</category>
     <copyright>2018-2019 Jean-Christophe Helary / GNU FDL </copyright>
     <language>en-us</language>
+    <atom:link href="https://brandelune.github.io/adventuresintechland.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>the beginning of a great adventure</title>
       <link>https://brandelune.github.io/2018/11/11/index.html</link>
@@ -290,6 +291,5 @@
       <description></description>
     </item>
     -->
-    <atom:link href="https://brandelune.github.io/adventuresintechland.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>
