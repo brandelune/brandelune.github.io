@@ -57,8 +57,9 @@
 
         <p><em>Adventures in Tech Land, Season 2<br />%4$s, day ...</em></p>
         <h1>%1$s</h1>
+        <p></p>
         <h2>%5$s</h2>
-        <p>We're not there yet...</p>
+        <p></p>
 
         %6$s
     </body>
