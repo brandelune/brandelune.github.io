@@ -46,10 +46,11 @@
 ))
   (setq todayTemplate
         (format "<html>
-    <head>
+    <head lang="en-us">
         <title>%1$s</title>
         <link rel=\"stylesheet\" type=\"text/css\" href=\"%2$s\" class=\"baseCSS\"/>
         <link rel=\"stylesheet\" type=\"text/css\" href=\"%3$s\" class=\"dailyCSS\"/>
+        <meta charset="UTF-8" />
     </head>
     <body>
         %6$s
