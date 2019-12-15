@@ -270,15 +270,22 @@
       <title>Lots of stuff</title>
       <link>https://brandelune.github.io/2019/12/03/index.html</link>
       <guid>https://brandelune.github.io/2019/12/03/index.html</guid>
-      <pubDate>Wed, 3 Dec 2019 18:00:00 GMT</pubDate>
+      <pubDate>Wed, 3 Dec 2019 18:00:00 GMT</Pubdate>
       <description>Some refactoring of the template code, lots of git/github related tasks, nothing (yet) on HTML/CSS/JS but it's becoming again a regular thing and I like that.</description>
+    </item>
+    <item>
+      <title>Reddited</title>
+      <link>https://brandelune.github.io/2019/12/14/index.html</link>
+      <guid>https://brandelune.github.io/2019/12/14/index.html</guid>
+      <pubDate>Sun, 15 Dec 2019 18:00:00 GMT</pubDate>
+      <description>My "New Introduction to Programming in Emacs Lisp" has been linked to on reddit. That's my other "pinned" repository on Github. It prompted a number of positive comments, some remarks, some interesting conversations, and, of course, a few updates to the document. It is a very pre-alpha-draft level document that requires a big amount of work before being of any use and I had not worked on it seriously for about 3 years...</description>
     </item>
     
     <!--
     <item>
       <title></title>
-      <link>https://brandelune.github.io/2019/</link>
-      <guid>https://brandelune.github.io/2019/</guid>
+      <link>https://brandelune.github.io/2019///index.html</link>
+      <guid>https://brandelune.github.io/2019///index.html</guid>
       <pubDate></pubDate>
       <description></description>
     </item>
