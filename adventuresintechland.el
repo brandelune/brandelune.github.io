@@ -9,6 +9,35 @@
 ;; When I launch the template for a given day, it creates links for the previous day and the next day
 ;; I used the "closest" assumption because I'm either writing the blog late, or outputing future days templates for preparation.
 
+(defun myDefaultDate (myDay)
+  ;; if the number is not between 1 and 31, the value defaults to today's date
+  (if (or (> 1 myDay) (< 32 myDay))
+      (setq myDay (nth 3 (decode-time)))))
+
+(defun myDefault3Slots ()
+    ;; I fill three slots with the current time to later identify days and months for edge cases
+    (setq now (decode-time (float-time))
+           myDatelastMonth (copy-sequence now)
+           myDatethisMonth (copy-sequence now)
+           myDatenextMonth (copy-sequence now)
+           now (encode-time now)))
+
+(defun myDefault3Dates ()
+    ;; need to create "last month", "next month", "last year", "next year"
+    ;; 1 day is 84600 seconds
+    ;; 1 month is approximately 2,592,000 seconds
+    ;; 1 year is approximately 31,536,000 seconds
+    (setq
+	yesterDay (nth 3 (decode-time (- (float-time) 84600)))
+	 toMorrow (nth 3 (decode-time (+ (float-time) 84600)))
+         lastMonth (nth 4 (decode-time (- (float-time) 2592000)))
+         thisMonth (nth 4 (decode-time))
+         nextMonth (nth 4 (decode-time (+ (float-time) 2592000)))
+         lastYear (nth 5 (decode-time (- (float-time) 31536000)))
+         thisYear (nth 5 (decode-time))
+         nextYear (nth 5 (decode-time (+ (float-time) 31536000)))))
+
+
 (defun getMyDates (myDay)
   ;; if the number is not between 1 and 31, the value defaults to today's date
   (if (or (> 1 myDay) (< 32 myDay))
@@ -46,7 +75,7 @@
     ;; create the data for next month
     (setf (nth 3 myDatenextMonth) myDay)
     (setf (nth 4 myDatenextMonth) nextMonth)
-    (if (= nextMonth 12)
+    (if (= nextMonth 1)
         (setf (nth 5 myDatenextMonth) nextYear))
 
   ;; compare the dates to find the closest
