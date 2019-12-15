@@ -7,7 +7,7 @@
 #+HTML_LINK_UP: https://github.com/brandelune/brandelune.github.io
 
 ----------
-* TODO daily entries
+* TODO daily entries [0/8]
   DEADLINE: <2019-12-17 Tue ++1d>
   :PROPERTIES:
   :LAST_REPEAT: [2019-12-15 Sun 14:04]
@@ -47,14 +47,14 @@
 * code
 ** FIX (19/12/01) just got bitten by the date edge cases...           :elisp:
 ** FIX (19/11/29) the RSS feed does not work anymore                    :xml:
+** FIX (18/11/12) check the links automatically                       :shell:
+** FIX (18/11/13) automatically create daily links              :elisp:shell:
+should find the previous folder in the hierarchy, etc.
 ** CODE (19/12/01) capture directly to adventuresintechland.org       :elisp:
 ** CODE (19/12/01) automatically generate "nth day"                   :elisp:
 ** CODE (18/11/18) automated index creation for readings              :shell:
 ** CODE (18/11/18) Automate CSS index generation                      :shell:
 The index.sh script exists but needs to be run automatically.
-** CODE (18/11/13) automatically create daily links             :elisp:shell:
-should find the previous folder in the hierarchy, etc.
-** CODE (18/11/12) check the links automatically                      :shell:
 ** CHECK (19/12/03) check git revert                                    :git:
 ** CHECK (19/12/01) how to fix commit messages ?                  :magit:git:
 I was thinking that had to do with the "amend" command, but maybe not...
