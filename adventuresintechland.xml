@@ -290,6 +290,6 @@
       <description></description>
     </item>
     -->
+    <atom:link href="https://brandelune.github.io/adventuresintechland.xml" rel="self" type="application/rss+xml" />
   </channel>
-<atom:link href="https://brandelune.github.io/adventuresintechland.xml" rel="self" type="application/rss+xml" />
 </rss>
