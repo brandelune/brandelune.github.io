@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<rss version="2.0">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Adventures in Tech Land</title>
     <link>https://brandelune.github.io</link>
@@ -123,7 +123,7 @@
       <title>Lots of meta stuff</title>
       <link>https://brandelune.github.io/2018/11/27/index.html</link>
       <guid>https://brandelune.github.io/2018/11/27/index.html</guid>
-      <pubDate>Tue, 27 Nove 2018 12:00:00 GMT</pubDate>
+      <pubDate>Tue, 27 Nov 2018 12:00:00 GMT</pubDate>
       <description>I spent a bit part of the evening rewriting the css index generating file. For some reason it refused to work today.</description>
     </item>
     <item>
@@ -270,7 +270,7 @@
       <title>Lots of stuff</title>
       <link>https://brandelune.github.io/2019/12/03/index.html</link>
       <guid>https://brandelune.github.io/2019/12/03/index.html</guid>
-      <pubDate>Wed, 3 Dec 2019 18:00:00 GMT</pubDate>
+      <pubDate>Tue, 3 Dec 2019 18:00:00 GMT</pubDate>
       <description>Some refactoring of the template code, lots of git/github related tasks, nothing (yet) on HTML/CSS/JS but it's becoming again a regular thing and I like that.</description>
     </item>
     <item>
@@ -291,4 +291,5 @@
     </item>
     -->
   </channel>
+<atom:link href="https://brandelune.github.io/adventuresintechland.xml" rel="self" type="application/rss+xml" />
 </rss>
