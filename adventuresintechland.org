@@ -46,11 +46,15 @@
 
 * code
 ** FIX (19/12/01) just got bitten by the date edge cases...           :elisp:
-** FIX (19/11/29) the RSS feed does not work anymore                    :xml:
-** FIX <2019-12-16 Mon> the RSS date is not valid                       :xml:
+** DONE (19/11/29) the RSS feed does not work anymore                   :xml:
+   - State "DONE"       from "CHECK"      [2019-12-16 Mon 08:58]
+** DONE <2019-12-16 Mon> the RSS date is not valid                      :xml:
+   - State "DONE"       from "CHECK"      [2019-12-16 Mon 08:58]
 ** FIX (18/11/12) check the links automatically                       :shell:
 ** FIX (18/11/13) automatically create daily links              :elisp:shell:
 should find the previous folder in the hierarchy, etc.
+** CODE <2019-12-16 Mon> RFC-822 valide dates for the rss feed        :elisp:
+(format-time-string "%a, %d %b %Y %H:%m:%S UT" (current-time) t)
 ** CODE (19/12/01) capture directly to adventuresintechland.org       :elisp:
 ** CODE (19/12/01) automatically generate "nth day"                   :elisp:
 ** CODE (18/11/18) automated index creation for readings              :shell:
