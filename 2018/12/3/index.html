@@ -12,7 +12,7 @@
 	    <a href="../../12/9/index.html" hreflang="en" rel="next">1209</a>
 	</p>
 	<p>2018/12/03, twenty-third day in a row</p>
-	<h1>Emacs forever</h1>
+	<h1>Emacs forever <a href="https://brandelune.github.io/adventuresintechland.xml"><img src="https://www.mozilla.org/media/img/trademarks/feed-icon-28x28.e077f1f611f0.png" width="15px" height="15px" alt="rss feed" /></a></h1> 
         <p>I'm not yet done with that function. After realizing my oversight for the December 1st page, it took more time than I thought to fix things. What I did is create a second function that checks whether the number I enter is a possible date (it must be between 1 and 31, otherwise it defaults to today). If that's the case I need to consider that the date is relatively close to today. Since it is a blog I supposedly write daily, I am most probably writing an entry for today, or for a few days before if I'm late, or I'm preparing the template for the following day, etc.</p>
 	<p>That means that if today is the 12/2 and I enter 31, the date should be computed as 11/31 and not as 12/31. Similarly, if we're 12/29 and I enter 1, I'm preparing the entry for 1/1, and more, for 1/1 of the following year.</p>
 	<p>All this implied a number of calculations, and the issue I bumped into yesterday was due to the fact that I assigned a list to a variable and then that variable to 3 other variables without considering that the three variables eventually contained the exact same list, and when I wanted to act on the "myDayNextMonth" list I was also changing the other dates...</p>

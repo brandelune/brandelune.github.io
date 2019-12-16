@@ -12,7 +12,7 @@
 	    <a href="../../02/12/index.html" hreflang="en" rel="next">0212</a>
 	</p>
 	<p>2019/02/11, second day in a row</p>
-	<h1>Back to the web!</h1>
+	<h1>Back to the web! <a href="https://brandelune.github.io/adventuresintechland.xml"><img src="https://www.mozilla.org/media/img/trademarks/feed-icon-28x28.e077f1f611f0.png" width="15px" height="15px" alt="rss feed" /></a></h1> 
         <p>Today I updated a Wordpress site I'm in charge of. Simple stuff. The only issue was changing the latitude and longitude data for the Google maps API that for some reason still refused to work. I checked my API key but nothing worked. The site is in fact not so much a Wordpress site as it is a standard static site to which a Wordpress blog was connected. Since the blog was not updated, I removed the links to only display the static part. There is still plenty of PHP code all over the place and I'm planning to renew the design as a single page site and remove all the extra scripts that don't add much value.</p>
 	<p>I also updated the emacs lisp template. There was a but in the file output code. Sometimes the code would output the whole buffer (including the elisp code itself), save it to the template location for that day and would thus move the whole code buffer to that file... I think I fixed that. I'm going to try to create original CSS for every new day too. To fix the code, I tried to use edebug. I was able to see the position at which the code occured but the message was too cryptic to pinpoint the exact issue. It ended up being a parameter to write-region that was supposed to be a string but was not...</p>
 	<h2>The hardest has yet to come...</h2>
