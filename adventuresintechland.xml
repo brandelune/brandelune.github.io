@@ -281,6 +281,13 @@
       <pubDate>Sun, 15 Dec 2019 18:00:00 GMT</pubDate>
       <description>My "New Introduction to Programming in Emacs Lisp" has been linked to on reddit. That's my other "pinned" repository on Github. It prompted a number of positive comments, some remarks, some interesting conversations, and, of course, a few updates to the document. It is a very pre-alpha-draft level document that requires a big amount of work before being of any use and I had not worked on it seriously for about 3 years...</description>
     </item>
+    <item>
+      <title>RSS again</title>
+      <link>https://brandelune.github.io/2019/12/16/index.html</link>
+      <guid>https://brandelune.github.io/2019/12/16/index.html</guid>
+      <pubDate>Tue, 17 Dec 2019 15:12:01 UT</pubDate>
+      <description>Last year on November 16 I mentioned the sr.ht/ code hosting service. It happens that the owner and main developer is promoting his activity also through the use of blogs and has thus created a mailing list where blog writers who use his service can also discuss. I introduced myself there a few days ago and got comments right away about this site. The first one being that I had forgotten to specify the charset... For a multilingual user who knows what the absence of encoding/charset definition means, that was really a shame. I fixed that eventually...</description>
+    </item>
     
     <!--
     <item>
