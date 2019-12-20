@@ -289,7 +289,7 @@
       <description>Last year on November 16 I mentioned the sr.ht/ code hosting service. It happens that the owner and main developer is promoting his activity also through the use of blogs and has thus created a mailing list where blog writers who use his service can also discuss. I introduced myself there a few days ago and got comments right away about this site. The first one being that I had forgotten to specify the charset... For a multilingual user who knows what the absence of encoding/charset definition means, that was really a shame. I fixed that eventually...</description>
     </item>
     
-    <!--
+    <!-- place new items above this line
     <item>
       <title></title>
       <link>https://brandelune.github.io/2019///index.html</link>
