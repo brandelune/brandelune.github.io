@@ -1,0 +1,390 @@
+<item>bla</item><?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Adventures in Tech Land</title>
+    <link>https://brandelune.github.io</link>
+    <description>The adventures of a translator around 50 who resumes web "development" after a 20+ years lapse...</description>
+    <category>Web development</category>
+    <copyright>2018-2019 Jean-Christophe Helary / GNU FDL </copyright>
+    <language>en-us</language>
+    <atom:link href="https://brandelune.github.io/adventuresintechland.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>the beginning of a great adventure</title>
+      <link>https://brandelune.github.io/2018/11/11/index.html</link>
+      <guid>https://brandelune.github.io/2018/11/11/index.html</guid>
+      <pubDate>Sun, 11 Nov 2018 12:00:00 GMT</pubDate>
+      <description>In one of his most recent albums Lou Reed sings about having a child, I seem to remember, but anyway, at one point he sings "it's the beginning of a great adventure", pretty much what I feel today.</description>
+    </item>
+    <item>
+      <title>It's all good, man</title>
+      <link>https://brandelune.github.io/2018/11/12/index.html</link>
+      <guid>https://brandelune.github.io/2018/11/12/index.html</guid>
+      <pubDate>Mon, 12 Nov 2018 12:00:00 GMT</pubDate>
+      <description>I love the Saul Goodman character. He found this name the day he thought about a career change...</description>
+    </item>
+    <item>
+      <title>三日坊主</title>
+      <link>https://brandelune.github.io/2018/11/13/index.html</link>
+      <guid>https://brandelune.github.io/2018/11/13/index.html</guid>
+      <pubDate>Tue, 13 Nov 2018 12:00:00 GMT</pubDate>
+      <description>We use the expression "三日坊主(ミッカボウズ)" (three day monk) in Japan for people who can't commit to something for more than a few days. Hopefully, my #10000daysof code will be longer than that...</description>
+    </item>
+    <item>
+      <title>I am your father!</title>
+      <link>https://brandelune.github.io/2018/11/14/index.html</link>
+      <guid>https://brandelune.github.io/2018/11/14/index.html</guid>
+      <pubDate>Wed, 14 Nov 2018 12:00:00 GMT</pubDate>
+      <description>I started learning Chinese in January. I thought my "experience" in learning languages would allow me to do it my way. So I bought a few books and asked a student at the local university to help me with the pronunciation.</description>
+    </item>
+    <item>
+      <title>Islands</title>
+      <link>https://brandelune.github.io/2018/11/15/index.html</link>
+      <guid>https://brandelune.github.io/2018/11/15/index.html</guid>
+      <pubDate>Thu, 15 Nov 2018 12:00:00 GMT</pubDate>
+      <description>There is an island, thirty five minutes off the coast by ferry, where I often spend the day. There are only 3 roads and you can walk around it in an hour.</description>
+    </item>
+    <item>
+      <title>Just enough wine</title>
+      <link>https://brandelune.github.io/2018/11/16/index.html</link>
+      <guid>https://brandelune.github.io/2018/11/16/index.html</guid>
+      <pubDate>Fri, 16 Nov 2018 12:00:00 GMT</pubDate>
+      <description>Today I had to attend a party as board member of the local Japan-France association. The wine was nice and the people too. I came home late so did not have much time to work.</description>
+    </item>
+    <item>
+      <title>Brother in law</title>
+      <link>https://brandelune.github.io/2018/11/17/index.html</link>
+      <guid>https://brandelune.github.io/2018/11/17/index.html</guid>
+      <pubDate>Sat, 17 Nov 2018 12:00:00 GMT</pubDate>
+      <description>My brother in law is in Japan for work for 2 weeks so he will stay with us tonight. Back to Tokyo tomorrow evening and back to France on Thursday.</description>
+    </item>
+    <item>
+      <title>BBQ</title>
+      <link>https://brandelune.github.io/2018/11/18/index.html</link>
+      <guid>https://brandelune.github.io/2018/11/18/index.html</guid>
+      <pubDate>Sun, 18 Nov 2018 12:00:00 GMT</pubDate>
+      <description>BBQ on the hill, with all the friends. Twice a year.</description>
+    </item>
+    <item>
+      <title>Dreams</title>
+      <link>https://brandelune.github.io/2018/11/19/index.html</link>
+      <guid>https://brandelune.github.io/2018/11/19/index.html</guid>
+      <pubDate>Mon, 19 Nov 2018 12:00:00 GMT</pubDate>
+      <description>Yesterday I was exhausted. I went to bed at 11:30 and I slept almost until 9. I remember having dreams.</description>
+    </item>
+    <item>
+      <title>Awk, my god!</title>
+      <link>https://brandelune.github.io/2018/11/20/index.html</link>
+      <guid>https://brandelune.github.io/2018/11/20/index.html</guid>
+      <pubDate>Tue, 20 Nov 2018 12:00:00 GMT</pubDate>
+      <description>Yesterday I tried this automation that checked the contents of /css and created an html index from the data. I used unix commands, pipes, redirection, sed, and I managed to have something that worked from the command line, but for some reason (escapes maybe?) I could not make it run from a script.</description>
+    </item>
+    <item>
+      <title>Birthday!</title>
+      <link>https://brandelune.github.io/2018/11/21/index.html</link>
+      <guid>https://brandelune.github.io/2018/11/21/index.html</guid>
+      <pubDate>Wed, 21 Nov 2018 12:00:00 GMT</pubDate>
+      <description>I'm 49 today. I've been telling anyone who asks "I'm close to 50" just to getting used to say the number. 49 is just another step in that direction. Hopefully, 365 days from now, I'll be working on cool web sites that will make the kids proud. I had two cakes today too.</description>
+    </item>
+    <item>
+      <title>Math</title>
+      <link>https://brandelune.github.io/2018/11/22/index.html</link>
+      <guid>https://brandelune.github.io/2018/11/22/index.html</guid>
+      <pubDate>Fri, 23 Nov 2018 12:00:00 GMT</pubDate>
+      <description>I'm writing this on the 23. I could not do much yesterday. Busy with meetings. I did some HS maths though. Trigonometric functions. That was much more fun than when I did them in HS...</description>
+    </item>
+    <item>
+      <title>Practice</title>
+      <link>https://brandelune.github.io/2018/11/23/index.html</link>
+      <guid>https://brandelune.github.io/2018/11/23/index.html</guid>
+      <pubDate>Fri, 23 Nov 2018 18:00:00 GMT</pubDate>
+      <description>Today I had a kendo competition. I have not seriously practiced for close to 2 years. The result was, as I joked on twitter, not "不 (ふ) 動 (どう) 心 (しん) (immovable mind) " but just "不動 ふどう (immovable)".</description>
+    </item>
+    <item>
+      <title>100daysof...</title>
+      <link>https://brandelune.github.io/2018/11/24/index.html</link>
+      <guid>https://brandelune.github.io/2018/11/24/index.html</guid>
+      <pubDate>Sat, 24 Nov 2018 12:00:00 GMT</pubDate>
+      <description>I started my "100daysofkendo".</description>
+    </item>
+    <item>
+      <title>Emacs</title>
+      <link>https://brandelune.github.io/2018/11/25/index.html</link>
+      <guid>https://brandelune.github.io/2018/11/25/index.html</guid>
+      <pubDate>Sun, 25 Nov 2018 12:00:00 GMT</pubDate>
+      <description>I wrote an emacs lisp script to automate the generation of daily templates.</description>
+    </item>
+    <item>
+      <title>CSS magic</title>
+      <link>https://brandelune.github.io/2018/11/26/index.html</link>
+      <guid>https://brandelune.github.io/2018/11/26/index.html</guid>
+      <pubDate>Mon, 26 Nov 2018 12:00:00 GMT</pubDate>
+      <description>Two days ago I created for the first time a graphic in pure CSS.</description>
+    </item>
+    <item>
+      <title>Lots of meta stuff</title>
+      <link>https://brandelune.github.io/2018/11/27/index.html</link>
+      <guid>https://brandelune.github.io/2018/11/27/index.html</guid>
+      <pubDate>Tue, 27 Nov 2018 12:00:00 GMT</pubDate>
+      <description>I spent a bit part of the evening rewriting the css index generating file. For some reason it refused to work today.</description>
+    </item>
+    <item>
+      <title>Slowly</title>
+      <link>https://brandelune.github.io/2018/11/28/index.html</link>
+      <guid>https://brandelune.github.io/2018/11/28/index.html</guid>
+      <pubDate>Wed, 28 Nov 2018 12:00:00 GMT</pubDate>
+      <description>Progress is slow. But it's what drives my day. I'm waiting for the few hours I have at night to work on freeCodeCamp, to write some code, to read a few articles about such and such web-related technology.</description>
+    </item>
+    <item>
+      <title>Very slowly</title>
+      <link>https://brandelune.github.io/2018/11/29/index.html</link>
+      <guid>https://brandelune.github.io/2018/11/29/index.html</guid>
+      <pubDate>Thu, 29 Nov 2018 12:00:00 GMT</pubDate>
+      <description>I didn't do much at all, but I went to bed relatively early. Around 1am. I still did two lessons on freeCodeCamp. I'm close to finishing the third part in the responsive web certification.</description>
+    </item>
+    <item>
+      <title>Stars</title>
+      <link>https://brandelune.github.io/2018/11/30/index.html</link>
+      <guid>https://brandelune.github.io/2018/11/30/index.html</guid>
+      <pubDate>Fri, 30 Nov 2018 12:00:00 GMT</pubDate>
+      <description>There was an exercise on freeCodeCamp today that was really nice. It was a night sky with stars, and by using animation you had to make the stars twinkle.</description>
+    </item>
+    <item>
+      <title>Shakuhachi</title>
+      <link>https://brandelune.github.io/2018/12/1/index.html</link>
+      <guid>https://brandelune.github.io/2018/12/1/index.html</guid>
+      <pubDate>Sat, 1 Dec 2018 12:00:00 GMT</pubDate>
+      <description>I was at John 海山 カイザン Neptune's free concert in Higashi Ueta today. Higashi Ueta is a bit far from home.</description>
+    </item>
+    <item>
+      <title>Emacs again</title>
+      <link>https://brandelune.github.io/2018/12/2/index.html</link>
+      <guid>https://brandelune.github.io/2018/12/2/index.html</guid>
+      <pubDate>Sun, 2 Dec 2018 12:00:00 GMT</pubDate>
+      <description>Today I worked hard in Emacs. I realized yesterday that my current script was not working for some dates.</description>
+    </item>
+    <item>
+      <title>Emacs forever</title>
+      <link>https://brandelune.github.io/2018/12/3/index.html</link>
+      <guid>https://brandelune.github.io/2018/12/3/index.html</guid>
+      <pubDate>Mon, 3 Dec 2018 12:00:00 GMT</pubDate>
+      <description>I'm not yet done with that function. After realizing my oversight for the December 1st page, it took more time than I thought to fix things.</description>
+    </item>
+    <item>
+      <title>Programming is hard</title>
+      <link>https://brandelune.github.io/2018/12/9/index.html</link>
+      <guid>https://brandelune.github.io/2018/12/9/index.html</guid>
+      <pubDate>Sun, 9 Dec 2018 12:00:00 GMT</pubDate>
+      <description>I've not written in a week, but it's not because I was resting. I was struggling with my emacs lisp code and I'm not done with it yet.</description>
+    </item>
+    <item>
+      <title>Stuck between a rock...</title>
+      <link>https://brandelune.github.io/2018/12/10/index.html</link>
+      <guid>https://brandelune.github.io/2018/12/10/index.html</guid>
+      <pubDate>Mon, 10 Dec 2018 12:00:00 GMT</pubDate>
+      <description>I am stuck where I don't want to be. I want to complete that code and have working templates. But if I pretend it is the most important aspect of my current endeavor then I'll get lost into finicking over "not good enough" when I should be focusing on "good enough".</description>
+    </item>
+    <item>
+      <title>A month already</title>
+      <link>https://brandelune.github.io/2018/12/11/index.html</link>
+      <guid>https://brandelune.github.io/2018/12/11/index.html</guid>
+      <pubDate>Tue, 11 Dec 2018 12:00:00 GMT</pubDate>
+      <description>The beginning is already shrouded in the past. I faintly remember when I started and what I did then, but only reading the daily notices manages to bring back the memories.</description>
+    </item>
+    <item>
+      <title>I need a break</title>
+      <link>https://brandelune.github.io/2018/12/12/index.html</link>
+      <guid>https://brandelune.github.io/2018/12/12/index.html</guid>
+      <pubDate>Wed, 12 Dec 2018 12:00:00 GMT</pubDate>
+      <description>I need a break</description>
+    </item>
+    <item>
+      <title>Getting ready...</title>
+      <link>https://brandelune.github.io/2019/02/10/index.html</link>
+      <guid>https://brandelune.github.io/2019/02/10/index.html</guid>
+      <pubDate>Sun, 10 Feb 2019 12:00:00 GMT</pubDate>
+      <description>I did a lot today. I understand what it means when programmers say "without good comments you can't understand code that you wrote months ago". My code is not complex by any stretch of the imagination, but it took a while to understand again how my emacs lisp templating worked, what was the structure of the project, etc.</description>
+    </item>
+    <item>
+      <title>Back to the web!</title>
+      <link>https://brandelune.github.io/2019/02/11/index.html</link>
+      <guid>https://brandelune.github.io/2019/02/11/index.html</guid>
+      <pubDate>Mon, 11 Feb 2019 12:00:00 GMT</pubDate>
+      <description>Today I updated a Wordpress site I'm in charge of. Simple stuff. The only issue was changing the latitude and longitude data for the Google maps API that for some reason still refused to work.</description>
+    </item>
+    <item>
+      <title>Simple HTML</title>
+      <link>https://brandelune.github.io/2019/02/12/index.html</link>
+      <guid>https://brandelune.github.io/2019/02/12/index.html</guid>
+      <pubDate>Tue, 12 Feb 2019 12:00:00 GMT</pubDate>
+      <description>I'm doing lesson 11 from Basic HTML at FreeCodeCamp.</description>
+    </item>
+    <item>
+      <title>RSS feed!</title>
+      <link>https://brandelune.github.io/2019/02/13/index.html</link>
+      <guid>https://brandelune.github.io/2019/02/13/index.html</guid>
+      <pubDate>Wed, 13 Feb 2019 18:00:00 GMT</pubDate>
+      <description>As I wrote the other day on dev.to, I've been subscribing to a lot of "web design" and various tech feeds recently. And I thought, why not have my own RSS feed for this wonderful hand-typed web-thing that I'm building at the moment?</description>
+    </item>
+    <item>
+      <title>Restarting from scratch</title>
+      <link>https://brandelune.github.io/2019/11/24/index.html</link>
+      <guid>https://brandelune.github.io/2019/11/24/index.html</guid>
+      <pubDate>Sun, 24 Nov 2019 18:00:00 GMT</pubDate>
+      <description>It's a bit heartbreaking to read previous entries and see how happy I was to start something new again, after so many years. Although there are also things I am happy I did, the last few months were a mess. So, let me make a list of things I can be relatively proud of and of things I really should reflect on.</description>
+    </item>
+    <item>
+      <title>My basic git workflow</title>
+      <link>https://brandelune.github.io/2019/11/25/index.html</link>
+      <guid>https://brandelune.github.io/2019/11/25/index.html</guid>
+      <pubDate>Mon, 25 Nov 2019 18:00:00 GMT</pubDate>
+      <description>Learning again, not exactly from where I started, but not exactly from where I left either. A quick brush up of my git workflow, just to make sure it's somewhere I can easily find...</description>
+    </item>
+    <item>
+      <title>Where is my template!</title>
+      <link>https://brandelune.github.io/2019/11/26/index.html</link>
+      <guid>https://brandelune.github.io/2019/11/26/index.html</guid>
+      <pubDate>Tue, 26 Nov 2019 18:00:00 GMT</pubDate>
+      <description>I've been checking the code I wrote last year, found that I did not know how to use it anymore, and decided to check the emacs debugging tools. Now I can step through my code, and evaluate arbitrary expressions while the code is being debugged!</description>
+    </item>
+    <item>
+      <title>all those things TODO</title>
+      <link>https://brandelune.github.io/2019/11/27/index.html</link>
+      <guid>https://brandelune.github.io/2019/11/27/index.html</guid>
+      <pubDate>Wed, 27 Nov 2019 18:00:00 GMT</pubDate>
+      <description>I simply created an org file to keep track of all the things I need to do. The file is also hosted on the site, and I'm going to need to change how the HTML output looks...</description>
+    </item>
+    <item>
+      <title>Lots of org-mode</title>
+      <link>https://brandelune.github.io/2019/11/29/index.html</link>
+      <guid>https://brandelune.github.io/2019/11/29/index.html</guid>
+      <pubDate>Fri, 29 Nov 2019 18:00:00 GMT</pubDate>
+      <description>Modifying my org file for HTML export. All sorts of things to tweak in the manual, pretty cool. But I also need to add a specific CSS for the headings themselves.</description>
+    </item>
+    <item>
+      <title>org export</title>
+      <link>https://brandelune.github.io/2019/12/1/index.html</link>
+      <guid>https://brandelune.github.io/2019/12/1/index.html</guid>
+      <pubDate>Sun, 1 Dec 2019 18:00:00 GMT</pubDate>
+      <description>I spent most of the day working on org-mode export to HTML. My CSS is rusty but I've mostly worked with magit and I'm significantly better at it now.</description>
+    </item>
+    <item>
+      <title>Lots of stuff</title>
+      <link>https://brandelune.github.io/2019/12/03/index.html</link>
+      <guid>https://brandelune.github.io/2019/12/03/index.html</guid>
+      <pubDate>Tue, 3 Dec 2019 18:00:00 GMT</pubDate>
+      <description>Some refactoring of the template code, lots of git/github related tasks, nothing (yet) on HTML/CSS/JS but it's becoming again a regular thing and I like that.</description>
+    </item>
+    <item>
+      <title>Reddited</title>
+      <link>https://brandelune.github.io/2019/12/14/index.html</link>
+      <guid>https://brandelune.github.io/2019/12/14/index.html</guid>
+      <pubDate>Sun, 15 Dec 2019 18:00:00 GMT</pubDate>
+      <description>My "New Introduction to Programming in Emacs Lisp" has been linked to on reddit. That's my other "pinned" repository on Github. It prompted a number of positive comments, some remarks, some interesting conversations, and, of course, a few updates to the document. It is a very pre-alpha-draft level document that requires a big amount of work before being of any use and I had not worked on it seriously for about 3 years...</description>
+    </item>
+    <item>
+      <title>RSS again</title>
+      <link>https://brandelune.github.io/2019/12/16/index.html</link>
+      <guid>https://brandelune.github.io/2019/12/16/index.html</guid>
+      <pubDate>Tue, 17 Dec 2019 15:12:01 UT</pubDate>
+      <description>Last year on November 16 I mentioned the sr.ht/ code hosting service. It happens that the owner and main developer is promoting his activity also through the use of blogs and has thus created a mailing list where blog writers who use his service can also discuss. I introduced myself there a few days ago and got comments right away about this site. The first one being that I had forgotten to specify the charset... For a multilingual user who knows what the absence of encoding/charset definition means, that was really a shame. I fixed that eventually...</description>
+    </item>
+    <item>
+      <title>myTitle</title>
+      <link>pageLink</link>
+      <guid>pageLink</guid>
+      <pubDate>Fri, 20 Dec 2019 14:12:36 UT</pubDate>
+      <description>myDescription</description>
+      </item><item>
+      <title>myTitle</title>
+      <link>pageLink</link>
+      <guid>pageLink</guid>
+      <pubDate>Fri, 20 Dec 2019 14:12:36 UT</pubDate>
+      <description>myDescription</description>
+    </item>
+    <item>
+      <title>myTitle</title>
+      <link>pageLink</link>
+      <guid>pageLink</guid>
+      <pubDate>Fri, 20 Dec 2019 14:12:36 UT</pubDate>
+      <description>myDescription</description>
+      </item><item>
+      <title>myTitle</title>
+      <link>pageLink</link>
+      <guid>pageLink</guid>
+      <pubDate>Fri, 20 Dec 2019 14:12:36 UT</pubDate>
+      <description>myDescription</description>
+      </item><item>
+      <title>myTitle</title>
+      <link>pageLink</link>
+      <guid>pageLink</guid>
+      <pubDate>Fri, 20 Dec 2019 14:12:36 UT</pubDate>
+      <description>myDescription</description>
+      </item><item>
+      <title>myTitle</title>
+      <link>pageLink</link>
+      <guid>pageLink</guid>
+      <pubDate>Fri, 20 Dec 2019 14:12:36 UT</pubDate>
+      <description>myDescription</description>
+      </item><item>
+      <title>myTitle</title>
+      <link>pageLink</link>
+      <guid>pageLink</guid>
+      <pubDate>Fri, 20 Dec 2019 14:12:36 UT</pubDate>
+      <description>myDescription</description>
+      </item><item>
+      <title>myTitle</title>
+      <link>pageLink</link>
+      <guid>pageLink</guid>
+      <pubDate>Fri, 20 Dec 2019 14:12:36 UT</pubDate>
+      <description>myDescription</description>
+      </item><item>
+      <title>myTitle</title>
+      <link>pageLink</link>
+      <guid>pageLink</guid>
+      <pubDate>Fri, 20 Dec 2019 14:12:36 UT</pubDate>
+      <description>myDescription</description>
+      </item><item>
+      <title>myTitle</title>
+      <link>pageLink</link>
+      <guid>pageLink</guid>
+      <pubDate>Fri, 20 Dec 2019 14:12:36 UT</pubDate>
+      <description>myDescription</description>
+    </item>
+    <item>
+      <title>myTitle</title>
+      <link>pageLink</link>
+      <guid>pageLink</guid>
+      <pubDate>Fri, 20 Dec 2019 14:12:36 UT</pubDate>
+      <description>myDescription</description>
+      </item><item>
+      <title>myTitle</title>
+      <link>pageLink</link>
+      <guid>pageLink</guid>
+      <pubDate>Fri, 20 Dec 2019 14:12:36 UT</pubDate>
+      <description>myDescription</description>
+    </item>
+    <item>
+      <title>myTitle</title>
+      <link>pageLink</link>
+      <guid>pageLink</guid>
+      <pubDate>Fri, 20 Dec 2019 14:12:36 UT</pubDate>
+      <description>myDescription</description>
+    </item>
+
+    <item>
+      <title>myTitle</title>
+      <link>pageLink</link>
+      <guid>pageLink</guid>
+      <pubDate>Fri, 20 Dec 2019 14:12:36 UT</pubDate>
+      <description>myDescription</description>
+    </item>
+    <item>
+      <title>myTitle</title>
+      <link>pageLink</link>
+      <guid>pageLink</guid>
+      <pubDate>Fri, 20 Dec 2019 14:12:36 UT</pubDate>
+      <description>myDescription</description>
+    </item>
+    <!-- place new items above this line -->
+  </channel>
+</rss>
