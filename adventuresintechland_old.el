@@ -9,6 +9,15 @@
 (defun myNextDayString (myDate)
   (my0Padding (+ (string-to-number myDate) 1)))
 
+(defun myInsert (myText myMarker myFile)
+  (save-current-buffer
+    (set-buffer (find-file-noselect myFile))
+    (goto-char (point-min))
+    (goto-char (- (search-forward myMarker) (length myMarker) 1))
+    (insert myText)
+    (save-buffer)
+    (kill-buffer)))
+
 ;;;;;; compute dates for edge cases
 
 (defun dailyIndex (myDate myTitle mySubtitle)
