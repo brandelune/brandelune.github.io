@@ -59,22 +59,55 @@
 (setq baseCSSPath (format "../../../css/%s/" (format-time-string "%Y"))) ;; 2019
 ;;;; maybe the CSS should be inside the base year and not in a separate tree
 ;;;; and each day css should be with the corresponding index file
-;;;; so we'd have (setq baseCSSPath (format "../../../%s/css/" (format-time-string "%Y"))) ;; 2019
+;;;; so we'd have
+(setq baseCSSPath (format "../../../%s/css/" (format-time-string "%Y"))) ;; 2019
 ;;;; instead
+;;;; also, see below
+(setq baseCSSPath (file-name-as-directory
+		   (format "../../../%s/css/" (format-time-string "%Y"))))
+;;;; this should be cleaner and safer
+;;;; TODO create a command that adds a line break and pads the new line with the same nb of ;;; as the line above
 
 ;;;; CSS base file, necessary
 (setq baseCSSFile "adventuresintechland.css")
 
-;;;; if the CSS goes with the index, no need for that
+;;;; if the CSS goes with the index.html file each day, no need for that
 (setq dailyCSSFile (format "adventuresintechland%s%s.css" (format-time-string "%m") myDate)) ;; mmdd.css
 ;;;; we can use the baseCSSFile name
 
 ;;;; the [Directory name] in the manual suggests using:
 ;;;;      (concat (file-name-as-directory DIRFILE) RELFILE)
 (concat (file-name-as-directory siteRoot) baseCSSFile)
+;;;; I'll need to find what's the best way to create file paths safely
+(setq path1 "/Users"
+      path2 "suzume"
+      path3 "Documents"
+      path4 "Code"
+      path5 "brandelune.github.io"
+      cssfilename "stuff.css")
 
-(setq baseCSSLink (concat baseCSSPath baseCSSFile))
+(concat (file-name-as-directory path1)
+	(file-name-as-directory path2)
+	(file-name-as-directory path3)
+	(file-name-as-directory path4)
+	(file-name-as-directory path5)
+	cssfilename)
+;;;; this works. good.
+;;;; I can use that to store all sorts of partial paths for reuse
+
+;;;; here I can use the above code for improvement
+(setq baseCSSLink (concat
+		   (file-name-as-directory baseCSSPath)
+		   baseCSSFile))
+
+;;;; same here, but I'll need to consider where to put the file in the end
 (setq dailyCSSLink (concat baseCSSPath dailyCSSFile))
+;;;; maybe I need "baseDailyCSSPath" and "baseCSSFile" instead
+(setq dailyCSSLink (concat
+		    (file-name-as-directory baseDailyCSSPath)
+		    baseCSSFile))
+;;;; that's it for the CSS related paths, now everything becomes about day changes
+
 (setq previousDay (myPreviousDayString myDate))
 (setq previousDate (format "%s%s" (format-time-string "%m") previousDay)) ;; mmdd
 (setq previousDayLink (format "../../%s/%s/index.html" (format-time-string "%m") previousDay)) ;; mm/dd/index.html
