@@ -108,6 +108,22 @@
 		    baseCSSFile))
 ;;;; that's it for the CSS related paths, now everything becomes about day changes
 
+;;;; myPreviousDayString is currently only subtracting 1 to myDate, and that doesn't work for 2 reasons:
+;;;; 1) the previous days is often not current date -1
+;;;; because I dont create html pages everyday
+
+(define-key emacs-lisp-mode-map (kbd "<C-return>")
+  (lambda ()
+    (interactive)
+    (insert "
+;;;; ")))
+;;;; good, I've my ;;;; inserting command now...
+;;;; ok, back to work
+;;;; 2) in beginning of month/year the previous day is never current date -1
+;;;; I need a way to ask for the previous day so that I am down with painful computations
+;;;; also, there could be a way to detect the latest numbered folder in the tree and guess the day from that.
+
+;;;; 
 (setq previousDay (myPreviousDayString myDate))
 (setq previousDate (format "%s%s" (format-time-string "%m") previousDay)) ;; mmdd
 (setq previousDayLink (format "../../%s/%s/index.html" (format-time-string "%m") previousDay)) ;; mm/dd/index.html
