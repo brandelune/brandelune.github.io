@@ -112,11 +112,6 @@
 ;;;; 1) the previous days is often not current date -1
 ;;;; because I dont create html pages everyday
 
-(define-key emacs-lisp-mode-map (kbd "<C-return>")
-  (lambda ()
-    (interactive)
-    (insert "
-;;;; ")))
 ;;;; good, I've my ;;;; inserting command now...
 ;;;; ok, back to work
 ;;;; 2) in beginning of month/year the previous day is never current date -1
