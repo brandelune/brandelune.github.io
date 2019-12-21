@@ -65,7 +65,7 @@
         %6$s
 
         <p><em>Adventures in Tech Land, Season 2<br />%4$s, day ...</em></p>
-        <h1>%1$s <a href="https://brandelune.github.io/adventuresintechland.xml"><img src="https://www.mozilla.org/media/img/trademarks/feed-icon-28x28.e077f1f611f0.png" width="15px" height="15px" alt="rss feed" /></a></h1>
+        <h1>%1$s <a href=\"https://brandelune.github.io/adventuresintechland.xml\"><img src=\"https://www.mozilla.org/media/img/trademarks/feed-icon-28x28.e077f1f611f0.png\" width=\"15px\" height=\"15px\" alt=\"rss feed\" /></a></h1>
         <p></p>
         <h2>%5$s</h2>
         <p></p>
