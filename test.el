@@ -1,15 +1,13 @@
+;;;; I need to debug this
 (write-region "stuff" nil "/Users/suzume/Documents/Code/brandelune.github.io/test.txt" nil t nil t)
-
-(length myMarker)
-
-(find-file-noselect "/Users/suzume/Documents/Code/brandelune.github.io/test2.xml")
 
 ;;;; generating my RSS item
 
-(setq myTitle "myTitle"
-      pageLink "pageLink"
+(setq myTitle "contents to file"
+      pageLink "https://brandelune.github.io/2019/12/22/index.html"
       pubDate (format-time-string "%a, %d %b %Y %H:%m:%S UT" (current-time) t)
-      myDescription "myDescription")
+      myDescription "For reasons that I cannot explain, write-region kept behaving weirdly since the beginning. The behavior is roughly the following: I create an index file from the dailyIndex function, I try to open the file that, from the Finder, looks like the file I intended to create
+Regardless of the method I use (C-x C-f, or directly from the Finder), Emacs displays the elisp code buffer, there is no way I can actually open the file index.html, it looks like the elisp code buffer is attached to the file, when I try to save the elisp code file, I get messages like \"the file has been modified on disk\" and all sorts of weird things...")
 
 (defun genRSSItem ()
   (setq myRSSItem
@@ -36,76 +34,7 @@
       myMarker "    <!-- place new items above this line -->"
       myFile "/Users/suzume/Documents/Code/brandelune.github.io/test.xml")
 
-(defun myInsert (myText myMarker myFile)
-  (save-current-buffer
-    (set-buffer (find-file-noselect myFile))
-    (goto-char (point-min))
-    (goto-char (- (search-forward myMarker) (length myMarker)))
-    (insert myText)
-    (indent-region (point-min) (point-max))
-    (save-buffer)
-    (kill-buffer)))
-
-(defun myInsert2 (myText myMarker myFile)
-  (with-current-buffer
-      (set-buffer (find-file-noselect myFile))
-    (goto-char (point-min))
-    (goto-char (- (search-forward myMarker) (length myMarker)))
-    (insert myText)
-    (indent-region (point-min) (point-max))
-    (save-buffer)
-    (kill-buffer)))
-
-(myInsert3 myText myMarker myFile)
-
-
-(defun myInsert3 (myText myMarker myFile)
-  (save-current-buffer
-    (set-buffer (find-file-noselect myFile))
-    (goto-char (point-min))
-    (condition-case nil
-	(progn
-	  (goto-char (- (search-forward myMarker) (length myMarker)))
-	  (insert myText)
-	  (indent-region (point-min) (point-max))
-	  (save-buffer))
-      (error (format "%s was not found" myMarker)))
-    (kill-buffer)))
-
-
-(defun myInsert4 (myText myMarker myFile)
-  (save-current-buffer
-    (set-buffer (find-file-noselect myFile))
-    (goto-char (point-min))
-    (if (not (search-forward myMarker nil t))
-	(progn
-	  (kill-buffer)
-	  (user-error (format "%s was not found" myMarker)))
-      (progn
-	(goto-char (point-min))
-	(goto-char (- (search-forward myMarker) (length myMarker)))
-	(insert myText)
-	(indent-region (point-min) (point-max))
-	(save-buffer)
-	(kill-buffer)))))
-
-(myInsert4 myText myMarker myFile)
-
-(setq myText myRSSItem
-      myMarker "JCH"
-      myFile "/Users/suzume/Documents/Code/brandelune.github.io/test.xml")
-
-
-(defun myInsert5 (myText myMarker myFile)
-  (save-current-buffer
-    (set-buffer (find-file-noselect myFile))
-    (kill-buffer)))
-
-(myInsert5 myText myMarker myFile)
-
-(defun myInsert6 (myText myMarker myFile)
-  (save-current-buffer
-    (set-buffer (find-file-noselect myFile))))
+(myInsert myText myMarker myFile)
 
 ;;;; now I need to compute dates
 ;;;; from _old.el
@@ -187,15 +116,10 @@
 ;;;; this part gets the input inside
 ;;;; could it be:
 (defun dailyTest (myDate myYesterdate myTitle mySubtitle)
-  (interactive "ntoday:  (format-time-string "%d")
+  (interactive "ntoday:
 nlast day:
 MTitle:
 MSubtitle:")
-  (format "%1$s %2$s %3$s %4$s"
-	  myDate
-	  myYesterdate
-	  myTitle
-	  mySubtitle))
   
   (setq siteRoot "/Users/suzume/Documents/Code/brandelune.github.io/")
   (setq baseCSSPath (format "../../../css/%s/" (format-time-string "%Y"))) ;; 2019
