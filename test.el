@@ -46,7 +46,17 @@
     (save-buffer)
     (kill-buffer)))
 
-(myInsert myText myMarker myFile)
+(defun myInsert2 (myText myMarker myFile)
+  (with-current-buffer
+      (set-buffer (find-file-noselect myFile))
+    (goto-char (point-min))
+    (goto-char (- (search-forward myMarker) (length myMarker)))
+    (insert myText)
+    (indent-region (point-min) (point-max))
+    (save-buffer)
+    (kill-buffer)))
+
+(myInsert2 myText myMarker myFile)
 
 ;;;; now I need to compute dates
 ;;;; from _old.el
