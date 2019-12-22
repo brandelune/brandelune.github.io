@@ -126,7 +126,18 @@
                 (read-string "Title: " )
                 (read-string "Sub-title: ")))
 ;;;; this part gets the input inside
- 
+;;;; could it be:
+(defun dailyTest (myDate myYesterdate myTitle mySubtitle)
+  (interactive "ntoday:  (format-time-string "%d")
+nlast day:
+MTitle:
+MSubtitle:")
+  (format "%1$s %2$s %3$s %4$s"
+	  myDate
+	  myYesterdate
+	  myTitle
+	  mySubtitle))
+  
   (setq siteRoot "/Users/suzume/Documents/Code/brandelune.github.io/")
   (setq baseCSSPath (format "../../../css/%s/" (format-time-string "%Y"))) ;; 2019
   (setq baseCSSFile "adventuresintechland.css")
