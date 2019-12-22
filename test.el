@@ -33,7 +33,7 @@
 ;;;; and then using the item in my insertion function
 
 (setq myText myRSSItem
-      myMarker "    <!-- place new items under this line -->"
+      myMarker "    <!-- place new items above this line -->"
       myFile "/Users/suzume/Documents/Code/brandelune.github.io/test.xml")
 
 (defun myInsert (myText myMarker myFile)
@@ -72,6 +72,40 @@
       (error (format "%s was not found" myMarker)))
     (kill-buffer)))
 
+
+(defun myInsert4 (myText myMarker myFile)
+  (save-current-buffer
+    (set-buffer (find-file-noselect myFile))
+    (goto-char (point-min))
+    (if (not (search-forward myMarker nil t))
+	(progn
+	  (kill-buffer)
+	  (user-error (format "%s was not found" myMarker)))
+      (progn
+	(goto-char (point-min))
+	(goto-char (- (search-forward myMarker) (length myMarker)))
+	(insert myText)
+	(indent-region (point-min) (point-max))
+	(save-buffer)
+	(kill-buffer)))))
+
+(myInsert4 myText myMarker myFile)
+
+(setq myText myRSSItem
+      myMarker "JCH"
+      myFile "/Users/suzume/Documents/Code/brandelune.github.io/test.xml")
+
+
+(defun myInsert5 (myText myMarker myFile)
+  (save-current-buffer
+    (set-buffer (find-file-noselect myFile))
+    (kill-buffer)))
+
+(myInsert5 myText myMarker myFile)
+
+(defun myInsert6 (myText myMarker myFile)
+  (save-current-buffer
+    (set-buffer (find-file-noselect myFile))))
 
 ;;;; now I need to compute dates
 ;;;; from _old.el
