@@ -1,26 +1,37 @@
 <html>
     <head lang="en-us">
-        <title>inserting stuff</title>
+        <title>contents to file</title>
         <link rel="stylesheet" type="text/css" href="../../../css/2019/adventuresintechland.css" class="baseCSS"/>
         <link rel="stylesheet" type="text/css" href="../../../css/2019/adventuresintechland1222.css" class="dailyCSS"/>
         <meta charset="UTF-8" />
     </head>
     <body>
         <p class="navigation">
-            <a href="../../12/21/index.html" hreflang="en" rel="prev">1221</a>
+            <a href="../../12/16/index.html" hreflang="en" rel="prev">1216</a>
             <a href="../../../index.html" hreflang="en">index</a>
             <a href="../../../adventuresintechland.html" hreflang="en">todo</a>
             <a href="../../12/23/index.html" hreflang="en" rel="next">1223</a>
         </p>
 
-        <p><em>Adventures in Tech Land, Season 2<br />2019/12/22, day ...</em></p>
-        <h1>inserting stuff <a href="https://brandelune.github.io/adventuresintechland.xml"><img src="https://www.mozilla.org/media/img/trademarks/feed-icon-28x28.e077f1f611f0.png" width="15px" height="15px" alt="rss feed" /></a></h1>
-        <p></p>
+        <p><em>Adventures in Tech Land, Season 2<br />2019/12/22, day 10</em></p>
+        <h1>contents to file <a href="https://brandelune.github.io/adventuresintechland.xml"><img src="https://www.mozilla.org/media/img/trademarks/feed-icon-28x28.e077f1f611f0.png" width="15px" height="15px" alt="rss feed" /></a></h1>
+        <p>For reasons that I cannot explain, <code>write-region</code> kept behaving weirdly since the beginning. The behavior is roughly the following:
+	    <ul>
+		<li>I create an index file from the <code>dailyIndex</code> function</li>
+		<li>I try to open the file that, from the Finder, looks like the file I intended to create</li>
+		<li>Regardless of the method I use (C-x C-f, or directly from the Finder), Emacs displays the elisp code buffer</li>
+		<li>There is no way I can actually open the file <code>index.html</code>, it looks like the elisp code buffer is attached to the file</li>
+		<li>When I try to save the elisp code file, I get messages like "the file has been modified on disk"</li>
+	    </ul>
+	    and all sorts of weird things.</p>
         <h2>elisp...</h2>
-        <p></p>
+        <p>I was actually considering the creation of an insert function to automate the RSS feed creation. I worked on that the last few days and I eventually managed to write something relatively clean, that managed errors and nicely closes the buffer once modified. I have not used it live on the RSS but tonight, as I was creating this file, I got bit by the write-region bug again and got fed-up. I decided to use my hand-made <code>myInsert</code> function with an empty marker, which would leave point at the top for inserting the template.</p>
+	<p>I tried, and that worked, and there were no weird side effects, and I'm now happily filling the template with my achievements. I still promissed to find a reproductible way to trigger that behavior so I'm not totally done with <code>write-region</code>, but I need to move on, and this insertion function, which I had to write because <code>write-region</code> overwrites existing strings anyway and would not work in an xml file, was a huge help.</p>
+	<h2>Star Wars</h2>
+	<p>On a side note, no spoiler here, but the moral of the Star Wars franchise is that it's not easy to have it both ways: either you have a good story that moves people and is also a good movie, or you have a blockbuster that ties a few loose knots and makes (some) people richer. That's the story behind the first and the last Star Wars movies. If my 7 years old self had been told that 42 years ago, I would not have lost my time waiting to get a life. Funny how turning 50 makes the world look different.</p>
 
         <p class="navigation">
-            <a href="../../12/21/index.html" hreflang="en" rel="prev">1221</a>
+            <a href="../../12/16/index.html" hreflang="en" rel="prev">1216</a>
             <a href="../../../index.html" hreflang="en">index</a>
             <a href="../../../adventuresintechland.html" hreflang="en">todo</a>
             <a href="../../12/23/index.html" hreflang="en" rel="next">1223</a>
