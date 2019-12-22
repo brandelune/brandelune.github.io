@@ -32,7 +32,10 @@ Regardless of the method I use (C-x C-f, or directly from the Finder), Emacs dis
 
 (setq myText myRSSItem
       myMarker "    <!-- place new items above this line -->"
-      myFile "/Users/suzume/Documents/Code/brandelune.github.io/test.xml")
+      myFile "/Users/suzume/Documents/Code/brandelune.github.io/adventuresintechland.xml")
+
+
+;;;; RSS feed update works, I need to move it to adventuresintechland_old.el
 
 (myInsert myText myMarker myFile)
 
