@@ -295,6 +295,13 @@
       <pubDate>Sun, 22 Dec 2019 12:12:38 UT</pubDate>
       <description>For reasons that I cannot explain, write-region kept behaving weirdly since the beginning. The behavior is roughly the following: I create an index file from the dailyIndex function, I try to open the file that, from the Finder, looks like the file I intended to create, regardless of the method I use (C-x C-f, or directly from the Finder), Emacs displays the elisp code buffer, there is no way I can actually open the file index.html, it looks like the elisp code buffer is attached to the file, when I try to save the elisp code file, I get messages like "the file has been modified on disk" and all sorts of weird things...</description>
     </item>
+    <item>
+      <title>a warm living room</title>
+      <link>https://brandelune.github.io/2019/12/24/index.html</link>
+      <guid>https://brandelune.github.io/2019/12/24/index.html</guid>
+      <pubDate>Mon, 23 Dec 2019 15:12:27 UT</pubDate>
+      <description>I just got a gas heater in the living room. The house where I live now has no heating system, except for the gas cooker and the water heater. But as far as room heating is concerned, nothing. Until 2 days ago. Now it is considerably easier to stay at the table and work on my stuff. As I did last night, and tonight...</description>
+    </item>
     <!-- place new items above this line -->
   </channel>
 </rss>
