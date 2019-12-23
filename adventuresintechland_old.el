@@ -13,10 +13,18 @@
   (save-current-buffer
     (set-buffer (find-file-noselect myFile))
     (goto-char (point-min))
-    (goto-char (- (search-forward myMarker) (length myMarker) 1))
-    (insert myText)
-    (save-buffer)
-    (kill-buffer)))
+    (if (not (search-forward myMarker nil t))
+	(progn
+	  (kill-buffer)
+	  (user-error (format "%s was not found" myMarker)))
+      ;; user-error seems to abort the rest of the progn, hence the need to put kill-buffer above
+      (progn
+	(goto-char (point-min))
+	(goto-char (- (search-forward myMarker) (length myMarker)))
+	(insert myText)
+	(indent-region (point-min) (point-max))
+	(save-buffer)
+	(kill-buffer)))))
 
 ;;;;;; compute dates for edge cases
 
