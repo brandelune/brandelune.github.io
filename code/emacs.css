@@ -1,7 +1,7 @@
 /* html / body */
 
 html {
-	background-color: #e7e7e7;
+	background-color: #f2efe4;
 }
 
 html, body {
@@ -307,6 +307,12 @@ p em {
 	border-bottom-style: solid;
 	border-bottom-width: 1px;
 }
+
+kbd {
+	font-weight: bold;
+	color: #942193;
+}
+
 
 del {
 	text-decoration: none;
