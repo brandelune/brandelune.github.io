@@ -42,7 +42,7 @@ div.header {
     margin: .1em;
 }
 
-@media (min-width: 40em) {
+@media (max-width: 40em) {
   div.header {
       position: static;
       border-color: brown;
