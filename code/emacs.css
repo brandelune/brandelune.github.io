@@ -43,9 +43,6 @@ div.header {
 }
 
 @media (max-width: 40em) {
-    body {
-	font-size: 2em;
-    }
   div.header {
       position: static;
       border-color: brown;
