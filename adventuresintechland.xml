@@ -302,6 +302,13 @@
       <pubDate>Mon, 23 Dec 2019 15:12:27 UT</pubDate>
       <description>I just got a gas heater in the living room. The house where I live now has no heating system, except for the gas cooker and the water heater. But as far as room heating is concerned, nothing. Until 2 days ago. Now it is considerably easier to stay at the table and work on my stuff. As I did last night, and tonight...</description>
     </item>
+    <item>
+      <title>first rersponsive design</title>
+      <link>https://brandelune.github.io/2019/12/27/index.html</link>
+      <guid>https://brandelune.github.io/2019/12/27/index.html</guid>
+      <pubDate>Fri, 27 Dec 2019 05:12:28 UT</pubDate>
+      <description>In 2017 I started to work on a CSS for the emacs manual. The styles online and "home made" were different. That sparked a thin thread on emacs-devel. A few days ago I decided to resume work on that part of my emacs activity... And since I have a mobile phone with a quite impressive screen now, I was very happy to try the design there, too. First, I discovered a big discrepency between the way the various browsers "responsive mode" display the files and the way they are actually displayed on the device. After being super proud of my first media query I ended up realizing that nothing was happening on the device...</description>
+    </item>
     <!-- place new items above this line -->
   </channel>
 </rss>
