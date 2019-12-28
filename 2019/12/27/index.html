@@ -1,0 +1,51 @@
+<html>
+    <head lang="en-us">
+  	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>my first responsive design</title>
+    <link rel="stylesheet" type="text/css" href="../../../css/2019/adventuresintechland.css" class="baseCSS"/>
+    <link rel="stylesheet" type="text/css" href="../../../css/2019/adventuresintechland1227.css" class="dailyCSS"/>
+    <meta charset="UTF-8" />
+    </head>
+    <body>
+        <p class="navigation">
+            <a href="../../12/26/index.html" hreflang="en" rel="prev">1226</a>
+            <a href="../../../index.html" hreflang="en">index</a>
+            <a href="../../../adventuresintechland.html" hreflang="en">todo</a>
+            <a href="../../12/28/index.html" hreflang="en" rel="next">1228</a>
+        </p>
+
+        <p><em>Adventures in Tech Land, Season 2<br />2019/12/27, day ...</em></p>
+        <h1>my first responsive design <a href="https://brandelune.github.io/adventuresintechland.xml"><img src="https://www.mozilla.org/media/img/trademarks/feed-icon-28x28.e077f1f611f0.png" width="15px" height="15px" alt="rss feed" /></a></h1>
+        <p>In 2017 I started to work on a CSS for the emacs manual. The online and "home made" stykes were different. That sparked a thin thread on emacs-devel. A few days ago I decided to resume work on that part of my emacs activity... And since I have a mobile phone with a quite impressive screen now, I was very happy to try the design there, too. First, I discovered a big discrepency between the way the various browsers "responsive mode" display the files and the way they are actually displayed on the device. After being super proud of my first media query I ended up realizing that nothing was happening on the device...</p>
+	<p>But as I was looking for a reason or a way to debug that, I could not find anything but endless references to media queries, and however the way I looked at my code I could not find any glitch. I am not scared of searching the internet for answers even if that drives me down a rabbit hole. Eventually, I decided to ask. First I asked the BBEdit user list, where the question was obviously off-topic but with a caveat that I would first appreciate any pointer to places where the question was not off-topic. The second the mail was sent, I thought of reddit, and then I remembered that freecodecamp had started similar forum a short while ago.</p>
+	<p>reddit quickly gave me a useful answer: <a href="https://www.reddit.com/r/css/comments/eft71n/iphone_safari_does_not_respond_to_maxwidth_media/">reddit: iPhone Safari does not respond to max-width media query ?</a>.</p>
+	<p>I just needed to add a <code>&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</code> line in <code>&lt;head&gt;</code>. That was it.</p>
+		<h2>viewport</h2>
+		<p>According to the Mozilla Developper Network's <a href="https://developer.mozilla.org/en-US/docs/Mozilla/Mobile/Viewport_meta_tag">Using the viewport meta tag to control layout on mobile browsers</a>, <code>viewport</code> is a technology created by Apple to support proper display of full web pages on smaller screens that have a higher pixel density than desktop displays.</p>
+		<p>A decade later, the <code>viewport</code> property is adopted by vendors and designers alike and even if there is a feeble attempt on the CSS front to port that to CSS in the <a href="https://www.w3.org/TR/css-device-adapt-1/">CSS Device Adaptation Module Level 1</a>, the specification has not evolved from draft status since 2016 and neither Safari nor Firefox support it.</p>
+		<p>I still need to understand what the meaning of the values is, but my most urgent issue was to include that <code>&lt;meta&gt;</code> code into the texinfo HTML output of the emacs lisp reference.</p>
+		<h2>texinfo</h2>
+		<p>All of the GNU project documentation is based on <a href="https://www.gnu.org/software/texinfo/">Texinfo</a> and creating the HTML documentation is just a <code>make html</code> command away.</p>
+		<p>Default HTML output for the texinfo commands is, as what triggered this whole endeavor in the first place, very plain HTML but also simply not visually attractive, which tends to make it harder to read. To add CSS data is easy enough. It is possible to include style information into the HTML or to add a link to an external file by using either <code>--css- include=file</code> or <code>--css-ref=url</code>. When that is done, to have proper mobile support, the extra <code>viewport</code> information can be included with the configuration option <code>-c</code> to produce the following configuration:</p>
+		<p><code>HTML_OPTS = --no-split --html --css-include=emacs.css -c EXTRA_HEAD="&lt;meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"&gt;"</code></p>
+		<h2>media queries</h2>
+		<p>Now that the thing was online and properly set for mobile access, I needed to adapt the queries to various settings. I chose 3. One for portrait, one for low height landscape and the default for "normal" landscape:
+		    <ul><li>@media (max-height: 40em) and (orientation:landscape)</li>
+			<li>@media (max-width: 40em)</li>
+		    </ul>
+		    Et voilà! Now I need to refine the contents, read the references to understand the details of the <code>viewport</code> parameter, and move on to <code>flex</code> and other things...</p>
+		<p>Oh, and the files are here, if you missed yesterday's write-up:
+		    <ul><li>
+			<a href="https://github.com/brandelune/brandelune.github.io/blob/gh-pages/code/emacs.css">the emacs.css file</a></li>
+			<li><a href="../../../code/Visiting-Functions.html">the "local" Functions for Visiting Files</a></li>
+			<li><a href="https://www.gnu.org/software/emacs/manual/html_node/elisp/Visiting-Functions.html">the "official" Functions for Visiting Files</a></li></ul></p>
+
+
+			<p class="navigation">
+			    <a href="../../12/26/index.html" hreflang="en" rel="prev">1226</a>
+			    <a href="../../../index.html" hreflang="en">index</a>
+			<a href="../../../adventuresintechland.html" hreflang="en">todo</a>
+			<a href="../../12/28/index.html" hreflang="en" rel="next">1228</a>
+        </p>
+    </body>
+</html>
