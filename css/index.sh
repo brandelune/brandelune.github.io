@@ -4,7 +4,7 @@ outputFile="index.html"
 
 htmlHead="<!doctype html>
 <html>
-  <head>
+  <head lang="en-us">
     <title>Css index</title>
     <link rel=\"stylesheet\" type=\"text/css\" media=\"screen\" href=\"./2018/adventuresintechland.css\" />
     <meta charset=\"utf-8\" />
