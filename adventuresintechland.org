@@ -7,55 +7,71 @@
 #+HTML_LINK_UP: https://github.com/brandelune/brandelune.github.io
 
 ----------
-* TODO daily entries [0/8]
-  DEADLINE: <2019-12-23 Mon ++1d>
+* TODO daily entries [9/9]
+  DEADLINE: <2019-12-30 Mon ++1d>
   :PROPERTIES:
-  :LAST_REPEAT: [2019-12-22 Sun 21:34]
+  :LAST_REPEAT: [2019-12-29 Sun 00:44]
   :END:
+  - State "DONE"       from "TODO"       [2019-12-29 Sun 00:44]
   - State "DONE"       from "TODO"       [2019-12-22 Sun 21:34]
   - State "DONE"       from "TODO"       [2019-12-18 Wed 00:16]
   - State "DONE"       from "TODO"       [2019-12-15 Sun 13:07]
   - State "DONE"       from "TODO"       [2019-12-04 Wed 08:31]
   - State "DONE"       from "TODO"       [2019-12-01 Sun 11:49]
   - State "DONE"       from "TODO"       [2019-11-29 Fri 20:26]
-** TODO run =adventuresintechland_old.el= to create the template      :emacs:
-   - State "DONE"       from "TODO"       [2019-12-24 Tue 00:35]
-   - State "DONE"       from "TODO"       [2019-12-22 Sun 20:54]
-   - State "DONE"       from "TODO"       [2019-12-18 Wed 00:12]
-   - State "DONE"       from "TODO"       [2019-12-15 Sun 14:01]
-** TODO fill the template with the stuff I did                           :me:
-   - State "DONE"       from "TODO"       [2019-12-24 Tue 00:35]
-   - State "DONE"       from "TODO"       [2019-12-22 Sun 20:54]
-   - State "DONE"       from "TODO"       [2019-12-18 Wed 00:12]
-   - State "DONE"       from              [2019-12-15 Sun 14:00]
-** TODO stage the newly created folder to add the new index.html        :git:
-   - State "DONE"       from "TODO"       [2019-12-24 Tue 00:37]
-   - State "DONE"       from "TODO"       [2019-12-22 Sun 21:30]
-   - State "DONE"       from "TODO"       [2019-12-18 Wed 00:15]
-   - State "DONE"       from "TODO"       [2019-12-15 Sun 14:04]
-** TODO edit the main index:                                             :me:
-   - State "DONE"       from "TODO"       [2019-12-24 Tue 00:37]
-   - State "DONE"       from "TODO"       [2019-12-22 Sun 20:54]
-   - State "DONE"       from "TODO"       [2019-12-18 Wed 00:12]
-   - State "DONE"       from "TODO"       [2019-12-15 Sun 14:01]
-*** [last day] x 2
-*** logbook + nb of documented days
-** TODO create the rss entry in adventuresintechland.xml                 :me:
+** DONE create the rss entry in adventuresintechland.xml                 :me:
+   - State "DONE"       from "TODO"       [2019-12-27 Fri 14:16]
    - State "DONE"       from "TODO"       [2019-12-24 Tue 00:57]
    - State "DONE"       from "TODO"       [2019-12-22 Sun 21:29]
    - State "DONE"       from "TODO"       [2019-12-18 Wed 00:15]
    - State "DONE"       from "TODO"       [2019-12-15 Sun 14:00]
-** TODO update adventuresintechland.org
+The RSS entry is the summary for the day. I should write it first
+** DONE run =adventuresintechland_old.el= to create the template      :emacs:
+   - State "DONE"       from "TODO"       [2019-12-27 Fri 14:19]
+   - State "DONE"       from "TODO"       [2019-12-24 Tue 00:35]
+   - State "DONE"       from "TODO"       [2019-12-22 Sun 20:54]
+   - State "DONE"       from "TODO"       [2019-12-18 Wed 00:12]
+   - State "DONE"       from "TODO"       [2019-12-15 Sun 14:01]
+I just fix the links in that step.
+** DONE edit the main index:                                             :me:
+   - State "DONE"       from "TODO"       [2019-12-27 Fri 14:19]
+   - State "DONE"       from "TODO"       [2019-12-24 Tue 00:37]
+   - State "DONE"       from "TODO"       [2019-12-22 Sun 20:54]
+   - State "DONE"       from "TODO"       [2019-12-18 Wed 00:12]
+   - State "DONE"       from "TODO"       [2019-12-15 Sun 14:01]
+Here again, just fix the links and modify the numbers
+*** [last day] x 2
+*** logbook + nb of documented days
+** DONE edit the previous day
+   - State "DONE"       from "TODO"       [2019-12-27 Fri 14:19]
+Just fix the links and make them point at the correct "next day"
+** DONE fill the template with the stuff I did                           :me:
+   - State "DONE"       from "TODO"       [2019-12-29 Sun 00:41]
+   - State "DONE"       from "TODO"       [2019-12-24 Tue 00:35]
+   - State "DONE"       from "TODO"       [2019-12-22 Sun 20:54]
+   - State "DONE"       from "TODO"       [2019-12-18 Wed 00:12]
+   - State "DONE"       from              [2019-12-15 Sun 14:00]
+Use the RSS summary as a first paragraph
+** DONE stage the new folder and index.html, the RSS and  old indexes   :git:
+   - State "DONE"       from "TODO"       [2019-12-29 Sun 00:42]
+   - State "DONE"       from "TODO"       [2019-12-24 Tue 00:37]
+   - State "DONE"       from "TODO"       [2019-12-22 Sun 21:30]
+   - State "DONE"       from "TODO"       [2019-12-18 Wed 00:15]
+   - State "DONE"       from "TODO"       [2019-12-15 Sun 14:04]
+** DONE update adventuresintechland.org
+   - State "DONE"       from "TODO"       [2019-12-29 Sun 00:44]
    - State "DONE"       from "TODO"       [2019-12-24 Tue 00:57]
    - State "DONE"       from "TODO"       [2019-12-22 Sun 21:33]
    - State "DONE"       from "TODO"       [2019-12-18 Wed 00:15]
    - State "DONE"       from "TODO"       [2019-12-15 Sun 14:02]
-** TODO export adventuresintechland.org.html
+** DONE export adventuresintechland.org.html
+   - State "DONE"       from "TODO"       [2019-12-29 Sun 00:44]
    - State "DONE"       from "TODO"       [2019-12-24 Tue 00:57]
    - State "DONE"       from "TODO"       [2019-12-22 Sun 21:33]
    - State "DONE"       from "TODO"       [2019-12-18 Wed 00:15]
    - State "DONE"       from "TODO"       [2019-12-15 Sun 14:04]
-** TODO push everything to origin                                       :git:
+** DONE commit the org file and push everything to origin               :git:
+   - State "DONE"       from "TODO"       [2019-12-29 Sun 00:44]
    - State "DONE"       from "TODO"       [2019-12-24 Tue 00:57]
    - State "DONE"       from "TODO"       [2019-12-22 Sun 21:34]
    - State "DONE"       from "TODO"       [2019-12-18 Wed 00:15]
@@ -83,11 +99,12 @@ I'll need to put a marker somewhere that I can access through the el file
 ** CODE [2018-11-18] automated index creation for readings            :shell:
 ** CODE [2018-11-18] Automate CSS index generation                    :shell:
 The index.sh script exists but needs to be run automatically.
-** CHECK [2019-12-03] check git revert                                  :git:
+** CHECK [2019-12-03] git revert                                        :git:
+** CHECK [2018-11-17] git merge                                         :git:
 ** CHECK [2019-12-01] how to fix commit messages ?                :magit:git:
 I was thinking that had to do with the "amend" command, but maybe not...
-** CHECK [2018-11-17] check git merge                                   :git:
 ** CHECK [2018-11-14] tag insertion right and left of selection       :emacs:
+And how to efficiently select
 ** CHECK [2018-11-14] FireFox/Safari/Chrome developer tools         :browser:
 ** CHECK [2018-11-14] elfeed manual                                   :emacs:
 ** CHECK [2018-11-14] isearch manual                                  :emacs:
@@ -135,7 +152,20 @@ Just added a link into the elisp template.
    - State "DONE"       from "TODO"       [2019-12-01 Sun 08:44]
 Using magit is not that hard.
 
+* learn
+** CSS
+*** variables
+*** flexbox
+*** grid
+*** bootstrap
+*** Google Material Design
+** CMS updates
+*** Joomla
+*** Wordpress
+*** Drupal
 * administrative stuff
+** DONE amend the daily tasks to reduce the number of possible errors
+   - State "DONE"       from "TODO"       [2019-12-27 Fri 14:22]
 ** DONE make a check list of all the tasks required in publishing the pages
    - State "DONE"       from "TODO"       [2019-11-28 Thu 22:35]
 ** DONE create a todo file
