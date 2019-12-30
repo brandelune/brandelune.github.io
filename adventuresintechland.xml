@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
+    <image>
+      <url>https://brandelune.github.io/favicon/favicon-144.png</url>
+      <title>Adventures in Tech Land</title>
+      <link>https://brandelune.github.io/</link>
+      <width>144</width>
+      <height>144</height>
+      <description>The adventures of a translator around 50 who resumes web "development" after a 20+ years lapse...</description>
+    </image>
     <title>Adventures in Tech Land</title>
     <link>https://brandelune.github.io</link>
     <description>The adventures of a translator around 50 who resumes web "development" after a 20+ years lapse...</description>
