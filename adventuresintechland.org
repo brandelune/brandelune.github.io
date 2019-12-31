@@ -89,14 +89,18 @@ Use the RSS summary as a first paragraph
 
 * code
 ** FIX [#A] [2019-12-01] just got bitten by the date edge cases...    :elisp:
-** FIX [2018-11-12] check the links automatically                     :shell:
-** FIX [2018-11-13] automatically create daily links            :elisp:shell:
-should find the previous folder in the hierarchy, etc.
-** CODE [2019-12-22 Sun] foldable navigation for the main index         :CSS:
-** CODE [2019-12-01] capture directly to adventuresintechland.org     :elisp:
 ** CODE [#B] [2019-12-01] automatically generate "nth day"            :elisp:
 nth day is present in the global index and in the daily file
 I'll need to put a marker somewhere that I can access through the el file
+** FIX [#B] [2018-11-13] automatically create daily links       :elisp:shell:
+should find the previous folder in the hierarchy, etc.
+** FIX [#C] [2019-12-31 Tue] add favicon support to RSS                 :xml:
+ https://snook.ca/archives/rss/add_logo_to_feed
+ http://www.rssboard.org/rss-2-0-1
+ not working at the moment...
+** CODE [#C] [2019-12-22 Sun] foldable navigation for the main index    :CSS:
+** CODE [#C] [2019-12-01] capture directly to adventuresintechland.org :elisp:
+** FIX [2018-11-12] check the links automatically                     :shell:
 ** CODE [2018-11-18] automated index creation for readings            :shell:
 ** CODE [2018-11-18] Automate CSS index generation                    :shell:
 The index.sh script exists but needs to be run automatically.
