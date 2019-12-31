@@ -1,74 +1,21 @@
-;;;; I need to debug this
-(write-region "stuff" nil "/Users/suzume/Documents/Code/brandelune.github.io/test.txt" nil t nil t)
-
-;;;; generating my RSS item
-
-(setq myTitle "contents to file"
-      pageLink "https://brandelune.github.io/2019/12/22/index.html"
-      pubDate (format-time-string "%a, %d %b %Y %H:%m:%S UT" (current-time) t)
-      myDescription "For reasons that I cannot explain, write-region kept behaving weirdly since the beginning. The behavior is roughly the following: I create an index file from the dailyIndex function, I try to open the file that, from the Finder, looks like the file I intended to create
-Regardless of the method I use (C-x C-f, or directly from the Finder), Emacs displays the elisp code buffer, there is no way I can actually open the file index.html, it looks like the elisp code buffer is attached to the file, when I try to save the elisp code file, I get messages like \"the file has been modified on disk\" and all sorts of weird things...")
-
-(defun genRSSItem ()
-  (setq myRSSItem
-	(format
-	 "<item>
-<title>%1$s</title>
-<link>%2$s</link>
-<guid>%2$s</guid>
-<pubDate>%3$s</pubDate>
-<description>%4$s</description>
-</item>
-"
-	 myTitle          ;;  1$
-	 pageLink         ;;  2$
-	 pubDate          ;;  3$
-	 myDescription    ;;  4$
-	 )))
-
-(genRSSItem)
-
-;;;; and then using the item in my insertion function
-
-(setq myText myRSSItem
-      myMarker "    <!-- place new items above this line -->"
-      myFile "/Users/suzume/Documents/Code/brandelune.github.io/adventuresintechland.xml")
-
-
-;;;; RSS feed update works, I need to move it to adventuresintechland_old.el
-
-(myInsert myText myMarker myFile)
-
 ;;;; now I need to compute dates
 ;;;; from _old.el
 ;;;; no edge case is considered, ugly stuff
 
 ;;;; siteRoot, necessary
-(setq siteRoot "/Users/suzume/Documents/Code/brandelune.github.io/")
+(setq siteRoot (file-name-as-directory "/Users/suzume/Documents/Code/brandelune.github.io/"))
 
 ;;;; not sure what to do with that format-time-string, it looks like I use YYYY a lot
-(setq baseCSSPath (format "../../../css/%s/" (format-time-string "%Y"))) ;; 2019
-;;;; maybe the CSS should be inside the base year and not in a separate tree
-;;;; and each day css should be with the corresponding index file
-;;;; so we'd have
-(setq baseCSSPath (format "../../../%s/css/" (format-time-string "%Y"))) ;; 2019
-;;;; instead
-;;;; also, see below
-(setq baseCSSPath (file-name-as-directory
-		   (format "../../../%s/css/" (format-time-string "%Y"))))
-;;;; this should be cleaner and safer
-;;;; TODO create a command that adds a line break and pads the new line with the same nb of ;;; as the line above
+(setq myYear (format-time-string "%Y"))
+(setq relativeCSSPath (file-name-as-directory (format "../../../%s/css/" myYear))) ;; 2019
 
-;;;; CSS base file, necessary
-(setq baseCSSFile "adventuresintechland.css")
-
-;;;; if the CSS goes with the index.html file each day, no need for that
-(setq dailyCSSFile (format "adventuresintechland%s%s.css" (format-time-string "%m") myDate)) ;; mmdd.css
-;;;; we can use the baseCSSFile name
+;;;; CSS base file name, necessary
+(setq baseCSSFilename ("adventuresintechland.css"))
 
 ;;;; the [Directory name] in the manual suggests using:
 ;;;;      (concat (file-name-as-directory DIRFILE) RELFILE)
-(concat (file-name-as-directory siteRoot) baseCSSFile)
+(concat siteRoot baseCSSFile) ; -> already "file-name-as-directory"
+
 ;;;; I'll need to find what's the best way to create file paths safely
 (setq path1 "/Users"
       path2 "suzume"
@@ -87,9 +34,7 @@ Regardless of the method I use (C-x C-f, or directly from the Finder), Emacs dis
 ;;;; I can use that to store all sorts of partial paths for reuse
 
 ;;;; here I can use the above code for improvement
-(setq baseCSSLink (concat
-		   (file-name-as-directory baseCSSPath)
-		   baseCSSFile))
+(setq yearBaseCSSLink (concat relativeCSSPath baseCSSFilename)) ;; "../../../css/2019/adventuresintechland.css"
 
 ;;;; same here, but I'll need to consider where to put the file in the end
 (setq dailyCSSLink (concat baseCSSPath dailyCSSFile))
@@ -100,27 +45,35 @@ Regardless of the method I use (C-x C-f, or directly from the Finder), Emacs dis
 ;;;; that's it for the CSS related paths, now everything becomes about day changes
 
 ;;;; myPreviousDayString is currently only subtracting 1 to myDate, and that doesn't work for 2 reasons:
+
 ;;;; 1) the previous days is often not current date -1
 ;;;; because I dont create html pages everyday
 
 ;;;; good, I've my ;;;; inserting command now...
 ;;;; ok, back to work
+
 ;;;; 2) in beginning of month/year the previous day is never current date -1
-;;;; I need a way to ask for the previous day so that I am down with painful computations
+
+;;;; Hence, I need a way to ask for the previous day so that I am done with painful computations
 ;;;; also, there could be a way to detect the latest numbered folder in the tree and guess the day from that.
+
+(defun foo (arg buff)
+  "doc string"
+  (interactive "P\nbbuffer: "))
 
 ;;;; The original code has lots of mechanisms that could be extracted from the funtion
 
-(defun dailyIndex (myDate myTitle mySubtitle)
+(defun dailyIndex (myDate myLastDate myTitle mySubtitle)
   (interactive (list
                 (read-string "Date: " (format-time-string "%d"))
+		(read-string "Last date: " (format-time-string "%d"))
                 (read-string "Title: " )
                 (read-string "Sub-title: ")))
 ;;;; this part gets the input inside
 ;;;; could it be:
 (defun dailyTest (myDate myYesterdate myTitle mySubtitle)
-  (interactive "ntoday:
-nlast day:
+  (interactive "ntoday: 
+nlast day: 
 MTitle:
 MSubtitle:")
   
