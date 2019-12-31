@@ -104,6 +104,17 @@ should find the previous folder in the hierarchy, etc.
 ** CODE [2018-11-18] automated index creation for readings            :shell:
 ** CODE [2018-11-18] Automate CSS index generation                    :shell:
 The index.sh script exists but needs to be run automatically.
+** LEARN CSS variable                                                   :css:
+** LEARN CSS flexbox                                                :css:css:
+** LEARN CSS grid                                                       :css:
+** LEARN CSS bootstrap                                                  :css:
+** LEARN Google material design
+** LEARN Joomla updates                                                 :cms:
+** LEARN wordpress updates                                              :cms:
+** LEARN Drupal updates                                                 :cms:
+** CHECK [2019-12-29 Sun] write-region bug ?                          :elisp:
+ (write-region "stuff" nil "/path/to/test.txt" nil t nil t)
+sometimes, such a one liner outputs itself to the target file. weird.
 ** CHECK [2019-12-03] git revert                                        :git:
 ** CHECK [2018-11-17] git merge                                         :git:
 ** CHECK [2019-12-01] how to fix commit messages ?                :magit:git:
@@ -157,17 +168,6 @@ Just added a link into the elisp template.
    - State "DONE"       from "TODO"       [2019-12-01 Sun 08:44]
 Using magit is not that hard.
 
-* learn
-** CSS
-*** variables
-*** flexbox
-*** grid
-*** bootstrap
-*** Google Material Design
-** CMS updates
-*** Joomla
-*** Wordpress
-*** Drupal
 * administrative stuff
 ** DONE amend the daily tasks to reduce the number of possible errors
    - State "DONE"       from "TODO"       [2019-12-27 Fri 14:22]
