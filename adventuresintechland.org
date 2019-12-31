@@ -126,18 +126,23 @@ And how to efficiently select
 ** CHECK [2018-11-14] isearch manual                                  :emacs:
 ** CHECK [2018-11-13] "project" manager for all the files             :emacs:
 ** CHECK [2018-11-11] add autocompletion for html/css                 :emacs:
-** DONE [#A] [2019-12-16 Mon] RFC-822 valide dates for the rss feed   :elisp:
-   - State "DONE"       from "CHECK"      [2019-12-22 Sun 21:31]
-(format-time-string "%a, %d %b %Y %H:%m:%S UT" (current-time) t)
-** DONE [#B] [2019-12-18 Wed] append the XML to the RSS file          :elisp:
+** DONE [2019-12-31 Tue] reorganize basic css locations                 :css:
+   - State "DONE"       from "CHECK"      [2019-12-31 Tue 11:18]
+move the main css files to the root of the css directory
+** DONE [2019-12-30 Mon] add favicon support                           :html:
+   - State "DONE"       from "CHECK"      [2019-12-30 Mon 23:51]
+ https://en.wikipedia.org/wiki/Favicon
+ And from there:
+ http://faviconit.com/en
+ It took me a while to remember "https://duckduckgo.com/?q=what+is+the+name+of+the+URL+icons+in+the+browser&t=osx&ia=about"...
+** DONE [2019-12-18 Wed] append the XML to the RSS file               :elisp:
 myInsert is used for that, need to pretify the thing and put it in the main code
    - State "DONE"       from "CHECK"      [2019-12-22 Sun 21:31]
-** DONE [2019-11-29] the RSS feed does not work anymore                 :xml:
-   - State "DONE"       from "CHECK"      [2019-12-16 Mon 08:58]
+** DONE [2019-12-16 Mon] RFC-822 valide dates for the rss feed        :elisp:
+   - State "DONE"       from "CHECK"      [2019-12-22 Sun 21:31]
+(format-time-string "%a, %d %b %Y %H:%m:%S UT" (current-time) t)
 ** DONE [2019-12-16 Mon] the RSS date is not valid                      :xml:
    - State "DONE"       from "CHECK"      [2019-12-16 Mon 08:58]
-** DONE [2019-11-26] create daily folder structure and html template  :elisp:
-   - State "DONE"       from "CHECK"      [2019-12-15 Sun 12:49]
 ** DONE [2019-12-01] add a "0" to single digit days in the page title :elisp:
 I externalized the date creation function to check for days < 10 and I had to create a "0 padding" function because number-to-string does not take options to format the resulting string. The function is written in C so way above what I can do... 
    - State "DONE"       from "CHECK"      [2019-12-03 Tue 12:28]
@@ -161,9 +166,13 @@ and sure enough, that old mail was listed at file:.git/config. It did not occur 
 git config --local user.email [my email]
 Et voilà, now I should be able to see my "contributions" to my own repository appear as green dots on my profile.
 Interesting to see how that little playful option (the green dots) helped me figure out a relatively important issue.
+** DONE [2019-11-29] the RSS feed does not work anymore                 :xml:
+   - State "DONE"       from "CHECK"      [2019-12-16 Mon 08:58]
 ** DONE [2019-11-29] link this todo file to all the daily files  :elisp:html:
    - State "DONE"       from "TODO"       [2019-12-01 Sun 08:44]
 Just added a link into the elisp template.
+** DONE [2019-11-26] create daily folder structure and html template  :elisp:
+   - State "DONE"       from "CHECK"      [2019-12-15 Sun 12:49]
 ** DONE [2018-11-14] pushing to github from emacs                     :emacs:
    - State "DONE"       from "TODO"       [2019-12-01 Sun 08:44]
 Using magit is not that hard.
