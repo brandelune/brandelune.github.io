@@ -135,6 +135,7 @@ Use the RSS summary as a first paragraph
 *** git merge gh-pages
 *** git push origin
 *** git checkout "gh-pages"
+* DONE items
 ** DONE [2019-12-31 Tue] create "edge-case" branch to work safely :)  :admin:
    - State "DONE"       from "TODO"       [2019-12-31 Tue 19:04]
 that's the whole point of having branches...
