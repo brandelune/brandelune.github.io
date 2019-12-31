@@ -20,14 +20,14 @@
   - State "DONE"       from "TODO"       [2019-12-04 Wed 08:31]
   - State "DONE"       from "TODO"       [2019-12-01 Sun 11:49]
   - State "DONE"       from "TODO"       [2019-11-29 Fri 20:26]
-** TODO create the rss entry in adventuresintechland.xml                 :me:
-   - State "DONE"       from "TODO"       [2019-12-27 Fri 14:16]
-   - State "DONE"       from "TODO"       [2019-12-24 Tue 00:57]
-   - State "DONE"       from "TODO"       [2019-12-22 Sun 21:29]
-   - State "DONE"       from "TODO"       [2019-12-18 Wed 00:15]
-   - State "DONE"       from "TODO"       [2019-12-15 Sun 14:00]
-The RSS entry is the summary for the day. I should write it first
-** TODO run =adventuresintechland_old.el= to create the template      :emacs:
+** TODO create the rss entry in [[file:adventuresintechland.xml][file:./adventuresintechland.xml]]          :me:
+    - State "DONE"       from "TODO"       [2019-12-27 Fri 14:16]
+    - State "DONE"       from "TODO"       [2019-12-24 Tue 00:57]
+    - State "DONE"       from "TODO"       [2019-12-22 Sun 21:29]
+    - State "DONE"       from "TODO"       [2019-12-18 Wed 00:15]
+    - State "DONE"       from "TODO"       [2019-12-15 Sun 14:00]
+ The RSS entry is the summary for the day. I should write it first
+** TODO run [[file:adventuresintechland.el][file:./adventuresintechland.el]] to create the template     :emacs:
    - State "DONE"       from "TODO"       [2019-12-27 Fri 14:19]
    - State "DONE"       from "TODO"       [2019-12-24 Tue 00:35]
    - State "DONE"       from "TODO"       [2019-12-22 Sun 20:54]
