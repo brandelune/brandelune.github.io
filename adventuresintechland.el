@@ -34,11 +34,8 @@
                 (read-string "Title: " )
                 (read-string "Sub-title: ")))
   (setq siteRoot "/Users/suzume/Documents/Code/brandelune.github.io/")
-  (setq baseCSSPath (format "../../../css/%s/" (format-time-string "%Y"))) ;; 2019
-  (setq baseCSSFile "adventuresintechland.css")
-  (setq dailyCSSFile (format "adventuresintechland%s%s.css" (format-time-string "%m") myDate)) ;; mmdd.css
-  (setq baseCSSLink (concat baseCSSPath baseCSSFile))
-  (setq dailyCSSLink (concat baseCSSPath dailyCSSFile))
+  (setq baseCSSLink "../../../adventuresintechland.css")
+  (setq dailyCSSLink "./adventuresintechland.css")
   (setq previousDay (myPreviousDayString myDate))
   (setq previousDate (format "%s%s" (format-time-string "%m") previousDay)) ;; mmdd
   (setq previousDayLink (format "../../%s/%s/index.html" (format-time-string "%m") previousDay)) ;; mm/dd/index.html
