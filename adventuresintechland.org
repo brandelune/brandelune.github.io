@@ -19,21 +19,21 @@
   - State "DONE"       from "TODO"       [2019-12-04 Wed 08:31]
   - State "DONE"       from "TODO"       [2019-12-01 Sun 11:49]
   - State "DONE"       from "TODO"       [2019-11-29 Fri 20:26]
-** DONE create the rss entry in adventuresintechland.xml                 :me:
+** TODO create the rss entry in adventuresintechland.xml                 :me:
    - State "DONE"       from "TODO"       [2019-12-27 Fri 14:16]
    - State "DONE"       from "TODO"       [2019-12-24 Tue 00:57]
    - State "DONE"       from "TODO"       [2019-12-22 Sun 21:29]
    - State "DONE"       from "TODO"       [2019-12-18 Wed 00:15]
    - State "DONE"       from "TODO"       [2019-12-15 Sun 14:00]
 The RSS entry is the summary for the day. I should write it first
-** DONE run =adventuresintechland_old.el= to create the template      :emacs:
+** TODO run =adventuresintechland_old.el= to create the template      :emacs:
    - State "DONE"       from "TODO"       [2019-12-27 Fri 14:19]
    - State "DONE"       from "TODO"       [2019-12-24 Tue 00:35]
    - State "DONE"       from "TODO"       [2019-12-22 Sun 20:54]
    - State "DONE"       from "TODO"       [2019-12-18 Wed 00:12]
    - State "DONE"       from "TODO"       [2019-12-15 Sun 14:01]
 I just fix the links in that step.
-** DONE edit the main index:                                             :me:
+** TODO edit the main index:                                             :me:
    - State "DONE"       from "TODO"       [2019-12-27 Fri 14:19]
    - State "DONE"       from "TODO"       [2019-12-24 Tue 00:37]
    - State "DONE"       from "TODO"       [2019-12-22 Sun 20:54]
@@ -42,35 +42,35 @@ I just fix the links in that step.
 Here again, just fix the links and modify the numbers
 *** [last day] x 2
 *** logbook + nb of documented days
-** DONE edit the previous day
+** TODO edit the previous day
    - State "DONE"       from "TODO"       [2019-12-27 Fri 14:19]
 Just fix the links and make them point at the correct "next day"
-** DONE fill the template with the stuff I did                           :me:
+** TODO fill the template with the stuff I did                           :me:
    - State "DONE"       from "TODO"       [2019-12-29 Sun 00:41]
    - State "DONE"       from "TODO"       [2019-12-24 Tue 00:35]
    - State "DONE"       from "TODO"       [2019-12-22 Sun 20:54]
    - State "DONE"       from "TODO"       [2019-12-18 Wed 00:12]
    - State "DONE"       from              [2019-12-15 Sun 14:00]
 Use the RSS summary as a first paragraph
-** DONE stage the new folder and index.html, the RSS and  old indexes   :git:
+** TODO stage the new folder and index.html, the RSS and  old indexes   :git:
    - State "DONE"       from "TODO"       [2019-12-29 Sun 00:42]
    - State "DONE"       from "TODO"       [2019-12-24 Tue 00:37]
    - State "DONE"       from "TODO"       [2019-12-22 Sun 21:30]
    - State "DONE"       from "TODO"       [2019-12-18 Wed 00:15]
    - State "DONE"       from "TODO"       [2019-12-15 Sun 14:04]
-** DONE update adventuresintechland.org
+** TODO update adventuresintechland.org
    - State "DONE"       from "TODO"       [2019-12-29 Sun 00:44]
    - State "DONE"       from "TODO"       [2019-12-24 Tue 00:57]
    - State "DONE"       from "TODO"       [2019-12-22 Sun 21:33]
    - State "DONE"       from "TODO"       [2019-12-18 Wed 00:15]
    - State "DONE"       from "TODO"       [2019-12-15 Sun 14:02]
-** DONE export adventuresintechland.org.html
+** TODO export adventuresintechland.org.html
    - State "DONE"       from "TODO"       [2019-12-29 Sun 00:44]
    - State "DONE"       from "TODO"       [2019-12-24 Tue 00:57]
    - State "DONE"       from "TODO"       [2019-12-22 Sun 21:33]
    - State "DONE"       from "TODO"       [2019-12-18 Wed 00:15]
    - State "DONE"       from "TODO"       [2019-12-15 Sun 14:04]
-** DONE commit the org file and push everything to origin               :git:
+** TODO commit the org file and push everything to origin               :git:
    - State "DONE"       from "TODO"       [2019-12-29 Sun 00:44]
    - State "DONE"       from "TODO"       [2019-12-24 Tue 00:57]
    - State "DONE"       from "TODO"       [2019-12-22 Sun 21:34]
