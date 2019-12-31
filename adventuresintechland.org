@@ -168,15 +168,15 @@ Just added a link into the elisp template.
    - State "DONE"       from "TODO"       [2019-12-01 Sun 08:44]
 Using magit is not that hard.
 
-* administrative stuff
-** DONE amend the daily tasks to reduce the number of possible errors
+** DONE [2019-11-24] change daily tasks                               :admin:
+to reduce the nb of possible errors
    - State "DONE"       from "TODO"       [2019-12-27 Fri 14:22]
-** DONE make a check list of all the tasks required in publishing the pages
+** DONE [2019-11-24] list the tasks required in publishing the pages :admin:
    - State "DONE"       from "TODO"       [2019-11-28 Thu 22:35]
-** DONE create a todo file
+** DONE [2019-11-24] create a global todo file                        :admin:
    - State "DONE"       from "TODO"       [2019-11-28 Thu 22:28]
-** DONE gather all the todos written in older pages
+** DONE [2019-11-24] gather all the todos written in older pages      :admin:
    - State "DONE"       from "TODO"       [2019-11-29 Fri 18:28]
-** DONE check how to customize org export because the HTML is ugly
+** DONE [2019-11-24] customize org export because the HTML is ugly :admin:
    - State "DONE"       from "TODO"       [2019-12-01 Sun 08:42]
    What I don't like is how the headings are HTML headers. The ToC alone would be sufficient for what I need. I did some css and it looks much better. With lots of room for improvement.
