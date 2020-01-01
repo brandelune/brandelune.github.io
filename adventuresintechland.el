@@ -94,15 +94,18 @@
 
 ;;;;;;;;;;;;;;
 
+(defun myLink ()
+  (let* ((Today (decode-time (float-time))))
+    (format "https://brandelune.github.io/%s/%s/%s/index.html" (sixth Today) (my0Padding (fifth Today)) (my0Padding (fourth Today)))
+    ))
 
-(defun myDailyRSSItem ()
-  (let ((myTitle "favicon")
-	(pageLink "https://brandelune.github.io/2020/01/01/index.html")
-	(pubDate (format-time-string "%a, %d %b %Y %H:%m:%S UT" (current-time) t))
-	(myDescription "As I was reading articles in netNewsWire I noticed that in the feed list some feeds had a logo while some had not. And it reminded me that there was something similar for the web. It took me a while (and a duckduckgo search) to remember how such things were called. Favicons! So I checked the web for information on how to install them and eventually found everything I needed. For now, I have my github profile image and it works on the site, but not on the RSS feed... I'll investigate that later."))
-	(setq myText
-	 (format
-	  "<item>
+(defun myDailyRSSItem (myTitle pageLink pubDate myDescription)
+  (interactive (list
+                (read-string "Title: ")
+                (read-string "Link: " (myLink))
+		(read-string "Date: " (format-time-string "%a, %d %b %Y %H:%m:%S UT" (current-time) t))
+		(read-string "Description: ")))
+  (setq myText	(format "<item>
 <title>%1$s</title>
 <link>%2$s</link>
 <guid>%2$s</guid>
@@ -110,15 +113,15 @@
 <description>%4$s</description>
 </item>
 "
-	  myTitle          ;;  1$
-	  pageLink         ;;  2$
-	  pubDate          ;;  3$
-	  myDescription    ;;  4$
-	  )))
-    (myInsert
-     myText
-     "<!-- place new items above this line -->"
-     "/Users/suzume/Documents/Code/brandelune.github.io/adventuresintechland.xml"))
+	 myTitle       ;;  1$
+	 pageLink      ;;  2$
+	 pubDate       ;;  3$
+	 myDescription ;;  4$
+	 ))
+  (myInsert
+   myText
+   "<!-- place new items above this line -->"
+   "/Users/suzume/Documents/Code/brandelune.github.io/adventuresintechland.xml"))
 
-(myDailyRSSItem)
+
 
