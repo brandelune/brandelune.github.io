@@ -162,9 +162,7 @@
   (setq previousDay (myPreviousDayString myDate))
   (setq previousDate (format "%s%s" (format-time-string "%m") previousDay)) ;; mmdd
   (setq previousDayLink (format "../../%s/%s/index.html" (format-time-string "%m") previousDay)) ;; mm/dd/index.html
-  (setq nextDay (myNextDayString myDate))
-  (setq nextDate (format "%s%s" (format-time-string "%m") nextDay)) ;; mmdd
-  (setq nextDayLink (format "../../%s/%s/index.html" (format-time-string "%m") nextDay)) ;; mm/dd/index.html
+  (setq nextDayLink (format "../%s/tomorrow.html" (format-time-string "%Y"))) ;; 2020/tomorrow.html
   (setq todayDate (format "%s/%s/%s" (format-time-string "%Y") (format-time-string "%m") myDate)) ;; yyyy/mm/dd
   (setq todayPath (concat siteRoot todayDate "/"))
   (setq todayCSS (concat siteRoot "css/" (format-time-string "%Y") "/" dailyCSSFile)) ;; css/2019/advmmdd.css
