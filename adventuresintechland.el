@@ -172,12 +172,11 @@
             <a href=\"%1$s\" hreflang=\"en\" rel=\"prev\">%2$s</a>
             <a href=\"../../../index.html\" hreflang=\"en\">index</a>
             <a href=\"../../../adventuresintechland.html\" hreflang=\"en\">todo</a>
-            <a href=\"%3$s\" hreflang=\"en\" rel=\"next\">%4$s</a>
+            <a href=\"%3$s\" hreflang=\"en\" rel=\"next\">tomorrow</a>
         </p>"
 		previousDayLink  ;;  1$
                 previousDate     ;;  2$
                 nextDayLink      ;;  3$
-                nextDate         ;;  4$
 ))
   (setq todayTemplate
         (format "<html>
