@@ -118,7 +118,7 @@
     (myInsert
      myText
      "<!-- place new items above this line -->"
-     "/Users/suzume/Documents/Code/brandelune.github.io/adventuresintechland.xml")))
+     "/Users/suzume/Documents/Code/brandelune.github.io/adventuresintechland.xml"))
 
 (myDailyRSSItem)
 
