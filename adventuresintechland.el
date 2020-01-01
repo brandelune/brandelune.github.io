@@ -96,10 +96,10 @@
 
 
 (defun myDailyRSSItem ()
-  (let ((myTitle "a warm living room")
-	(pageLink "https://brandelune.github.io/2019/12/24/index.html")
+  (let ((myTitle "favicon")
+	(pageLink "https://brandelune.github.io/2020/01/01/index.html")
 	(pubDate (format-time-string "%a, %d %b %Y %H:%m:%S UT" (current-time) t))
-	(myDescription "I just got a gas heater in the living room. The house where I live now has no heating system, except for the gas cooker and the water heater. But as far as room heating is concerned, nothing. Until 2 days ago. Now it is considerably easier to stay at the table and work on my stuff. As I did last night, and tonight..."))
+	(myDescription "As I was reading articles in netNewsWire I noticed that in the feed list some feeds had a logo while some had not. And it reminded me that there was something similar for the web. It took me a while (and a duckduckgo search) to remember how such things were called. Favicons! So I checked the web for information on how to install them and eventually found everything I needed. For now, I have my github profile image and it works on the site, but not on the RSS feed... I'll investigate that later."))
 	(setq myText
 	 (format
 	  "<item>
