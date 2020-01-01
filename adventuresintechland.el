@@ -107,7 +107,9 @@
 ;; ok, so how do I put that as a function of myDate...
 
 (defun myDate (Date)
-  (let ((Today (decode-time (float-time)))
+  "Lists a plausible (year month date) ;; TODO add error tests, for plausible dates 1<d>(28-29-30-31)"
+  (let* (
+	(Today (decode-time (float-time)))
     (thisMonth (fifth Today))
      (nextMonth (if (= 12 thisMonth)
 		    1
