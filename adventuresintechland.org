@@ -10,6 +10,7 @@
 ----------
 * code
 ** FIX [#A] [2019-12-01] just got bitten by the date edge cases...    :elisp:
+working on that in the edge-cases branch
 ** CODE [#B] [2019-12-01] automatically generate "nth day"            :elisp:
 nth day is present in the global index and in the daily file
 I'll need to put a marker somewhere that I can access through the el file
