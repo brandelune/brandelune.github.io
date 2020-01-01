@@ -120,15 +120,16 @@
       (thisYear (sixth Today))
       (nextYear (+ thisYear 1))
       (lastYear (- thisYear 1))
-      (dateDifference (- (fourth Today) myDate))
+      (dateDifference (- (fourth Today) Date))
       (myMonth (cond ((> 24 (abs dateDifference)) thisMonth)
 		    ((natnump dateDifference) nextMonth)
 		    (t lastMonth)))
       (myYear (cond ((= myMonth thisMonth) thisYear)
 		   ((and (= myMonth nextMonth) (= myMonth 1)) nextYear)
 		   (t lastYear))))
-    ()
-    
+    (list myYear myMonth Date)))
+
+(myDate 50)
   
 
 (defun myNextDayString (myDate)
