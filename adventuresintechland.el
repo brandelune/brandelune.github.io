@@ -43,9 +43,10 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (defun myDate (Date)
-  "Lists a plausible (year month date) ;; TODO add error tests
-the date should be comprised between 1 and (28 to 31)
-(myDate 3) -> (2020 1 3)"
+  "Lists a plausible (year month date)
+TODO add error tests
+the date should be comprised between 1 and (28 to 31)"
+;; (myDate 3) -> (2020 1 3)
   (let* (
 	(Today (decode-time (float-time)))
     (thisMonth (fifth Today))
