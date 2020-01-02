@@ -129,44 +129,45 @@ the date should be comprised between 1 and (28 to 31)"
         <link rel=\"stylesheet\" type=\"text/css\" href=\"%2$s\" class=\"baseCSS\"/>
         <link rel=\"stylesheet\" type=\"text/css\" href=\"%3$s\" class=\"dailyCSS\"/>
         <meta charset=\"UTF-8\" />
-    </head>
-    <body>
-        %6$s
+    </head>"
+                myTitle	     ;;  1$
+                baseCSSLink  ;;  2$
+                dailyCSSLink ;;  3$
+		))
 
-        <p><em>Adventures in Tech Land, Season 2<br />%4$s, day ...</em></p>
-        <h1>%1$s <a href=\"https://brandelune.github.io/adventuresintechland.xml\"><img src=\"https://www.mozilla.org/media/img/trademarks/feed-icon-28x28.e077f1f611f0.png\" width=\"15px\" height=\"15px\" alt=\"rss feed\" /></a></h1>
+  (setq todayTemplate
+        (format "%1$s
+    <body>
+        %2$s
+
+        <p><em>Adventures in Tech Land, Season 2<br />%3$s, day ...</em></p>
+        <h1>%4$s <a href=\"https://brandelune.github.io/adventuresintechland.xml\"><img src=\"https://www.mozilla.org/media/img/trademarks/feed-icon-28x28.e077f1f611f0.png\" width=\"15px\" height=\"15px\" alt=\"rss feed\" /></a></h1>
         <p></p>
         <h2>%5$s</h2>
         <p></p>
 
-        %6$s
+        %2$s
     </body>
 </html>"
-                myTitle          ;;  1$
-                baseCSSLink      ;;  2$
-                dailyCSSLink     ;;  3$
-                todayDate        ;;  4$
-                mySubtitle       ;;  5$
+                todayHeader	;;  1$
+		todayNavigation	;;  2$
+                todayDate	;;  3$
+                myTitle		;;  4$
+                mySubtitle	;;  5$
 
-		todayNavigation  ;;  6$
                 ))
-  
-  (write-region "" nil todayCSS nil t nil t)
+
   (make-directory todayPath)
   (myInsert todayTemplate "" todayIndex)
+  (myInsert "" "" dailyCSSLink)
   (find-file todayIndex))
 
-;;;;;;;;;;;;;;
-
-(defun myLink ()
-  (let* ((Today (decode-time (float-time))))
-    (format "https://brandelune.github.io/%s/%s/%s/index.html" (sixth Today) (my0Padding (fifth Today)) (my0Padding (fourth Today)))
-    ))
+;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (defun myDailyRSSItem (myTitle pageLink pubDate myDescription)
   (interactive (list
                 (read-string "Title: ")
-                (read-string "Link: " (myLink))
+                (read-string "Link: " pageLink)
 		(read-string "Date: " (format-time-string "%a, %d %b %Y %H:%m:%S UT" (current-time) t))
 		(read-string "Description: ")))
   (setq myText	(format "<item>
