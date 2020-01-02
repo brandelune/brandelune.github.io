@@ -217,15 +217,18 @@
 
 ;;;;;;;;;;;;;;
 
+(defun myLink ()
+  (let* ((Today (decode-time (float-time))))
+    (format "https://brandelune.github.io/%s/%s/%s/index.html" (sixth Today) (my0Padding (fifth Today)) (my0Padding (fourth Today)))
+    ))
 
-(defun myDailyRSSItem ()
-  (let ((myTitle "a warm living room")
-	(pageLink "https://brandelune.github.io/2019/12/24/index.html")
-	(pubDate (format-time-string "%a, %d %b %Y %H:%m:%S UT" (current-time) t))
-	(myDescription "I just got a gas heater in the living room. The house where I live now has no heating system, except for the gas cooker and the water heater. But as far as room heating is concerned, nothing. Until 2 days ago. Now it is considerably easier to stay at the table and work on my stuff. As I did last night, and tonight..."))
-	(setq myText
-	 (format
-	  "<item>
+(defun myDailyRSSItem (myTitle pageLink pubDate myDescription)
+  (interactive (list
+                (read-string "Title: ")
+                (read-string "Link: " (myLink))
+		(read-string "Date: " (format-time-string "%a, %d %b %Y %H:%m:%S UT" (current-time) t))
+		(read-string "Description: ")))
+  (setq myText	(format "<item>
 <title>%1$s</title>
 <link>%2$s</link>
 <guid>%2$s</guid>
@@ -233,15 +236,15 @@
 <description>%4$s</description>
 </item>
 "
-	  myTitle          ;;  1$
-	  pageLink         ;;  2$
-	  pubDate          ;;  3$
-	  myDescription    ;;  4$
-	  )))
-    (myInsert
-     myText
-     "<!-- place new items above this line -->"
-     "/Users/suzume/Documents/Code/brandelune.github.io/adventuresintechland.xml")))
+	 myTitle       ;;  1$
+	 pageLink      ;;  2$
+	 pubDate       ;;  3$
+	 myDescription ;;  4$
+	 ))
+  (myInsert
+   myText
+   "<!-- place new items above this line -->"
+   "/Users/suzume/Documents/Code/brandelune.github.io/adventuresintechland.xml"))
 
-(myDailyRSSItem)
+
 
