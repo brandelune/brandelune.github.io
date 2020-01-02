@@ -67,42 +67,54 @@ the date should be comprised between 1 and (28 to 31)"
 		   ((and (= myMonth nextMonth) (= myMonth 1)) nextYear)
 		   (t lastYear))))
     (list myYear myMonth Date)))
-  
 
+;;;;;;;;;;;;;;;;;;;;;;;;;
 
-;;;;;; compute dates for edge cases
-
-(defun dailyIndex (myDate myTitle mySubtitle)
+(defun dailyIndex (today myPreviousDate myTitle mySubtitle)
   (interactive (list
-                (read-string "Date: " (format-time-string "%d"))
+                (read-number "Date: " (fourth (decode-time (float-time))))
+                (read-number "Previous date: " (- (third (myDate (fourth (decode-time (float-time))))) 1))
                 (read-string "Title: " )
                 (read-string "Sub-title: ")))
-  (setq siteRoot "/Users/suzume/Documents/Code/brandelune.github.io/")
-  (setq baseCSSLink "../../../adventuresintechland.css")
-  (setq dailyCSSLink "./adventuresintechland.css")
-  (setq previousDay (myPreviousDayString myDate))
-  (setq previousDate (format "%s%s" (format-time-string "%m") previousDay)) ;; mmdd
-  (setq previousDayLink (format "../../%s/%s/index.html" (format-time-string "%m") previousDay)) ;; mm/dd/index.html
-  (setq nextDayLink (format "../%s/tomorrow.html" (format-time-string "%Y"))) ;; 2020/tomorrow.html
-  (setq todayDate (format "%s/%s/%s" (format-time-string "%Y") (format-time-string "%m") myDate)) ;; yyyy/mm/dd
-  (setq todayPath (concat siteRoot todayDate "/"))
-  (setq todayCSS (concat siteRoot "css/" (format-time-string "%Y") "/" dailyCSSFile)) ;; css/2019/advmmdd.css
-  (setq todayIndex (concat todayPath "index.html"))
+
+  (setq myPreviousDateList (myDate myPreviousDate)
+	previousDate (concat (my0Padding (second myPreviousDateList)) (my0Padding (third myPreviousDateList)))
+	previousDateLink (concat (file-name-as-directory "../../../")
+				 (file-name-as-directory (number-to-string (first myPreviousDateList)))
+				 (file-name-as-directory (my0Padding (second myPreviousDateList)))
+				 (file-name-as-directory (my0Padding (third myPreviousDateList)))
+				 "index.html"))
+
+  (setq myTodayList (myDate today)
+	siteRoot "/Users/suzume/Documents/Code/brandelune.github.io/"
+	todayPath (concat (file-name-as-directory siteRoot)
+			   (file-name-as-directory (number-to-string (first myTodayList)))
+			   (file-name-as-directory (my0Padding (second myTodayList)))
+			   (file-name-as-directory (my0Padding (third myTodayList))))
+	todayIndex (concat (file-name-as-directory todayPath)  "index.html")
+	todayDate  (concat (number-to-string (first myTodayList)) "/" (my0Padding (second myTodayList)) "/" (my0Padding (third myTodayList))))
+
   (setq todayNavigation
 	(format "<p class=\"navigation\">
             <a href=\"%1$s\" hreflang=\"en\" rel=\"prev\">%2$s</a>
             <a href=\"../../../index.html\" hreflang=\"en\">index</a>
+	    <a href=\"https://github.com/brandelune/brandelune.github.io/commits/gh-pages\">gh-pages</a>
             <a href=\"../../../adventuresintechland.html\" hreflang=\"en\">todo</a>
-            <a href=\"%3$s\" hreflang=\"en\" rel=\"next\">tomorrow</a>
+            <a href=\"../../../tomorrow.html\" hreflang=\"en\" rel=\"next\">tomorrow</a>
         </p>"
-		previousDayLink  ;;  1$
+		previousDateLink ;;  1$
                 previousDate     ;;  2$
-                nextDayLink      ;;  3$
-))
-  (setq todayTemplate
-        (format "<html>
+		))
+
+  (setq baseCSSLink "../../adventuresintechland.css"
+        dailyCSSLink (concat todayPath "adventuresintechland.css")
+	)
+
+  (setq todayHeader
+	(format "<html>
     <head lang=\"en-us\">
-    <title>%1$s</title>
+        <title>%1$s</title>
+
 	<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />
 	<meta name=\"msapplication-TileColor\" content=\"#FFFFFF\" />
 	<meta name=\"msapplication-TileImage\" content=\"https://brandelune.github.io/favicon/favicon-144.png\" />
