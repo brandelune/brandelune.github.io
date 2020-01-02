@@ -1,20 +1,26 @@
 (defun my0Padding (myDigit)
   "Adds a 0 to 1 digit numbers"
-  ;; (my0Padding 10) -> "03"
+  ;; (my0Padding 3) -> "03"
   ;; (my0Padding 10) -> "10"  
   (if (< myDigit 10)
       (format "0%s" myDigit)
-    myDigit))
+    (number-to-string myDigit)))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (defun myPreviousDayString (myDate)
   "Substracts 1 to a string date and 0-pads if necessary"
   ;; (myPreviousDayString "9") -> "08"
   (my0Padding (- (string-to-number myDate) 1)))
 
+;;;;;;;;;;;;;;;;;;;;;;;;;
+
 (defun myNextDayString (myDate)
   "Adds 1 to a string date and 0-pads if necessary"
   ;; (myNextDayString "8") -> "09"
   (my0Padding (+ (string-to-number myDate) 1)))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (defun myInsert (myText myMarker myFile)
   "Inserts myText at myMarker in myFile"
