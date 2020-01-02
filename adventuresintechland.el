@@ -1,10 +1,38 @@
 (defun my0Padding (myDigit)
+  "Adds a 0 to 1 digit numbers"
+  ;; (my0Padding 10) -> "03"
+  ;; (my0Padding 10) -> "10"  
   (if (< myDigit 10)
       (format "0%s" myDigit)
     myDigit))
 
 (defun myPreviousDayString (myDate)
+  "Substracts 1 to a string date and 0-pads if necessary"
+  ;; (myPreviousDayString "9") -> "08"
   (my0Padding (- (string-to-number myDate) 1)))
+
+(defun myNextDayString (myDate)
+  "Adds 1 to a string date and 0-pads if necessary"
+  ;; (myNextDayString "8") -> "09"
+  (my0Padding (+ (string-to-number myDate) 1)))
+
+(defun myInsert (myText myMarker myFile)
+  "Inserts myText at myMarker in myFile"
+  (save-current-buffer
+    (set-buffer (find-file-noselect myFile))
+    (goto-char (point-min))
+    (if (not (search-forward myMarker nil t))
+	(progn
+	  (kill-buffer)
+	  (user-error (format "%s was not found" myMarker)))
+      ;; user-error seems to abort the rest of the progn, hence the need to put kill-buffer above
+      (progn
+	(goto-char (point-min))
+	(goto-char (- (search-forward myMarker) (length myMarker)))
+	(insert myText)
+	(indent-region (point-min) (point-max))
+	(save-buffer)
+	(kill-buffer)))))
 
 ;; edge cases:
 ;; the 1st of the month -> day before is *not* 1-1
@@ -107,7 +135,9 @@
 ;; ok, so how do I put that as a function of myDate...
 
 (defun myDate (Date)
-  "Lists a plausible (year month date) ;; TODO add error tests, for plausible dates 1<d>(28-29-30-31)"
+  "Lists a plausible (year month date) ;; TODO add error tests
+the date should be comprised between 1 and (28 to 31)
+(myDate 3) -> (2020 1 3)"
   (let* (
 	(Today (decode-time (float-time)))
     (thisMonth (fifth Today))
@@ -128,29 +158,8 @@
 		   ((and (= myMonth nextMonth) (= myMonth 1)) nextYear)
 		   (t lastYear))))
     (list myYear myMonth Date)))
-
-(myDate 50)
   
 
-(defun myNextDayString (myDate)
-  (my0Padding (+ (string-to-number myDate) 1)))
-
-(defun myInsert (myText myMarker myFile)
-  (save-current-buffer
-    (set-buffer (find-file-noselect myFile))
-    (goto-char (point-min))
-    (if (not (search-forward myMarker nil t))
-	(progn
-	  (kill-buffer)
-	  (user-error (format "%s was not found" myMarker)))
-      ;; user-error seems to abort the rest of the progn, hence the need to put kill-buffer above
-      (progn
-	(goto-char (point-min))
-	(goto-char (- (search-forward myMarker) (length myMarker)))
-	(insert myText)
-	(indent-region (point-min) (point-max))
-	(save-buffer)
-	(kill-buffer)))))
 
 ;;;;;; compute dates for edge cases
 
