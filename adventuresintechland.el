@@ -60,7 +60,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (defun myDate (Date)
-  "Lists a plausible (year month date)
+  "Creates a plausible (year month date) as a list
 TODO add error tests
 the date should be comprised between 1 and (28 to 31)"
 ;; (myDate 3) -> (2020 1 3)
@@ -88,6 +88,7 @@ the date should be comprised between 1 and (28 to 31)"
 ;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (defun dailyIndex (today myPreviousDate myTitle mySubtitle)
+  "Creates an html file with navigation, body, to be filled manually"
   (interactive (list
                 (read-number "Date: " (fourth (decode-time (float-time))))
                 (read-number "Previous date: " (- (third (myDate (fourth (decode-time (float-time))))) 1))
@@ -194,6 +195,7 @@ the date should be comprised between 1 and (28 to 31)"
 ;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (defun myDailyRSSItem (myTitle pageLink pubDate myDescription)
+  "inserts the dayly RSS feed contents into the feed XML file"
   (interactive (list
                 (read-string "Title: ")
                 (read-string "Link: " pageLink)
@@ -217,5 +219,4 @@ the date should be comprised between 1 and (28 to 31)"
    "<!-- place new items above this line -->"
    "/Users/suzume/Documents/Code/brandelune.github.io/adventuresintechland.xml"))
 
-
-
+;;;;;;;;;;;;;;;;;;;;;;;;;
