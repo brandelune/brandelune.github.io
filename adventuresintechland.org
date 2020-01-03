@@ -47,6 +47,7 @@ The index.sh script exists but needs to be run automatically.
 *** see what stashes are stored: *git stash list*
 *** apply stash: *git stash apply stash@{n}* <- n comes from the list
 *** remove the stash: *git stash drop*
+*** file checkout magit-file-checkout X f
 *** CHECK [2019-12-03] git revert
 *** CHECK [2018-11-17] git merge
 *** DONE [2019-12-31 Tue] git checkout file
