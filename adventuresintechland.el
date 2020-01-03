@@ -1,5 +1,22 @@
+;;;; now I need to automate a few things:
+;;;;  global index
+;;;;    number of days in the current "season"
+;;;;    total number of documented days
+;;;;    link to "last day"
+;;;;    index contents for the new day
+;;;;  previous day
+;;;;    "tomorrow" link
+;;;;  rss feed
+;;;;    title
+;;;;    date
+;;;;    link
+;;;;    contents (first paragraph of current index ?)
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;
+
 (defun my0Padding (myDigit)
-  "Adds a 0 to 1 digit numbers"
+  "Concats a 0 string to 1 digit numbers"
   ;; (my0Padding 3) -> "03"
   ;; (my0Padding 10) -> "10"  
   (if (< myDigit 10)
