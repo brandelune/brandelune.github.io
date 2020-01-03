@@ -9,14 +9,22 @@
 
 ----------
 * code
-** FIX [#A] [2019-12-01] just got bitten by the date edge cases...    :elisp:
-working on that in the edge-cases branch
-** CODE [#B] [2019-12-01] automatically generate "nth day"            :elisp:
-nth day is present in the global index and in the daily file
-I'll need to put a marker somewhere that I can access through the el file
-** FIX [#B] [2018-11-13] automatically create daily links       :elisp:shell:
-should find the previous folder in the hierarchy, etc.
-** FIX [#C] [2019-12-31 Tue] add favicon support to RSS                 :xml:
+** CODE [#A] [2020-01-03 Fri] automate trivial updating tasks         :elisp:
+***  global index
+****    number of days in the current "season"
+****    total number of documented days
+****    link to "last day"
+****    index contents for the new day
+***  previous day
+****    "tomorrow" link
+***  rss feed
+****     title
+****     date
+****     link
+****     contents (first paragraph of current index ?)
+***  daily index
+****     link to the day before by checking the file hierarchy ?
+** FIX [#C] [2019-12-31 Tue] favicon support to RSS                     :xml:
  https://snook.ca/archives/rss/add_logo_to_feed
  http://www.rssboard.org/rss-2-0-1
  not working at the moment...
@@ -146,6 +154,20 @@ Use the RSS summary as a first paragraph
 *** git push origin
 *** git checkout "gh-pages"
 * DONE items
+** CANCELED [#B] [2018-11-13] automatically create daily links  :elisp:shell:
+moved to a more global item.
+   - State "CANCELED"   from "FIX"        [2020-01-03 Fri 14:18]
+should find the previous folder in the hierarchy, etc.
+** CANCELED [#A] [2019-12-01] automatically generate "nth day"        :elisp:
+I moved that to a more global CODE issue
+   - State "CANCELED"   from "CODE"       [2020-01-03 Fri 14:14]
+nth day is present in the global index and in the daily file
+I'll need to put a marker somewhere that I can access through the el file
+** DONE [#A] [2019-12-01] just got bitten by the date edge cases...   :elisp:
+Done in the "edge cases" branch, merged into master. Wow, that was long.
+The code is cleaner now. I need to organize the functions and see how to rationalize that, but overal, it should work.
+   - State "DONE"       from "FIX"        [2020-01-03 Fri 14:05]
+working on that in the edge-cases branch
 ** DONE [2019-12-31 Tue] create "edge-case" branch to work safely :)  :admin:
    - State "DONE"       from "TODO"       [2019-12-31 Tue 19:04]
 that's the whole point of having branches...
