@@ -1,5 +1,5 @@
-#+TODO: TODO(t) | DONE(d!)
-#+TODO: FIX(f) CODE(c) | DONE(d!)
+#+TODO: TODO(t) | CANCELED(c) DONE(d!)
+#+TODO: FIX(f) CODE(c) | CANCELED(a!) DONE(d!)
 #+TODO: CHECK(e) LEARN(l) | DONE(d!)
 #+OPTIONS: num:0
 #+TITLE: My adventures in tech land - TODO file
