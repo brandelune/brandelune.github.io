@@ -70,6 +70,24 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;
 
+(defun checkMarker ()
+  "Check the marker values, increment"
+  (save-current-buffer
+    (set-buffer (find-file-noselect "/Users/suzume/Documents/Code/brandelune.github.io/dayTracker.txt"))
+    (goto-char (point-min))
+    (search-forward-regexp "\\([0-9]*\\.[0-9]*\\) \\([0-9]*\\) \\([0-9]*\\)")
+    (setq timeStamp (match-string 1)
+	  totalDays (+ 1 (string-to-number (match-string 2)))
+	  dayInSeason (+ 1 (string-to-number (match-string 3)))
+	  newMarker (format "%s %s %s
+" (float-time) totalDays dayInSeason))
+    (goto-char (point-min))
+    (insert newMarker)
+    (save-buffer)
+    (kill-buffer)))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;
+
 (defun myDate (Date)
   "Create a plausible (year month date) as a list"
 ;; (myDate 3) -> (2020 1 3)
@@ -248,6 +266,22 @@
 ;;;;    link to "last day"
 ;;;;    index contents for the new day
 
+  (save-current-buffer
+    (set-buffer (find-file-noselect "/Users/suzume/Documents/Code/brandelune.github.io/index.html"))
+    (goto-char (point-min))
+    (search-forward-regexp "\\([0-9]*\\.[0-9]*\\) \\([0-9]*\\) \\([0-9]*\\)")
+    (setq timeStamp (match-string 1)
+	  totalDays (+ 1 (string-to-number (match-string 2)))
+	  dayInSeason (+ 1 (string-to-number (match-string 3)))
+	  newMarker (format "%s %s %s
+" (float-time) totalDays dayInSeason))
+    (goto-char (point-min))
+    (insert newMarker)
+    (save-buffer)
+    (kill-buffer)))
+
+
+  
   )
 
 (defun UpdateRSSFeed ()
@@ -274,6 +308,8 @@
 
 (defun ManageDailyEntry ()
   "Create the current page, update the main index, the RSS feed, the previous page"
+  (checkMarker)
+  
   )
 
 (defun narrowToEditZone ()
