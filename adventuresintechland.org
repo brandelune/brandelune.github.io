@@ -34,6 +34,7 @@
 ** CODE [2018-11-18] automated index creation for readings            :shell:
 ** CODE [2018-11-18] Automate CSS index generation                    :shell:
 The index.sh script exists but needs to be run automatically.
+** CODE [2020-01-04 Sat] add "padding" option to "number-to-string"       :c:
 ** LEARN CSS variable                                                   :css:
 ** LEARN CSS flexbox                                                :css:css:
 ** LEARN CSS grid                                                       :css:
@@ -42,6 +43,7 @@ The index.sh script exists but needs to be run automatically.
 ** LEARN Joomla updates                                                 :cms:
 ** LEARN wordpress updates                                              :cms:
 ** LEARN Drupal updates                                                 :cms:
+*** PTGPTB -> drupal 8/9
 ** LEARN git                                                            :git:
 *** change of branch without committing: *git stash* | *git stash push*
 *** see what stashes are stored: *git stash list*
