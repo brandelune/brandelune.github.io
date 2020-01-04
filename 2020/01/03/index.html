@@ -38,11 +38,42 @@
             <a href="../../../tomorrow.html" hreflang="en" rel="next">tomorrow</a>
         </p>
 
-        <p><em>Adventures in Tech Land, Season 2<br />2020/01/03, day ...</em></p>
+        <p><em>Adventures in Tech Land, Season 2<br />2020/01/03, day 15</em></p>
         <h1>The end of edge cases ? <a href="https://brandelune.github.io/adventuresintechland.xml"><img src="https://www.mozilla.org/media/img/trademarks/feed-icon-28x28.e077f1f611f0.png" width="15px" height="15px" alt="rss feed" /></a></h1>
-        <p></p>
+        <p>It took a while to clean the code, simplify it, regroup it, to obtain what I have now. The main (and currently only) file is <a href="https://github.com/brandelune/brandelune.github.io/blob/gh-pages/adventuresintechland.el">adventuresintechland.el</a>. As you can see in the git commits, it has changed a lot over the last days. It can basically do most of what I need and I added skeleton functions and <span class="todo">items</span>  that I'll act on little by little as I progress.</p>
+	<p>I'd like to understand test based development too, so that I can progress faster and in a steadier way...</p>
         <h2>Incremental learning...</h2>
-        <p></p>
+        <p>I've mostly used three tools for this project:
+	    <ul>
+		<li>emacs</li>
+		<li>org-mode</li>
+		<li>magit</li>
+	    </ul>
+	    <dl>
+		<dt>emacs</dt>
+		<dd>emacs is my tool of choice for most of the writing activities. But it also is my tool-making system, and I'm trying to use emacs lisp for all the automation that I need for this project.</dd>
+		<dt>org-mode</dt>
+		<dd>org-mode is used as an organizer. I can put my ideas there, shuffle them, evaluate them, and act on them.</dd>
+		<dt>magit</dt>
+		<dd>magit is my interface to the git contents management system. I write "contents management" because that's eventually what a version control system is about. It's also a backup system.</dd>
+	    </dl>
+	    The advantage of using org-mode and magit is that I stay in the emacs ecosystem. Everything is deeply integrated and I only need (do I?) to use the macos side when things are easier when they are more "visual," like using Finder to handle files (which only says how much I need to learn dired...) I am also not extremely familiar with emacs regular expressions so when in need to do something relatively complex, I prefer to shift to BBEdit. But besides for those two examples, I've tried to stick to emacs, and when there is something I feel should be possible in emacs, I either browse the manual or ask online (which has already resulted in a number of threads on help-emacs or emacs-devel).</p>
+	<p>I started this journey with only a little knowledge of emacs, but neither org-mode not magit were really on my radar. In fact, I decided to work within emacs, because I wanted to learn to use it,  not in a "tutorial" kind of way, but in a "do-it-yourself" kind of way, and as stated on the first page, I'm planning to learn web technologies. And web technologies require a writing environment, a task management solution and a contents management solution: emacs, org-mode, magit. That's how the three came to fit perfectly.</p>
+	<p>I started using (or being aware of) emacs when I got my first internet connection, in 1995, but I only started to use it, on and off, in 1997, when I bought my first laptop and tried to install a French-Japanese-English multilingual system on it, before UTF-8 existed. I had an epiphany at the beginning of the "new" Lisp boom, a few years later, when I realized that I could maybe have a lisp program within my text editor to ease my translation process (translating is my main job). That did not happen.</p>
+	<p>That's really when I  started to want to learn and use emacs, about 15 years ago. And it happens that as  I was in Tokyo for work, I had the chance to meet a now famous emacs community member who was trying to do everything possible within the emacs ecosystem. That encounter was a huge inspiration, but for plenty of reasons, I returned to the macos ecosystem and did little more than that until now (for that matter, I only started applescripting a few years ago...)</p>
+	<p>What do I mean by <em>incremental learning</em>? That's relatively simple. Once you know the basics of emacs (how to open/save a file, how to do basic editing) then everything else comes as an increment. When I look back at the close to 14 months behind me, I realize that at first, I was really just doing that: check the web, learn a few things, open an emacs buffer, write about that, commit that to the github page, repeat.</p>
+	<p>Then I realized that it could be easier to use a "web aware" environment and started to use <code>web-mode</code>, then slowly I started to manage my tasks in an org file, but only systematically since last December, so that all my actionable items were actually registered inside the pages that I wrote, and that was not practical since I had not way to automatically retrieve the information. And I used git directly from the command line, and only basic commands: no feature branches (my first one is actually recent), no fine grained commits. It is when I started to use org-mode systematically that I had to think about the way the items should be organized (which sometimes adds to the overhead) and it is thanks to magit that I commit frequently even if the modifications are very small.</p>
+	<p>All this came little by little. And I know that if I stop, everything that I learned, either because I know it of because my muscles have become accustomed to it, will be gone. All the small functions that I write now are much easier to write now than when I started writing in emacs lisp. All the actions that I do in magit (and in CLI git) flow better than they used to do. Navigation in emacs is easier, perusing the documentation and making sense of it too.</p>
+	<p>Before this season's "reboot" I was mostly focused on doing html and css, which is perfectly fine, but that felt a bit artificial because the current site (even though it is conceived as my html/css/js playground) is not yet a place where I can express a lot of things with those technologies. Meanwhile, my second "season" that I started last November has allowed me to feel like I've dramatically improved some skills, and those skills are exactly the skills I need to progress in learning the web technologies that are my real target.</p>
+	<p>Or maybe, that's the other way round? As I wrote a few days ago, I can't be sure. Today is only the 45th day in my #10000daysofcode project...</p>
+	<h2>Slowly back to CSS...</h2>
+	<p>I have a few color modifications here, that I added thanks to css variables. Since the local css contents overrides the main css, I only had to change the contents of a few variables to change the whole aspect of the page. I guess it's more portable than changing the css code itself. I'm not sure about the colors associations though...</p>
+	<p>The css files are here:
+	    <ul>
+		<li><a href="../../adventuresintechland.css">2020 global style</a></li>
+		<li><a href="./adventuresintechland.css">local style for this file</a></li>
+	    </ul>
+	    The variables are at the top of each files.</p>
 
         <p class="navigation">
             <a href="../../../2020/01/01/index.html" hreflang="en" rel="prev">0101</a>
