@@ -170,11 +170,11 @@ the date should be comprised between 1 and (28 to 31)"
     <body>
         %2$s
 
-        <p><em>Adventures in Tech Land, Season 2<br />%3$s, day ...</em></p>
+        <p id="episode"><em>Adventures in Tech Land, Season 2<br />%3$s, day ...</em></p>
         <h1>%4$s <a href=\"https://brandelune.github.io/adventuresintechland.xml\"><img src=\"https://www.mozilla.org/media/img/trademarks/feed-icon-28x28.e077f1f611f0.png\" width=\"15px\" height=\"15px\" alt=\"rss feed\" /></a></h1>
-        <p></p>
+        <p id="title item"></p>
         <h2>%5$s</h2>
-        <p></p>
+        <p id="first sub-title item"></p>
 
         %2$s
     </body>
