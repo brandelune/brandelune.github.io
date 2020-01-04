@@ -2,7 +2,32 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (defun my0Padding (myDigit)
-  "Concats a 0 string to 1 digit numbers"
+  "Concat a 0 string to 1 digit numbers"
+;;;; TODO add option to "number-to-string" so that the padding can happen there
+;;;;  // Defined in ~/Documents/Code/emacs/src/data.c
+
+;;   DEFUN ("number-to-string", Fnumber_to_string, Snumber_to_string, 1, 1, 0,
+;;        doc: /* Return the decimal representation of NUMBER as a string.
+;; Uses a minus sign if negative.
+;; NUMBER may be an integer or a floating point number.  */)
+;;   (Lisp_Object number)
+;; {
+;;   char buffer[max (FLOAT_TO_STRING_BUFSIZE, INT_BUFSIZE_BOUND (EMACS_INT))];
+;;   int len;
+
+;;   CHECK_NUMBER (number);
+
+;;   if (BIGNUMP (number))
+;;     return bignum_to_string (number, 10);
+
+;;   if (FLOATP (number))
+;;     len = float_to_string (buffer, XFLOAT_DATA (number));
+;;   else
+;;     len = sprintf (buffer, "%"pI"d", XFIXNUM (number));
+
+;;   return make_unibyte_string (buffer, len);
+;; }
+
   ;; (my0Padding 3) -> "03"
   ;; (my0Padding 10) -> "10"  
   (if (< myDigit 10)
