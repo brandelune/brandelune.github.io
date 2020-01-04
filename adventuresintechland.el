@@ -206,11 +206,16 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(defun myDailyRSSItem (myTitle pageLink pubDate myDescription)
+(defun pageLink ()
+  (format ))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(defun myDailyRSSItem (myTitle todayIndex pubDate myDescription)
   "inserts the dayly RSS feed contents into the feed XML file"
   (interactive (list
                 (read-string "Title: ")
-                (read-string "Link: " pageLink)
+                (read-string "Link: ")
 		(read-string "Date: " (format-time-string "%a, %d %b %Y %H:%m:%S UT" (current-time) t))
 		(read-string "Description: ")))
   (setq myText	(format "<item>
@@ -222,7 +227,7 @@
 </item>
 "
 	 myTitle       ;;  1$
-	 pageLink      ;;  2$
+	 todayIndex    ;;  2$
 	 pubDate       ;;  3$
 	 myDescription ;;  4$
 	 ))
