@@ -37,21 +37,21 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (defun myPreviousDayString (myDate)
-  "Substracts 1 to a string date and 0-pads if necessary"
+  "Substract 1 to a string date and 0-pads if necessary"
   ;; (myPreviousDayString "9") -> "08"
   (my0Padding (- (string-to-number myDate) 1)))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (defun myNextDayString (myDate)
-  "Adds 1 to a string date and 0-pads if necessary"
+  "Add 1 to a string date and 0-pads if necessary"
   ;; (myNextDayString "8") -> "09"
   (my0Padding (+ (string-to-number myDate) 1)))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (defun myInsert (myText myMarker myFile)
-  "Inserts myText at myMarker in myFile"
+  "Insert myText at myMarker in myFile"
   (save-current-buffer
     (set-buffer (find-file-noselect myFile))
     (goto-char (point-min))
@@ -71,10 +71,11 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (defun myDate (Date)
-  "Creates a plausible (year month date) as a list
-TODO add error tests
-the date should be comprised between 1 and (28 to 31)"
+  "Create a plausible (year month date) as a list"
 ;; (myDate 3) -> (2020 1 3)
+;;;; TODO add error tests
+;;;; the date should be comprised between 1 and (28 to 31)"
+
   (let* (
 	(Today (decode-time (float-time)))
     (thisMonth (fifth Today))
@@ -235,7 +236,7 @@ the date should be comprised between 1 and (28 to 31)"
 (defun UpdateMainIndex ()
   "Update the main index"
 
-;;;; TODO
+;;;; TODO UpdateMainIndex
 ;;;;    number of days in the current "season"
 ;;;;    total number of documented days
 ;;;;    link to "last day"
@@ -246,7 +247,7 @@ the date should be comprised between 1 and (28 to 31)"
 (defun UpdateRSSFeed ()
   "Update the RSS feed"
 
-;;;; TODO
+;;;; TODO UpdateRSSFeed
 ;;;;    title
 ;;;;    date
 ;;;;    link
@@ -256,7 +257,7 @@ the date should be comprised between 1 and (28 to 31)"
 (defun UpdatePreviousPage ()
   "Update the previous page"
 
-;;;; TODO
+;;;; TODO UpdatePreviousPage
 ;;;;    "tomorrow" link
 
   )
