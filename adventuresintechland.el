@@ -213,6 +213,7 @@
 
 (defun myDailyRSSItem (myTitle todayIndex pubDate myDescription)
   "inserts the dayly RSS feed contents into the feed XML file"
+;;;; TODO add default value for link
   (interactive (list
                 (read-string "Title: ")
                 (read-string "Link: ")
