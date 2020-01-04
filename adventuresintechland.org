@@ -1,4 +1,4 @@
-#+TODO: TODO(t) | CANCELED(c) DONE(d!)
+#+TODO: TODO(t) | DONE(d!) CANCELED(c)
 #+TODO: FIX(f) CODE(c) | CANCELED(a!) DONE(d!)
 #+TODO: CHECK(e) LEARN(l) | DONE(d!)
 #+OPTIONS: num:0
