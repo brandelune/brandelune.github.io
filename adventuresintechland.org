@@ -10,14 +10,14 @@
 ----------
 * code
 ** CODE [#A] [2020-01-03 Fri] automate trivial updating tasks         :elisp:
-***  global index
+***  global index [[file:adventuresintechland.el::defun UpdateMainIndex]]
 ****    number of days in the current "season"
 ****    total number of documented days
 ****    link to "last day"
 ****    index contents for the new day
-***  previous day
+***  previous day [[file:adventuresintechland.el::defun UpdatePreviousPage]] 
 ****    "tomorrow" link
-***  rss feed
+***  rss feed [[file:adventuresintechland.el::defun UpdateRSSFeed]]
 ****     title
 ****     date
 ****     link
