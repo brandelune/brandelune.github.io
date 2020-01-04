@@ -220,3 +220,40 @@ the date should be comprised between 1 and (28 to 31)"
    "/Users/suzume/Documents/Code/brandelune.github.io/adventuresintechland.xml"))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(defun UpdateMainIndex ()
+  "Update the main index"
+
+;;;; TODO
+;;;;    number of days in the current "season"
+;;;;    total number of documented days
+;;;;    link to "last day"
+;;;;    index contents for the new day
+
+  )
+
+(defun UpdateRSSFeed ()
+  "Update the RSS feed"
+
+;;;; TODO
+;;;;    title
+;;;;    date
+;;;;    link
+;;;;    contents (first paragraph of current index ?)
+  )
+
+(defun UpdatePreviousPage ()
+  "Update the previous page"
+
+;;;; TODO
+;;;;    "tomorrow" link
+
+  )
+
+(defun CreateCurrentPage ()
+  "Create the page for the day"
+  )
+
+(defun ManageDailyEntry ()
+  "Create the current page, update the main index, the RSS feed, the previous page"
+  )
