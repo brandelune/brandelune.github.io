@@ -1,0 +1,32 @@
+/*************/
+/* variables */
+/*************/
+
+:root {
+    --todo-color: tomato;
+    --done-color: green;
+    --important-color: blue;
+    --body-color: white;
+    --body-background-color: slategrey;
+    --body-font-family: monospace;
+    --navigation-background-color: slategrey;
+    --navigation-a-border-color: lightgrey;
+}
+
+a:link {
+    color: black;
+}
+
+a:visited {
+    color: lightsteelblue;
+} 
+
+a:hover {
+    
+}
+
+a:active {
+    
+}
+
+
