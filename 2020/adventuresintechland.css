@@ -6,6 +6,11 @@
     --todo-color: red;
     --done-color: green;
     --important-color: blue;
+    --body-color: #1a1a1a;
+    --body-background-color: #ffffff;
+    --body-font-family: sans-serif;
+    --navigation-background-color: white;
+    --navigation-a-border-color: black;
 }
 
 
@@ -37,7 +42,8 @@ code {
 
 .navigation a {
     padding: 0 1em;
-    border: 1px solid black;
+    background-color: var(--navigation-background-color);
+    border: 1px solid var(--navigation-a-border-color);
 }
 
 
@@ -49,6 +55,9 @@ body  {
     background-color: #ffffff;
     color: #1a1a1a;
     font-family: sans-serif;
+    background-color: var(--body-background-color);
+    color: var(--body-color);
+    font-family: var(--body-font-family);
 }
 
 h1 {
