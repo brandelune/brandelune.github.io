@@ -49,19 +49,21 @@ The index.sh script exists but needs to be run automatically.
 *** see what stashes are stored: *git stash list*
 *** apply stash: *git stash apply stash@{n}* <- n comes from the list
 *** remove the stash: *git stash drop*
-*** file checkout magit-file-checkout X f
+*** magit file checkout: *magit-file-checkout* X f
 *** CHECK [2019-12-03] git revert
 *** CHECK [2018-11-17] git merge
+**** or rather resolution of *merge conflicts*
 *** DONE [2019-12-31 Tue] git checkout file
    - State "DONE"       from "CHECK"      [2019-12-31 Tue 18:25]
 to cancel modifications on a file: checkout the repository contents
 magit-file-checkout
 X f
-** CHECK [2019-12-29 Sun] write-region bug ?                          :elisp:
- (write-region "stuff" nil "/path/to/test.txt" nil t nil t)
-sometimes, such a one liner outputs itself to the target file. weird.
-** CHECK [2019-12-01] how to fix commit messages ?                :magit:git:
+*** DONE [2019-12-01] how to fix commit messages ?                :magit:git:
+git commit -v --amend
+   - State "DONE"       from "CHECK"      [2020-01-05 Sun 00:51]
 I was thinking that had to do with the "amend" command, but maybe not...
+https://dev.to/jacobherrington/10-git-tricks-to-save-your-time-and-sanity-289h
+"This one comes in handy when you accidentally commit something with a typo or misleading commit message."
 ** CHECK [2018-11-14] tag insertion right and left of selection       :emacs:
 And how to efficiently select
 ** CHECK [2018-11-14] FireFox/Safari/Chrome developer tools         :browser:
@@ -69,11 +71,13 @@ And how to efficiently select
 ** CHECK [2018-11-14] isearch manual                                  :emacs:
 ** CHECK [2018-11-13] "project" manager for all the files             :emacs:
 ** CHECK [2018-11-11] add autocompletion for html/css                 :emacs:
-* TODO manage daily entries [8/9]
-  DEADLINE: <2020-01-04 Sat ++1d>
+
+* TODO manage daily entries [9/9]
+  DEADLINE: <2020-01-06 Mon ++1d>
   :PROPERTIES:
-  :LAST_REPEAT: [2020-01-03 Fri 13:19]
+  :LAST_REPEAT: [2020-01-05 Sun 00:43]
   :END:
+  - State "DONE"       from "TODO"       [2020-01-05 Sun 00:43]
   - State "DONE"       from "TODO"       [2020-01-02 Thu 02:45]
   - State "DONE"       from "TODO"       [2019-12-29 Sun 00:44]
   - State "DONE"       from "TODO"       [2019-12-22 Sun 21:34]
@@ -85,11 +89,11 @@ And how to efficiently select
 ** DONE create the rss entry in [[file:adventuresintechland.xml][file:./adventuresintechland.xml]]          :me:
    - State "DONE"       from "TODO"       [2020-01-05 Sun 00:36]
    - State "DONE"       from "TODO"       [2020-01-02 Thu 02:37]
-    - State "DONE"       from "TODO"       [2019-12-27 Fri 14:16]
-    - State "DONE"       from "TODO"       [2019-12-24 Tue 00:57]
-    - State "DONE"       from "TODO"       [2019-12-22 Sun 21:29]
-    - State "DONE"       from "TODO"       [2019-12-18 Wed 00:15]
-    - State "DONE"       from "TODO"       [2019-12-15 Sun 14:00]
+   - State "DONE"       from "TODO"       [2019-12-27 Fri 14:16]
+   - State "DONE"       from "TODO"       [2019-12-24 Tue 00:57]
+   - State "DONE"       from "TODO"       [2019-12-22 Sun 21:29]
+   - State "DONE"       from "TODO"       [2019-12-18 Wed 00:15]
+   - State "DONE"       from "TODO"       [2019-12-15 Sun 14:00]
  The RSS entry is the summary for the day. I should write it first
 ** DONE run [[file:adventuresintechland.el][file:./adventuresintechland.el]] to create the template     :emacs:
    - State "DONE"       from "TODO"       [2020-01-05 Sun 00:36]
@@ -149,7 +153,8 @@ Use the RSS summary as a first paragraph
    - State "DONE"       from "TODO"       [2019-12-22 Sun 21:33]
    - State "DONE"       from "TODO"       [2019-12-18 Wed 00:15]
    - State "DONE"       from "TODO"       [2019-12-15 Sun 14:04]
-** TODO commit the org file and push everything to origin               :git:
+** DONE commit the org file and push everything to origin               :git:
+   - State "DONE"       from "TODO"       [2020-01-05 Sun 00:43]
    - State "DONE"       from "TODO"       [2020-01-02 Thu 02:50]
    - State "DONE"       from "TODO"       [2019-12-29 Sun 00:44]
    - State "DONE"       from "TODO"       [2019-12-24 Tue 00:57]
@@ -166,6 +171,12 @@ Use the RSS summary as a first paragraph
 *** git push origin
 *** git checkout "gh-pages"
 * DONE items
+** DONE [2019-12-29 Sun] write-region bug ?                           :elisp:
+it was ot a bug, the "visit" argument was set to "t" thus the buffer was asked to visit the file...
+https://lists.gnu.org/archive/html/emacs-devel/2020-01/msg00040.html  
+ - State "DONE"       from "CHECK"      [2020-01-05 Sun 00:45]
+ (write-region "stuff" nil "/path/to/test.txt" nil t nil t)
+sometimes, such a one liner outputs itself to the target file. weird.
 ** CANCELED [#B] [2018-11-13] automatically create daily links  :elisp:shell:
 moved to a more global item.
    - State "CANCELED"   from "FIX"        [2020-01-03 Fri 14:18]
@@ -253,3 +264,4 @@ to reduce the nb of possible errors
 ** DONE [2019-11-24] customize org export because the HTML is ugly :admin:
    - State "DONE"       from "TODO"       [2019-12-01 Sun 08:42]
    What I don't like is how the headings are HTML headers. The ToC alone would be sufficient for what I need. I did some css and it looks much better. With lots of room for improvement.
+   
