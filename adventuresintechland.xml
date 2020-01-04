@@ -329,6 +329,13 @@
       <pubDate>Wed, 01 Jan 2020 17:01:41 UT</pubDate>
       <description>Instead of hand-writing the RSS item, I had decided to create a function that would insert a filled out template into the RSS feed proper. There was nothing intrinsically complex about it. It just took me quite some time to complete the "myInsert" function, which was done a few days ago already. What I did today was just make the function interactive with proper input expressions that give default values. Glad to be done with that.</description>
     </item>
+    <item>
+      <title>The end of edge cases?</title>
+      <link>https://brandelune.github.io/2020/01/03/index.html</link>
+      <guid>https://brandelune.github.io/2020/01/03/index.html</guid>
+      <pubDate>Sat, 04 Jan 2020 15:01:54 UT</pubDate>
+      <description>It took a while to clean the code, simplify it, regroup it, to obtain what I have now. The main (and currently only) file is adventuresintechland.el. As you can see in the git commits, it has changed a lot over the last days. It can basically do most of what I need and I added skeleton functions and items that I'll act on little by little as I progress. I'd like to understand test based development too, so that I can progress faster and in a steadier way...</description>
+    </item>
     <!-- place new items above this line -->
   </channel>
 </rss>
