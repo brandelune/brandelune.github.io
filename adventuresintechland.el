@@ -243,3 +243,13 @@ the date should be comprised between 1 and (28 to 31)"
 (defun ManageDailyEntry ()
   "Create the current page, update the main index, the RSS feed, the previous page"
   )
+
+(defun narrowToEditZone ()
+  "Narrow the index page to the area to edit"
+;;;; search id = episode
+;;;; goto beginning of line
+;;;; set mark
+;;;; search id = first sub-title item
+;;;; goto to end of line
+;;;; narrow-to-region
+  )
