@@ -116,7 +116,7 @@
 				 "index.html"))
 
   (setq myTodayList (myDate today)
-	siteRoot "/Users/suzume/Documents/Code/brandelune.github.io/"
+	siteRoot "https://github.com/brandelune/brandelune.github.io/"
 	todayPath (concat (file-name-as-directory siteRoot)
 			   (file-name-as-directory (number-to-string (first myTodayList)))
 			   (file-name-as-directory (my0Padding (second myTodayList)))
@@ -137,7 +137,7 @@
 		))
 
   (setq baseCSSLink "../../adventuresintechland.css"
-        dailyCSSLink (concat todayPath "adventuresintechland.css")
+        dailyCSSLink ("./adventuresintechland.css")
 	)
 
   (setq todayHeader
