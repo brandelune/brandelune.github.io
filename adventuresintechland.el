@@ -1,6 +1,15 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;
 
+(setq repositoryPath "/Users/suzume/Documents/Repositories/brandelune.github.io/"
+	  dayTrackerPath (concat repositoryPath "dayTracker.txt")
+	  rssFile (concat repositoryPath "adventuresintechland.xml")
+	  indexPath (concat repositoryPath "index.html"))
+
+
+/Users/suzume/Documents/Repositories/brandelune.github.io/
+/Users/suzume/Documents/Repositories/brandelune.github.io/
+
 (defun my0Padding (myDigit)
   "Concat a 0 string to 1 digit numbers"
 ;;;; TODO add option to "number-to-string" so that the padding can happen there
@@ -73,13 +82,13 @@
 (defun checkMarker ()
   "Check the marker values, increment"
   (save-current-buffer
-    (set-buffer (find-file-noselect "/Users/suzume/Documents/Code/brandelune.github.io/dayTracker.txt"))
+    (set-buffer (find-file-noselect dayTrackerPath))
     (goto-char (point-min))
     (search-forward-regexp "\\([0-9]*\\.[0-9]*\\) \\([0-9]*\\) \\([0-9]*\\)")
     (setq timeStamp (match-string 1)
-	  totalDays (+ 1 (string-to-number (match-string 2)))
-	  dayInSeason (+ 1 (string-to-number (match-string 3)))
-	  newMarker (format "%s %s %s
+		  totalDays (+ 1 (string-to-number (match-string 2)))
+		  dayInSeason (+ 1 (string-to-number (match-string 3)))
+		  newMarker (format "%s %s %s
 " (float-time) totalDays dayInSeason))
     (goto-char (point-min))
     (insert newMarker)
@@ -230,7 +239,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (defun myDailyRSSItem (myTitle todayIndex pubDate myDescription)
-  "inserts the dayly RSS feed contents into the feed XML file"
+  "inserts the daily RSS feed contents into the feed XML file"
 ;;;; TODO add default value for link
   (interactive (list
                 (read-string "Title: ")
@@ -252,8 +261,8 @@
 	 ))
   (myInsert
    myText
-   "<!-- place new items above this line -->"
-   "/Users/suzume/Documents/Code/brandelune.github.io/adventuresintechland.xml"))
+   "<!-- place new items above this line -->"   
+   rssFile))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;
 
@@ -267,22 +276,19 @@
 ;;;;    index contents for the new day
 
   (save-current-buffer
-    (set-buffer (find-file-noselect "/Users/suzume/Documents/Code/brandelune.github.io/index.html"))
+    (set-buffer (find-file-noselect indexPath))
     (goto-char (point-min))
     (search-forward-regexp "\\([0-9]*\\.[0-9]*\\) \\([0-9]*\\) \\([0-9]*\\)")
     (setq timeStamp (match-string 1)
-	  totalDays (+ 1 (string-to-number (match-string 2)))
-	  dayInSeason (+ 1 (string-to-number (match-string 3)))
-	  newMarker (format "%s %s %s
-" (float-time) totalDays dayInSeason))
+		  totalDays (+ 1 (string-to-number (match-string 2)))
+		  dayInSeason (+ 1 (string-to-number (match-string 3)))
+		  newMarker (format "%s %s %s
+		  " (float-time) totalDays dayInSeason))
     (goto-char (point-min))
     (insert newMarker)
     (save-buffer)
     (kill-buffer)))
 
-
-  
-  )
 
 (defun UpdateRSSFeed ()
   "Update the RSS feed"
