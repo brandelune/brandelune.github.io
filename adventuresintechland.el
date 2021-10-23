@@ -5,9 +5,18 @@
 (setq dayTrackerPath (concat repositoryPath "dayTracker.txt"))
 (setq rssFile (concat repositoryPath "adventuresintechland.xml"))
 (setq indexPath (concat repositoryPath "index.html"))
+(setq ghPagesURL "https://github.com/brandelune/brandelune.github.io/commits/gh-pages")
+(setq siteRoot "https://github.com/brandelune/brandelune.github.io/")
+(setq faviconURL "https://brandelune.github.io/favicon/")
+(setq rssReferences "<a href=\"https://brandelune.github.io/adventuresintechland.xml\"><img src=\"https://www.mozilla.org/media/img/trademarks/feed-icon-28x28.e077f1f611f0.png\" width=\"15px\" height=\"15px\" alt=\"rss feed\" /></a>")
 
-(defun my0Padding (myDigit)
-  "Concat a 0 string to 1 digit numbers"
+(defun my0Padding (number)
+  "Adds a 0 string to one digit numbers.
+This is used here to represent dates as in 01/01/2021"
+
+  ;; (my0Padding 3) -> "03"
+  ;; (my0Padding 10) -> "10"  
+
 ;;;; TODO add option to "number-to-string" so that the padding can happen there
 ;;;;  // Defined in ~/Documents/Code/emacs/src/data.c
 
@@ -33,30 +42,34 @@
   ;;   return make_unibyte_string (buffer, len);
   ;; }
 
-  ;; (my0Padding 3) -> "03"
-  ;; (my0Padding 10) -> "10"  
-  (if (< myDigit 10)
-      (format "0%s" myDigit)
-    (number-to-string myDigit)))
+  (if (< number 10)
+      (format "0%s" number)
+    (number-to-string number)))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(defun myPreviousDayString (myDae)
-  "Substract 1 to a string date and 0-pads if necessary"
+(defun myPreviousDayString (myDate)
+  "Substracts 1 to a date string and 0-pads the result it if necessary.
+myDate is a 1 or 2 digits strings that represents a calendar day.
+This is used here to create the date string for the previous day."
   ;; (myPreviousDayString "9") -> "08"
   (my0Padding (- (string-to-number myDate) 1)))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (defun myNextDayString (myDate)
-  "Add 1 to a string date and 0-pads if necessary"
+  "Adds 1 to a date string and 0-pads the result if necessary.
+myDate is a 1 or 2 digits strings that represents a calendar day.
+This is used here to create the date string for the next day."
   ;; (myNextDayString "8") -> "09"
   (my0Padding (+ (string-to-number myDate) 1)))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (defun myInsert (myText myMarker myFile)
-  "Insert myText at myMarker in myFile"
+  "Insert myText at myMarker in myFile.
+This is used to insert the RSS part of the feed for that day
+at the end of the file, before the closing headers."
   (save-current-buffer
     (set-buffer (find-file-noselect myFile))
     (goto-char (point-min))
@@ -75,27 +88,34 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(defun checkMarker ()
-  "Check the marker values, increment"
+(defun checkDayTracker ()
+  "Check the day tracker values, increment.
+This is not yet used but is prepared for automating the process
+of creating the template for the day. The increment serves for the
+following day."
   (save-current-buffer
     (set-buffer (find-file-noselect dayTrackerPath))
     (goto-char (point-min))
-    (search-forward-regexp "\\([0-9]*\\.[0-9]*\\) \\([0-9]*\\) \\([0-9]*\\)")
+    (search-forward-regexp "\\([0-9]*\\.[0-9]*\\) \\([0-9]*\\) \\([0-9]*\\) \\([0-9]*\\)")
     (setq timeStamp (match-string 1)
-		  totalDays (+ 1 (string-to-number (match-string 2)))
-		  dayInSeason (+ 1 (string-to-number (match-string 3)))
-		  newMarker (format "%s %s %s
-" (float-time) totalDays dayInSeason))
-    (goto-char (point-min))
-    (insert newMarker)
-    (save-buffer)
-    (kill-buffer)))
+		  seasonNumber (match-string 2)
+		  totalDays (match-string 3)
+		  dayInSeason (match-string 4)
+		  newMarker (format "%s %s %s %s\n" (float-time) seasonNumber totalDays dayInSeason))
+;;    (goto-char (point-min))
+;;    (insert newMarker)
+;;    (save-buffer)
+;;    (kill-buffer))
+	(list seasonNumber totalDays dayInSeason)))	
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (defun myDate (Date)
-  "Create a plausible (year month date) as a list"
-  ;; (myDate 3) -> (2020 1 3)
+  "Create a plausible (year month date) list.
+I don't remember for which purpose, but according to the emacs-devel
+thread that was born out of a related question, it looks like an estimate
+of the date/month/year since I only enter a date for the current entry"
+  ;; (myDate 24) -> (2021 10 24)
 ;;;; TODO add error tests
 ;;;; the date should be comprised between 1 and (28 to 31)"
 
@@ -111,7 +131,7 @@
 		 (thisYear (sixth Today))
 		 (nextYear (+ thisYear 1))
 		 (lastYear (- thisYear 1))
-		 (dateDifference (- (fourth Today) Date))
+		 (dateDifference (- (fourth Today) (abs Date)))
 		 (myMonth (cond ((> 24 (abs dateDifference)) thisMonth)
 						((natnump dateDifference) nextMonth)
 						(t lastMonth)))
@@ -122,13 +142,15 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(defun dailyIndex (today myPreviousDate myTitle mySubtitle)
-  "Creates an html file with navigation, body, to be filled manually"
+(defun dailyIndex (today myPreviousDate myTitle mySubtitle myFirstParagraph)
+  "Creates an html file with navigation, body.
+The contents has to be filled manually, later."
   (interactive (list
                 (read-number "Date: " (fourth (decode-time (float-time))))
                 (read-number "Previous date: " (- (third (myDate (fourth (decode-time (float-time))))) 1))
                 (read-string "Title: " )
-                (read-string "Sub-title: ")))
+                (read-string "Sub-title: ")
+				(read-string "First paragraph: ")))
 
   (setq myPreviousDateList (myDate myPreviousDate)
 		previousDate (concat (my0Padding (second myPreviousDateList)) (my0Padding (third myPreviousDateList)))
@@ -139,7 +161,6 @@
 								 "index.html"))
 
   (setq myTodayList (myDate today)
-		siteRoot "https://github.com/brandelune/brandelune.github.io/"
 		todayPath (concat (file-name-as-directory repositoryPath)
 						  (file-name-as-directory (number-to-string (first myTodayList)))
 						  (file-name-as-directory (my0Padding (second myTodayList)))
@@ -151,12 +172,13 @@
 		(format "<p class=\"navigation\">
             <a href=\"%1$s\" hreflang=\"en\" rel=\"prev\">%2$s</a>
             <a href=\"../../../index.html\" hreflang=\"en\">index</a>
-	    <a href=\"https://github.com/brandelune/brandelune.github.io/commits/gh-pages\">gh-pages</a>
+	    <a href=\"%3$s\">gh-pages</a>
             <a href=\"../../../adventuresintechland.html\" hreflang=\"en\">todo</a>
             <a href=\"../../../tomorrow.html\" hreflang=\"en\" rel=\"next\">tomorrow</a>
         </p>"
 				previousDateLink ;;  1$
-                previousDate     ;;  2$
+                previousDate      ;;  2$
+				ghPagesURL       ;; 3$
 				))
 
   (setq baseCSSLink "../../adventuresintechland.css")
@@ -169,26 +191,26 @@
 
 	<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />
 	<meta name=\"msapplication-TileColor\" content=\"#FFFFFF\" />
-	<meta name=\"msapplication-TileImage\" content=\"https://brandelune.github.io/favicon/favicon-144.png\" />
-	<meta name=\"msapplication-config\" content=\"https://brandelune.github.io/favicon/browserconfig.xml\" />
+	<meta name=\"msapplication-TileImage\" content=\"%4$sfavicon-144.png\" />
+	<meta name=\"msapplication-config\" content=\"%4$sbrowserconfig.xml\" />
 
-	<link rel=\"shortcut icon\" href=\"https://brandelune.github.io/favicon/favicon.ico\" />
-	<link rel=\"icon\" sizes=\"16x16 32x32 64x64\" href=\"https://brandelune.github.io/favicon/favicon.ico\" />
-	<link rel=\"icon\" type=\"image/png\" sizes=\"196x196\" href=\"https://brandelune.github.io/favicon/favicon-192.png\" />
-	<link rel=\"icon\" type=\"image/png\" sizes=\"160x160\" href=\"https://brandelune.github.io/favicon/favicon-160.png\" />
-	<link rel=\"icon\" type=\"image/png\" sizes=\"96x96\" href=\"https://brandelune.github.io/favicon/favicon-96.png\" />
-	<link rel=\"icon\" type=\"image/png\" sizes=\"64x64\" href=\"https://brandelune.github.io/favicon/favicon-64.png\" />
-	<link rel=\"icon\" type=\"image/png\" sizes=\"32x32\" href=\"https://brandelune.github.io/favicon/favicon-32.png\" />
-	<link rel=\"icon\" type=\"image/png\" sizes=\"16x16\" href=\"https://brandelune.github.io/favicon/favicon-16.png\" />
-	<link rel=\"apple-touch-icon\" href=\"https://brandelune.github.io/favicon/favicon-57.png\" />
-	<link rel=\"apple-touch-icon\" sizes=\"114x114\" href=\"https://brandelune.github.io/favicon/favicon-114.png\" />
-	<link rel=\"apple-touch-icon\" sizes=\"72x72\" href=\"https://brandelune.github.io/favicon/favicon-72.png\" />
-	<link rel=\"apple-touch-icon\" sizes=\"144x144\" href=\"https://brandelune.github.io/favicon/favicon-144.png\" />
-	<link rel=\"apple-touch-icon\" sizes=\"60x60\" href=\"https://brandelune.github.io/favicon/favicon-60.png\" />
-	<link rel=\"apple-touch-icon\" sizes=\"120x120\" href=\"https://brandelune.github.io/favicon/favicon-120.png\" />
-	<link rel=\"apple-touch-icon\" sizes=\"76x76\" href=\"https://brandelune.github.io/favicon/favicon-76.png\" />
-	<link rel=\"apple-touch-icon\" sizes=\"152x152\" href=\"https://brandelune.github.io/favicon/favicon-152.png\" />
-	<link rel=\"apple-touch-icon\" sizes=\"180x180\" href=\"https://brandelune.github.io/favicon/favicon-180.png\" />
+	<link rel=\"shortcut icon\" href=\"%4$sfavicon.ico\" />
+	<link rel=\"icon\" sizes=\"16x16 32x32 64x64\" href=\"%4$sfavicon.ico\" />
+	<link rel=\"icon\" type=\"image/png\" sizes=\"196x196\" href=\"%4$sfavicon-192.png\" />
+	<link rel=\"icon\" type=\"image/png\" sizes=\"160x160\" href=\"%4$sfavicon-160.png\" />
+	<link rel=\"icon\" type=\"image/png\" sizes=\"96x96\" href=\"%4$sfavicon-96.png\" />
+	<link rel=\"icon\" type=\"image/png\" sizes=\"64x64\" href=\"%4$sfavicon-64.png\" />
+	<link rel=\"icon\" type=\"image/png\" sizes=\"32x32\" href=\"%4$sfavicon-32.png\" />
+	<link rel=\"icon\" type=\"image/png\" sizes=\"16x16\" href=\"%4$sfavicon-16.png\" />
+	<link rel=\"apple-touch-icon\" href=\"%4$sfavicon-57.png\" />
+	<link rel=\"apple-touch-icon\" sizes=\"114x114\" href=\"%4$sfavicon-114.png\" />
+	<link rel=\"apple-touch-icon\" sizes=\"72x72\" href=\"%4$sfavicon-72.png\" />
+	<link rel=\"apple-touch-icon\" sizes=\"144x144\" href=\"%4$sfavicon-144.png\" />
+	<link rel=\"apple-touch-icon\" sizes=\"60x60\" href=\"%4$sfavicon-60.png\" />
+	<link rel=\"apple-touch-icon\" sizes=\"120x120\" href=\"%4$sfavicon-120.png\" />
+	<link rel=\"apple-touch-icon\" sizes=\"76x76\" href=\"%4$sfavicon-76.png\" />
+	<link rel=\"apple-touch-icon\" sizes=\"152x152\" href=\"%4$sfavicon-152.png\" />
+	<link rel=\"apple-touch-icon\" sizes=\"180x180\" href=\"%4$sfavicon-180.png\" />
 
         <link rel=\"stylesheet\" type=\"text/css\" href=\"%2$s\" class=\"baseCSS\"/>
         <link rel=\"stylesheet\" type=\"text/css\" href=\"%3$s\" class=\"dailyCSS\"/>
@@ -197,6 +219,7 @@
                 myTitle	     ;;  1$
                 baseCSSLink  ;;  2$
                 dailyCSSLink ;;  3$
+                faviconURL   ;;  4$
 				))
 
   (setq todayTemplate
@@ -204,11 +227,11 @@
     <body>
         %2$s
 
-        <p id=\"episode\"><em>Adventures in Tech Land, Season 2<br />%3$s, day ...</em></p>
-        <h1>%4$s <a href=\"https://brandelune.github.io/adventuresintechland.xml\"><img src=\"https://www.mozilla.org/media/img/trademarks/feed-icon-28x28.e077f1f611f0.png\" width=\"15px\" height=\"15px\" alt=\"rss feed\" /></a></h1>
+        <p id=\"episode\"><em>Adventures in Tech Land, Season %7$s<br />%3$s, day %8$s</em></p>
+        <h1>%4$s %9$s</h1>
         <p id=\"title item\"></p>
         <h2>%5$s</h2>
-        <p id=\"first sub-title item\"></p>
+        <p id=\"first sub-title item\">%6$s</p>
 
         %2$s
     </body>
@@ -218,6 +241,10 @@
                 todayDate	;;  3$
                 myTitle		;;  4$
                 mySubtitle	;;  5$
+				myFirstParagraph ;; 6$
+				(first checkDayTracker) ;; 7$
+				(third checkDayTracker) ;; 8$
+				rssReferences ;; 9$
 
                 ))
 
@@ -262,24 +289,25 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(defun UpdateMainIndex ()
-  "Update the main index"
+(defun updateDayTracker ()
+  "Update the day tracker"
 
-;;;; TODO UpdateMainIndex
+;;;; TODO updateDayTracker
+;;;;    current season
 ;;;;    number of days in the current "season"
 ;;;;    total number of documented days
 ;;;;    link to "last day"
-;;;;    index contents for the new day
+;;;;    index contents for the new day  -> ?
 
   (save-current-buffer
     (set-buffer (find-file-noselect indexPath))
     (goto-char (point-min))
-    (search-forward-regexp "\\([0-9]*\\.[0-9]*\\) \\([0-9]*\\) \\([0-9]*\\)")
+    (search-forward-regexp "\\([0-9]*\\.[0-9]*\\) \\([0-9]*\\) \\([0-9]*\\) \\([0-9]*\\)")
     (setq timeStamp (match-string 1)
-		  totalDays (+ 1 (string-to-number (match-string 2)))
-		  dayInSeason (+ 1 (string-to-number (match-string 3)))
-		  newMarker (format "%s %s %s
-		  " (float-time) totalDays dayInSeason))
+		  seasonNumber (match-string 2)
+		  totalDays (+ 1 (string-to-number (match-string 3)))
+		  dayInSeason (+ 1 (string-to-number (match-string 4)))
+		  newMarker (format "%s %s %s %s\n" (float-time) seasonNumber totalDays dayInSeason))
     (goto-char (point-min))
     (insert newMarker)
     (save-buffer)
