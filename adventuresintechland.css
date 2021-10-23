@@ -3,10 +3,10 @@
 /*************/
 
 :root {
-       --todo-color: red;
-       --done-color: green;
-       --important-color: blue;
-       }
+    --todo-color: red;
+    --done-color: green;
+    --important-color: blue;
+}
 
 
 /*************/
@@ -16,32 +16,32 @@
 
 
 .navigation {
-	     display: flex;
-	     justify-content: flex-start;
-	     }
+	display: flex;
+	justify-content: flex-start;
+}
 
 .layout {
-	 display: flex;
-	 }
+	display: flex;
+}
 
 @media (max-width: 40em) {
-			  .layout {
-				   display: flex;
-				   flex-direction: column;
-				   }
+	.layout {
+		display: flex;
+		flex-direction: column;
+	}
     
-			  }
+}
 
 
 .layout div {
-	     margin: 1em;
-	     }
+	margin: 1em;
+}
 
 .left {
-       }
+}
 
 .right {
-	}
+}
 
 
 /*************/
@@ -49,48 +49,48 @@
 /*************/
 
 body {
-      margin: 2em 4em;
-      /*    border: 1px solid red; */
-      }
+    margin: 2em 4em;
+    /*    border: 1px solid red; */
+}
 
 main, .right  {
-	       /*    border: 1px solid red; */
-	       }
+	/*    border: 1px solid red; */
+}
 
 code {
-      box-shadow: 0 2px 2px rgba(0,0,0,0.19), 0 1px 1px rgba(0,0,0,0.23);
-      }
+    box-shadow: 0 2px 2px rgba(0,0,0,0.19), 0 1px 1px rgba(0,0,0,0.23);
+}
 
 .navigation a {
-	       padding: 0 1em;
-	       border: 1px solid black;
-	       box-shadow: 0 2px 2px rgba(0,0,0,0.19), 0 1px 1px rgba(0,0,0,0.23);
-	       margin: auto;
-	       }
+	padding: 0 1em;
+	border: 1px solid black;
+	box-shadow: 0 2px 2px rgba(0,0,0,0.19), 0 1px 1px rgba(0,0,0,0.23);
+	margin: auto;
+}
 
 h2~ul {
 
-       box-shadow: 0 -5px 5px rgba(0,0,0,0.19), 0 1px 1px rgba(0,0,0,0.23);    
-       }
+    box-shadow: 0 -5px 5px rgba(0,0,0,0.19), 0 1px 1px rgba(0,0,0,0.23);    
+}
 
 /*************/
 /* Text      */
 /*************/
 
 body  {
-       background-color: hsl(60,20%,95%);
-       color: #1a1a1a;
-       font-family: monospace;
-       }
+    background-color: hsl(60,20%,95%);
+    color: #1a1a1a;
+    font-family: monospace;
+}
 
 h1 {
     text-align: center;
     color: hsl(60,15%,20%);
-    }
+}
 
 p {
-   text-align: left;
-   }
+	text-align: left;
+}
 
 
 /*************/
@@ -98,20 +98,20 @@ p {
 /*************/
 
 a, code {
-	 font-family: monospace;   
-	 }
+	font-family: monospace;   
+}
 
 a[rel=prev]::after {
-		    content: " <";
-		    }
+	content: " <";
+}
 
 a[rel=next]::before {
-		     content: "> ";
-		     }
+	content: "> ";
+}
 
 .navigation a {
-	       text-decoration: none;
-	       }
+	text-decoration: none;
+}
 
 
 /*************/
@@ -119,37 +119,37 @@ a[rel=next]::before {
 /*************/
 
 .todo::before {
-	       content: "TODO: ";
-	       font-weight: bold;
-	       color: var(--todo-color);
-	       }
+	content: "TODO: ";
+	font-weight: bold;
+	color: var(--todo-color);
+}
 
 .todo {
-       text-decoration: underline dotted var(--todo-color);
-       -webkit-text-decoration: underline dotted var(--todo-color);
-       }
+    text-decoration: underline dotted var(--todo-color);
+    -webkit-text-decoration: underline dotted var(--todo-color);
+}
 
 .done::before {
-	       content: "DONE: ";
-	       font-weight: bold;
-	       color: var(--done-color);
-	       }
+	content: "DONE: ";
+	font-weight: bold;
+	color: var(--done-color);
+}
 
 .done {
-       text-decoration: underline var(--done-color);
-       -webkit-text-decoration: underline var(--done-color);
-       }
+    text-decoration: underline var(--done-color);
+    -webkit-text-decoration: underline var(--done-color);
+}
 
 .important::before {
-		    content: "IMPORTANT: ";
-		    font-weight: bold;
-		    color: var(--important-color);
-		    }
+	content: "IMPORTANT: ";
+	font-weight: bold;
+	color: var(--important-color);
+}
 
 .important {
-	    text-decoration: underline var(--important-color);
-	    -webkit-text-decoration: underline var(--important-color);
-	    }
+	text-decoration: underline var(--important-color);
+	-webkit-text-decoration: underline var(--important-color);
+}
 
 
 /*************/
@@ -157,9 +157,9 @@ a[rel=next]::before {
 /*************/
 
 .magit-output {
-	       font-family: monospace;
-	       }
+	font-family: monospace;
+}
 
 .magit-output span {
-color: grey;
+	color: grey;
 }

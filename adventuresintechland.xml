@@ -336,6 +336,13 @@
       <pubDate>Sat, 04 Jan 2020 15:01:54 UT</pubDate>
       <description>It took a while to clean the code, simplify it, regroup it, to obtain what I have now. The main (and currently only) file is adventuresintechland.el. As you can see in the git commits, it has changed a lot over the last days. It can basically do most of what I need and I added skeleton functions and items that I'll act on little by little as I progress. I'd like to understand test based development too, so that I can progress faster and in a steadier way...</description>
     </item>
-    <!-- place new items above this line -->
+	<item>
+	  <title>Restarting the engine</title>
+	  <link>https://brandelune.github.io/2021/10/23/index.html</link>
+	  <guid>https://brandelune.github.io/2021/10/23/index.html</guid>
+	  <pubDate>Sat, 23 Oct 2021 00:10:11 UT</pubDate>
+	  <description>Reading the past logs is saddening. I remember everything. Everything I wrote, when I wrote it, how I felt when I wrote it. I remember how it was at the beginning of January 2020, when we were getting ready to move into that apartment. There was some happiness, at least the hope that we'd be able to create something new that we had never tried before. Then I remember the covid news that started to slip in. We were together again at the end of March, with restrictions already ongoing, and then the world kind of stopped. Today we are stuck in an even harder place. There is mental pain almost every day, and very little hope to account for. It is hard to focus on important things. And work, as well as money is severely lacking.</description>
+	</item>
+	<!-- place new items above this line -->
   </channel>
 </rss>

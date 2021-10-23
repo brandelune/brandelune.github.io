@@ -3,14 +3,14 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2020-01-05 Sun 00:58 -->
+<!-- 2021-10-23 Sat 10:13 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>My adventures in tech land - TODO file</title>
-<meta name="generator" content="Org mode" />
 <meta name="author" content="Jean-Christophe Helary" />
-<style type="text/css">
- <!--/*--><![CDATA[/*><!--*/
+<meta name="generator" content="Org Mode" />
+<style>
+  #content { max-width: 60em; margin: auto; }
   .title  { text-align: center;
              margin-bottom: .2em; }
   .subtitle { text-align: center;
@@ -31,8 +31,9 @@
   #postamble p, #preamble p { font-size: 90%; margin: .2em; }
   p.verse { margin-left: 3%; }
   pre {
-    border: 1px solid #ccc;
-    box-shadow: 3px 3px 3px #eee;
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+    background-color: #f2f2f2;
     padding: 8pt;
     font-family: monospace;
     overflow: auto;
@@ -40,22 +41,22 @@
   }
   pre.src {
     position: relative;
-    overflow: visible;
-    padding-top: 1.2em;
+    overflow: auto;
   }
   pre.src:before {
     display: none;
     position: absolute;
-    background-color: white;
-    top: -10px;
-    right: 10px;
+    top: -8px;
+    right: 12px;
     padding: 3px;
-    border: 1px solid black;
+    color: #555;
+    background-color: #f2f2f299;
   }
-  pre.src:hover:before { display: inline;}
+  pre.src:hover:before { display: inline; margin-top: 14px;}
   /* Languages per Org manual */
   pre.src-asymptote:before { content: 'Asymptote'; }
   pre.src-awk:before { content: 'Awk'; }
+  pre.src-authinfo::before { content: 'Authinfo'; }
   pre.src-C:before { content: 'C'; }
   /* pre.src-C++ doesn't work in CSS */
   pre.src-clojure:before { content: 'Clojure'; }
@@ -191,866 +192,800 @@
   .org-info-js_search-highlight
     { background-color: #ffff00; color: #000000; font-weight: bold; }
   .org-svg { width: 90%; }
-  /*]]>*/-->
 </style>
 <link rel="stylesheet" type="text/css" href="./css/adventuresintechland.org.css" />
-<script type="text/javascript">
-/*
-@licstart  The following is the entire license notice for the
-JavaScript code in this tag.
-
-Copyright (C) 2012-2019 Free Software Foundation, Inc.
-
-The JavaScript code in this tag is free software: you can
-redistribute it and/or modify it under the terms of the GNU
-General Public License (GNU GPL) as published by the Free Software
-Foundation, either version 3 of the License, or (at your option)
-any later version.  The code is distributed WITHOUT ANY WARRANTY;
-without even the implied warranty of MERCHANTABILITY or FITNESS
-FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
-
-As additional permission under GNU GPL version 3 section 7, you
-may distribute non-source (e.g., minimized or compacted) forms of
-that code without the copy of the GNU GPL normally required by
-section 4, provided you include this license notice and a URL
-through which recipients can access the Corresponding Source.
-
-
-@licend  The above is the entire license notice
-for the JavaScript code in this tag.
-*/
-<!--/*--><![CDATA[/*><!--*/
- function CodeHighlightOn(elem, id)
- {
-   var target = document.getElementById(id);
-   if(null != target) {
-     elem.cacheClassElem = elem.className;
-     elem.cacheClassTarget = target.className;
-     target.className = "code-highlighted";
-     elem.className   = "code-highlighted";
-   }
- }
- function CodeHighlightOff(elem, id)
- {
-   var target = document.getElementById(id);
-   if(elem.cacheClassElem)
-     elem.className = elem.cacheClassElem;
-   if(elem.cacheClassTarget)
-     target.className = elem.cacheClassTarget;
- }
-/*]]>*///-->
-</script>
 </head>
 <body>
 <div id="org-div-home-and-up">
  <a accesskey="h" href="https://github.com/brandelune/brandelune.github.io"> UP </a>
  |
  <a accesskey="H" href="./index.html"> HOME </a>
-</div><div id="content">
+</div><div id="content" class="content">
 <h1 class="title">My adventures in tech land - TODO file</h1>
-<div id="table-of-contents">
-<h2>Table of Contents</h2>
-<div id="text-table-of-contents">
+<div id="table-of-contents" role="doc-toc">
+<h2>Table des matières</h2>
+<div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orgc65f901">code</a>
+<li><a href="#orge710c6f">code</a>
 <ul>
-<li><a href="#org1a5af61"><span class="todo CODE">CODE</span> <span class="timestamp-wrapper"><span class="timestamp">[2020-01-03 Fri] </span></span> automate trivial updating tasks&#xa0;&#xa0;&#xa0;<span class="tag"><span class="elisp">elisp</span></span></a>
-<ul>
-<li><a href="#org74f980b">global index file:adventuresintechland.el::defun UpdateMainIndex</a></li>
-<li><a href="#org7188b7c">previous day file:adventuresintechland.el::defun UpdatePreviousPage</a></li>
-<li><a href="#orged3d7bb">rss feed file:adventuresintechland.el::defun UpdateRSSFeed</a></li>
-<li><a href="#org388a506">daily index</a></li>
+<li><a href="#org181bfee"><span class="todo FIX">FIX</span> <span class="timestamp-wrapper"><span class="timestamp">[2021-10-23 Sat] </span></span> clean up the code and make it all work again&#xa0;&#xa0;&#xa0;<span class="tag"><span class="elisp">elisp</span></span></a></li>
+<li><a href="#org99e89d5"><span class="todo CODE">CODE</span> <span class="priority">[A]</span> <span class="timestamp-wrapper"><span class="timestamp">[2020-01-03 Fri] </span></span> automate trivial updating tasks&#xa0;&#xa0;&#xa0;<span class="tag"><span class="elisp">elisp</span></span></a></li>
+<li><a href="#org65910cf"><span class="todo FIX">FIX</span> <span class="priority">[C]</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-12-31 Tue] </span></span> favicon support to RSS&#xa0;&#xa0;&#xa0;<span class="tag"><span class="xml">xml</span></span></a></li>
+<li><a href="#orga8a0362"><span class="todo CODE">CODE</span> <span class="priority">[C]</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-12-22 Sun] </span></span> foldable navigation for the main index&#xa0;&#xa0;&#xa0;<span class="tag"><span class="CSS">CSS</span></span></a></li>
+<li><a href="#orge867d9e"><span class="todo CODE">CODE</span> <span class="priority">[C]</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-12-01 Sun] </span></span> capture directly to adventuresintechland.org&#xa0;&#xa0;&#xa0;<span class="tag"><span class="elisp">elisp</span></span></a></li>
+<li><a href="#orga0091ca"><span class="todo FIX">FIX</span> <span class="timestamp-wrapper"><span class="timestamp">[2018-11-12 Mon] </span></span> check the links automatically&#xa0;&#xa0;&#xa0;<span class="tag"><span class="shell">shell</span></span></a></li>
+<li><a href="#orgf22ff23"><span class="todo CODE">CODE</span> <span class="timestamp-wrapper"><span class="timestamp">[2018-11-18 Sun] </span></span> automated index creation for readings&#xa0;&#xa0;&#xa0;<span class="tag"><span class="shell">shell</span></span></a></li>
+<li><a href="#org6dd6d05"><span class="todo CODE">CODE</span> <span class="timestamp-wrapper"><span class="timestamp">[2018-11-18 Sun] </span></span> Automate CSS index generation&#xa0;&#xa0;&#xa0;<span class="tag"><span class="shell">shell</span></span></a></li>
+<li><a href="#org90546e9"><span class="todo CODE">CODE</span> <span class="timestamp-wrapper"><span class="timestamp">[2020-01-04 Sat] </span></span> add "padding" option to "number-to-string"&#xa0;&#xa0;&#xa0;<span class="tag"><span class="c">c</span></span></a></li>
+<li><a href="#org746b434"><span class="todo LEARN">LEARN</span> CSS variable&#xa0;&#xa0;&#xa0;<span class="tag"><span class="css">css</span></span></a></li>
+<li><a href="#orgaff614d"><span class="todo LEARN">LEARN</span> CSS flexbox&#xa0;&#xa0;&#xa0;<span class="tag"><span class="css">css</span>&#xa0;<span class="css">css</span></span></a></li>
+<li><a href="#org6c690a8"><span class="todo LEARN">LEARN</span> CSS grid&#xa0;&#xa0;&#xa0;<span class="tag"><span class="css">css</span></span></a></li>
+<li><a href="#orgf385b7b"><span class="todo LEARN">LEARN</span> CSS bootstrap&#xa0;&#xa0;&#xa0;<span class="tag"><span class="css">css</span></span></a></li>
+<li><a href="#orgdd47622"><span class="todo LEARN">LEARN</span> Google material design</a></li>
+<li><a href="#org0c84230"><span class="todo LEARN">LEARN</span> Joomla updates&#xa0;&#xa0;&#xa0;<span class="tag"><span class="cms">cms</span></span></a></li>
+<li><a href="#orgcaa88b9"><span class="todo LEARN">LEARN</span> wordpress updates&#xa0;&#xa0;&#xa0;<span class="tag"><span class="cms">cms</span></span></a></li>
+<li><a href="#org69f540b"><span class="todo LEARN">LEARN</span> Drupal updates&#xa0;&#xa0;&#xa0;<span class="tag"><span class="cms">cms</span></span></a></li>
+<li><a href="#orgfac0153"><span class="todo LEARN">LEARN</span> git&#xa0;&#xa0;&#xa0;<span class="tag"><span class="git">git</span></span></a></li>
+<li><a href="#org191ac17"><span class="todo CHECK">CHECK</span> <span class="timestamp-wrapper"><span class="timestamp">[2018-11-14 Wed] </span></span> tag insertion right and left of selection&#xa0;&#xa0;&#xa0;<span class="tag"><span class="emacs">emacs</span></span></a></li>
+<li><a href="#org996a39d"><span class="todo CHECK">CHECK</span> <span class="timestamp-wrapper"><span class="timestamp">[2018-11-14 Wed] </span></span> FireFox/Safari/Chrome developer tools&#xa0;&#xa0;&#xa0;<span class="tag"><span class="browser">browser</span></span></a></li>
+<li><a href="#org139d18a"><span class="todo CHECK">CHECK</span> <span class="timestamp-wrapper"><span class="timestamp">[2018-11-14 Wed] </span></span> elfeed manual&#xa0;&#xa0;&#xa0;<span class="tag"><span class="emacs">emacs</span></span></a></li>
+<li><a href="#org2f934eb"><span class="todo CHECK">CHECK</span> <span class="timestamp-wrapper"><span class="timestamp">[2018-11-14 Wed] </span></span> isearch manual&#xa0;&#xa0;&#xa0;<span class="tag"><span class="emacs">emacs</span></span></a></li>
+<li><a href="#org09b1ec2"><span class="todo CHECK">CHECK</span> <span class="timestamp-wrapper"><span class="timestamp">[2018-11-13 Tue] </span></span> "project" manager for all the files&#xa0;&#xa0;&#xa0;<span class="tag"><span class="emacs">emacs</span></span></a></li>
+<li><a href="#org5bb2694"><span class="todo CHECK">CHECK</span> <span class="timestamp-wrapper"><span class="timestamp">[2018-11-11 Sun] </span></span> add autocompletion for html/css&#xa0;&#xa0;&#xa0;<span class="tag"><span class="emacs">emacs</span></span></a></li>
 </ul>
 </li>
-<li><a href="#org0f579bd"><span class="todo FIX">FIX</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-12-31 Tue] </span></span> favicon support to RSS&#xa0;&#xa0;&#xa0;<span class="tag"><span class="xml">xml</span></span></a></li>
-<li><a href="#org2f2d411"><span class="todo CODE">CODE</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-12-22 Sun] </span></span> foldable navigation for the main index&#xa0;&#xa0;&#xa0;<span class="tag"><span class="CSS">CSS</span></span></a></li>
-<li><a href="#org835ab04"><span class="todo CODE">CODE</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-12-01 Sun] </span></span> capture directly to adventuresintechland.org&#xa0;&#xa0;&#xa0;<span class="tag"><span class="elisp">elisp</span></span></a></li>
-<li><a href="#orgeb78bbc"><span class="todo FIX">FIX</span> <span class="timestamp-wrapper"><span class="timestamp">[2018-11-12 Mon] </span></span> check the links automatically&#xa0;&#xa0;&#xa0;<span class="tag"><span class="shell">shell</span></span></a></li>
-<li><a href="#orge718438"><span class="todo CODE">CODE</span> <span class="timestamp-wrapper"><span class="timestamp">[2018-11-18 Sun] </span></span> automated index creation for readings&#xa0;&#xa0;&#xa0;<span class="tag"><span class="shell">shell</span></span></a></li>
-<li><a href="#org6dfb4de"><span class="todo CODE">CODE</span> <span class="timestamp-wrapper"><span class="timestamp">[2018-11-18 Sun] </span></span> Automate CSS index generation&#xa0;&#xa0;&#xa0;<span class="tag"><span class="shell">shell</span></span></a></li>
-<li><a href="#orgc3b4339"><span class="todo CODE">CODE</span> <span class="timestamp-wrapper"><span class="timestamp">[2020-01-04 Sat] </span></span> add "padding" option to "number-to-string"&#xa0;&#xa0;&#xa0;<span class="tag"><span class="c">c</span></span></a></li>
-<li><a href="#org8f396cd"><span class="todo LEARN">LEARN</span> CSS variable&#xa0;&#xa0;&#xa0;<span class="tag"><span class="css">css</span></span></a></li>
-<li><a href="#org08f9eb7"><span class="todo LEARN">LEARN</span> CSS flexbox&#xa0;&#xa0;&#xa0;<span class="tag"><span class="css">css</span>&#xa0;<span class="css">css</span></span></a></li>
-<li><a href="#orgc6a6763"><span class="todo LEARN">LEARN</span> CSS grid&#xa0;&#xa0;&#xa0;<span class="tag"><span class="css">css</span></span></a></li>
-<li><a href="#org72a21bd"><span class="todo LEARN">LEARN</span> CSS bootstrap&#xa0;&#xa0;&#xa0;<span class="tag"><span class="css">css</span></span></a></li>
-<li><a href="#orgf472903"><span class="todo LEARN">LEARN</span> Google material design</a></li>
-<li><a href="#org9f56f37"><span class="todo LEARN">LEARN</span> Joomla updates&#xa0;&#xa0;&#xa0;<span class="tag"><span class="cms">cms</span></span></a></li>
-<li><a href="#org1bc8d5a"><span class="todo LEARN">LEARN</span> wordpress updates&#xa0;&#xa0;&#xa0;<span class="tag"><span class="cms">cms</span></span></a></li>
-<li><a href="#org03b4323"><span class="todo LEARN">LEARN</span> Drupal updates&#xa0;&#xa0;&#xa0;<span class="tag"><span class="cms">cms</span></span></a>
+<li><a href="#org00a1c20"><span class="todo TODO">TODO</span> manage daily entries <code>[9/9]</code></a>
 <ul>
-<li><a href="#org412ffab">PTGPTB -&gt; drupal 8/9</a></li>
+<li><a href="#orge5b9ed5"><span class="done DONE">DONE</span> create the rss entry in file:./adventuresintechland.xml&#xa0;&#xa0;&#xa0;<span class="tag"><span class="me">me</span></span></a></li>
+<li><a href="#orgb5fae44"><span class="done DONE">DONE</span> run file:./adventuresintechland.el to create the template&#xa0;&#xa0;&#xa0;<span class="tag"><span class="emacs">emacs</span></span></a></li>
+<li><a href="#org5f75127"><span class="done DONE">DONE</span> edit the main file:./index.html for links and nb of day&#xa0;&#xa0;&#xa0;<span class="tag"><span class="me">me</span></span></a></li>
+<li><a href="#org039c3cf"><span class="done DONE">DONE</span> edit the previous day</a></li>
+<li><a href="#org000f193"><span class="done DONE">DONE</span> fill the template and add day number&#xa0;&#xa0;&#xa0;<span class="tag"><span class="me">me</span></span></a></li>
+<li><a href="#org984c466"><span class="done DONE">DONE</span> stage the new folder and index.html, the RSS and  old indexes&#xa0;&#xa0;&#xa0;<span class="tag"><span class="git">git</span></span></a></li>
+<li><a href="#org4ab0094"><span class="done DONE">DONE</span> update adventuresintechland.org</a></li>
+<li><a href="#org485817a"><span class="done DONE">DONE</span> export adventuresintechland.org.html</a></li>
+<li><a href="#orge20633a"><span class="done DONE">DONE</span> commit the org file and push everything to origin&#xa0;&#xa0;&#xa0;<span class="tag"><span class="git">git</span></span></a></li>
 </ul>
 </li>
-<li><a href="#org98d90fc"><span class="todo LEARN">LEARN</span> git&#xa0;&#xa0;&#xa0;<span class="tag"><span class="git">git</span></span></a>
+<li><a href="#org0dc1e44"><span class="done DONE">DONE</span> items</a>
 <ul>
-<li><a href="#org0c4fef7">change of branch without committing: <b>git stash</b> | <b>git stash push</b></a></li>
-<li><a href="#org29db7f8">see what stashes are stored: <b>git stash list</b></a></li>
-<li><a href="#org6ac709d">apply stash: <b>git stash apply stash@{n}</b> &lt;- n comes from the list</a></li>
-<li><a href="#org0971c47">remove the stash: <b>git stash drop</b></a></li>
-<li><a href="#org87b0d2b">magit file checkout: <b>magit-file-checkout</b> X f</a></li>
-<li><a href="#orgc083ef7"><span class="todo CHECK">CHECK</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-12-03 Tue] </span></span> git revert</a></li>
-<li><a href="#org15dc5d5"><span class="todo CHECK">CHECK</span> <span class="timestamp-wrapper"><span class="timestamp">[2018-11-17 Sat] </span></span> git merge</a></li>
-<li><a href="#orgcfa4c58"><span class="done DONE">DONE</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-12-31 Tue] </span></span> git checkout file</a></li>
-<li><a href="#org754ae93"><span class="done DONE">DONE</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-12-01 Sun] </span></span> how to fix commit messages ?&#xa0;&#xa0;&#xa0;<span class="tag"><span class="magit">magit</span>&#xa0;<span class="git">git</span></span></a></li>
-</ul>
-</li>
-<li><a href="#orgfd1b49a"><span class="todo CHECK">CHECK</span> <span class="timestamp-wrapper"><span class="timestamp">[2018-11-14 Wed] </span></span> tag insertion right and left of selection&#xa0;&#xa0;&#xa0;<span class="tag"><span class="emacs">emacs</span></span></a></li>
-<li><a href="#orgd2e8049"><span class="todo CHECK">CHECK</span> <span class="timestamp-wrapper"><span class="timestamp">[2018-11-14 Wed] </span></span> FireFox/Safari/Chrome developer tools&#xa0;&#xa0;&#xa0;<span class="tag"><span class="browser">browser</span></span></a></li>
-<li><a href="#org9d99581"><span class="todo CHECK">CHECK</span> <span class="timestamp-wrapper"><span class="timestamp">[2018-11-14 Wed] </span></span> elfeed manual&#xa0;&#xa0;&#xa0;<span class="tag"><span class="emacs">emacs</span></span></a></li>
-<li><a href="#org51653e1"><span class="todo CHECK">CHECK</span> <span class="timestamp-wrapper"><span class="timestamp">[2018-11-14 Wed] </span></span> isearch manual&#xa0;&#xa0;&#xa0;<span class="tag"><span class="emacs">emacs</span></span></a></li>
-<li><a href="#org5fef063"><span class="todo CHECK">CHECK</span> <span class="timestamp-wrapper"><span class="timestamp">[2018-11-13 Tue] </span></span> "project" manager for all the files&#xa0;&#xa0;&#xa0;<span class="tag"><span class="emacs">emacs</span></span></a></li>
-<li><a href="#orgfaec956"><span class="todo CHECK">CHECK</span> <span class="timestamp-wrapper"><span class="timestamp">[2018-11-11 Sun] </span></span> add autocompletion for html/css&#xa0;&#xa0;&#xa0;<span class="tag"><span class="emacs">emacs</span></span></a></li>
-</ul>
-</li>
-<li><a href="#org5f1fdd4"><span class="todo TODO">TODO</span> manage daily entries <code>[9/9]</code></a>
-<ul>
-<li><a href="#org193ac4d"><span class="done DONE">DONE</span> create the rss entry in file:./adventuresintechland.xml&#xa0;&#xa0;&#xa0;<span class="tag"><span class="me">me</span></span></a></li>
-<li><a href="#org534fd52"><span class="done DONE">DONE</span> run file:./adventuresintechland.el to create the template&#xa0;&#xa0;&#xa0;<span class="tag"><span class="emacs">emacs</span></span></a></li>
-<li><a href="#org0566e88"><span class="done DONE">DONE</span> edit the main file:./index.html for links and nb of day&#xa0;&#xa0;&#xa0;<span class="tag"><span class="me">me</span></span></a>
-<ul>
-<li><a href="#org2b01531">[last day] x 2</a></li>
-<li><a href="#orgbcd1e34">logbook + nb of documented days</a></li>
-</ul>
-</li>
-<li><a href="#org3715b81"><span class="done DONE">DONE</span> edit the previous day</a></li>
-<li><a href="#orgb22cf09"><span class="done DONE">DONE</span> fill the template and add day number&#xa0;&#xa0;&#xa0;<span class="tag"><span class="me">me</span></span></a></li>
-<li><a href="#org3636850"><span class="done DONE">DONE</span> stage the new folder and index.html, the RSS and  old indexes&#xa0;&#xa0;&#xa0;<span class="tag"><span class="git">git</span></span></a></li>
-<li><a href="#org99f89b8"><span class="done DONE">DONE</span> update adventuresintechland.org</a></li>
-<li><a href="#org2780906"><span class="done DONE">DONE</span> export adventuresintechland.org.html</a></li>
-<li><a href="#org1421739"><span class="done DONE">DONE</span> commit the org file and push everything to origin&#xa0;&#xa0;&#xa0;<span class="tag"><span class="git">git</span></span></a>
-<ul>
-<li><a href="#org816a78b">git checkout "gh-pages"</a></li>
-<li><a href="#orgda03595">git status</a></li>
-<li><a href="#orgf970461">git add *</a></li>
-<li><a href="#org8a605b3">git commit -m "commit message"</a></li>
-<li><a href="#org7a40e48">git push origin</a></li>
-<li><a href="#orga66a2de">git checkout "master"</a></li>
-<li><a href="#orgf9169df">git merge gh-pages</a></li>
-<li><a href="#org4066b36">git push origin</a></li>
-<li><a href="#orgd9668d2">git checkout "gh-pages"</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a href="#org6c9620f"><span class="done DONE">DONE</span> items</a>
-<ul>
-<li><a href="#org65f42d7"><span class="done DONE">DONE</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-12-29 Sun] </span></span> write-region bug ?&#xa0;&#xa0;&#xa0;<span class="tag"><span class="elisp">elisp</span></span></a></li>
-<li><a href="#org8e0f2bd"><span class="done CANCELED">CANCELED</span> <span class="timestamp-wrapper"><span class="timestamp">[2018-11-13 Tue] </span></span> automatically create daily links&#xa0;&#xa0;&#xa0;<span class="tag"><span class="elisp">elisp</span>&#xa0;<span class="shell">shell</span></span></a></li>
-<li><a href="#org6d4e911"><span class="done CANCELED">CANCELED</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-12-01 Sun] </span></span> automatically generate "nth day"&#xa0;&#xa0;&#xa0;<span class="tag"><span class="elisp">elisp</span></span></a></li>
-<li><a href="#orgc44a9ef"><span class="done DONE">DONE</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-12-01 Sun] </span></span> just got bitten by the date edge cases&#x2026;&#xa0;&#xa0;&#xa0;<span class="tag"><span class="elisp">elisp</span></span></a></li>
-<li><a href="#org1d8a26a"><span class="done DONE">DONE</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-12-31 Tue] </span></span> create "edge-case" branch to work safely :)&#xa0;&#xa0;&#xa0;<span class="tag"><span class="admin">admin</span></span></a></li>
-<li><a href="#org778ccc0"><span class="done DONE">DONE</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-12-31 Tue] </span></span> reorganise the directory tree&#xa0;&#xa0;&#xa0;<span class="tag"><span class="admin">admin</span></span></a></li>
-<li><a href="#orgd61b7ec"><span class="done DONE">DONE</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-12-31 Tue] </span></span> fast access to org keywords&#xa0;&#xa0;&#xa0;<span class="tag"><span class="org">org</span></span></a></li>
-<li><a href="#orgaaae8a8"><span class="done DONE">DONE</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-12-31 Tue] </span></span> reorganize basic css locations&#xa0;&#xa0;&#xa0;<span class="tag"><span class="css">css</span></span></a></li>
-<li><a href="#orgc46b402"><span class="done DONE">DONE</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-12-30 Mon] </span></span> add favicon support&#xa0;&#xa0;&#xa0;<span class="tag"><span class="html">html</span></span></a></li>
-<li><a href="#org1c22cc3"><span class="done DONE">DONE</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-12-18 Wed] </span></span> append the XML to the RSS file&#xa0;&#xa0;&#xa0;<span class="tag"><span class="elisp">elisp</span></span></a></li>
-<li><a href="#orga779c3a"><span class="done DONE">DONE</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-12-16 Mon] </span></span> RFC-822 valide dates for the rss feed&#xa0;&#xa0;&#xa0;<span class="tag"><span class="elisp">elisp</span></span></a></li>
-<li><a href="#org4a6432b"><span class="done DONE">DONE</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-12-16 Mon] </span></span> the RSS date is not valid&#xa0;&#xa0;&#xa0;<span class="tag"><span class="xml">xml</span></span></a></li>
-<li><a href="#orgcf255e0"><span class="done DONE">DONE</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-12-01 Sun] </span></span> add a "0" to single digit days in the page title&#xa0;&#xa0;&#xa0;<span class="tag"><span class="elisp">elisp</span></span></a></li>
-<li><a href="#orga0d4c26"><span class="done DONE">DONE</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-12-04 Wed] </span></span> add .emacs.d/init.el to git repository&#xa0;&#xa0;&#xa0;<span class="tag"><span class="git">git</span>&#xa0;<span class="emacs">emacs</span></span></a></li>
-<li><a href="#orgde98288"><span class="done DONE">DONE</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-12-02 Mon] </span></span> link to exported org file is not correct&#xa0;&#xa0;&#xa0;<span class="tag"><span class="elisp">elisp</span></span></a></li>
-<li><a href="#orga1b8420"><span class="done DONE">DONE</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-12-01 Sun] </span></span> add web-mode hook for html files&#xa0;&#xa0;&#xa0;<span class="tag"><span class="elisp">elisp</span></span></a></li>
-<li><a href="#org4a22505"><span class="done DONE">DONE</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-12-01 Sun] </span></span> github contributions don't appear&#xa0;&#xa0;&#xa0;<span class="tag"><span class="github">github</span></span></a></li>
-<li><a href="#org149c722"><span class="done DONE">DONE</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-11-29 Fri] </span></span> the RSS feed does not work anymore&#xa0;&#xa0;&#xa0;<span class="tag"><span class="xml">xml</span></span></a></li>
-<li><a href="#orga1a78f8"><span class="done DONE">DONE</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-11-29 Fri] </span></span> link this todo file to all the daily files&#xa0;&#xa0;&#xa0;<span class="tag"><span class="elisp">elisp</span>&#xa0;<span class="html">html</span></span></a></li>
-<li><a href="#org3b0c496"><span class="done DONE">DONE</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-11-26 Tue] </span></span> create daily folder structure and html template&#xa0;&#xa0;&#xa0;<span class="tag"><span class="elisp">elisp</span></span></a></li>
-<li><a href="#org98e2846"><span class="done DONE">DONE</span> <span class="timestamp-wrapper"><span class="timestamp">[2018-11-14 Wed] </span></span> pushing to github from emacs&#xa0;&#xa0;&#xa0;<span class="tag"><span class="emacs">emacs</span></span></a></li>
-<li><a href="#orgeef8642"><span class="done DONE">DONE</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-11-24 Sun] </span></span> change daily tasks&#xa0;&#xa0;&#xa0;<span class="tag"><span class="admin">admin</span></span></a></li>
-<li><a href="#org28db9fa"><span class="done DONE">DONE</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-11-24 Sun] </span></span> list the tasks required in publishing the pages&#xa0;&#xa0;&#xa0;<span class="tag"><span class="admin">admin</span></span></a></li>
-<li><a href="#org22bc7d9"><span class="done DONE">DONE</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-11-24 Sun] </span></span> create a global todo file&#xa0;&#xa0;&#xa0;<span class="tag"><span class="admin">admin</span></span></a></li>
-<li><a href="#org5cd52d6"><span class="done DONE">DONE</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-11-24 Sun] </span></span> gather all the todos written in older pages&#xa0;&#xa0;&#xa0;<span class="tag"><span class="admin">admin</span></span></a></li>
-<li><a href="#org0d9b50d"><span class="done DONE">DONE</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-11-24 Sun] </span></span> customize org export because the HTML is ugly&#xa0;&#xa0;&#xa0;<span class="tag"><span class="admin">admin</span></span></a></li>
+<li><a href="#org5456579"><span class="done DONE">DONE</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-12-29 Sun] </span></span> write-region bug ?&#xa0;&#xa0;&#xa0;<span class="tag"><span class="elisp">elisp</span></span></a></li>
+<li><a href="#org6e58532"><span class="done CANCELED">CANCELED</span> <span class="priority">[B]</span> <span class="timestamp-wrapper"><span class="timestamp">[2018-11-13 Tue] </span></span> automatically create daily links&#xa0;&#xa0;&#xa0;<span class="tag"><span class="elisp">elisp</span>&#xa0;<span class="shell">shell</span></span></a></li>
+<li><a href="#org269aed3"><span class="done CANCELED">CANCELED</span> <span class="priority">[A]</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-12-01 Sun] </span></span> automatically generate "nth day"&#xa0;&#xa0;&#xa0;<span class="tag"><span class="elisp">elisp</span></span></a></li>
+<li><a href="#orgcb1be43"><span class="done DONE">DONE</span> <span class="priority">[A]</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-12-01 Sun] </span></span> just got bitten by the date edge cases&#x2026;&#xa0;&#xa0;&#xa0;<span class="tag"><span class="elisp">elisp</span></span></a></li>
+<li><a href="#org9a29b31"><span class="done DONE">DONE</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-12-31 Tue] </span></span> create "edge-case" branch to work safely :)&#xa0;&#xa0;&#xa0;<span class="tag"><span class="admin">admin</span></span></a></li>
+<li><a href="#orgbe67711"><span class="done DONE">DONE</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-12-31 Tue] </span></span> reorganise the directory tree&#xa0;&#xa0;&#xa0;<span class="tag"><span class="admin">admin</span></span></a></li>
+<li><a href="#orgb27b7bb"><span class="done DONE">DONE</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-12-31 Tue] </span></span> fast access to org keywords&#xa0;&#xa0;&#xa0;<span class="tag"><span class="org">org</span></span></a></li>
+<li><a href="#orgd2952eb"><span class="done DONE">DONE</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-12-31 Tue] </span></span> reorganize basic css locations&#xa0;&#xa0;&#xa0;<span class="tag"><span class="css">css</span></span></a></li>
+<li><a href="#orgc88a7d9"><span class="done DONE">DONE</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-12-30 Mon] </span></span> add favicon support&#xa0;&#xa0;&#xa0;<span class="tag"><span class="html">html</span></span></a></li>
+<li><a href="#org465dec9"><span class="done DONE">DONE</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-12-18 Wed] </span></span> append the XML to the RSS file&#xa0;&#xa0;&#xa0;<span class="tag"><span class="elisp">elisp</span></span></a></li>
+<li><a href="#org84fad02"><span class="done DONE">DONE</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-12-16 Mon] </span></span> RFC-822 valide dates for the rss feed&#xa0;&#xa0;&#xa0;<span class="tag"><span class="elisp">elisp</span></span></a></li>
+<li><a href="#org3b284fe"><span class="done DONE">DONE</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-12-16 Mon] </span></span> the RSS date is not valid&#xa0;&#xa0;&#xa0;<span class="tag"><span class="xml">xml</span></span></a></li>
+<li><a href="#orgf24574b"><span class="done DONE">DONE</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-12-01 Sun] </span></span> add a "0" to single digit days in the page title&#xa0;&#xa0;&#xa0;<span class="tag"><span class="elisp">elisp</span></span></a></li>
+<li><a href="#org734a9c1"><span class="done DONE">DONE</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-12-04 Wed] </span></span> add .emacs.d/init.el to git repository&#xa0;&#xa0;&#xa0;<span class="tag"><span class="git">git</span>&#xa0;<span class="emacs">emacs</span></span></a></li>
+<li><a href="#orge3102fc"><span class="done DONE">DONE</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-12-02 Mon] </span></span> link to exported org file is not correct&#xa0;&#xa0;&#xa0;<span class="tag"><span class="elisp">elisp</span></span></a></li>
+<li><a href="#org650929f"><span class="done DONE">DONE</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-12-01 Sun] </span></span> add web-mode hook for html files&#xa0;&#xa0;&#xa0;<span class="tag"><span class="elisp">elisp</span></span></a></li>
+<li><a href="#orge9d2854"><span class="done DONE">DONE</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-12-01 Sun] </span></span> github contributions don't appear&#xa0;&#xa0;&#xa0;<span class="tag"><span class="github">github</span></span></a></li>
+<li><a href="#org1bb1417"><span class="done DONE">DONE</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-11-29 Fri] </span></span> the RSS feed does not work anymore&#xa0;&#xa0;&#xa0;<span class="tag"><span class="xml">xml</span></span></a></li>
+<li><a href="#org9076d02"><span class="done DONE">DONE</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-11-29 Fri] </span></span> link this todo file to all the daily files&#xa0;&#xa0;&#xa0;<span class="tag"><span class="elisp">elisp</span>&#xa0;<span class="html">html</span></span></a></li>
+<li><a href="#orge9d761c"><span class="done DONE">DONE</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-11-26 Tue] </span></span> create daily folder structure and html template&#xa0;&#xa0;&#xa0;<span class="tag"><span class="elisp">elisp</span></span></a></li>
+<li><a href="#orgcad40d7"><span class="done DONE">DONE</span> <span class="timestamp-wrapper"><span class="timestamp">[2018-11-14 Wed] </span></span> pushing to github from emacs&#xa0;&#xa0;&#xa0;<span class="tag"><span class="emacs">emacs</span></span></a></li>
+<li><a href="#org87891de"><span class="done DONE">DONE</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-11-24 Sun] </span></span> change daily tasks&#xa0;&#xa0;&#xa0;<span class="tag"><span class="admin">admin</span></span></a></li>
+<li><a href="#orgeb69380"><span class="done DONE">DONE</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-11-24 Sun] </span></span> list the tasks required in publishing the pages&#xa0;&#xa0;&#xa0;<span class="tag"><span class="admin">admin</span></span></a></li>
+<li><a href="#orgc0f459d"><span class="done DONE">DONE</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-11-24 Sun] </span></span> create a global todo file&#xa0;&#xa0;&#xa0;<span class="tag"><span class="admin">admin</span></span></a></li>
+<li><a href="#org5f0e67b"><span class="done DONE">DONE</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-11-24 Sun] </span></span> gather all the todos written in older pages&#xa0;&#xa0;&#xa0;<span class="tag"><span class="admin">admin</span></span></a></li>
+<li><a href="#orgb5c188c"><span class="done DONE">DONE</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-11-24 Sun] </span></span> customize org export because the HTML is ugly&#xa0;&#xa0;&#xa0;<span class="tag"><span class="admin">admin</span></span></a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
 <hr />
-<div id="outline-container-orgc65f901" class="outline-2">
-<h2 id="orgc65f901">code</h2>
-<div class="outline-text-2" id="text-orgc65f901">
+<div id="outline-container-orge710c6f" class="outline-2">
+<h2 id="orge710c6f">code</h2>
+<div class="outline-text-2" id="text-orge710c6f">
 </div>
-<div id="outline-container-org1a5af61" class="outline-3">
-<h3 id="org1a5af61"><span class="todo CODE">CODE</span> <span class="timestamp-wrapper"><span class="timestamp">[2020-01-03 Fri] </span></span> automate trivial updating tasks&#xa0;&#xa0;&#xa0;<span class="tag"><span class="elisp">elisp</span></span></h3>
-<div class="outline-text-3" id="text-org1a5af61">
+<div id="outline-container-org181bfee" class="outline-3">
+<h3 id="org181bfee"><span class="todo FIX">FIX</span> <span class="timestamp-wrapper"><span class="timestamp">[2021-10-23 Sat] </span></span> clean up the code and make it all work again&#xa0;&#xa0;&#xa0;<span class="tag"><span class="elisp">elisp</span></span></h3>
 </div>
-<div id="outline-container-org74f980b" class="outline-4">
-<h4 id="org74f980b">global index <a href="adventuresintechland.el#MissingReference">adventuresintechland.el#MissingReference</a></h4>
-<div class="outline-text-4" id="text-org74f980b">
+<div id="outline-container-org99e89d5" class="outline-3">
+<h3 id="org99e89d5"><span class="todo CODE">CODE</span> <span class="priority">[A]</span> <span class="timestamp-wrapper"><span class="timestamp">[2020-01-03 Fri] </span></span> automate trivial updating tasks&#xa0;&#xa0;&#xa0;<span class="tag"><span class="elisp">elisp</span></span></h3>
+<div class="outline-text-3" id="text-org99e89d5">
 </div>
-<ul class="org-ul">
-<li><a id="org697cf4e"></a>number of days in the current "season"<br /></li>
-<li><a id="org4a04c84"></a>total number of documented days<br /></li>
-<li><a id="orgbae7ece"></a>link to "last day"<br /></li>
-<li><a id="org115f88f"></a>index contents for the new day<br /></li>
-</ul>
+<div id="outline-container-org5e7233a" class="outline-4">
+<h4 id="org5e7233a">global index <a href="adventuresintechland.el#MissingReference">adventuresintechland.el#MissingReference</a></h4>
+<div class="outline-text-4" id="text-org5e7233a">
 </div>
-<div id="outline-container-org7188b7c" class="outline-4">
-<h4 id="org7188b7c">previous day <a href="adventuresintechland.el#MissingReference">adventuresintechland.el#MissingReference</a></h4>
-<div class="outline-text-4" id="text-org7188b7c">
+<div id="outline-container-org041880a" class="outline-5">
+<h5 id="org041880a">number of days in the current "season"</h5>
 </div>
-<ul class="org-ul">
-<li><a id="org3b31d16"></a>"tomorrow" link<br /></li>
-</ul>
+<div id="outline-container-org6100d2d" class="outline-5">
+<h5 id="org6100d2d">total number of documented days</h5>
 </div>
-<div id="outline-container-orged3d7bb" class="outline-4">
-<h4 id="orged3d7bb">rss feed <a href="adventuresintechland.el#MissingReference">adventuresintechland.el#MissingReference</a></h4>
-<div class="outline-text-4" id="text-orged3d7bb">
+<div id="outline-container-orgfa83ffb" class="outline-5">
+<h5 id="orgfa83ffb">link to "last day"</h5>
 </div>
-<ul class="org-ul">
-<li><a id="org757db6e"></a>title<br /></li>
-<li><a id="org0e56333"></a>date<br /></li>
-<li><a id="org14d709a"></a>link<br /></li>
-<li><a id="org00431ef"></a>contents (first paragraph of current index ?)<br /></li>
-</ul>
-</div>
-<div id="outline-container-org388a506" class="outline-4">
-<h4 id="org388a506">daily index</h4>
-<div class="outline-text-4" id="text-org388a506">
-</div>
-<ul class="org-ul">
-<li><a id="org4541d3b"></a>link to the day before by checking the file hierarchy ?<br /></li>
-</ul>
+<div id="outline-container-orga4da192" class="outline-5">
+<h5 id="orga4da192">index contents for the new day</h5>
 </div>
 </div>
-<div id="outline-container-org0f579bd" class="outline-3">
-<h3 id="org0f579bd"><span class="todo FIX">FIX</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-12-31 Tue] </span></span> favicon support to RSS&#xa0;&#xa0;&#xa0;<span class="tag"><span class="xml">xml</span></span></h3>
-<div class="outline-text-3" id="text-org0f579bd">
+<div id="outline-container-org5e19f3a" class="outline-4">
+<h4 id="org5e19f3a">previous day <a href="adventuresintechland.el#MissingReference">adventuresintechland.el#MissingReference</a></h4>
+<div class="outline-text-4" id="text-org5e19f3a">
+</div>
+<div id="outline-container-org16e7aea" class="outline-5">
+<h5 id="org16e7aea">"tomorrow" link</h5>
+</div>
+</div>
+<div id="outline-container-org1362810" class="outline-4">
+<h4 id="org1362810">rss feed <a href="adventuresintechland.el#MissingReference">adventuresintechland.el#MissingReference</a></h4>
+<div class="outline-text-4" id="text-org1362810">
+</div>
+<div id="outline-container-org9248cc9" class="outline-5">
+<h5 id="org9248cc9">title</h5>
+</div>
+<div id="outline-container-org293b7cf" class="outline-5">
+<h5 id="org293b7cf">date</h5>
+</div>
+<div id="outline-container-org01919e4" class="outline-5">
+<h5 id="org01919e4">link</h5>
+</div>
+<div id="outline-container-orgafca083" class="outline-5">
+<h5 id="orgafca083">contents (first paragraph of current index ?)</h5>
+</div>
+</div>
+<div id="outline-container-orge5e578e" class="outline-4">
+<h4 id="orge5e578e">daily index</h4>
+<div class="outline-text-4" id="text-orge5e578e">
+</div>
+<div id="outline-container-orgac5adcd" class="outline-5">
+<h5 id="orgac5adcd">link to the day before by checking the file hierarchy ?</h5>
+</div>
+</div>
+</div>
+<div id="outline-container-org65910cf" class="outline-3">
+<h3 id="org65910cf"><span class="todo FIX">FIX</span> <span class="priority">[C]</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-12-31 Tue] </span></span> favicon support to RSS&#xa0;&#xa0;&#xa0;<span class="tag"><span class="xml">xml</span></span></h3>
+<div class="outline-text-3" id="text-org65910cf">
 <p>
-<a href="https://snook.ca/archives/rss/add_logo_to_feed">https://snook.ca/archives/rss/add_logo_to_feed</a>
-<a href="http://www.rssboard.org/rss-2-0-1">http://www.rssboard.org/rss-2-0-1</a>
-not working at the moment&#x2026;
+<a href="https://snook.ca/archives/rss/add_logo_to_feed">https://snook.ca/archives/rss/add_logo_to_feed</a><br />
+<a href="http://www.rssboard.org/rss-2-0-1">http://www.rssboard.org/rss-2-0-1</a><br />
+not working at the moment&#x2026;<br />
 </p>
 </div>
 </div>
-<div id="outline-container-org2f2d411" class="outline-3">
-<h3 id="org2f2d411"><span class="todo CODE">CODE</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-12-22 Sun] </span></span> foldable navigation for the main index&#xa0;&#xa0;&#xa0;<span class="tag"><span class="CSS">CSS</span></span></h3>
+<div id="outline-container-orga8a0362" class="outline-3">
+<h3 id="orga8a0362"><span class="todo CODE">CODE</span> <span class="priority">[C]</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-12-22 Sun] </span></span> foldable navigation for the main index&#xa0;&#xa0;&#xa0;<span class="tag"><span class="CSS">CSS</span></span></h3>
 </div>
-<div id="outline-container-org835ab04" class="outline-3">
-<h3 id="org835ab04"><span class="todo CODE">CODE</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-12-01 Sun] </span></span> capture directly to adventuresintechland.org&#xa0;&#xa0;&#xa0;<span class="tag"><span class="elisp">elisp</span></span></h3>
+<div id="outline-container-orge867d9e" class="outline-3">
+<h3 id="orge867d9e"><span class="todo CODE">CODE</span> <span class="priority">[C]</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-12-01 Sun] </span></span> capture directly to adventuresintechland.org&#xa0;&#xa0;&#xa0;<span class="tag"><span class="elisp">elisp</span></span></h3>
 </div>
-<div id="outline-container-orgeb78bbc" class="outline-3">
-<h3 id="orgeb78bbc"><span class="todo FIX">FIX</span> <span class="timestamp-wrapper"><span class="timestamp">[2018-11-12 Mon] </span></span> check the links automatically&#xa0;&#xa0;&#xa0;<span class="tag"><span class="shell">shell</span></span></h3>
+<div id="outline-container-orga0091ca" class="outline-3">
+<h3 id="orga0091ca"><span class="todo FIX">FIX</span> <span class="timestamp-wrapper"><span class="timestamp">[2018-11-12 Mon] </span></span> check the links automatically&#xa0;&#xa0;&#xa0;<span class="tag"><span class="shell">shell</span></span></h3>
 </div>
-<div id="outline-container-orge718438" class="outline-3">
-<h3 id="orge718438"><span class="todo CODE">CODE</span> <span class="timestamp-wrapper"><span class="timestamp">[2018-11-18 Sun] </span></span> automated index creation for readings&#xa0;&#xa0;&#xa0;<span class="tag"><span class="shell">shell</span></span></h3>
+<div id="outline-container-orgf22ff23" class="outline-3">
+<h3 id="orgf22ff23"><span class="todo CODE">CODE</span> <span class="timestamp-wrapper"><span class="timestamp">[2018-11-18 Sun] </span></span> automated index creation for readings&#xa0;&#xa0;&#xa0;<span class="tag"><span class="shell">shell</span></span></h3>
 </div>
-<div id="outline-container-org6dfb4de" class="outline-3">
-<h3 id="org6dfb4de"><span class="todo CODE">CODE</span> <span class="timestamp-wrapper"><span class="timestamp">[2018-11-18 Sun] </span></span> Automate CSS index generation&#xa0;&#xa0;&#xa0;<span class="tag"><span class="shell">shell</span></span></h3>
-<div class="outline-text-3" id="text-org6dfb4de">
+<div id="outline-container-org6dd6d05" class="outline-3">
+<h3 id="org6dd6d05"><span class="todo CODE">CODE</span> <span class="timestamp-wrapper"><span class="timestamp">[2018-11-18 Sun] </span></span> Automate CSS index generation&#xa0;&#xa0;&#xa0;<span class="tag"><span class="shell">shell</span></span></h3>
+<div class="outline-text-3" id="text-org6dd6d05">
 <p>
-The index.sh script exists but needs to be run automatically.
+The index.sh script exists but needs to be run automatically.<br />
 </p>
 </div>
 </div>
-<div id="outline-container-orgc3b4339" class="outline-3">
-<h3 id="orgc3b4339"><span class="todo CODE">CODE</span> <span class="timestamp-wrapper"><span class="timestamp">[2020-01-04 Sat] </span></span> add "padding" option to "number-to-string"&#xa0;&#xa0;&#xa0;<span class="tag"><span class="c">c</span></span></h3>
+<div id="outline-container-org90546e9" class="outline-3">
+<h3 id="org90546e9"><span class="todo CODE">CODE</span> <span class="timestamp-wrapper"><span class="timestamp">[2020-01-04 Sat] </span></span> add "padding" option to "number-to-string"&#xa0;&#xa0;&#xa0;<span class="tag"><span class="c">c</span></span></h3>
 </div>
-<div id="outline-container-org8f396cd" class="outline-3">
-<h3 id="org8f396cd"><span class="todo LEARN">LEARN</span> CSS variable&#xa0;&#xa0;&#xa0;<span class="tag"><span class="css">css</span></span></h3>
+<div id="outline-container-org746b434" class="outline-3">
+<h3 id="org746b434"><span class="todo LEARN">LEARN</span> CSS variable&#xa0;&#xa0;&#xa0;<span class="tag"><span class="css">css</span></span></h3>
 </div>
-<div id="outline-container-org08f9eb7" class="outline-3">
-<h3 id="org08f9eb7"><span class="todo LEARN">LEARN</span> CSS flexbox&#xa0;&#xa0;&#xa0;<span class="tag"><span class="css">css</span>&#xa0;<span class="css">css</span></span></h3>
+<div id="outline-container-orgaff614d" class="outline-3">
+<h3 id="orgaff614d"><span class="todo LEARN">LEARN</span> CSS flexbox&#xa0;&#xa0;&#xa0;<span class="tag"><span class="css">css</span>&#xa0;<span class="css">css</span></span></h3>
 </div>
-<div id="outline-container-orgc6a6763" class="outline-3">
-<h3 id="orgc6a6763"><span class="todo LEARN">LEARN</span> CSS grid&#xa0;&#xa0;&#xa0;<span class="tag"><span class="css">css</span></span></h3>
+<div id="outline-container-org6c690a8" class="outline-3">
+<h3 id="org6c690a8"><span class="todo LEARN">LEARN</span> CSS grid&#xa0;&#xa0;&#xa0;<span class="tag"><span class="css">css</span></span></h3>
 </div>
-<div id="outline-container-org72a21bd" class="outline-3">
-<h3 id="org72a21bd"><span class="todo LEARN">LEARN</span> CSS bootstrap&#xa0;&#xa0;&#xa0;<span class="tag"><span class="css">css</span></span></h3>
+<div id="outline-container-orgf385b7b" class="outline-3">
+<h3 id="orgf385b7b"><span class="todo LEARN">LEARN</span> CSS bootstrap&#xa0;&#xa0;&#xa0;<span class="tag"><span class="css">css</span></span></h3>
 </div>
-<div id="outline-container-orgf472903" class="outline-3">
-<h3 id="orgf472903"><span class="todo LEARN">LEARN</span> Google material design</h3>
+<div id="outline-container-orgdd47622" class="outline-3">
+<h3 id="orgdd47622"><span class="todo LEARN">LEARN</span> Google material design</h3>
 </div>
-<div id="outline-container-org9f56f37" class="outline-3">
-<h3 id="org9f56f37"><span class="todo LEARN">LEARN</span> Joomla updates&#xa0;&#xa0;&#xa0;<span class="tag"><span class="cms">cms</span></span></h3>
+<div id="outline-container-org0c84230" class="outline-3">
+<h3 id="org0c84230"><span class="todo LEARN">LEARN</span> Joomla updates&#xa0;&#xa0;&#xa0;<span class="tag"><span class="cms">cms</span></span></h3>
 </div>
-<div id="outline-container-org1bc8d5a" class="outline-3">
-<h3 id="org1bc8d5a"><span class="todo LEARN">LEARN</span> wordpress updates&#xa0;&#xa0;&#xa0;<span class="tag"><span class="cms">cms</span></span></h3>
+<div id="outline-container-orgcaa88b9" class="outline-3">
+<h3 id="orgcaa88b9"><span class="todo LEARN">LEARN</span> wordpress updates&#xa0;&#xa0;&#xa0;<span class="tag"><span class="cms">cms</span></span></h3>
 </div>
-<div id="outline-container-org03b4323" class="outline-3">
-<h3 id="org03b4323"><span class="todo LEARN">LEARN</span> Drupal updates&#xa0;&#xa0;&#xa0;<span class="tag"><span class="cms">cms</span></span></h3>
-<div class="outline-text-3" id="text-org03b4323">
+<div id="outline-container-org69f540b" class="outline-3">
+<h3 id="org69f540b"><span class="todo LEARN">LEARN</span> Drupal updates&#xa0;&#xa0;&#xa0;<span class="tag"><span class="cms">cms</span></span></h3>
+<div class="outline-text-3" id="text-org69f540b">
 </div>
-<div id="outline-container-org412ffab" class="outline-4">
-<h4 id="org412ffab">PTGPTB -&gt; drupal 8/9</h4>
+<div id="outline-container-org48f3ecd" class="outline-4">
+<h4 id="org48f3ecd">PTGPTB -&gt; drupal 8/9</h4>
 </div>
 </div>
-<div id="outline-container-org98d90fc" class="outline-3">
-<h3 id="org98d90fc"><span class="todo LEARN">LEARN</span> git&#xa0;&#xa0;&#xa0;<span class="tag"><span class="git">git</span></span></h3>
-<div class="outline-text-3" id="text-org98d90fc">
+<div id="outline-container-orgfac0153" class="outline-3">
+<h3 id="orgfac0153"><span class="todo LEARN">LEARN</span> git&#xa0;&#xa0;&#xa0;<span class="tag"><span class="git">git</span></span></h3>
+<div class="outline-text-3" id="text-orgfac0153">
 </div>
-<div id="outline-container-org0c4fef7" class="outline-4">
-<h4 id="org0c4fef7">change of branch without committing: <b>git stash</b> | <b>git stash push</b></h4>
+<div id="outline-container-org1050e5f" class="outline-4">
+<h4 id="org1050e5f">change of branch without committing: <b>git stash</b> | <b>git stash push</b></h4>
 </div>
-<div id="outline-container-org29db7f8" class="outline-4">
-<h4 id="org29db7f8">see what stashes are stored: <b>git stash list</b></h4>
+<div id="outline-container-orgecbc99e" class="outline-4">
+<h4 id="orgecbc99e">see what stashes are stored: <b>git stash list</b></h4>
 </div>
-<div id="outline-container-org6ac709d" class="outline-4">
-<h4 id="org6ac709d">apply stash: <b>git stash apply stash@{n}</b> &lt;- n comes from the list</h4>
+<div id="outline-container-orgb2130f6" class="outline-4">
+<h4 id="orgb2130f6">apply stash: <b>git stash apply stash@{n}</b> &lt;- n comes from the list</h4>
 </div>
-<div id="outline-container-org0971c47" class="outline-4">
-<h4 id="org0971c47">remove the stash: <b>git stash drop</b></h4>
+<div id="outline-container-org67dabfd" class="outline-4">
+<h4 id="org67dabfd">remove the stash: <b>git stash drop</b></h4>
 </div>
-<div id="outline-container-org87b0d2b" class="outline-4">
-<h4 id="org87b0d2b">magit file checkout: <b>magit-file-checkout</b> X f</h4>
+<div id="outline-container-org5294810" class="outline-4">
+<h4 id="org5294810">magit file checkout: <b>magit-file-checkout</b> X f</h4>
 </div>
-<div id="outline-container-orgc083ef7" class="outline-4">
-<h4 id="orgc083ef7"><span class="todo CHECK">CHECK</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-12-03 Tue] </span></span> git revert</h4>
+<div id="outline-container-org294bfd2" class="outline-4">
+<h4 id="org294bfd2"><span class="todo CHECK">CHECK</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-12-03 Tue] </span></span> git revert</h4>
 </div>
-<div id="outline-container-org15dc5d5" class="outline-4">
-<h4 id="org15dc5d5"><span class="todo CHECK">CHECK</span> <span class="timestamp-wrapper"><span class="timestamp">[2018-11-17 Sat] </span></span> git merge</h4>
-<div class="outline-text-4" id="text-org15dc5d5">
+<div id="outline-container-org8c5c36f" class="outline-4">
+<h4 id="org8c5c36f"><span class="todo CHECK">CHECK</span> <span class="timestamp-wrapper"><span class="timestamp">[2018-11-17 Sat] </span></span> git merge</h4>
+<div class="outline-text-4" id="text-org8c5c36f">
 </div>
+<div id="outline-container-orgd4e9aad" class="outline-5">
+<h5 id="orgd4e9aad">or rather resolution of <b>merge conflicts</b></h5>
+</div>
+</div>
+<div id="outline-container-orgbb8de55" class="outline-4">
+<h4 id="orgbb8de55"><span class="done DONE">DONE</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-12-31 Tue] </span></span> git checkout file</h4>
+<div class="outline-text-4" id="text-orgbb8de55">
 <ul class="org-ul">
-<li><a id="org70a725f"></a>or rather resolution of <b>merge conflicts</b><br /></li>
-</ul>
-</div>
-<div id="outline-container-orgcfa4c58" class="outline-4">
-<h4 id="orgcfa4c58"><span class="done DONE">DONE</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-12-31 Tue] </span></span> git checkout file</h4>
-<div class="outline-text-4" id="text-orgcfa4c58">
-<ul class="org-ul">
-<li>State "DONE"       from "CHECK"      <span class="timestamp-wrapper"><span class="timestamp">[2019-12-31 Tue 18:25]</span></span></li>
-</ul>
-<p>
-to cancel modifications on a file: checkout the repository contents
-magit-file-checkout
-X f
-</p>
-</div>
-</div>
-<div id="outline-container-org754ae93" class="outline-4">
-<h4 id="org754ae93"><span class="done DONE">DONE</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-12-01 Sun] </span></span> how to fix commit messages ?&#xa0;&#xa0;&#xa0;<span class="tag"><span class="magit">magit</span>&#xa0;<span class="git">git</span></span></h4>
-<div class="outline-text-4" id="text-org754ae93">
-<p>
-git commit -v &#x2013;amend
-</p>
-<ul class="org-ul">
-<li>State "DONE"       from "CHECK"      <span class="timestamp-wrapper"><span class="timestamp">[2020-01-05 Sun 00:51]</span></span></li>
+<li>State "DONE"       from "CHECK"      <span class="timestamp-wrapper"><span class="timestamp">[2019-12-31 Tue 18:25]</span></span><br /></li>
 </ul>
 <p>
-I was thinking that had to do with the "amend" command, but maybe not&#x2026;
-<a href="https://dev.to/jacobherrington/10-git-tricks-to-save-your-time-and-sanity-289h">https://dev.to/jacobherrington/10-git-tricks-to-save-your-time-and-sanity-289h</a>
-"This one comes in handy when you accidentally commit something with a typo or misleading commit message."
+to cancel modifications on a file: checkout the repository contents<br />
+magit-file-checkout<br />
+X f<br />
 </p>
 </div>
 </div>
-</div>
-<div id="outline-container-orgfd1b49a" class="outline-3">
-<h3 id="orgfd1b49a"><span class="todo CHECK">CHECK</span> <span class="timestamp-wrapper"><span class="timestamp">[2018-11-14 Wed] </span></span> tag insertion right and left of selection&#xa0;&#xa0;&#xa0;<span class="tag"><span class="emacs">emacs</span></span></h3>
-<div class="outline-text-3" id="text-orgfd1b49a">
+<div id="outline-container-org8d3e38b" class="outline-4">
+<h4 id="org8d3e38b"><span class="done DONE">DONE</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-12-01 Sun] </span></span> how to fix commit messages ?&#xa0;&#xa0;&#xa0;<span class="tag"><span class="magit">magit</span>&#xa0;<span class="git">git</span></span></h4>
+<div class="outline-text-4" id="text-org8d3e38b">
 <p>
-And how to efficiently select
+git commit -v &#x2013;amend<br />
+</p>
+<ul class="org-ul">
+<li>State "DONE"       from "CHECK"      <span class="timestamp-wrapper"><span class="timestamp">[2020-01-05 Sun 00:51]</span></span><br /></li>
+</ul>
+<p>
+I was thinking that had to do with the "amend" command, but maybe not&#x2026;<br />
+<a href="https://dev.to/jacobherrington/10-git-tricks-to-save-your-time-and-sanity-289h">https://dev.to/jacobherrington/10-git-tricks-to-save-your-time-and-sanity-289h</a><br />
+"This one comes in handy when you accidentally commit something with a typo or misleading commit message."<br />
 </p>
 </div>
 </div>
-<div id="outline-container-orgd2e8049" class="outline-3">
-<h3 id="orgd2e8049"><span class="todo CHECK">CHECK</span> <span class="timestamp-wrapper"><span class="timestamp">[2018-11-14 Wed] </span></span> FireFox/Safari/Chrome developer tools&#xa0;&#xa0;&#xa0;<span class="tag"><span class="browser">browser</span></span></h3>
 </div>
-<div id="outline-container-org9d99581" class="outline-3">
-<h3 id="org9d99581"><span class="todo CHECK">CHECK</span> <span class="timestamp-wrapper"><span class="timestamp">[2018-11-14 Wed] </span></span> elfeed manual&#xa0;&#xa0;&#xa0;<span class="tag"><span class="emacs">emacs</span></span></h3>
+<div id="outline-container-org191ac17" class="outline-3">
+<h3 id="org191ac17"><span class="todo CHECK">CHECK</span> <span class="timestamp-wrapper"><span class="timestamp">[2018-11-14 Wed] </span></span> tag insertion right and left of selection&#xa0;&#xa0;&#xa0;<span class="tag"><span class="emacs">emacs</span></span></h3>
+<div class="outline-text-3" id="text-org191ac17">
+<p>
+And how to efficiently select<br />
+</p>
 </div>
-<div id="outline-container-org51653e1" class="outline-3">
-<h3 id="org51653e1"><span class="todo CHECK">CHECK</span> <span class="timestamp-wrapper"><span class="timestamp">[2018-11-14 Wed] </span></span> isearch manual&#xa0;&#xa0;&#xa0;<span class="tag"><span class="emacs">emacs</span></span></h3>
 </div>
-<div id="outline-container-org5fef063" class="outline-3">
-<h3 id="org5fef063"><span class="todo CHECK">CHECK</span> <span class="timestamp-wrapper"><span class="timestamp">[2018-11-13 Tue] </span></span> "project" manager for all the files&#xa0;&#xa0;&#xa0;<span class="tag"><span class="emacs">emacs</span></span></h3>
+<div id="outline-container-org996a39d" class="outline-3">
+<h3 id="org996a39d"><span class="todo CHECK">CHECK</span> <span class="timestamp-wrapper"><span class="timestamp">[2018-11-14 Wed] </span></span> FireFox/Safari/Chrome developer tools&#xa0;&#xa0;&#xa0;<span class="tag"><span class="browser">browser</span></span></h3>
 </div>
-<div id="outline-container-orgfaec956" class="outline-3">
-<h3 id="orgfaec956"><span class="todo CHECK">CHECK</span> <span class="timestamp-wrapper"><span class="timestamp">[2018-11-11 Sun] </span></span> add autocompletion for html/css&#xa0;&#xa0;&#xa0;<span class="tag"><span class="emacs">emacs</span></span></h3>
+<div id="outline-container-org139d18a" class="outline-3">
+<h3 id="org139d18a"><span class="todo CHECK">CHECK</span> <span class="timestamp-wrapper"><span class="timestamp">[2018-11-14 Wed] </span></span> elfeed manual&#xa0;&#xa0;&#xa0;<span class="tag"><span class="emacs">emacs</span></span></h3>
+</div>
+<div id="outline-container-org2f934eb" class="outline-3">
+<h3 id="org2f934eb"><span class="todo CHECK">CHECK</span> <span class="timestamp-wrapper"><span class="timestamp">[2018-11-14 Wed] </span></span> isearch manual&#xa0;&#xa0;&#xa0;<span class="tag"><span class="emacs">emacs</span></span></h3>
+</div>
+<div id="outline-container-org09b1ec2" class="outline-3">
+<h3 id="org09b1ec2"><span class="todo CHECK">CHECK</span> <span class="timestamp-wrapper"><span class="timestamp">[2018-11-13 Tue] </span></span> "project" manager for all the files&#xa0;&#xa0;&#xa0;<span class="tag"><span class="emacs">emacs</span></span></h3>
+</div>
+<div id="outline-container-org5bb2694" class="outline-3">
+<h3 id="org5bb2694"><span class="todo CHECK">CHECK</span> <span class="timestamp-wrapper"><span class="timestamp">[2018-11-11 Sun] </span></span> add autocompletion for html/css&#xa0;&#xa0;&#xa0;<span class="tag"><span class="emacs">emacs</span></span></h3>
 </div>
 </div>
 
-<div id="outline-container-org5f1fdd4" class="outline-2">
-<h2 id="org5f1fdd4"><span class="todo TODO">TODO</span> manage daily entries <code>[9/9]</code></h2>
-<div class="outline-text-2" id="text-org5f1fdd4">
+<div id="outline-container-org00a1c20" class="outline-2">
+<h2 id="org00a1c20"><span class="todo TODO">TODO</span> manage daily entries <code>[9/9]</code></h2>
+<div class="outline-text-2" id="text-org00a1c20">
+<p><span class="timestamp-wrapper"><span class="timestamp-kwd">DEADLINE:</span> <span class="timestamp">&lt;2020-01-06 Mon ++1d&gt;</span></span></p>
+<pre class="example">
+LAST_REPEAT: [2020-01-05 Sun 00:43]
+</pre>
 <ul class="org-ul">
-<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2020-01-05 Sun 00:43]</span></span></li>
-<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2020-01-02 Thu 02:45]</span></span></li>
-<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2019-12-29 Sun 00:44]</span></span></li>
-<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2019-12-22 Sun 21:34]</span></span></li>
-<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2019-12-18 Wed 00:16]</span></span></li>
-<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2019-12-15 Sun 13:07]</span></span></li>
-<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2019-12-04 Wed 08:31]</span></span></li>
-<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2019-12-01 Sun 11:49]</span></span></li>
-<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2019-11-29 Fri 20:26]</span></span></li>
+<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2020-01-05 Sun 00:43]</span></span><br /></li>
+<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2020-01-02 Thu 02:45]</span></span><br /></li>
+<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2019-12-29 Sun 00:44]</span></span><br /></li>
+<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2019-12-22 Sun 21:34]</span></span><br /></li>
+<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2019-12-18 Wed 00:16]</span></span><br /></li>
+<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2019-12-15 Sun 13:07]</span></span><br /></li>
+<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2019-12-04 Wed 08:31]</span></span><br /></li>
+<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2019-12-01 Sun 11:49]</span></span><br /></li>
+<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2019-11-29 Fri 20:26]</span></span><br /></li>
 </ul>
 </div>
-<div id="outline-container-org193ac4d" class="outline-3">
-<h3 id="org193ac4d"><span class="done DONE">DONE</span> create the rss entry in <a href="adventuresintechland.xml">file:./adventuresintechland.xml</a>&#xa0;&#xa0;&#xa0;<span class="tag"><span class="me">me</span></span></h3>
-<div class="outline-text-3" id="text-org193ac4d">
+<div id="outline-container-orge5b9ed5" class="outline-3">
+<h3 id="orge5b9ed5"><span class="done DONE">DONE</span> create the rss entry in <a href="adventuresintechland.xml">file:./adventuresintechland.xml</a>&#xa0;&#xa0;&#xa0;<span class="tag"><span class="me">me</span></span></h3>
+<div class="outline-text-3" id="text-orge5b9ed5">
 <ul class="org-ul">
-<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2020-01-05 Sun 00:36]</span></span></li>
-<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2020-01-02 Thu 02:37]</span></span></li>
-<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2019-12-27 Fri 14:16]</span></span></li>
-<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2019-12-24 Tue 00:57]</span></span></li>
-<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2019-12-22 Sun 21:29]</span></span></li>
-<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2019-12-18 Wed 00:15]</span></span></li>
-<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2019-12-15 Sun 14:00]</span></span></li>
+<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2020-01-05 Sun 00:36]</span></span><br /></li>
+<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2020-01-02 Thu 02:37]</span></span><br /></li>
+<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2019-12-27 Fri 14:16]</span></span><br /></li>
+<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2019-12-24 Tue 00:57]</span></span><br /></li>
+<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2019-12-22 Sun 21:29]</span></span><br /></li>
+<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2019-12-18 Wed 00:15]</span></span><br /></li>
+<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2019-12-15 Sun 14:00]</span></span><br /></li>
 </ul>
 <p>
-The RSS entry is the summary for the day. I should write it first
+The RSS entry is the summary for the day. I should write it first<br />
 </p>
 </div>
 </div>
-<div id="outline-container-org534fd52" class="outline-3">
-<h3 id="org534fd52"><span class="done DONE">DONE</span> run <a href="adventuresintechland.el">file:./adventuresintechland.el</a> to create the template&#xa0;&#xa0;&#xa0;<span class="tag"><span class="emacs">emacs</span></span></h3>
-<div class="outline-text-3" id="text-org534fd52">
+<div id="outline-container-orgb5fae44" class="outline-3">
+<h3 id="orgb5fae44"><span class="done DONE">DONE</span> run <a href="adventuresintechland.el">file:./adventuresintechland.el</a> to create the template&#xa0;&#xa0;&#xa0;<span class="tag"><span class="emacs">emacs</span></span></h3>
+<div class="outline-text-3" id="text-orgb5fae44">
 <ul class="org-ul">
-<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2020-01-05 Sun 00:36]</span></span></li>
-<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2020-01-02 Thu 02:38]</span></span></li>
-<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2019-12-27 Fri 14:19]</span></span></li>
-<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2019-12-24 Tue 00:35]</span></span></li>
-<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2019-12-22 Sun 20:54]</span></span></li>
-<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2019-12-18 Wed 00:12]</span></span></li>
-<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2019-12-15 Sun 14:01]</span></span></li>
+<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2020-01-05 Sun 00:36]</span></span><br /></li>
+<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2020-01-02 Thu 02:38]</span></span><br /></li>
+<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2019-12-27 Fri 14:19]</span></span><br /></li>
+<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2019-12-24 Tue 00:35]</span></span><br /></li>
+<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2019-12-22 Sun 20:54]</span></span><br /></li>
+<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2019-12-18 Wed 00:12]</span></span><br /></li>
+<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2019-12-15 Sun 14:01]</span></span><br /></li>
 </ul>
 <p>
-I just fix the links in that step.
+I just fix the links in that step.<br />
 </p>
 </div>
 </div>
-<div id="outline-container-org0566e88" class="outline-3">
-<h3 id="org0566e88"><span class="done DONE">DONE</span> edit the main <a href="index.html">file:./index.html</a> for links and nb of day&#xa0;&#xa0;&#xa0;<span class="tag"><span class="me">me</span></span></h3>
-<div class="outline-text-3" id="text-org0566e88">
+<div id="outline-container-org5f75127" class="outline-3">
+<h3 id="org5f75127"><span class="done DONE">DONE</span> edit the main <a href="index.html">file:./index.html</a> for links and nb of day&#xa0;&#xa0;&#xa0;<span class="tag"><span class="me">me</span></span></h3>
+<div class="outline-text-3" id="text-org5f75127">
 <ul class="org-ul">
-<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2020-01-05 Sun 00:36]</span></span></li>
-<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2020-01-02 Thu 02:40]</span></span></li>
-<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2019-12-27 Fri 14:19]</span></span></li>
-<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2019-12-24 Tue 00:37]</span></span></li>
-<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2019-12-22 Sun 20:54]</span></span></li>
-<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2019-12-18 Wed 00:12]</span></span></li>
-<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2019-12-15 Sun 14:01]</span></span></li>
+<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2020-01-05 Sun 00:36]</span></span><br /></li>
+<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2020-01-02 Thu 02:40]</span></span><br /></li>
+<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2019-12-27 Fri 14:19]</span></span><br /></li>
+<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2019-12-24 Tue 00:37]</span></span><br /></li>
+<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2019-12-22 Sun 20:54]</span></span><br /></li>
+<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2019-12-18 Wed 00:12]</span></span><br /></li>
+<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2019-12-15 Sun 14:01]</span></span><br /></li>
 </ul>
 <p>
-Here again, just fix the links and modify the numbers
+Here again, just fix the links and modify the numbers<br />
 </p>
 </div>
-<div id="outline-container-org2b01531" class="outline-4">
-<h4 id="org2b01531">[last day] x 2</h4>
+<div id="outline-container-orgde91324" class="outline-4">
+<h4 id="orgde91324">[last day] x 2</h4>
 </div>
-<div id="outline-container-orgbcd1e34" class="outline-4">
-<h4 id="orgbcd1e34">logbook + nb of documented days</h4>
+<div id="outline-container-orgefb6ccf" class="outline-4">
+<h4 id="orgefb6ccf">logbook + nb of documented days</h4>
 </div>
 </div>
-<div id="outline-container-org3715b81" class="outline-3">
-<h3 id="org3715b81"><span class="done DONE">DONE</span> edit the previous day</h3>
-<div class="outline-text-3" id="text-org3715b81">
+<div id="outline-container-org039c3cf" class="outline-3">
+<h3 id="org039c3cf"><span class="done DONE">DONE</span> edit the previous day</h3>
+<div class="outline-text-3" id="text-org039c3cf">
 <ul class="org-ul">
-<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2020-01-05 Sun 00:36]</span></span></li>
-<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2020-01-02 Thu 02:44]</span></span></li>
-<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2019-12-27 Fri 14:19]</span></span></li>
+<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2020-01-05 Sun 00:36]</span></span><br /></li>
+<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2020-01-02 Thu 02:44]</span></span><br /></li>
+<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2019-12-27 Fri 14:19]</span></span><br /></li>
 </ul>
 <p>
-Just fix the links and make them point at the correct "next day"
-</p>
-</div>
-</div>
-<div id="outline-container-orgb22cf09" class="outline-3">
-<h3 id="orgb22cf09"><span class="done DONE">DONE</span> fill the template and add day number&#xa0;&#xa0;&#xa0;<span class="tag"><span class="me">me</span></span></h3>
-<div class="outline-text-3" id="text-orgb22cf09">
-<ul class="org-ul">
-<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2020-01-05 Sun 00:36]</span></span></li>
-<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2020-01-02 Thu 02:45]</span></span></li>
-<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2019-12-29 Sun 00:41]</span></span></li>
-<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2019-12-24 Tue 00:35]</span></span></li>
-<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2019-12-22 Sun 20:54]</span></span></li>
-<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2019-12-18 Wed 00:12]</span></span></li>
-<li>State "DONE"       from              <span class="timestamp-wrapper"><span class="timestamp">[2019-12-15 Sun 14:00]</span></span></li>
-</ul>
-<p>
-Use the RSS summary as a first paragraph
+Just fix the links and make them point at the correct "next day"<br />
 </p>
 </div>
 </div>
-<div id="outline-container-org3636850" class="outline-3">
-<h3 id="org3636850"><span class="done DONE">DONE</span> stage the new folder and index.html, the RSS and  old indexes&#xa0;&#xa0;&#xa0;<span class="tag"><span class="git">git</span></span></h3>
-<div class="outline-text-3" id="text-org3636850">
+<div id="outline-container-org000f193" class="outline-3">
+<h3 id="org000f193"><span class="done DONE">DONE</span> fill the template and add day number&#xa0;&#xa0;&#xa0;<span class="tag"><span class="me">me</span></span></h3>
+<div class="outline-text-3" id="text-org000f193">
 <ul class="org-ul">
-<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2020-01-05 Sun 00:37]</span></span></li>
-<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2020-01-02 Thu 02:49]</span></span></li>
-<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2019-12-29 Sun 00:42]</span></span></li>
-<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2019-12-24 Tue 00:37]</span></span></li>
-<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2019-12-22 Sun 21:30]</span></span></li>
-<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2019-12-18 Wed 00:15]</span></span></li>
-<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2019-12-15 Sun 14:04]</span></span></li>
-</ul>
-</div>
-</div>
-<div id="outline-container-org99f89b8" class="outline-3">
-<h3 id="org99f89b8"><span class="done DONE">DONE</span> update adventuresintechland.org</h3>
-<div class="outline-text-3" id="text-org99f89b8">
-<ul class="org-ul">
-<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2020-01-05 Sun 00:37]</span></span></li>
-<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2020-01-02 Thu 02:49]</span></span></li>
-<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2019-12-29 Sun 00:44]</span></span></li>
-<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2019-12-24 Tue 00:57]</span></span></li>
-<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2019-12-22 Sun 21:33]</span></span></li>
-<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2019-12-18 Wed 00:15]</span></span></li>
-<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2019-12-15 Sun 14:02]</span></span></li>
-</ul>
-</div>
-</div>
-<div id="outline-container-org2780906" class="outline-3">
-<h3 id="org2780906"><span class="done DONE">DONE</span> export adventuresintechland.org.html</h3>
-<div class="outline-text-3" id="text-org2780906">
-<ul class="org-ul">
-<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2020-01-05 Sun 00:37]</span></span></li>
-<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2020-01-02 Thu 02:49]</span></span></li>
-<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2019-12-29 Sun 00:44]</span></span></li>
-<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2019-12-24 Tue 00:57]</span></span></li>
-<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2019-12-22 Sun 21:33]</span></span></li>
-<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2019-12-18 Wed 00:15]</span></span></li>
-<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2019-12-15 Sun 14:04]</span></span></li>
-</ul>
-</div>
-</div>
-<div id="outline-container-org1421739" class="outline-3">
-<h3 id="org1421739"><span class="done DONE">DONE</span> commit the org file and push everything to origin&#xa0;&#xa0;&#xa0;<span class="tag"><span class="git">git</span></span></h3>
-<div class="outline-text-3" id="text-org1421739">
-<ul class="org-ul">
-<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2020-01-05 Sun 00:43]</span></span></li>
-<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2020-01-02 Thu 02:50]</span></span></li>
-<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2019-12-29 Sun 00:44]</span></span></li>
-<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2019-12-24 Tue 00:57]</span></span></li>
-<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2019-12-22 Sun 21:34]</span></span></li>
-<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2019-12-18 Wed 00:15]</span></span></li>
-<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2019-12-15 Sun 14:05]</span></span></li>
-</ul>
-</div>
-<div id="outline-container-org816a78b" class="outline-4">
-<h4 id="org816a78b">git checkout "gh-pages"</h4>
-</div>
-<div id="outline-container-orgda03595" class="outline-4">
-<h4 id="orgda03595">git status</h4>
-</div>
-<div id="outline-container-orgf970461" class="outline-4">
-<h4 id="orgf970461">git add *</h4>
-</div>
-<div id="outline-container-org8a605b3" class="outline-4">
-<h4 id="org8a605b3">git commit -m "commit message"</h4>
-</div>
-<div id="outline-container-org7a40e48" class="outline-4">
-<h4 id="org7a40e48">git push origin</h4>
-</div>
-<div id="outline-container-orga66a2de" class="outline-4">
-<h4 id="orga66a2de">git checkout "master"</h4>
-</div>
-<div id="outline-container-orgf9169df" class="outline-4">
-<h4 id="orgf9169df">git merge gh-pages</h4>
-</div>
-<div id="outline-container-org4066b36" class="outline-4">
-<h4 id="org4066b36">git push origin</h4>
-</div>
-<div id="outline-container-orgd9668d2" class="outline-4">
-<h4 id="orgd9668d2">git checkout "gh-pages"</h4>
-</div>
-</div>
-</div>
-<div id="outline-container-org6c9620f" class="outline-2">
-<h2 id="org6c9620f"><span class="done DONE">DONE</span> items</h2>
-<div class="outline-text-2" id="text-org6c9620f">
-</div>
-<div id="outline-container-org65f42d7" class="outline-3">
-<h3 id="org65f42d7"><span class="done DONE">DONE</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-12-29 Sun] </span></span> write-region bug ?&#xa0;&#xa0;&#xa0;<span class="tag"><span class="elisp">elisp</span></span></h3>
-<div class="outline-text-3" id="text-org65f42d7">
-<p>
-it was ot a bug, the "visit" argument was set to "t" thus the buffer was asked to visit the file&#x2026;
-<a href="https://lists.gnu.org/archive/html/emacs-devel/2020-01/msg00040.html">https://lists.gnu.org/archive/html/emacs-devel/2020-01/msg00040.html</a>  
-</p>
-<ul class="org-ul">
-<li>State "DONE"       from "CHECK"      <span class="timestamp-wrapper"><span class="timestamp">[2020-01-05 Sun 00:45]</span></span></li>
+<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2020-01-05 Sun 00:36]</span></span><br /></li>
+<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2020-01-02 Thu 02:45]</span></span><br /></li>
+<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2019-12-29 Sun 00:41]</span></span><br /></li>
+<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2019-12-24 Tue 00:35]</span></span><br /></li>
+<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2019-12-22 Sun 20:54]</span></span><br /></li>
+<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2019-12-18 Wed 00:12]</span></span><br /></li>
+<li>State "DONE"       from              <span class="timestamp-wrapper"><span class="timestamp">[2019-12-15 Sun 14:00]</span></span><br /></li>
 </ul>
 <p>
- (write-region "stuff" nil "/path/to/test.txt" nil t nil t)
-sometimes, such a one liner outputs itself to the target file. weird.
+Use the RSS summary as a first paragraph<br />
 </p>
 </div>
 </div>
-<div id="outline-container-org8e0f2bd" class="outline-3">
-<h3 id="org8e0f2bd"><span class="done CANCELED">CANCELED</span> <span class="timestamp-wrapper"><span class="timestamp">[2018-11-13 Tue] </span></span> automatically create daily links&#xa0;&#xa0;&#xa0;<span class="tag"><span class="elisp">elisp</span>&#xa0;<span class="shell">shell</span></span></h3>
-<div class="outline-text-3" id="text-org8e0f2bd">
-<p>
-moved to a more global item.
-</p>
+<div id="outline-container-org984c466" class="outline-3">
+<h3 id="org984c466"><span class="done DONE">DONE</span> stage the new folder and index.html, the RSS and  old indexes&#xa0;&#xa0;&#xa0;<span class="tag"><span class="git">git</span></span></h3>
+<div class="outline-text-3" id="text-org984c466">
 <ul class="org-ul">
-<li>State "CANCELED"   from "FIX"        <span class="timestamp-wrapper"><span class="timestamp">[2020-01-03 Fri 14:18]</span></span></li>
-</ul>
-<p>
-should find the previous folder in the hierarchy, etc.
-</p>
-</div>
-</div>
-<div id="outline-container-org6d4e911" class="outline-3">
-<h3 id="org6d4e911"><span class="done CANCELED">CANCELED</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-12-01 Sun] </span></span> automatically generate "nth day"&#xa0;&#xa0;&#xa0;<span class="tag"><span class="elisp">elisp</span></span></h3>
-<div class="outline-text-3" id="text-org6d4e911">
-<p>
-I moved that to a more global CODE issue
-</p>
-<ul class="org-ul">
-<li>State "CANCELED"   from "CODE"       <span class="timestamp-wrapper"><span class="timestamp">[2020-01-03 Fri 14:14]</span></span></li>
-</ul>
-<p>
-nth day is present in the global index and in the daily file
-I'll need to put a marker somewhere that I can access through the el file
-</p>
-</div>
-</div>
-<div id="outline-container-orgc44a9ef" class="outline-3">
-<h3 id="orgc44a9ef"><span class="done DONE">DONE</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-12-01 Sun] </span></span> just got bitten by the date edge cases&#x2026;&#xa0;&#xa0;&#xa0;<span class="tag"><span class="elisp">elisp</span></span></h3>
-<div class="outline-text-3" id="text-orgc44a9ef">
-<p>
-Done in the "edge cases" branch, merged into master. Wow, that was long.
-The code is cleaner now. I need to organize the functions and see how to rationalize that, but overal, it should work.
-</p>
-<ul class="org-ul">
-<li>State "DONE"       from "FIX"        <span class="timestamp-wrapper"><span class="timestamp">[2020-01-03 Fri 14:05]</span></span></li>
-</ul>
-<p>
-working on that in the edge-cases branch
-</p>
-</div>
-</div>
-<div id="outline-container-org1d8a26a" class="outline-3">
-<h3 id="org1d8a26a"><span class="done DONE">DONE</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-12-31 Tue] </span></span> create "edge-case" branch to work safely :)&#xa0;&#xa0;&#xa0;<span class="tag"><span class="admin">admin</span></span></h3>
-<div class="outline-text-3" id="text-org1d8a26a">
-<ul class="org-ul">
-<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2019-12-31 Tue 19:04]</span></span></li>
-</ul>
-<p>
-that's the whole point of having branches&#x2026;
-</p>
-</div>
-</div>
-<div id="outline-container-org778ccc0" class="outline-3">
-<h3 id="org778ccc0"><span class="done DONE">DONE</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-12-31 Tue] </span></span> reorganise the directory tree&#xa0;&#xa0;&#xa0;<span class="tag"><span class="admin">admin</span></span></h3>
-<div class="outline-text-3" id="text-org778ccc0">
-<ul class="org-ul">
-<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2019-12-31 Tue 19:11]</span></span></li>
-</ul>
-<p>
-the old files go to /cruft for later processing
-instead of working on "prototype" or "test" files I'll create branches
-</p>
-</div>
-</div>
-<div id="outline-container-orgd61b7ec" class="outline-3">
-<h3 id="orgd61b7ec"><span class="done DONE">DONE</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-12-31 Tue] </span></span> fast access to org keywords&#xa0;&#xa0;&#xa0;<span class="tag"><span class="org">org</span></span></h3>
-<div class="outline-text-3" id="text-orgd61b7ec">
-<ul class="org-ul">
-<li>State "DONE"       from "CHECK"      <span class="timestamp-wrapper"><span class="timestamp">[2019-12-31 Tue 18:25]</span></span></li>
-</ul>
-<p>
-C-c C-t
-</p>
-</div>
-</div>
-<div id="outline-container-orgaaae8a8" class="outline-3">
-<h3 id="orgaaae8a8"><span class="done DONE">DONE</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-12-31 Tue] </span></span> reorganize basic css locations&#xa0;&#xa0;&#xa0;<span class="tag"><span class="css">css</span></span></h3>
-<div class="outline-text-3" id="text-orgaaae8a8">
-<ul class="org-ul">
-<li>State "DONE"       from "CHECK"      <span class="timestamp-wrapper"><span class="timestamp">[2019-12-31 Tue 11:18]</span></span></li>
-</ul>
-<p>
-move the main css files to the root of the css directory
-</p>
-</div>
-</div>
-<div id="outline-container-orgc46b402" class="outline-3">
-<h3 id="orgc46b402"><span class="done DONE">DONE</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-12-30 Mon] </span></span> add favicon support&#xa0;&#xa0;&#xa0;<span class="tag"><span class="html">html</span></span></h3>
-<div class="outline-text-3" id="text-orgc46b402">
-<ul class="org-ul">
-<li>State "DONE"       from "CHECK"      <span class="timestamp-wrapper"><span class="timestamp">[2019-12-30 Mon 23:51]</span></span></li>
-</ul>
-<p>
-<a href="https://en.wikipedia.org/wiki/Favicon">https://en.wikipedia.org/wiki/Favicon</a>
-And from there:
-<a href="http://faviconit.com/en">http://faviconit.com/en</a>
-It took me a while to remember "<a href="https://duckduckgo.com/?q=what+is+the+name+of+the+URL+icons+in+the+browser&amp;t=osx&amp;ia=about">https://duckduckgo.com/?q=what+is+the+name+of+the+URL+icons+in+the+browser&amp;t=osx&amp;ia=about</a>"&#x2026;
-</p>
-</div>
-</div>
-<div id="outline-container-org1c22cc3" class="outline-3">
-<h3 id="org1c22cc3"><span class="done DONE">DONE</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-12-18 Wed] </span></span> append the XML to the RSS file&#xa0;&#xa0;&#xa0;<span class="tag"><span class="elisp">elisp</span></span></h3>
-<div class="outline-text-3" id="text-org1c22cc3">
-<p>
-myInsert is used for that, need to pretify the thing and put it in the main code
-</p>
-<ul class="org-ul">
-<li>State "DONE"       from "CHECK"      <span class="timestamp-wrapper"><span class="timestamp">[2019-12-22 Sun 21:31]</span></span></li>
+<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2020-01-05 Sun 00:37]</span></span><br /></li>
+<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2020-01-02 Thu 02:49]</span></span><br /></li>
+<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2019-12-29 Sun 00:42]</span></span><br /></li>
+<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2019-12-24 Tue 00:37]</span></span><br /></li>
+<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2019-12-22 Sun 21:30]</span></span><br /></li>
+<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2019-12-18 Wed 00:15]</span></span><br /></li>
+<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2019-12-15 Sun 14:04]</span></span><br /></li>
 </ul>
 </div>
 </div>
-<div id="outline-container-orga779c3a" class="outline-3">
-<h3 id="orga779c3a"><span class="done DONE">DONE</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-12-16 Mon] </span></span> RFC-822 valide dates for the rss feed&#xa0;&#xa0;&#xa0;<span class="tag"><span class="elisp">elisp</span></span></h3>
-<div class="outline-text-3" id="text-orga779c3a">
+<div id="outline-container-org4ab0094" class="outline-3">
+<h3 id="org4ab0094"><span class="done DONE">DONE</span> update adventuresintechland.org</h3>
+<div class="outline-text-3" id="text-org4ab0094">
 <ul class="org-ul">
-<li>State "DONE"       from "CHECK"      <span class="timestamp-wrapper"><span class="timestamp">[2019-12-22 Sun 21:31]</span></span></li>
+<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2020-01-05 Sun 00:37]</span></span><br /></li>
+<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2020-01-02 Thu 02:49]</span></span><br /></li>
+<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2019-12-29 Sun 00:44]</span></span><br /></li>
+<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2019-12-24 Tue 00:57]</span></span><br /></li>
+<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2019-12-22 Sun 21:33]</span></span><br /></li>
+<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2019-12-18 Wed 00:15]</span></span><br /></li>
+<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2019-12-15 Sun 14:02]</span></span><br /></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org485817a" class="outline-3">
+<h3 id="org485817a"><span class="done DONE">DONE</span> export adventuresintechland.org.html</h3>
+<div class="outline-text-3" id="text-org485817a">
+<ul class="org-ul">
+<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2020-01-05 Sun 00:37]</span></span><br /></li>
+<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2020-01-02 Thu 02:49]</span></span><br /></li>
+<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2019-12-29 Sun 00:44]</span></span><br /></li>
+<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2019-12-24 Tue 00:57]</span></span><br /></li>
+<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2019-12-22 Sun 21:33]</span></span><br /></li>
+<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2019-12-18 Wed 00:15]</span></span><br /></li>
+<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2019-12-15 Sun 14:04]</span></span><br /></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orge20633a" class="outline-3">
+<h3 id="orge20633a"><span class="done DONE">DONE</span> commit the org file and push everything to origin&#xa0;&#xa0;&#xa0;<span class="tag"><span class="git">git</span></span></h3>
+<div class="outline-text-3" id="text-orge20633a">
+<ul class="org-ul">
+<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2020-01-05 Sun 00:43]</span></span><br /></li>
+<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2020-01-02 Thu 02:50]</span></span><br /></li>
+<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2019-12-29 Sun 00:44]</span></span><br /></li>
+<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2019-12-24 Tue 00:57]</span></span><br /></li>
+<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2019-12-22 Sun 21:34]</span></span><br /></li>
+<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2019-12-18 Wed 00:15]</span></span><br /></li>
+<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2019-12-15 Sun 14:05]</span></span><br /></li>
+</ul>
+</div>
+<div id="outline-container-org547fba7" class="outline-4">
+<h4 id="org547fba7">git checkout "gh-pages"</h4>
+</div>
+<div id="outline-container-org22bbdff" class="outline-4">
+<h4 id="org22bbdff">git status</h4>
+</div>
+<div id="outline-container-org2b6d722" class="outline-4">
+<h4 id="org2b6d722">git add *</h4>
+</div>
+<div id="outline-container-org0b16cd9" class="outline-4">
+<h4 id="org0b16cd9">git commit -m "commit message"</h4>
+</div>
+<div id="outline-container-orgf1e3b1a" class="outline-4">
+<h4 id="orgf1e3b1a">git push origin</h4>
+</div>
+<div id="outline-container-orgd7882f5" class="outline-4">
+<h4 id="orgd7882f5">git checkout "master"</h4>
+</div>
+<div id="outline-container-org5554c9f" class="outline-4">
+<h4 id="org5554c9f">git merge gh-pages</h4>
+</div>
+<div id="outline-container-orgbad4b0e" class="outline-4">
+<h4 id="orgbad4b0e">git push origin</h4>
+</div>
+<div id="outline-container-org96861e9" class="outline-4">
+<h4 id="org96861e9">git checkout "gh-pages"</h4>
+</div>
+</div>
+</div>
+<div id="outline-container-org0dc1e44" class="outline-2">
+<h2 id="org0dc1e44"><span class="done DONE">DONE</span> items</h2>
+<div class="outline-text-2" id="text-org0dc1e44">
+</div>
+<div id="outline-container-org5456579" class="outline-3">
+<h3 id="org5456579"><span class="done DONE">DONE</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-12-29 Sun] </span></span> write-region bug ?&#xa0;&#xa0;&#xa0;<span class="tag"><span class="elisp">elisp</span></span></h3>
+<div class="outline-text-3" id="text-org5456579">
+<p>
+it was ot a bug, the "visit" argument was set to "t" thus the buffer was asked to visit the file&#x2026;<br />
+<a href="https://lists.gnu.org/archive/html/emacs-devel/2020-01/msg00040.html">https://lists.gnu.org/archive/html/emacs-devel/2020-01/msg00040.html</a>  <br />
+</p>
+<ul class="org-ul">
+<li>State "DONE"       from "CHECK"      <span class="timestamp-wrapper"><span class="timestamp">[2020-01-05 Sun 00:45]</span></span><br /></li>
 </ul>
 <p>
-(format-time-string "%a, %d %b %Y %H:%m:%S UT" (current-time) t)
+ (write-region "stuff" nil "/path/to/test.txt" nil t nil t)<br />
+sometimes, such a one liner outputs itself to the target file. weird.<br />
 </p>
 </div>
 </div>
-<div id="outline-container-org4a6432b" class="outline-3">
-<h3 id="org4a6432b"><span class="done DONE">DONE</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-12-16 Mon] </span></span> the RSS date is not valid&#xa0;&#xa0;&#xa0;<span class="tag"><span class="xml">xml</span></span></h3>
-<div class="outline-text-3" id="text-org4a6432b">
-<ul class="org-ul">
-<li>State "DONE"       from "CHECK"      <span class="timestamp-wrapper"><span class="timestamp">[2019-12-16 Mon 08:58]</span></span></li>
-</ul>
-</div>
-</div>
-<div id="outline-container-orgcf255e0" class="outline-3">
-<h3 id="orgcf255e0"><span class="done DONE">DONE</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-12-01 Sun] </span></span> add a "0" to single digit days in the page title&#xa0;&#xa0;&#xa0;<span class="tag"><span class="elisp">elisp</span></span></h3>
-<div class="outline-text-3" id="text-orgcf255e0">
+<div id="outline-container-org6e58532" class="outline-3">
+<h3 id="org6e58532"><span class="done CANCELED">CANCELED</span> <span class="priority">[B]</span> <span class="timestamp-wrapper"><span class="timestamp">[2018-11-13 Tue] </span></span> automatically create daily links&#xa0;&#xa0;&#xa0;<span class="tag"><span class="elisp">elisp</span>&#xa0;<span class="shell">shell</span></span></h3>
+<div class="outline-text-3" id="text-org6e58532">
 <p>
-I externalized the date creation function to check for days &lt; 10 and I had to create a "0 padding" function because number-to-string does not take options to format the resulting string. The function is written in C so way above what I can do&#x2026; 
+moved to a more global item.<br />
 </p>
 <ul class="org-ul">
-<li>State "DONE"       from "CHECK"      <span class="timestamp-wrapper"><span class="timestamp">[2019-12-03 Tue 12:28]</span></span></li>
-</ul>
-</div>
-</div>
-<div id="outline-container-orga0d4c26" class="outline-3">
-<h3 id="orga0d4c26"><span class="done DONE">DONE</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-12-04 Wed] </span></span> add .emacs.d/init.el to git repository&#xa0;&#xa0;&#xa0;<span class="tag"><span class="git">git</span>&#xa0;<span class="emacs">emacs</span></span></h3>
-<div class="outline-text-3" id="text-orga0d4c26">
-<ul class="org-ul">
-<li>State "DONE"       from "CHECK"      <span class="timestamp-wrapper"><span class="timestamp">[2019-12-04 Wed 07:40]</span></span></li>
-</ul>
-</div>
-</div>
-<div id="outline-container-orgde98288" class="outline-3">
-<h3 id="orgde98288"><span class="done DONE">DONE</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-12-02 Mon] </span></span> link to exported org file is not correct&#xa0;&#xa0;&#xa0;<span class="tag"><span class="elisp">elisp</span></span></h3>
-<div class="outline-text-3" id="text-orgde98288">
-<p>
-I'm trying to revert that instead of just fixing something that should not have been modified in the first place, but I'm finding the revert function not trivial to use (understand ?). The Magit manual expects the user to understand what a revert is I guess. I'll have to check the Pro Git book later.
-</p>
-<ul class="org-ul">
-<li>State "DONE"       from "CHECK"      <span class="timestamp-wrapper"><span class="timestamp">[2019-12-03 Tue 07:04]</span></span></li>
-</ul>
-</div>
-</div>
-<div id="outline-container-orga1b8420" class="outline-3">
-<h3 id="orga1b8420"><span class="done DONE">DONE</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-12-01 Sun] </span></span> add web-mode hook for html files&#xa0;&#xa0;&#xa0;<span class="tag"><span class="elisp">elisp</span></span></h3>
-<div class="outline-text-3" id="text-orga1b8420">
-<p>
-The web-mode manual, or rather home page gives all sorts of relevant settings that I had just to copy to my .emacs.el file to fix this item.
-<a href="http://web-mode.org/">http://web-mode.org/</a>
-</p>
-<ul class="org-ul">
-<li>State "DONE"       from "CHECK"      <span class="timestamp-wrapper"><span class="timestamp">[2019-12-03 Tue 07:04]</span></span></li>
-</ul>
-</div>
-</div>
-<div id="outline-container-org4a22505" class="outline-3">
-<h3 id="org4a22505"><span class="done DONE">DONE</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-12-01 Sun] </span></span> github contributions don't appear&#xa0;&#xa0;&#xa0;<span class="tag"><span class="github">github</span></span></h3>
-<div class="outline-text-3" id="text-org4a22505">
-<ul class="org-ul">
-<li>State "DONE"       from "CHECK"      <span class="timestamp-wrapper"><span class="timestamp">[2019-12-03 Tue 08:16]</span></span></li>
+<li>State "CANCELED"   from "FIX"        <span class="timestamp-wrapper"><span class="timestamp">[2020-01-03 Fri 14:18]</span></span><br /></li>
 </ul>
 <p>
-registered email problem ?
-I checked that on 19/12/02, I'll see later of that works.
-Ok, I saw that my commit messages included an old email, but I had changed of mail not only on github but also on this machine.
-So I checked Pro Git and found the following command:
-git config &#x2013;list &#x2013;show-origin
-and sure enough, that old mail was listed at <a href=".git/config">.git/config</a>. It did not occur to me right away that this .git thing was representing the <b>local</b> repository so I had some head scratching moments here but here again, Pro Git had an instance of that string that made clear the parameter was local to the repository, so the fix was to use:
-git config &#x2013;local user.email [my email]
-Et voilà, now I should be able to see my "contributions" to my own repository appear as green dots on my profile.
-Interesting to see how that little playful option (the green dots) helped me figure out a relatively important issue.
+should find the previous folder in the hierarchy, etc.<br />
 </p>
 </div>
 </div>
-<div id="outline-container-org149c722" class="outline-3">
-<h3 id="org149c722"><span class="done DONE">DONE</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-11-29 Fri] </span></span> the RSS feed does not work anymore&#xa0;&#xa0;&#xa0;<span class="tag"><span class="xml">xml</span></span></h3>
-<div class="outline-text-3" id="text-org149c722">
+<div id="outline-container-org269aed3" class="outline-3">
+<h3 id="org269aed3"><span class="done CANCELED">CANCELED</span> <span class="priority">[A]</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-12-01 Sun] </span></span> automatically generate "nth day"&#xa0;&#xa0;&#xa0;<span class="tag"><span class="elisp">elisp</span></span></h3>
+<div class="outline-text-3" id="text-org269aed3">
+<p>
+I moved that to a more global CODE issue<br />
+</p>
 <ul class="org-ul">
-<li>State "DONE"       from "CHECK"      <span class="timestamp-wrapper"><span class="timestamp">[2019-12-16 Mon 08:58]</span></span></li>
-</ul>
-</div>
-</div>
-<div id="outline-container-orga1a78f8" class="outline-3">
-<h3 id="orga1a78f8"><span class="done DONE">DONE</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-11-29 Fri] </span></span> link this todo file to all the daily files&#xa0;&#xa0;&#xa0;<span class="tag"><span class="elisp">elisp</span>&#xa0;<span class="html">html</span></span></h3>
-<div class="outline-text-3" id="text-orga1a78f8">
-<ul class="org-ul">
-<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2019-12-01 Sun 08:44]</span></span></li>
+<li>State "CANCELED"   from "CODE"       <span class="timestamp-wrapper"><span class="timestamp">[2020-01-03 Fri 14:14]</span></span><br /></li>
 </ul>
 <p>
-Just added a link into the elisp template.
+nth day is present in the global index and in the daily file<br />
+I'll need to put a marker somewhere that I can access through the el file<br />
 </p>
 </div>
 </div>
-<div id="outline-container-org3b0c496" class="outline-3">
-<h3 id="org3b0c496"><span class="done DONE">DONE</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-11-26 Tue] </span></span> create daily folder structure and html template&#xa0;&#xa0;&#xa0;<span class="tag"><span class="elisp">elisp</span></span></h3>
-<div class="outline-text-3" id="text-org3b0c496">
+<div id="outline-container-orgcb1be43" class="outline-3">
+<h3 id="orgcb1be43"><span class="done DONE">DONE</span> <span class="priority">[A]</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-12-01 Sun] </span></span> just got bitten by the date edge cases&#x2026;&#xa0;&#xa0;&#xa0;<span class="tag"><span class="elisp">elisp</span></span></h3>
+<div class="outline-text-3" id="text-orgcb1be43">
+<p>
+Done in the "edge cases" branch, merged into master. Wow, that was long.<br />
+The code is cleaner now. I need to organize the functions and see how to rationalize that, but overal, it should work.<br />
+</p>
 <ul class="org-ul">
-<li>State "DONE"       from "CHECK"      <span class="timestamp-wrapper"><span class="timestamp">[2019-12-15 Sun 12:49]</span></span></li>
-</ul>
-</div>
-</div>
-<div id="outline-container-org98e2846" class="outline-3">
-<h3 id="org98e2846"><span class="done DONE">DONE</span> <span class="timestamp-wrapper"><span class="timestamp">[2018-11-14 Wed] </span></span> pushing to github from emacs&#xa0;&#xa0;&#xa0;<span class="tag"><span class="emacs">emacs</span></span></h3>
-<div class="outline-text-3" id="text-org98e2846">
-<ul class="org-ul">
-<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2019-12-01 Sun 08:44]</span></span></li>
+<li>State "DONE"       from "FIX"        <span class="timestamp-wrapper"><span class="timestamp">[2020-01-03 Fri 14:05]</span></span><br /></li>
 </ul>
 <p>
-Using magit is not that hard.
+working on that in the edge-cases branch<br />
+</p>
+</div>
+</div>
+<div id="outline-container-org9a29b31" class="outline-3">
+<h3 id="org9a29b31"><span class="done DONE">DONE</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-12-31 Tue] </span></span> create "edge-case" branch to work safely :)&#xa0;&#xa0;&#xa0;<span class="tag"><span class="admin">admin</span></span></h3>
+<div class="outline-text-3" id="text-org9a29b31">
+<ul class="org-ul">
+<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2019-12-31 Tue 19:04]</span></span><br /></li>
+</ul>
+<p>
+that's the whole point of having branches&#x2026;<br />
+</p>
+</div>
+</div>
+<div id="outline-container-orgbe67711" class="outline-3">
+<h3 id="orgbe67711"><span class="done DONE">DONE</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-12-31 Tue] </span></span> reorganise the directory tree&#xa0;&#xa0;&#xa0;<span class="tag"><span class="admin">admin</span></span></h3>
+<div class="outline-text-3" id="text-orgbe67711">
+<ul class="org-ul">
+<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2019-12-31 Tue 19:11]</span></span><br /></li>
+</ul>
+<p>
+the old files go to /cruft for later processing<br />
+instead of working on "prototype" or "test" files I'll create branches<br />
+</p>
+</div>
+</div>
+<div id="outline-container-orgb27b7bb" class="outline-3">
+<h3 id="orgb27b7bb"><span class="done DONE">DONE</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-12-31 Tue] </span></span> fast access to org keywords&#xa0;&#xa0;&#xa0;<span class="tag"><span class="org">org</span></span></h3>
+<div class="outline-text-3" id="text-orgb27b7bb">
+<ul class="org-ul">
+<li>State "DONE"       from "CHECK"      <span class="timestamp-wrapper"><span class="timestamp">[2019-12-31 Tue 18:25]</span></span><br /></li>
+</ul>
+<p>
+C-c C-t<br />
+</p>
+</div>
+</div>
+<div id="outline-container-orgd2952eb" class="outline-3">
+<h3 id="orgd2952eb"><span class="done DONE">DONE</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-12-31 Tue] </span></span> reorganize basic css locations&#xa0;&#xa0;&#xa0;<span class="tag"><span class="css">css</span></span></h3>
+<div class="outline-text-3" id="text-orgd2952eb">
+<ul class="org-ul">
+<li>State "DONE"       from "CHECK"      <span class="timestamp-wrapper"><span class="timestamp">[2019-12-31 Tue 11:18]</span></span><br /></li>
+</ul>
+<p>
+move the main css files to the root of the css directory<br />
+</p>
+</div>
+</div>
+<div id="outline-container-orgc88a7d9" class="outline-3">
+<h3 id="orgc88a7d9"><span class="done DONE">DONE</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-12-30 Mon] </span></span> add favicon support&#xa0;&#xa0;&#xa0;<span class="tag"><span class="html">html</span></span></h3>
+<div class="outline-text-3" id="text-orgc88a7d9">
+<ul class="org-ul">
+<li>State "DONE"       from "CHECK"      <span class="timestamp-wrapper"><span class="timestamp">[2019-12-30 Mon 23:51]</span></span><br /></li>
+</ul>
+<p>
+<a href="https://en.wikipedia.org/wiki/Favicon">https://en.wikipedia.org/wiki/Favicon</a><br />
+And from there:<br />
+<a href="http://faviconit.com/en">http://faviconit.com/en</a><br />
+It took me a while to remember "<a href="https://duckduckgo.com/?q=what+is+the+name+of+the+URL+icons+in+the+browser&amp;t=osx&amp;ia=about">https://duckduckgo.com/?q=what+is+the+name+of+the+URL+icons+in+the+browser&amp;t=osx&amp;ia=about</a>"&#x2026;<br />
+</p>
+</div>
+</div>
+<div id="outline-container-org465dec9" class="outline-3">
+<h3 id="org465dec9"><span class="done DONE">DONE</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-12-18 Wed] </span></span> append the XML to the RSS file&#xa0;&#xa0;&#xa0;<span class="tag"><span class="elisp">elisp</span></span></h3>
+<div class="outline-text-3" id="text-org465dec9">
+<p>
+myInsert is used for that, need to pretify the thing and put it in the main code<br />
+</p>
+<ul class="org-ul">
+<li>State "DONE"       from "CHECK"      <span class="timestamp-wrapper"><span class="timestamp">[2019-12-22 Sun 21:31]</span></span><br /></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org84fad02" class="outline-3">
+<h3 id="org84fad02"><span class="done DONE">DONE</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-12-16 Mon] </span></span> RFC-822 valide dates for the rss feed&#xa0;&#xa0;&#xa0;<span class="tag"><span class="elisp">elisp</span></span></h3>
+<div class="outline-text-3" id="text-org84fad02">
+<ul class="org-ul">
+<li>State "DONE"       from "CHECK"      <span class="timestamp-wrapper"><span class="timestamp">[2019-12-22 Sun 21:31]</span></span><br /></li>
+</ul>
+<p>
+(format-time-string "%a, %d %b %Y %H:%m:%S UT" (current-time) t)<br />
+</p>
+</div>
+</div>
+<div id="outline-container-org3b284fe" class="outline-3">
+<h3 id="org3b284fe"><span class="done DONE">DONE</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-12-16 Mon] </span></span> the RSS date is not valid&#xa0;&#xa0;&#xa0;<span class="tag"><span class="xml">xml</span></span></h3>
+<div class="outline-text-3" id="text-org3b284fe">
+<ul class="org-ul">
+<li>State "DONE"       from "CHECK"      <span class="timestamp-wrapper"><span class="timestamp">[2019-12-16 Mon 08:58]</span></span><br /></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgf24574b" class="outline-3">
+<h3 id="orgf24574b"><span class="done DONE">DONE</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-12-01 Sun] </span></span> add a "0" to single digit days in the page title&#xa0;&#xa0;&#xa0;<span class="tag"><span class="elisp">elisp</span></span></h3>
+<div class="outline-text-3" id="text-orgf24574b">
+<p>
+I externalized the date creation function to check for days &lt; 10 and I had to create a "0 padding" function because number-to-string does not take options to format the resulting string. The function is written in C so way above what I can do&#x2026;<br />
+</p>
+<ul class="org-ul">
+<li>State "DONE"       from "CHECK"      <span class="timestamp-wrapper"><span class="timestamp">[2019-12-03 Tue 12:28]</span></span><br /></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org734a9c1" class="outline-3">
+<h3 id="org734a9c1"><span class="done DONE">DONE</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-12-04 Wed] </span></span> add .emacs.d/init.el to git repository&#xa0;&#xa0;&#xa0;<span class="tag"><span class="git">git</span>&#xa0;<span class="emacs">emacs</span></span></h3>
+<div class="outline-text-3" id="text-org734a9c1">
+<ul class="org-ul">
+<li>State "DONE"       from "CHECK"      <span class="timestamp-wrapper"><span class="timestamp">[2019-12-04 Wed 07:40]</span></span><br /></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orge3102fc" class="outline-3">
+<h3 id="orge3102fc"><span class="done DONE">DONE</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-12-02 Mon] </span></span> link to exported org file is not correct&#xa0;&#xa0;&#xa0;<span class="tag"><span class="elisp">elisp</span></span></h3>
+<div class="outline-text-3" id="text-orge3102fc">
+<p>
+I'm trying to revert that instead of just fixing something that should not have been modified in the first place, but I'm finding the revert function not trivial to use (understand ?). The Magit manual expects the user to understand what a revert is I guess. I'll have to check the Pro Git book later.<br />
+</p>
+<ul class="org-ul">
+<li>State "DONE"       from "CHECK"      <span class="timestamp-wrapper"><span class="timestamp">[2019-12-03 Tue 07:04]</span></span><br /></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org650929f" class="outline-3">
+<h3 id="org650929f"><span class="done DONE">DONE</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-12-01 Sun] </span></span> add web-mode hook for html files&#xa0;&#xa0;&#xa0;<span class="tag"><span class="elisp">elisp</span></span></h3>
+<div class="outline-text-3" id="text-org650929f">
+<p>
+The web-mode manual, or rather home page gives all sorts of relevant settings that I had just to copy to my .emacs.el file to fix this item.<br />
+<a href="http://web-mode.org/">http://web-mode.org/</a><br />
+</p>
+<ul class="org-ul">
+<li>State "DONE"       from "CHECK"      <span class="timestamp-wrapper"><span class="timestamp">[2019-12-03 Tue 07:04]</span></span><br /></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orge9d2854" class="outline-3">
+<h3 id="orge9d2854"><span class="done DONE">DONE</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-12-01 Sun] </span></span> github contributions don't appear&#xa0;&#xa0;&#xa0;<span class="tag"><span class="github">github</span></span></h3>
+<div class="outline-text-3" id="text-orge9d2854">
+<ul class="org-ul">
+<li>State "DONE"       from "CHECK"      <span class="timestamp-wrapper"><span class="timestamp">[2019-12-03 Tue 08:16]</span></span><br /></li>
+</ul>
+<p>
+registered email problem ?<br />
+I checked that on 19/12/02, I'll see later of that works.<br />
+Ok, I saw that my commit messages included an old email, but I had changed of mail not only on github but also on this machine.<br />
+So I checked Pro Git and found the following command:<br />
+git config &#x2013;list &#x2013;show-origin<br />
+and sure enough, that old mail was listed at <a href=".git/config">.git/config</a>. It did not occur to me right away that this .git thing was representing the <b>local</b> repository so I had some head scratching moments here but here again, Pro Git had an instance of that string that made clear the parameter was local to the repository, so the fix was to use:<br />
+git config &#x2013;local user.email [my email]<br />
+Et voilà, now I should be able to see my "contributions" to my own repository appear as green dots on my profile.<br />
+Interesting to see how that little playful option (the green dots) helped me figure out a relatively important issue.<br />
+</p>
+</div>
+</div>
+<div id="outline-container-org1bb1417" class="outline-3">
+<h3 id="org1bb1417"><span class="done DONE">DONE</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-11-29 Fri] </span></span> the RSS feed does not work anymore&#xa0;&#xa0;&#xa0;<span class="tag"><span class="xml">xml</span></span></h3>
+<div class="outline-text-3" id="text-org1bb1417">
+<ul class="org-ul">
+<li>State "DONE"       from "CHECK"      <span class="timestamp-wrapper"><span class="timestamp">[2019-12-16 Mon 08:58]</span></span><br /></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org9076d02" class="outline-3">
+<h3 id="org9076d02"><span class="done DONE">DONE</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-11-29 Fri] </span></span> link this todo file to all the daily files&#xa0;&#xa0;&#xa0;<span class="tag"><span class="elisp">elisp</span>&#xa0;<span class="html">html</span></span></h3>
+<div class="outline-text-3" id="text-org9076d02">
+<ul class="org-ul">
+<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2019-12-01 Sun 08:44]</span></span><br /></li>
+</ul>
+<p>
+Just added a link into the elisp template.<br />
+</p>
+</div>
+</div>
+<div id="outline-container-orge9d761c" class="outline-3">
+<h3 id="orge9d761c"><span class="done DONE">DONE</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-11-26 Tue] </span></span> create daily folder structure and html template&#xa0;&#xa0;&#xa0;<span class="tag"><span class="elisp">elisp</span></span></h3>
+<div class="outline-text-3" id="text-orge9d761c">
+<ul class="org-ul">
+<li>State "DONE"       from "CHECK"      <span class="timestamp-wrapper"><span class="timestamp">[2019-12-15 Sun 12:49]</span></span><br /></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgcad40d7" class="outline-3">
+<h3 id="orgcad40d7"><span class="done DONE">DONE</span> <span class="timestamp-wrapper"><span class="timestamp">[2018-11-14 Wed] </span></span> pushing to github from emacs&#xa0;&#xa0;&#xa0;<span class="tag"><span class="emacs">emacs</span></span></h3>
+<div class="outline-text-3" id="text-orgcad40d7">
+<ul class="org-ul">
+<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2019-12-01 Sun 08:44]</span></span><br /></li>
+</ul>
+<p>
+Using magit is not that hard.<br />
 </p>
 </div>
 </div>
 
-<div id="outline-container-orgeef8642" class="outline-3">
-<h3 id="orgeef8642"><span class="done DONE">DONE</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-11-24 Sun] </span></span> change daily tasks&#xa0;&#xa0;&#xa0;<span class="tag"><span class="admin">admin</span></span></h3>
-<div class="outline-text-3" id="text-orgeef8642">
+<div id="outline-container-org87891de" class="outline-3">
+<h3 id="org87891de"><span class="done DONE">DONE</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-11-24 Sun] </span></span> change daily tasks&#xa0;&#xa0;&#xa0;<span class="tag"><span class="admin">admin</span></span></h3>
+<div class="outline-text-3" id="text-org87891de">
 <p>
-to reduce the nb of possible errors
+to reduce the nb of possible errors<br />
 </p>
 <ul class="org-ul">
-<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2019-12-27 Fri 14:22]</span></span></li>
+<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2019-12-27 Fri 14:22]</span></span><br /></li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org28db9fa" class="outline-3">
-<h3 id="org28db9fa"><span class="done DONE">DONE</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-11-24 Sun] </span></span> list the tasks required in publishing the pages&#xa0;&#xa0;&#xa0;<span class="tag"><span class="admin">admin</span></span></h3>
-<div class="outline-text-3" id="text-org28db9fa">
+<div id="outline-container-orgeb69380" class="outline-3">
+<h3 id="orgeb69380"><span class="done DONE">DONE</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-11-24 Sun] </span></span> list the tasks required in publishing the pages&#xa0;&#xa0;&#xa0;<span class="tag"><span class="admin">admin</span></span></h3>
+<div class="outline-text-3" id="text-orgeb69380">
 <ul class="org-ul">
-<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2019-11-28 Thu 22:35]</span></span></li>
+<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2019-11-28 Thu 22:35]</span></span><br /></li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org22bc7d9" class="outline-3">
-<h3 id="org22bc7d9"><span class="done DONE">DONE</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-11-24 Sun] </span></span> create a global todo file&#xa0;&#xa0;&#xa0;<span class="tag"><span class="admin">admin</span></span></h3>
-<div class="outline-text-3" id="text-org22bc7d9">
+<div id="outline-container-orgc0f459d" class="outline-3">
+<h3 id="orgc0f459d"><span class="done DONE">DONE</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-11-24 Sun] </span></span> create a global todo file&#xa0;&#xa0;&#xa0;<span class="tag"><span class="admin">admin</span></span></h3>
+<div class="outline-text-3" id="text-orgc0f459d">
 <ul class="org-ul">
-<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2019-11-28 Thu 22:28]</span></span></li>
+<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2019-11-28 Thu 22:28]</span></span><br /></li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org5cd52d6" class="outline-3">
-<h3 id="org5cd52d6"><span class="done DONE">DONE</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-11-24 Sun] </span></span> gather all the todos written in older pages&#xa0;&#xa0;&#xa0;<span class="tag"><span class="admin">admin</span></span></h3>
-<div class="outline-text-3" id="text-org5cd52d6">
+<div id="outline-container-org5f0e67b" class="outline-3">
+<h3 id="org5f0e67b"><span class="done DONE">DONE</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-11-24 Sun] </span></span> gather all the todos written in older pages&#xa0;&#xa0;&#xa0;<span class="tag"><span class="admin">admin</span></span></h3>
+<div class="outline-text-3" id="text-org5f0e67b">
 <ul class="org-ul">
-<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2019-11-29 Fri 18:28]</span></span></li>
+<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2019-11-29 Fri 18:28]</span></span><br /></li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org0d9b50d" class="outline-3">
-<h3 id="org0d9b50d"><span class="done DONE">DONE</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-11-24 Sun] </span></span> customize org export because the HTML is ugly&#xa0;&#xa0;&#xa0;<span class="tag"><span class="admin">admin</span></span></h3>
-<div class="outline-text-3" id="text-org0d9b50d">
+<div id="outline-container-orgb5c188c" class="outline-3">
+<h3 id="orgb5c188c"><span class="done DONE">DONE</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-11-24 Sun] </span></span> customize org export because the HTML is ugly&#xa0;&#xa0;&#xa0;<span class="tag"><span class="admin">admin</span></span></h3>
+<div class="outline-text-3" id="text-orgb5c188c">
 <ul class="org-ul">
-<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2019-12-01 Sun 08:42]</span></span></li>
+<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2019-12-01 Sun 08:42]</span></span><br /></li>
 </ul>
 <p>
-What I don't like is how the headings are HTML headers. The ToC alone would be sufficient for what I need. I did some css and it looks much better. With lots of room for improvement.
+What I don't like is how the headings are HTML headers. The ToC alone would be sufficient for what I need. I did some css and it looks much better. With lots of room for improvement.<br />
 </p>
 </div>
 </div>
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="author">Author: Jean-Christophe Helary</p>
-<p class="date">Created: 2020-01-05 Sun 00:58</p>
-<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+<p class="author">Auteur: Jean-Christophe Helary</p>
+<p class="email">Email: <a href="mailto:jean.christophe.helary@traduction-libre.org">jean.christophe.helary@traduction-libre.org</a></p>
+<p class="date">Created: 2021-10-23 Sat 10:13</p>
+<p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
 </html>

@@ -1,0 +1,15 @@
+* [2021-10-22 Fri] new beginnings, again
+** I'm not sure how all that goes.
+
+It looks like I have a
+
+~(defun myDailyRSSItem (myTitle todayIndex pubDate myDescription)~
+
+that creates the RSS
+
+and a
+
+~(defun dailyIndex (today myPreviousDate myTitle mySubtitle)~
+
+that creates the index.
+** trying now

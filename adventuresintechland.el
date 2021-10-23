@@ -1,41 +1,37 @@
-
+(setq debug-on-error t)
 ;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(setq repositoryPath "/Users/suzume/Documents/Repositories/brandelune.github.io/"
-	  dayTrackerPath (concat repositoryPath "dayTracker.txt")
-	  rssFile (concat repositoryPath "adventuresintechland.xml")
-	  indexPath (concat repositoryPath "index.html"))
-
-
-/Users/suzume/Documents/Repositories/brandelune.github.io/
-/Users/suzume/Documents/Repositories/brandelune.github.io/
+(setq repositoryPath "/Users/suzume/Documents/Repositories/brandelune.github.io/")
+(setq dayTrackerPath (concat repositoryPath "dayTracker.txt"))
+(setq rssFile (concat repositoryPath "adventuresintechland.xml"))
+(setq indexPath (concat repositoryPath "index.html"))
 
 (defun my0Padding (myDigit)
   "Concat a 0 string to 1 digit numbers"
 ;;;; TODO add option to "number-to-string" so that the padding can happen there
 ;;;;  // Defined in ~/Documents/Code/emacs/src/data.c
 
-;;   DEFUN ("number-to-string", Fnumber_to_string, Snumber_to_string, 1, 1, 0,
-;;        doc: /* Return the decimal representation of NUMBER as a string.
-;; Uses a minus sign if negative.
-;; NUMBER may be an integer or a floating point number.  */)
-;;   (Lisp_Object number)
-;; {
-;;   char buffer[max (FLOAT_TO_STRING_BUFSIZE, INT_BUFSIZE_BOUND (EMACS_INT))];
-;;   int len;
+  ;;   DEFUN ("number-to-string", Fnumber_to_string, Snumber_to_string, 1, 1, 0,
+  ;;        doc: /* Return the decimal representation of NUMBER as a string.
+  ;; Uses a minus sign if negative.
+  ;; NUMBER may be an integer or a floating point number.  */)
+  ;;   (Lisp_Object number)
+  ;; {
+  ;;   char buffer[max (FLOAT_TO_STRING_BUFSIZE, INT_BUFSIZE_BOUND (EMACS_INT))];
+  ;;   int len;
 
-;;   CHECK_NUMBER (number);
+  ;;   CHECK_NUMBER (number);
 
-;;   if (BIGNUMP (number))
-;;     return bignum_to_string (number, 10);
+  ;;   if (BIGNUMP (number))
+  ;;     return bignum_to_string (number, 10);
 
-;;   if (FLOATP (number))
-;;     len = float_to_string (buffer, XFLOAT_DATA (number));
-;;   else
-;;     len = sprintf (buffer, "%"pI"d", XFIXNUM (number));
+  ;;   if (FLOATP (number))
+  ;;     len = float_to_string (buffer, XFLOAT_DATA (number));
+  ;;   else
+  ;;     len = sprintf (buffer, "%"pI"d", XFIXNUM (number));
 
-;;   return make_unibyte_string (buffer, len);
-;; }
+  ;;   return make_unibyte_string (buffer, len);
+  ;; }
 
   ;; (my0Padding 3) -> "03"
   ;; (my0Padding 10) -> "10"  
@@ -45,7 +41,7 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(defun myPreviousDayString (myDate)
+(defun myPreviousDayString (myDae)
   "Substract 1 to a string date and 0-pads if necessary"
   ;; (myPreviousDayString "9") -> "08"
   (my0Padding (- (string-to-number myDate) 1)))
@@ -65,17 +61,17 @@
     (set-buffer (find-file-noselect myFile))
     (goto-char (point-min))
     (if (not (search-forward myMarker nil t))
-	(progn
-	  (kill-buffer)
-	  (user-error (format "%s was not found" myMarker)))
+		(progn
+		  (kill-buffer)
+		  (user-error (format "%s was not found" myMarker)))
       ;; user-error seems to abort the rest of the progn, hence the need to put kill-buffer above
       (progn
-	(goto-char (point-min))
-	(goto-char (- (search-forward myMarker) (length myMarker)))
-	(insert myText)
-	(indent-region (point-min) (point-max))
-	(save-buffer)
-	(kill-buffer)))))
+		(goto-char (point-min))
+		(goto-char (- (search-forward myMarker) (length myMarker)))
+		(insert myText)
+		(indent-region (point-min) (point-max))
+		(save-buffer)
+		(kill-buffer)))))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;
 
@@ -99,29 +95,29 @@
 
 (defun myDate (Date)
   "Create a plausible (year month date) as a list"
-;; (myDate 3) -> (2020 1 3)
+  ;; (myDate 3) -> (2020 1 3)
 ;;;; TODO add error tests
 ;;;; the date should be comprised between 1 and (28 to 31)"
 
   (let* (
-	(Today (decode-time (float-time)))
-    (thisMonth (fifth Today))
-     (nextMonth (if (= 12 thisMonth)
-		    1
-		  (+ thisMonth 1)))
-      (lastMonth (if (= 1 thisMonth)
-		    12
-		  (- thisMonth 1)))
-      (thisYear (sixth Today))
-      (nextYear (+ thisYear 1))
-      (lastYear (- thisYear 1))
-      (dateDifference (- (fourth Today) Date))
-      (myMonth (cond ((> 24 (abs dateDifference)) thisMonth)
-		    ((natnump dateDifference) nextMonth)
-		    (t lastMonth)))
-      (myYear (cond ((= myMonth thisMonth) thisYear)
-		   ((and (= myMonth nextMonth) (= myMonth 1)) nextYear)
-		   (t lastYear))))
+		 (Today (decode-time (float-time)))
+		 (thisMonth (fifth Today))
+		 (nextMonth (if (= 12 thisMonth)
+						1
+					  (+ thisMonth 1)))
+		 (lastMonth (if (= 1 thisMonth)
+						12
+					  (- thisMonth 1)))
+		 (thisYear (sixth Today))
+		 (nextYear (+ thisYear 1))
+		 (lastYear (- thisYear 1))
+		 (dateDifference (- (fourth Today) Date))
+		 (myMonth (cond ((> 24 (abs dateDifference)) thisMonth)
+						((natnump dateDifference) nextMonth)
+						(t lastMonth)))
+		 (myYear (cond ((= myMonth thisMonth) thisYear)
+					   ((and (= myMonth nextMonth) (= myMonth 1)) nextYear)
+					   (t lastYear))))
     (list myYear myMonth Date)))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -135,40 +131,39 @@
                 (read-string "Sub-title: ")))
 
   (setq myPreviousDateList (myDate myPreviousDate)
-	previousDate (concat (my0Padding (second myPreviousDateList)) (my0Padding (third myPreviousDateList)))
-	previousDateLink (concat (file-name-as-directory "../../../")
-				 (file-name-as-directory (number-to-string (first myPreviousDateList)))
-				 (file-name-as-directory (my0Padding (second myPreviousDateList)))
-				 (file-name-as-directory (my0Padding (third myPreviousDateList)))
-				 "index.html"))
+		previousDate (concat (my0Padding (second myPreviousDateList)) (my0Padding (third myPreviousDateList)))
+		previousDateLink (concat (file-name-as-directory "../../../")
+								 (file-name-as-directory (number-to-string (first myPreviousDateList)))
+								 (file-name-as-directory (my0Padding (second myPreviousDateList)))
+								 (file-name-as-directory (my0Padding (third myPreviousDateList)))
+								 "index.html"))
 
   (setq myTodayList (myDate today)
-	siteRoot "https://github.com/brandelune/brandelune.github.io/"
-	todayPath (concat (file-name-as-directory siteRoot)
-			   (file-name-as-directory (number-to-string (first myTodayList)))
-			   (file-name-as-directory (my0Padding (second myTodayList)))
-			   (file-name-as-directory (my0Padding (third myTodayList))))
-	todayIndex (concat (file-name-as-directory todayPath)  "index.html")
-	todayDate  (concat (number-to-string (first myTodayList)) "/" (my0Padding (second myTodayList)) "/" (my0Padding (third myTodayList))))
+		siteRoot "https://github.com/brandelune/brandelune.github.io/"
+		todayPath (concat (file-name-as-directory repositoryPath)
+						  (file-name-as-directory (number-to-string (first myTodayList)))
+						  (file-name-as-directory (my0Padding (second myTodayList)))
+						  (file-name-as-directory (my0Padding (third myTodayList))))
+		todayIndex (concat (file-name-as-directory todayPath)  "index.html")
+		todayDate  (concat (number-to-string (first myTodayList)) "/" (my0Padding (second myTodayList)) "/" (my0Padding (third myTodayList))))
 
   (setq todayNavigation
-	(format "<p class=\"navigation\">
+		(format "<p class=\"navigation\">
             <a href=\"%1$s\" hreflang=\"en\" rel=\"prev\">%2$s</a>
             <a href=\"../../../index.html\" hreflang=\"en\">index</a>
 	    <a href=\"https://github.com/brandelune/brandelune.github.io/commits/gh-pages\">gh-pages</a>
             <a href=\"../../../adventuresintechland.html\" hreflang=\"en\">todo</a>
             <a href=\"../../../tomorrow.html\" hreflang=\"en\" rel=\"next\">tomorrow</a>
         </p>"
-		previousDateLink ;;  1$
+				previousDateLink ;;  1$
                 previousDate     ;;  2$
-		))
+				))
 
-  (setq baseCSSLink "../../adventuresintechland.css"
-        dailyCSSLink ("./adventuresintechland.css")
-	)
+  (setq baseCSSLink "../../adventuresintechland.css")
+  (setq dailyCSSLink "./adventuresintechland.css")
 
   (setq todayHeader
-	(format "<html>
+		(format "<html>
     <head lang=\"en-us\">
         <title>%1$s</title>
 
@@ -202,31 +197,31 @@
                 myTitle	     ;;  1$
                 baseCSSLink  ;;  2$
                 dailyCSSLink ;;  3$
-		))
+				))
 
   (setq todayTemplate
         (format "%1$s
     <body>
         %2$s
 
-        <p id="episode"><em>Adventures in Tech Land, Season 2<br />%3$s, day ...</em></p>
+        <p id=\"episode\"><em>Adventures in Tech Land, Season 2<br />%3$s, day ...</em></p>
         <h1>%4$s <a href=\"https://brandelune.github.io/adventuresintechland.xml\"><img src=\"https://www.mozilla.org/media/img/trademarks/feed-icon-28x28.e077f1f611f0.png\" width=\"15px\" height=\"15px\" alt=\"rss feed\" /></a></h1>
-        <p id="title item"></p>
+        <p id=\"title item\"></p>
         <h2>%5$s</h2>
-        <p id="first sub-title item"></p>
+        <p id=\"first sub-title item\"></p>
 
         %2$s
     </body>
 </html>"
                 todayHeader	;;  1$
-		todayNavigation	;;  2$
+				todayNavigation	;;  2$
                 todayDate	;;  3$
                 myTitle		;;  4$
                 mySubtitle	;;  5$
 
                 ))
 
-  (make-directory todayPath)
+  (make-directory todayPath t)
   (myInsert todayTemplate "" todayIndex)
   (myInsert "" "" dailyCSSLink)
   (find-file todayIndex))
@@ -244,8 +239,8 @@
   (interactive (list
                 (read-string "Title: ")
                 (read-string "Link: ")
-		(read-string "Date: " (format-time-string "%a, %d %b %Y %H:%m:%S UT" (current-time) t))
-		(read-string "Description: ")))
+				(read-string "Date: " (format-time-string "%a, %d %b %Y %H:%m:%S UT" (current-time) t))
+				(read-string "Description: ")))
   (setq myText	(format "<item>
 <title>%1$s</title>
 <link>%2$s</link>
@@ -254,15 +249,16 @@
 <description>%4$s</description>
 </item>
 "
-	 myTitle       ;;  1$
-	 todayIndex    ;;  2$
-	 pubDate       ;;  3$
-	 myDescription ;;  4$
-	 ))
+						myTitle       ;;  1$
+						todayIndex    ;;  2$
+						pubDate       ;;  3$
+						myDescription ;;  4$
+						))
   (myInsert
    myText
    "<!-- place new items above this line -->"   
-   rssFile))
+   rssFile)
+  (find-file rssFile))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;
 
