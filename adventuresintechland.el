@@ -89,24 +89,21 @@ at the end of the file, before the closing headers."
 ;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (defun checkDayTracker ()
-  "Check the day tracker values, increment.
-This is not yet used but is prepared for automating the process
-of creating the template for the day. The increment serves for the
-following day."
+  "Creates values for the new index, based on yesterday's values."
   (save-current-buffer
     (set-buffer (find-file-noselect dayTrackerPath))
     (goto-char (point-min))
     (search-forward-regexp "\\([0-9]*\\.[0-9]*\\) \\([0-9]*\\) \\([0-9]*\\) \\([0-9]*\\)")
     (setq timeStamp (match-string 1)
 		  seasonNumber (match-string 2)
-		  totalDays (match-string 3)
-		  dayInSeason (match-string 4)
+		  totalDays (+ 1 (string-to-number (match-string 3)))
+		  dayInSeason (+ 1 (string-to-number (match-string 4)))
 		  newMarker (format "%s %s %s %s\n" (float-time) seasonNumber totalDays dayInSeason))
-;;    (goto-char (point-min))
-;;    (insert newMarker)
-;;    (save-buffer)
-;;    (kill-buffer))
-	(list seasonNumber totalDays dayInSeason)))	
+    (goto-char (point-min))
+	(insert newMarker)
+	(save-buffer)
+	(kill-buffer))
+  (list seasonNumber totalDays dayInSeason)))	
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;
 
@@ -227,9 +224,9 @@ The contents has to be filled manually, later."
     <body>
         %2$s
 
-        <p id=\"episode\"><em>Adventures in Tech Land, Season %7$s<br />%3$s, day %8$s</em></p>
+        <p id=\"episode\"><em>Adventures in Tech Land. Season %7$s. Episode %8$s</em></p>
         <h1>%4$s %9$s</h1>
-        <p id=\"title item\"></p>
+        <p id=\"title item\">%3$s, %10$sth day</p>
         <h2>%5$s</h2>
         <p id=\"first sub-title item\">%6$s</p>
 
@@ -242,9 +239,10 @@ The contents has to be filled manually, later."
                 myTitle		;;  4$
                 mySubtitle	;;  5$
 				myFirstParagraph ;; 6$
-				(first checkDayTracker) ;; 7$
-				(third checkDayTracker) ;; 8$
+				(first (checkDayTracker)) ;; 7$
+				(third (checkDayTracker)) ;; 8$
 				rssReferences ;; 9$
+				totalDays ;; 10$
 
                 ))
 
