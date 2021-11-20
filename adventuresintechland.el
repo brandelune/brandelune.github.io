@@ -1,21 +1,57 @@
+;;; adventuresintechland.el --- my personal CMS -*- lexical-binding: t -*-
+;;; package --- Summary
+;;; Commentary:
+;; TODO
+;; use defvar and defconst to declare things
+;; the way this should work is
+;; 1) I type the contents in a buffer
+;; 2) I call the dailyIndex function
+;; 3) it inserts the buffer contents into the index
+;; 4) it creates the RSS item from the first paragraph (I need to itendify it)
+;; 5) it updates the daytracker
+;; 6) boom
+;;
+;; that way, I can focus back on html/css, write about that, including the web engineer thing
+;; and that's more fun.
+
+;;; Code:
 (setq debug-on-error t)
 ;;;;;;;;;;;;;;;;;;;;;;;;;
-
-(setq repositoryPath "/Users/suzume/Documents/Repositories/brandelune.github.io/")
-(setq dayTrackerPath (concat repositoryPath "dayTracker.txt"))
-(setq rssFile (concat repositoryPath "adventuresintechland.xml"))
-(setq indexPath (concat repositoryPath "index.html"))
-(setq ghPagesURL "https://github.com/brandelune/brandelune.github.io/commits/gh-pages")
-(setq siteRoot "https://github.com/brandelune/brandelune.github.io/")
-(setq faviconURL "https://brandelune.github.io/favicon/")
-(setq rssReferences "<a href=\"https://brandelune.github.io/adventuresintechland.xml\"><img src=\"https://www.mozilla.org/media/img/trademarks/feed-icon-28x28.e077f1f611f0.png\" width=\"15px\" height=\"15px\" alt=\"rss feed\" /></a>")
+;;; constants
+(defconst jc-repositoryPath "/Users/suzume/Documents/Repositories/brandelune.github.io/")
+(defconst jc-dayTrackerPath (concat jc-repositoryPath "dayTracker.txt"))
+(defconst jc-rssFile (concat jc-repositoryPath "adventuresintechland.xml"))
+(defconst jc-indexPath (concat jc-repositoryPath "index.html"))
+(defconst jc-ghPagesURL "https://github.com/brandelune/brandelune.github.io/commits/gh-pages")
+(defconst jc-siteRoot "https://github.com/brandelune/brandelune.github.io/")
+(defconst jc-faviconURL "https://brandelune.github.io/favicon/")
+(defconst jc-rssReferences "<a href=\"https://brandelune.github.io/adventuresintechland.xml\"><img src=\"https://www.mozilla.org/media/img/trademarks/feed-icon-28x28.e077f1f611f0.png\" width=\"15px\" height=\"15px\" alt=\"rss feed\" /></a>")
+(defconst jc-baseCSSLink "../../adventuresintechland.css")
+(defconst jc-dailyCSSLink "./adventuresintechland.css")
+;;; variables
+(defvar jc-todayHeader)
+(defvar jc-myPreviousDateList)
+(defvar jc-todayNavigation)
+(defvar jc-todayTemplate)
+(defvar jc-myPreviousDateList)
+(defvar jc-myTodayList)
+(defvar jc-todayPath)
+(defvar jc-todayIndex)
+(defvar jc-newTracker)
+(defvar jc-dayInSeason)
+(defvar jc-previousDateLink)
+(defvar jc-todayDate)
+(defvar jc-totalDays)
+(defvar jc-myText)
+(defvar jc-timeStamp)
+(defvar jc-seasonNumber)
 
 (defun my0Padding (number)
-  "Adds a 0 string to one digit numbers.
+  "Add a 0 string to one digit NUMBER.
 This is used here to represent dates as in 01/01/2021"
 
   ;; (my0Padding 3) -> "03"
-  ;; (my0Padding 10) -> "10"  
+  ;; (my0Padding 10) -> "10"
 
 ;;;; TODO add option to "number-to-string" so that the padding can happen there
 ;;;;  // Defined in ~/Documents/Code/emacs/src/data.c
@@ -49,7 +85,7 @@ This is used here to represent dates as in 01/01/2021"
 ;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (defun myPreviousDayString (myDate)
-  "Substracts 1 to a date string and 0-pads the result it if necessary.
+  "Substract 1 to MYDATE and 0-pads the result it if necessary.
 myDate is a 1 or 2 digits strings that represents a calendar day.
 This is used here to create the date string for the previous day."
   ;; (myPreviousDayString "9") -> "08"
@@ -58,7 +94,7 @@ This is used here to create the date string for the previous day."
 ;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (defun myNextDayString (myDate)
-  "Adds 1 to a date string and 0-pads the result if necessary.
+  "Add 1 to MYDATE and 0-pads the result if necessary.
 myDate is a 1 or 2 digits strings that represents a calendar day.
 This is used here to create the date string for the next day."
   ;; (myNextDayString "8") -> "09"
@@ -67,7 +103,7 @@ This is used here to create the date string for the next day."
 ;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (defun myInsert (myText myMarker myFile)
-  "Insert myText at myMarker in myFile.
+  "Insert MYTEXT at MYMARKER in MYFILE.
 This is used to insert the RSS part of the feed for that day
 at the end of the file, before the closing headers."
   (save-current-buffer
@@ -89,26 +125,36 @@ at the end of the file, before the closing headers."
 ;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (defun checkDayTracker ()
-  "Creates values for the new index, based on yesterday's values."
+  "Create values for the new index, based on yesterday's values."
   (save-current-buffer
-    (set-buffer (find-file-noselect dayTrackerPath))
+    (set-buffer (find-file-noselect jc-dayTrackerPath))
     (goto-char (point-min))
     (search-forward-regexp "\\([0-9]*\\.[0-9]*\\) \\([0-9]*\\) \\([0-9]*\\) \\([0-9]*\\)")
-    (setq timeStamp (match-string 1)
-		  seasonNumber (match-string 2)
-		  totalDays (+ 1 (string-to-number (match-string 3)))
-		  dayInSeason (+ 1 (string-to-number (match-string 4)))
-		  newMarker (format "%s %s %s %s\n" (float-time) seasonNumber totalDays dayInSeason))
+    (let*((seasonNumber (match-string 2))
+		  (jc-totalDays (+ 1 (string-to-number (match-string 3))))
+		  (jc-dayInSeason (+ 1 (string-to-number (match-string 4)))))
+	  (kill-buffer)
+	  (list seasonNumber jc-totalDays jc-dayInSeason))))
+
+(defun updateDayTracker ()
+  "Update the dayTracker."
+  (save-current-buffer
+    (set-buffer (find-file-noselect jc-dayTrackerPath))
     (goto-char (point-min))
-	(insert newMarker)
+    (search-forward-regexp "\\([0-9]*\\.[0-9]*\\) \\([0-9]*\\) \\([0-9]*\\) \\([0-9]*\\)")
+    (let*((seasonNumber (match-string 2))
+		  (jc-totalDays (+ 1 (string-to-number (match-string 3))))
+		  (jc-dayInSeason (+ 1 (string-to-number (match-string 4))))
+		  (jc-newTracker (format "%s %s %s %s\n" (float-time) seasonNumber jc-totalDays jc-dayInSeason)))
+      (goto-char (point-min))
+	  (insert jc-newTracker))
 	(save-buffer)
-	(kill-buffer))
-  (list seasonNumber totalDays dayInSeason)))	
+	(kill-buffer)))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(defun myDate (Date)
-  "Create a plausible (year month date) list.
+(defun myDate (day)
+  "Create a plausible (year month DAY) list.
 I don't remember for which purpose, but according to the emacs-devel
 thread that was born out of a related question, it looks like an estimate
 of the date/month/year since I only enter a date for the current entry"
@@ -118,54 +164,56 @@ of the date/month/year since I only enter a date for the current entry"
 
   (let* (
 		 (Today (decode-time (float-time)))
-		 (thisMonth (fifth Today))
+		 (thisMonth (cl-fifth Today))
 		 (nextMonth (if (= 12 thisMonth)
 						1
 					  (+ thisMonth 1)))
 		 (lastMonth (if (= 1 thisMonth)
 						12
 					  (- thisMonth 1)))
-		 (thisYear (sixth Today))
+		 (thisYear (cl-sixth Today))
 		 (nextYear (+ thisYear 1))
 		 (lastYear (- thisYear 1))
-		 (dateDifference (- (fourth Today) (abs Date)))
+		 (dateDifference (- (cl-fourth Today) (abs day)))
 		 (myMonth (cond ((> 24 (abs dateDifference)) thisMonth)
 						((natnump dateDifference) nextMonth)
 						(t lastMonth)))
 		 (myYear (cond ((= myMonth thisMonth) thisYear)
 					   ((and (= myMonth nextMonth) (= myMonth 1)) nextYear)
-					   (t lastYear))))
-    (list myYear myMonth Date)))
+					   (t lastYear)))
+		 (rssDate (format-time-string "%a, %d %b %Y %H:%m:%S UT" (current-time) t))
+		 (linkDate (format "%1$s/%2$s/%3$s" myYear myMonth day)))
+    (list myYear myMonth day rssDate linkDate)))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(defun dailyIndex (today myPreviousDate myTitle mySubtitle myFirstParagraph)
-  "Creates an html file with navigation, body.
+(defun dailyIndex (today prevdate title subtitle firstpar)
+  "Create an html file for TODAY with PREVDATE TITLE SUBTITLE FIRSTPAR.
 The contents has to be filled manually, later."
   (interactive (list
-                (read-number "Date: " (fourth (decode-time (float-time))))
-                (read-number "Previous date: " (- (third (myDate (fourth (decode-time (float-time))))) 1))
+                (read-number "Date: " (cl-fourth (decode-time (float-time))))
+                (read-number "Previous date: " (- (cl-third (myDate (cl-fourth (decode-time (float-time))))) 1))
                 (read-string "Title: " )
                 (read-string "Sub-title: ")
 				(read-string "First paragraph: ")))
 
-  (setq myPreviousDateList (myDate myPreviousDate)
-		previousDate (concat (my0Padding (second myPreviousDateList)) (my0Padding (third myPreviousDateList)))
-		previousDateLink (concat (file-name-as-directory "../../../")
-								 (file-name-as-directory (number-to-string (first myPreviousDateList)))
-								 (file-name-as-directory (my0Padding (second myPreviousDateList)))
-								 (file-name-as-directory (my0Padding (third myPreviousDateList)))
-								 "index.html"))
+  (setq jc-myPreviousDateList (myDate prevdate)
+		prevdate (concat (my0Padding (cl-second jc-myPreviousDateList)) (my0Padding (cl-third jc-myPreviousDateList)))
+		jc-previousDateLink (concat (file-name-as-directory "../../../")
+									(file-name-as-directory (number-to-string (cl-first jc-myPreviousDateList)))
+									(file-name-as-directory (my0Padding (cl-second jc-myPreviousDateList)))
+									(file-name-as-directory (my0Padding (cl-third jc-myPreviousDateList)))
+									"index.html"))
 
-  (setq myTodayList (myDate today)
-		todayPath (concat (file-name-as-directory repositoryPath)
-						  (file-name-as-directory (number-to-string (first myTodayList)))
-						  (file-name-as-directory (my0Padding (second myTodayList)))
-						  (file-name-as-directory (my0Padding (third myTodayList))))
-		todayIndex (concat (file-name-as-directory todayPath)  "index.html")
-		todayDate  (concat (number-to-string (first myTodayList)) "/" (my0Padding (second myTodayList)) "/" (my0Padding (third myTodayList))))
+  (setq jc-myTodayList (myDate today)
+		jc-todayPath (concat (file-name-as-directory jc-repositoryPath)
+							 (file-name-as-directory (number-to-string (cl-first jc-myTodayList)))
+							 (file-name-as-directory (my0Padding (cl-second jc-myTodayList)))
+							 (file-name-as-directory (my0Padding (cl-third jc-myTodayList))))
+		jc-todayIndex (concat (file-name-as-directory jc-todayPath)  "index.html")
+		jc-todayDate  (concat (number-to-string (cl-first jc-myTodayList)) "/" (my0Padding (cl-second jc-myTodayList)) "/" (my0Padding (cl-third jc-myTodayList))))
 
-  (setq todayNavigation
+  (setq jc-todayNavigation
 		(format "<p class=\"navigation\">
             <a href=\"%1$s\" hreflang=\"en\" rel=\"prev\">%2$s</a>
             <a href=\"../../../index.html\" hreflang=\"en\">index</a>
@@ -173,15 +221,12 @@ The contents has to be filled manually, later."
             <a href=\"../../../adventuresintechland.html\" hreflang=\"en\">todo</a>
             <a href=\"../../../tomorrow.html\" hreflang=\"en\" rel=\"next\">tomorrow</a>
         </p>"
-				previousDateLink ;;  1$
-                previousDate      ;;  2$
-				ghPagesURL       ;; 3$
+				jc-previousDateLink ;;  1$
+                prevdate      ;;  2$
+				jc-ghPagesURL       ;; 3$
 				))
 
-  (setq baseCSSLink "../../adventuresintechland.css")
-  (setq dailyCSSLink "./adventuresintechland.css")
-
-  (setq todayHeader
+  (setq jc-todayHeader
 		(format "<html>
     <head lang=\"en-us\">
         <title>%1$s</title>
@@ -213,13 +258,13 @@ The contents has to be filled manually, later."
         <link rel=\"stylesheet\" type=\"text/css\" href=\"%3$s\" class=\"dailyCSS\"/>
         <meta charset=\"UTF-8\" />
     </head>"
-                myTitle	     ;;  1$
-                baseCSSLink  ;;  2$
-                dailyCSSLink ;;  3$
-                faviconURL   ;;  4$
+                title	     ;;  1$
+                jc-baseCSSLink  ;;  2$
+                jc-dailyCSSLink ;;  3$
+                jc-faviconURL   ;;  4$
 				))
 
-  (setq todayTemplate
+  (setq jc-todayTemplate
         (format "%1$s
     <body>
         %2$s
@@ -233,88 +278,66 @@ The contents has to be filled manually, later."
         %2$s
     </body>
 </html>"
-                todayHeader	;;  1$
-				todayNavigation	;;  2$
-                todayDate	;;  3$
-                myTitle		;;  4$
-                mySubtitle	;;  5$
-				myFirstParagraph ;; 6$
-				(first (checkDayTracker)) ;; 7$
-				(third (checkDayTracker)) ;; 8$
-				rssReferences ;; 9$
-				totalDays ;; 10$
-
+                jc-todayHeader	;;  1$
+				jc-todayNavigation	;;  2$
+                jc-todayDate	;;  3$
+                title		;;  4$
+                subtitle	;;  5$
+				firstpar ;; 6$
+				(cl-first (checkDayTracker)) ;; 7$ season
+				(cl-third (checkDayTracker)) ;; 8$ days in season
+				jc-rssReferences ;; 9$
+				(cl-second (checkDayTracker)) ;; 10$ total days
                 ))
 
-  (make-directory todayPath t)
-  (myInsert todayTemplate "" todayIndex)
-  (myInsert "" "" dailyCSSLink)
-  (find-file todayIndex))
+  (make-directory jc-todayPath t)
+  (myInsert jc-todayTemplate "" jc-todayIndex)
+  (myInsert "" "" jc-dailyCSSLink)
+  (myDailyRSSItem title today firstpar)
+  (updateDayTracker)
+  (find-file jc-todayIndex))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (defun pageLink ()
-  (format ))
+  "To be defined."
+  ;;  (format )
+  )
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(defun myDailyRSSItem (myTitle todayIndex pubDate myDescription)
-  "inserts the daily RSS feed contents into the feed XML file"
+(defun myDailyRSSItem (title date desc)
+  "Insert the daily RSS feed with TITLE DATE and DESC."
 ;;;; TODO add default value for link
   (interactive (list
                 (read-string "Title: ")
-                (read-string "Link: ")
-				(read-string "Date: " (format-time-string "%a, %d %b %Y %H:%m:%S UT" (current-time) t))
+				(read-number "Date: " (cl-fourth (decode-time (float-time) t)))
 				(read-string "Description: ")))
-  (setq myText	(format "<item>
+  
+  (setq jc-myText	(format "<item>
 <title>%1$s</title>
-<link>%2$s</link>
-<guid>%2$s</guid>
+<link>https://brandelune.github.io/%2$s/index.html</link>
+<guid>https://brandelune.github.io/%2$s/index.html</guid>
 <pubDate>%3$s</pubDate>
 <description>%4$s</description>
 </item>
 "
-						myTitle       ;;  1$
-						todayIndex    ;;  2$
-						pubDate       ;;  3$
-						myDescription ;;  4$
-						))
+							title    ;;  1$
+							(cl-fifth (myDate  date))  ;;  2$
+							(cl-fourth (myDate date))   ;;  3$
+							desc   ;;  4$
+							))
   (myInsert
-   myText
-   "<!-- place new items above this line -->"   
-   rssFile)
-  (find-file rssFile))
+   jc-myText
+   "<!-- place new items above this line -->"
+   jc-rssFile)
+  (find-file jc-rssFile))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(defun updateDayTracker ()
-  "Update the day tracker"
-
-;;;; TODO updateDayTracker
-;;;;    current season
-;;;;    number of days in the current "season"
-;;;;    total number of documented days
-;;;;    link to "last day"
-;;;;    index contents for the new day  -> ?
-
-  (save-current-buffer
-    (set-buffer (find-file-noselect indexPath))
-    (goto-char (point-min))
-    (search-forward-regexp "\\([0-9]*\\.[0-9]*\\) \\([0-9]*\\) \\([0-9]*\\) \\([0-9]*\\)")
-    (setq timeStamp (match-string 1)
-		  seasonNumber (match-string 2)
-		  totalDays (+ 1 (string-to-number (match-string 3)))
-		  dayInSeason (+ 1 (string-to-number (match-string 4)))
-		  newMarker (format "%s %s %s %s\n" (float-time) seasonNumber totalDays dayInSeason))
-    (goto-char (point-min))
-    (insert newMarker)
-    (save-buffer)
-    (kill-buffer)))
-
 
 (defun UpdateRSSFeed ()
-  "Update the RSS feed"
-
+  "Update the RSS feed."
 ;;;; TODO UpdateRSSFeed
 ;;;;    title
 ;;;;    date
@@ -323,25 +346,22 @@ The contents has to be filled manually, later."
   )
 
 (defun UpdatePreviousPage ()
-  "Update the previous page"
-
+  "Update the previous page."
 ;;;; TODO UpdatePreviousPage
 ;;;;    "tomorrow" link
-
   )
 
 (defun CreateCurrentPage ()
-  "Create the page for the day"
+  "Create the page for the day."
   )
 
 (defun ManageDailyEntry ()
-  "Create the current page, update the main index, the RSS feed, the previous page"
-  (checkMarker)
-  
+  "Create the current page, update the main index, the RSS feed, the previous page."
+  (checkDayTracker)
   )
 
 (defun narrowToEditZone ()
-  "Narrow the index page to the area to edit"
+  "Narrow the index page to the area to edit."
 ;;;; search id = episode
 ;;;; goto beginning of line
 ;;;; set mark
@@ -349,3 +369,6 @@ The contents has to be filled manually, later."
 ;;;; goto to end of line
 ;;;; narrow-to-region
   )
+
+(provide 'adventuresintechland)
+;;; adventuresintechland.el ends here
