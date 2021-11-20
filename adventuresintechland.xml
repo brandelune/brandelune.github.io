@@ -343,6 +343,13 @@
 	  <pubDate>Sat, 23 Oct 2021 00:10:11 UT</pubDate>
 	  <description>Reading the past logs is saddening. I remember everything. Everything I wrote, when I wrote it, how I felt when I wrote it. I remember how it was at the beginning of January 2020, when we were getting ready to move into that apartment. There was some happiness, at least the hope that we'd be able to create something new that we had never tried before. Then I remember the covid news that started to slip in. We were together again at the end of March, with restrictions already ongoing, and then the world kind of stopped. Today we are stuck in an even harder place. There is mental pain almost every day, and very little hope to account for. It is hard to focus on important things. And work, as well as money is severely lacking.</description>
 	</item>
+	<item>
+	  <title>Lots of emacs lisp things</title>
+	  <link>https://brandelune.github.io/2021/10/25/index.html</link>
+	  <guid>https://brandelune.github.io/2021/10/25/index.html</guid>
+	  <pubDate>Mon, 25 Oct 2021 17:10:53 UT</pubDate>
+	  <description>I spent a lot of time on Sunday and Monday to cleanup the elisp code that I use to generate the RSS index and the daily page. Then I remembered that there was something about <code>setq</code> requiring to actually declare the variable before hand, and there was all this talk on the lists about scope, so I decided to ask for help on emacs-devel and I ended up with a suggestion to byte-compile the code to check the error messages and to use flymake to ensure I get proper advice when I code...</description>
+	</item>
 	<!-- place new items above this line -->
   </channel>
 </rss>
