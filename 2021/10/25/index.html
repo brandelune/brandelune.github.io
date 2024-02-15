@@ -1,0 +1,61 @@
+<html>
+  <head lang="en-us">
+    <title>Lots of emacs lisp things</title>
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta name="msapplication-TileColor" content="#FFFFFF" />
+	<meta name="msapplication-TileImage" content="https://brandelune.github.io/favicon/favicon-144.png" />
+	<meta name="msapplication-config" content="https://brandelune.github.io/favicon/browserconfig.xml" />
+
+	<link rel="shortcut icon" href="https://brandelune.github.io/favicon/favicon.ico" />
+	<link rel="icon" sizes="16x16 32x32 64x64" href="https://brandelune.github.io/favicon/favicon.ico" />
+	<link rel="icon" type="image/png" sizes="196x196" href="https://brandelune.github.io/favicon/favicon-192.png" />
+	<link rel="icon" type="image/png" sizes="160x160" href="https://brandelune.github.io/favicon/favicon-160.png" />
+	<link rel="icon" type="image/png" sizes="96x96" href="https://brandelune.github.io/favicon/favicon-96.png" />
+	<link rel="icon" type="image/png" sizes="64x64" href="https://brandelune.github.io/favicon/favicon-64.png" />
+	<link rel="icon" type="image/png" sizes="32x32" href="https://brandelune.github.io/favicon/favicon-32.png" />
+	<link rel="icon" type="image/png" sizes="16x16" href="https://brandelune.github.io/favicon/favicon-16.png" />
+	<link rel="apple-touch-icon" href="https://brandelune.github.io/favicon/favicon-57.png" />
+	<link rel="apple-touch-icon" sizes="114x114" href="https://brandelune.github.io/favicon/favicon-114.png" />
+	<link rel="apple-touch-icon" sizes="72x72" href="https://brandelune.github.io/favicon/favicon-72.png" />
+	<link rel="apple-touch-icon" sizes="144x144" href="https://brandelune.github.io/favicon/favicon-144.png" />
+	<link rel="apple-touch-icon" sizes="60x60" href="https://brandelune.github.io/favicon/favicon-60.png" />
+	<link rel="apple-touch-icon" sizes="120x120" href="https://brandelune.github.io/favicon/favicon-120.png" />
+	<link rel="apple-touch-icon" sizes="76x76" href="https://brandelune.github.io/favicon/favicon-76.png" />
+	<link rel="apple-touch-icon" sizes="152x152" href="https://brandelune.github.io/favicon/favicon-152.png" />
+	<link rel="apple-touch-icon" sizes="180x180" href="https://brandelune.github.io/favicon/favicon-180.png" />
+
+    <link rel="stylesheet" type="text/css" href="../../adventuresintechland.css" class="baseCSS"/>
+    <link rel="stylesheet" type="text/css" href="./adventuresintechland.css" class="dailyCSS"/>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <p class="navigation">
+      <a href="../../../2021/10/23/index.html" hreflang="en" rel="prev">1023</a>
+      <a href="../../../index.html" hreflang="en">index</a>
+	  <a href="https://github.com/brandelune/brandelune.github.io/commits/gh-pages">gh-pages</a>
+      <a href="../../../adventuresintechland.html" hreflang="en">todo</a>
+      <a href="../../../tomorrow.html" hreflang="en" rel="next">tomorrow</a>
+    </p>
+
+    <p id="episode"><em>Adventures in Tech Land. Season 3. Episode 2</em></p>
+    <h1>Lots of emacs lisp things <a href="https://brandelune.github.io/adventuresintechland.xml"><img src="https://www.mozilla.org/media/img/trademarks/feed-icon-28x28.e077f1f611f0.png" width="15px" height="15px" alt="rss feed" /></a></h1>
+    <p id="title item">2021/10/25, 47th day</p>
+    <h2>defvar !!! defconst !!! flymake !!!</h2>
+    <p id="first sub-title item">I spent a lot of time on Sunday cleaning up the elisp code that I use to generate the RSS index and the daily page. Then I remembered that there was something about <code>setq</code> requiring to actually declare the variable before hand, and there was all this talk on the lists about scope, so I decided to ask for help on emacs-devel and I ended up with the following suggestions:</p>
+	<ul>
+	  <li><code>byte-compile</code> the code to check the error messages</li>
+	  <li>use <code>flymake-mode</code> to ensure I get proper advice while I code</li>
+	</ul>
+	<p>There was a discussion about beginners who use <code>setq</code> without first <em>defining</em> the variable with <code>defvar</code> and how that could create lots of problems. But you'd be hard pressed to find such indications from reading the Elisp Introduction, and even the Elisp Reference starts by introducing <code>setq</code> while pushing the information about <code>defvar</code> in a later chapter that discusses <em>Defining Global Variables</em>. Beginners or amateurs who are not sure what that all means will probably start by <code>setq</code> 'ing all their variables to only find later, when the harm is done, that they should have used <code>defvar</code> and <code>defconst</code> to first define the variables or constants before <code>setq</code> 'ing them.</p>
+	<p>So just to make sure I'm not missing anything, here is the thread <strong>(February 16, 2024 update)</strong>: <a href="https://mail.gnu.org/archive/html/emacs-devel/2021-10/msg01686.html">lexical binding?</a></p>
+	
+    <p class="navigation">
+      <a href="../../../2021/10/23/index.html" hreflang="en" rel="prev">1023</a>
+      <a href="../../../index.html" hreflang="en">index</a>
+	  <a href="https://github.com/brandelune/brandelune.github.io/commits/gh-pages">gh-pages</a>
+      <a href="../../../adventuresintechland.html" hreflang="en">todo</a>
+      <a href="../../../tomorrow.html" hreflang="en" rel="next">tomorrow</a>
+    </p>
+  </body>
+</html>
