@@ -1,12 +1,15 @@
-#+TODO: TODO(t) | DONE(d!) CANCELED(c)
-#+TODO: FIX(f) CODE(c) | CANCELED(a!) DONE(d!)
+# to change TODO state: C-c C-t
+# to change TODO sequence: S-C-right/left
+# (!) means that a timestamp is created when the specified state is reached
+#+TODO: TODO(t) | DONE(d!)
 #+TODO: CHECK(e) LEARN(l) | DONE(d!)
+#+TODO: FIX(f) CODE(c) | DONE(d!)
+#+TODO: | CANCELED(a)
 #+OPTIONS: num:0
 #+TITLE: My adventures in tech land - TODO file
 #+HTML_HEAD: <link rel="stylesheet" type="text/css" href="./css/adventuresintechland.org.css" /> 
 #+HTML_LINK_HOME:  ./index.html
 #+HTML_LINK_UP: https://github.com/brandelune/brandelune.github.io
-
 ----------
 * code
 ** FIX [2021-10-23 Sat] clean up the code and make it all work again :elisp:
@@ -274,4 +277,5 @@ to reduce the nb of possible errors
 ** DONE [2019-11-24] customize org export because the HTML is ugly :admin:
    - State "DONE"       from "TODO"       [2019-12-01 Sun 08:42]
    What I don't like is how the headings are HTML headers. The ToC alone would be sufficient for what I need. I did some css and it looks much better. With lots of room for improvement.
-   
+
+* DONE stuff
