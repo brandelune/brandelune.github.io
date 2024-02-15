@@ -6,58 +6,40 @@
     <style type="text/css">
     <!--
       body {
-        color: #333333;
-        background-color: #FFFFFF;
+        color: #000000;
+        background-color: #ffffff;
       }
       .comment {
         /* font-lock-comment-face */
-        color: #8D8D84;
-        font-style: italic;
+        color: #b22222;
       }
       .comment-delimiter {
         /* font-lock-comment-delimiter-face */
-        color: #8D8D84;
+        color: #b22222;
+      }
+      .constant {
+        /* font-lock-constant-face */
+        color: #008b8b;
       }
       .doc {
         /* font-lock-doc-face */
-        color: #036A07;
+        color: #8b2252;
       }
       .function-name {
         /* font-lock-function-name-face */
-        color: #006699;
-      }
-      .highlight-defined-builtin-function-name {
-        /* highlight-defined-builtin-function-name-face */
-        color: #006699;
-      }
-      .highlight-defined-function-name {
-        /* highlight-defined-function-name-face */
-        color: #006699;
-      }
-      .highlight-defined-variable-name {
-        /* highlight-defined-variable-name-face */
-        color: #BA36A5;
+        color: #0000ff;
       }
       .keyword {
         /* font-lock-keyword-face */
-        color: #0000FF;
-      }
-      .regexp-grouping-backslash {
-        /* font-lock-regexp-grouping-backslash */
-        font-weight: bold;
-      }
-      .regexp-grouping-construct {
-        /* font-lock-regexp-grouping-construct */
-        font-weight: bold;
+        color: #a020f0;
       }
       .string {
         /* font-lock-string-face */
-        color: #008000;
+        color: #8b2252;
       }
-      .warning {
-        /* font-lock-warning-face */
-        color: #ff0000;
-        font-weight: bold;
+      .variable-name {
+        /* font-lock-variable-name-face */
+        color: #a0522d;
       }
 
       a {
@@ -74,26 +56,62 @@
   </head>
   <body>
     <pre>
-(<span class="keyword">setq</span> <span class="highlight-defined-variable-name">debug-on-error</span> <span class="highlight-defined-variable-name">t</span>)
-<span class="comment-delimiter">;;;;;;;;;;;;;;;;;;;;;;;;;</span><span class="comment">
+<span class="comment-delimiter">;;; </span><span class="comment">adventuresintechland.el --- my personal CMS -*- lexical-binding: t -*-
+</span><span class="comment-delimiter">;;; </span><span class="comment">package --- Summary
+</span><span class="comment-delimiter">;;; </span><span class="comment">Commentary:
+</span><span class="comment-delimiter">;; </span><span class="comment">TODO
+</span><span class="comment-delimiter">;; </span><span class="comment">use defvar and defconst to declare things
+</span><span class="comment-delimiter">;; </span><span class="comment">the way this should work is
+</span><span class="comment-delimiter">;; </span><span class="comment">1) I type the contents in a buffer
+</span><span class="comment-delimiter">;; </span><span class="comment">2) I call the dailyIndex function
+</span><span class="comment-delimiter">;; </span><span class="comment">3) it inserts the buffer contents into the index
+</span><span class="comment-delimiter">;; </span><span class="comment">4) it creates the RSS item from the first paragraph (I need to itendify it)
+</span><span class="comment-delimiter">;; </span><span class="comment">5) it updates the daytracker
+</span><span class="comment-delimiter">;; </span><span class="comment">6) boom
+</span><span class="comment-delimiter">;;</span><span class="comment">
+</span><span class="comment-delimiter">;; </span><span class="comment">that way, I can focus back on html/css, write about that, including the web engineer thing
+</span><span class="comment-delimiter">;; </span><span class="comment">and that's more fun.
 </span>
-(<span class="keyword">setq</span> repositoryPath <span class="string">"/Users/suzume/Documents/Repositories/brandelune.github.io/"</span>)
-(<span class="keyword">setq</span> dayTrackerPath (<span class="highlight-defined-builtin-function-name">concat</span> repositoryPath <span class="string">"dayTracker.txt"</span>))
-(<span class="keyword">setq</span> rssFile (<span class="highlight-defined-builtin-function-name">concat</span> repositoryPath <span class="string">"adventuresintechland.xml"</span>))
-(<span class="keyword">setq</span> indexPath (<span class="highlight-defined-builtin-function-name">concat</span> repositoryPath <span class="string">"index.html"</span>))
-(<span class="keyword">setq</span> ghPagesURL <span class="string">"https://github.com/brandelune/brandelune.github.io/commits/gh-pages"</span>)
-(<span class="keyword">setq</span> siteRoot <span class="string">"https://github.com/brandelune/brandelune.github.io/"</span>)
-(<span class="keyword">setq</span> faviconURL <span class="string">"https://brandelune.github.io/favicon/"</span>)
-(<span class="keyword">setq</span> rssReferences <span class="string">"&lt;a href=\"https://brandelune.github.io/adventuresintechland.xml\"&gt;&lt;img src=\"https://www.mozilla.org/media/img/trademarks/feed-icon-28x28.e077f1f611f0.png\" width=\"15px\" height=\"15px\" alt=\"rss feed\" /&gt;&lt;/a&gt;"</span>)
+<span class="comment-delimiter">;;; </span><span class="comment">Code:
+</span>(setq debug-on-error t)
+<span class="comment-delimiter">;;;;;;;;;;;;;;;;;;;;;;;;;</span><span class="comment">
+</span><span class="comment-delimiter">;;; </span><span class="comment">constants
+</span>(defconst jc-repositoryPath <span class="string">"/Users/suzume/Documents/Repositories/brandelune.github.io/"</span>)
+(defconst jc-dayTrackerPath (concat jc-repositoryPath <span class="string">"dayTracker.txt"</span>))
+(defconst jc-rssFile (concat jc-repositoryPath <span class="string">"adventuresintechland.xml"</span>))
+(defconst jc-indexPath (concat jc-repositoryPath <span class="string">"index.html"</span>))
+(defconst jc-ghPagesURL <span class="string">"https://github.com/brandelune/brandelune.github.io/commits/gh-pages"</span>)
+(defconst jc-siteRoot <span class="string">"https://github.com/brandelune/brandelune.github.io/"</span>)
+(defconst jc-faviconURL <span class="string">"https://brandelune.github.io/favicon/"</span>)
+(defconst jc-rssReferences <span class="string">"&lt;a href=\"https://brandelune.github.io/adventuresintechland.xml\"&gt;&lt;img src=\"https://www.mozilla.org/media/img/trademarks/feed-icon-28x28.e077f1f611f0.png\" width=\"15px\" height=\"15px\" alt=\"rss feed\" /&gt;&lt;/a&gt;"</span>)
+(defconst jc-baseCSSLink <span class="string">"../../adventuresintechland.css"</span>)
+(defconst jc-dailyCSSLink <span class="string">"./adventuresintechland.css"</span>)
+<span class="comment-delimiter">;;; </span><span class="comment">variables
+</span>(<span class="keyword">defvar</span> <span class="variable-name">jc-todayHeader</span>)
+(<span class="keyword">defvar</span> <span class="variable-name">jc-myPreviousDateList</span>)
+(<span class="keyword">defvar</span> <span class="variable-name">jc-todayNavigation</span>)
+(<span class="keyword">defvar</span> <span class="variable-name">jc-todayTemplate</span>)
+(<span class="keyword">defvar</span> <span class="variable-name">jc-myPreviousDateList</span>)
+(<span class="keyword">defvar</span> <span class="variable-name">jc-myTodayList</span>)
+(<span class="keyword">defvar</span> <span class="variable-name">jc-todayPath</span>)
+(<span class="keyword">defvar</span> <span class="variable-name">jc-todayIndex</span>)
+(<span class="keyword">defvar</span> <span class="variable-name">jc-newTracker</span>)
+(<span class="keyword">defvar</span> <span class="variable-name">jc-dayInSeason</span>)
+(<span class="keyword">defvar</span> <span class="variable-name">jc-previousDateLink</span>)
+(<span class="keyword">defvar</span> <span class="variable-name">jc-todayDate</span>)
+(<span class="keyword">defvar</span> <span class="variable-name">jc-totalDays</span>)
+(<span class="keyword">defvar</span> <span class="variable-name">jc-myText</span>)
+(<span class="keyword">defvar</span> <span class="variable-name">jc-timeStamp</span>)
+(<span class="keyword">defvar</span> <span class="variable-name">jc-seasonNumber</span>)
 
 (<span class="keyword">defun</span> <span class="function-name">my0Padding</span> (number)
-  <span class="doc">"Adds a 0 string to one digit numbers.
-This is used here to represent dates as in 01/01/2021"
+  <span class="doc">"Add a 0 string to one digit NUMBER.
+This is used here to represent dates as in 01/01/2021"</span>
 
-</span>  <span class="comment-delimiter">;; </span><span class="comment">(my0Padding 3) -&gt; "03"
-</span>  <span class="comment-delimiter">;; </span><span class="comment">(my0Padding 10) -&gt; "10"  
-</span><span class="string">
-</span><span class="comment-delimiter">;;;; </span><span class="comment">TODO add option to "number-to-string" so that the padding can happen there
+  <span class="comment-delimiter">;; </span><span class="comment">(my0Padding 3) -&gt; "03"
+</span>  <span class="comment-delimiter">;; </span><span class="comment">(my0Padding 10) -&gt; "10"
+</span>
+<span class="comment-delimiter">;;;; </span><span class="comment">TODO add option to "number-to-string" so that the padding can happen there
 </span><span class="comment-delimiter">;;;;  </span><span class="comment">// Defined in ~/Documents/Code/emacs/src/data.c
 </span>
   <span class="comment-delimiter">;;   </span><span class="comment">DEFUN ("number-to-string", Fnumber_to_string, Snumber_to_string, 1, 1, 0,
@@ -118,147 +136,156 @@ This is used here to represent dates as in 01/01/2021"
   <span class="comment-delimiter">;;   </span><span class="comment">return make_unibyte_string (buffer, len);
 </span>  <span class="comment-delimiter">;; </span><span class="comment">}
 </span>
-  (<span class="keyword">if</span> (<span class="highlight-defined-builtin-function-name">&lt;</span> number 10)
-      (<span class="highlight-defined-builtin-function-name">format</span> <span class="string">"0%s"</span> number)
-    (<span class="highlight-defined-builtin-function-name">number-to-string</span> number)))
+  (<span class="keyword">if</span> (&lt; number 10)
+      (format <span class="string">"0%s"</span> number)
+    (number-to-string number)))
 
 <span class="comment-delimiter">;;;;;;;;;;;;;;;;;;;;;;;;;</span><span class="comment">
 </span>
 (<span class="keyword">defun</span> <span class="function-name">myPreviousDayString</span> (myDate)
-  <span class="doc">"Substracts 1 to a date string and 0-pads the result it if necessary.
+  <span class="doc">"Substract 1 to MYDATE and 0-pads the result it if necessary.
 myDate is a 1 or 2 digits strings that represents a calendar day.
-This is used here to create the date string for the previous day."</span><span class="string">
-</span>  <span class="comment-delimiter">;; </span><span class="comment">(myPreviousDayString "9") -&gt; "08"
-</span>  (<span class="highlight-defined-function-name">my0Padding</span> (<span class="highlight-defined-builtin-function-name">-</span> (<span class="highlight-defined-builtin-function-name">string-to-number</span> <span class="highlight-defined-function-name">myDate</span>) 1)))
+This is used here to create the date string for the previous day."</span>
+  <span class="comment-delimiter">;; </span><span class="comment">(myPreviousDayString "9") -&gt; "08"
+</span>  (my0Padding (- (string-to-number myDate) 1)))
 
 <span class="comment-delimiter">;;;;;;;;;;;;;;;;;;;;;;;;;</span><span class="comment">
 </span>
-(<span class="keyword">defun</span> <span class="function-name">myNextDayString</span> (<span class="highlight-defined-function-name">myDate</span>)
-  <span class="doc">"Adds 1 to a date string and 0-pads the result if necessary.
+(<span class="keyword">defun</span> <span class="function-name">myNextDayString</span> (myDate)
+  <span class="doc">"Add 1 to MYDATE and 0-pads the result if necessary.
 myDate is a 1 or 2 digits strings that represents a calendar day.
-This is used here to create the date string for the next day."</span><span class="string">
-</span>  <span class="comment-delimiter">;; </span><span class="comment">(myNextDayString "8") -&gt; "09"
-</span>  (<span class="highlight-defined-function-name">my0Padding</span> (<span class="highlight-defined-builtin-function-name">+</span> (<span class="highlight-defined-builtin-function-name">string-to-number</span> <span class="highlight-defined-function-name">myDate</span>) 1)))
+This is used here to create the date string for the next day."</span>
+  <span class="comment-delimiter">;; </span><span class="comment">(myNextDayString "8") -&gt; "09"
+</span>  (my0Padding (+ (string-to-number myDate) 1)))
 
 <span class="comment-delimiter">;;;;;;;;;;;;;;;;;;;;;;;;;</span><span class="comment">
 </span>
 (<span class="keyword">defun</span> <span class="function-name">myInsert</span> (myText myMarker myFile)
-  <span class="doc">"Insert myText at myMarker in myFile.
+  <span class="doc">"Insert MYTEXT at MYMARKER in MYFILE.
 This is used to insert the RSS part of the feed for that day
-at the end of the file, before the closing headers."</span><span class="string">
-</span>  (<span class="keyword">save-current-buffer</span>
-    (<span class="highlight-defined-builtin-function-name">set-buffer</span> (<span class="highlight-defined-function-name">find-file-noselect</span> myFile))
-    (<span class="highlight-defined-builtin-function-name">goto-char</span> (<span class="highlight-defined-builtin-function-name">point-min</span>))
-    (<span class="keyword">if</span> (<span class="highlight-defined-builtin-function-name">not</span> (<span class="highlight-defined-builtin-function-name">search-forward</span> myMarker nil <span class="highlight-defined-variable-name">t</span>))
+at the end of the file, before the closing headers."</span>
+  (save-current-buffer
+    (set-buffer (find-file-noselect myFile))
+    (goto-char (point-min))
+    (<span class="keyword">if</span> (not (search-forward myMarker nil t))
         (<span class="keyword">progn</span>
-          (<span class="highlight-defined-builtin-function-name">kill-buffer</span>)
-          (<span class="warning">user-error</span> (<span class="highlight-defined-builtin-function-name">format</span> <span class="string">"%s was not found"</span> myMarker)))
+          (kill-buffer)
+          (user-error (format <span class="string">"%s was not found"</span> myMarker)))
       <span class="comment-delimiter">;; </span><span class="comment">user-error seems to abort the rest of the progn, hence the need to put kill-buffer above
 </span>      (<span class="keyword">progn</span>
-        (<span class="highlight-defined-builtin-function-name">goto-char</span> (<span class="highlight-defined-builtin-function-name">point-min</span>))
-        (<span class="highlight-defined-builtin-function-name">goto-char</span> (<span class="highlight-defined-builtin-function-name">-</span> (<span class="highlight-defined-builtin-function-name">search-forward</span> myMarker) (<span class="highlight-defined-builtin-function-name">length</span> myMarker)))
-        (<span class="highlight-defined-builtin-function-name">insert</span> myText)
-        (<span class="highlight-defined-function-name">indent-region</span> (<span class="highlight-defined-builtin-function-name">point-min</span>) (<span class="highlight-defined-builtin-function-name">point-max</span>))
-        (<span class="highlight-defined-function-name">save-buffer</span>)
-        (<span class="highlight-defined-builtin-function-name">kill-buffer</span>)))))
+        (goto-char (point-min))
+        (goto-char (- (search-forward myMarker) (length myMarker)))
+        (insert myText)
+        (indent-region (point-min) (point-max))
+        (save-buffer)
+        (kill-buffer)))))
 
 <span class="comment-delimiter">;;;;;;;;;;;;;;;;;;;;;;;;;</span><span class="comment">
 </span>
-(<span class="keyword">defun</span> checkDayTracker ()
-  <span class="doc">"Creates values for the new index, based on yesterday's values."</span><span class="string">
-</span>  (<span class="keyword">save-current-buffer</span>
-    (<span class="highlight-defined-builtin-function-name">set-buffer</span> (<span class="highlight-defined-function-name">find-file-noselect</span> dayTrackerPath))
-    (<span class="highlight-defined-builtin-function-name">goto-char</span> (<span class="highlight-defined-builtin-function-name">point-min</span>))
-    (<span class="highlight-defined-builtin-function-name">search-forward-regexp</span> <span class="string">"</span><span class="string"><span class="regexp-grouping-backslash">\\</span></span><span class="string"><span class="regexp-grouping-construct">(</span></span><span class="string">[0-9]*\\.[0-9]*</span><span class="string"><span class="regexp-grouping-backslash">\\</span></span><span class="string"><span class="regexp-grouping-construct">)</span></span><span class="string"> </span><span class="string"><span class="regexp-grouping-backslash">\\</span></span><span class="string"><span class="regexp-grouping-construct">(</span></span><span class="string">[0-9]*</span><span class="string"><span class="regexp-grouping-backslash">\\</span></span><span class="string"><span class="regexp-grouping-construct">)</span></span><span class="string"> </span><span class="string"><span class="regexp-grouping-backslash">\\</span></span><span class="string"><span class="regexp-grouping-construct">(</span></span><span class="string">[0-9]*</span><span class="string"><span class="regexp-grouping-backslash">\\</span></span><span class="string"><span class="regexp-grouping-construct">)</span></span><span class="string"> </span><span class="string"><span class="regexp-grouping-backslash">\\</span></span><span class="string"><span class="regexp-grouping-construct">(</span></span><span class="string">[0-9]*</span><span class="string"><span class="regexp-grouping-backslash">\\</span></span><span class="string"><span class="regexp-grouping-construct">)</span></span><span class="string">"</span>)
-    (<span class="keyword">setq</span> timeStamp (<span class="highlight-defined-function-name">match-string</span> 1)
-          seasonNumber (<span class="highlight-defined-function-name">match-string</span> 2)
-          totalDays (<span class="highlight-defined-builtin-function-name">+</span> 1 (<span class="highlight-defined-builtin-function-name">string-to-number</span> (<span class="highlight-defined-function-name">match-string</span> 3)))
-          dayInSeason (<span class="highlight-defined-builtin-function-name">+</span> 1 (<span class="highlight-defined-builtin-function-name">string-to-number</span> (<span class="highlight-defined-function-name">match-string</span> 4)))
-          newMarker (<span class="highlight-defined-builtin-function-name">format</span> <span class="string">"%s %s %s %s\n"</span> (<span class="highlight-defined-builtin-function-name">float-time</span>) seasonNumber totalDays dayInSeason))
-    (<span class="highlight-defined-builtin-function-name">goto-char</span> (<span class="highlight-defined-builtin-function-name">point-min</span>))
-    (<span class="highlight-defined-builtin-function-name">insert</span> newMarker)
-    (<span class="highlight-defined-function-name">save-buffer</span>)
-    <span class="comment">(kill-buffer))
-  (list seasonNumber totalDays dayInSeason)</span>))   
+(<span class="keyword">defun</span> <span class="function-name">checkDayTracker</span> ()
+  <span class="doc">"Create values for the new index, based on yesterday's values."</span>
+  (save-current-buffer
+    (set-buffer (find-file-noselect jc-dayTrackerPath))
+    (goto-char (point-min))
+    (search-forward-regexp <span class="string">"\\([0-9]*\\.[0-9]*\\) \\([0-9]*\\) \\([0-9]*\\) \\([0-9]*\\)"</span>)
+    (<span class="keyword">let*</span>((seasonNumber (match-string 2))
+          (jc-totalDays (+ 1 (string-to-number (match-string 3))))
+          (jc-dayInSeason (+ 1 (string-to-number (match-string 4)))))
+      (kill-buffer)
+      (list seasonNumber jc-totalDays jc-dayInSeason))))
+
+(<span class="keyword">defun</span> <span class="function-name">updateDayTracker</span> ()
+  <span class="doc">"Update the dayTracker."</span>
+  (save-current-buffer
+    (set-buffer (find-file-noselect jc-dayTrackerPath))
+    (goto-char (point-min))
+    (search-forward-regexp <span class="string">"\\([0-9]*\\.[0-9]*\\) \\([0-9]*\\) \\([0-9]*\\) \\([0-9]*\\)"</span>)
+    (<span class="keyword">let*</span>((seasonNumber (match-string 2))
+          (jc-totalDays (+ 1 (string-to-number (match-string 3))))
+          (jc-dayInSeason (+ 1 (string-to-number (match-string 4))))
+          (jc-newTracker (format <span class="string">"%s %s %s %s\n"</span> (float-time) seasonNumber jc-totalDays jc-dayInSeason)))
+      (goto-char (point-min))
+      (insert jc-newTracker))
+    (save-buffer)
+    (kill-buffer)))
 
 <span class="comment-delimiter">;;;;;;;;;;;;;;;;;;;;;;;;;</span><span class="comment">
 </span>
-(<span class="keyword">defun</span> <span class="function-name">myDate</span> (Date)
-  "<span class="doc">Create a plausible (year month date) list.
+(<span class="keyword">defun</span> <span class="function-name">myDate</span> (day)
+  <span class="doc">"Create a plausible (year month DAY) list.
 I don't remember for which purpose, but according to the emacs-devel
 thread that was born out of a related question, it looks like an estimate
-of the date/month/year since I only enter a date for the current entry"</span><span class="string">
-</span>  <span class="comment-delimiter">;; </span><span class="comment">(myDate 24) -&gt; (2021 10 24)
+of the date/month/year since I only enter a date for the current entry"</span>
+  <span class="comment-delimiter">;; </span><span class="comment">(myDate 24) -&gt; (2021 10 24)
 </span><span class="comment-delimiter">;;;; </span><span class="comment">TODO add error tests
 </span><span class="comment-delimiter">;;;; </span><span class="comment">the date should be comprised between 1 and (28 to 31)"
 </span>
   (<span class="keyword">let*</span> (
-         (Today (<span class="highlight-defined-builtin-function-name">decode-time</span> (<span class="highlight-defined-builtin-function-name">float-time</span>)))
-         (thisMonth (<span class="highlight-defined-function-name">fifth</span> Today))
-         (nextMonth (<span class="keyword">if</span> (<span class="highlight-defined-builtin-function-name">=</span> 12 thisMonth)
+         (Today (decode-time (float-time)))
+         (thisMonth (cl-fifth Today))
+         (nextMonth (<span class="keyword">if</span> (= 12 thisMonth)
                         1
-                      (<span class="highlight-defined-builtin-function-name">+</span> thisMonth 1)))
-         (lastMonth (<span class="keyword">if</span> (<span class="highlight-defined-builtin-function-name">=</span> 1 thisMonth)
+                      (+ thisMonth 1)))
+         (lastMonth (<span class="keyword">if</span> (= 1 thisMonth)
                         12
-                      (<span class="highlight-defined-builtin-function-name">-</span> thisMonth 1)))
-         (thisYear (<span class="highlight-defined-function-name">sixth</span> Today))
-         (nextYear (<span class="highlight-defined-builtin-function-name">+</span> thisYear 1))
-         (lastYear (<span class="highlight-defined-builtin-function-name">-</span> thisYear 1))
-         (dateDifference (<span class="highlight-defined-builtin-function-name">-</span> (<span class="highlight-defined-function-name">fourth</span> Today) (abs Date)))
-         (myMonth (<span class="keyword">cond</span> ((<span class="highlight-defined-builtin-function-name">&gt;</span> 24 (<span class="highlight-defined-builtin-function-name">abs</span> dateDifference)) thisMonth)
-                        ((<span class="highlight-defined-builtin-function-name">natnump</span> dateDifference) nextMonth)
-                        (<span class="highlight-defined-variable-name">t</span> lastMonth)))
-         (myYear (<span class="keyword">cond</span> ((<span class="highlight-defined-builtin-function-name">=</span> myMonth thisMonth) thisYear)
-                       ((<span class="keyword">and</span> (<span class="highlight-defined-builtin-function-name">=</span> myMonth nextMonth) (<span class="highlight-defined-builtin-function-name">=</span> myMonth 1)) nextYear)
-                       (<span class="highlight-defined-variable-name">t</span> lastYear))))
-    (<span class="highlight-defined-builtin-function-name">list</span> myYear myMonth Date)))
+                      (- thisMonth 1)))
+         (thisYear (cl-sixth Today))
+         (nextYear (+ thisYear 1))
+         (lastYear (- thisYear 1))
+         (dateDifference (- (cl-fourth Today) (abs day)))
+         (myMonth (<span class="keyword">cond</span> ((&gt; 24 (abs dateDifference)) thisMonth)
+                        ((natnump dateDifference) nextMonth)
+                        (t lastMonth)))
+         (myYear (<span class="keyword">cond</span> ((= myMonth thisMonth) thisYear)
+                       ((and (= myMonth nextMonth) (= myMonth 1)) nextYear)
+                       (t lastYear)))
+         (rssDate (format-time-string <span class="string">"%a, %d %b %Y %H:%m:%S UT"</span> (current-time) t))
+         (linkDate (format <span class="string">"%1$s/%2$s/%3$s"</span> myYear myMonth day)))
+    (list myYear myMonth day rssDate linkDate)))
 
 <span class="comment-delimiter">;;;;;;;;;;;;;;;;;;;;;;;;;</span><span class="comment">
 </span>
-(<span class="keyword">defun</span> <span class="function-name">dailyIndex</span> (today myPreviousDate myTitle mySubtitle myFirstParagraph)
-  <span class="doc">"Creates an html file with navigation, body.
+(<span class="keyword">defun</span> <span class="function-name">dailyIndex</span> (today prevdate title subtitle firstpar)
+  <span class="doc">"Create an html file for TODAY with PREVDATE TITLE SUBTITLE FIRSTPAR.
 The contents has to be filled manually, later."</span>
-  (<span class="keyword">interactive</span> (<span class="highlight-defined-builtin-function-name">list</span>
-                (<span class="highlight-defined-function-name">read-number</span> <span class="string">"Date: "</span> (<span class="highlight-defined-function-name">fourth</span> (<span class="highlight-defined-builtin-function-name">decode-time</span> (<span class="highlight-defined-builtin-function-name">float-time</span>))))
-                (<span class="highlight-defined-function-name">read-number</span> <span class="string">"Previous date: "</span> (<span class="highlight-defined-builtin-function-name">-</span> (<span class="highlight-defined-function-name">third</span> (<span class="highlight-defined-function-name">myDate</span> (<span class="highlight-defined-function-name">fourth</span> (<span class="highlight-defined-builtin-function-name">decode-time</span> (<span class="highlight-defined-builtin-function-name">float-time</span>))))) 1))
-                (<span class="highlight-defined-builtin-function-name">read-string</span> <span class="string">"Title: "</span> )
-                (<span class="highlight-defined-builtin-function-name">read-string</span> <span class="string">"Sub-title: "</span>)
-                (<span class="highlight-defined-builtin-function-name">read-string</span> <span class="string">"First paragraph: "</span>)))
+  (interactive (list
+                (read-number <span class="string">"Date: "</span> (cl-fourth (decode-time (float-time))))
+                (read-number <span class="string">"Previous date: "</span> (- (cl-third (myDate (cl-fourth (decode-time (float-time))))) 1))
+                (read-string <span class="string">"Title: "</span> )
+                (read-string <span class="string">"Sub-title: "</span>)
+                (read-string <span class="string">"First paragraph: "</span>)))
 
-  (<span class="keyword">setq</span> myPreviousDateList (<span class="highlight-defined-function-name">myDate</span> myPreviousDate)
-        previousDate (<span class="highlight-defined-builtin-function-name">concat</span> (<span class="highlight-defined-function-name">my0Padding</span> (<span class="highlight-defined-function-name">second</span> myPreviousDateList)) (<span class="highlight-defined-function-name">my0Padding</span> (<span class="highlight-defined-function-name">third</span> myPreviousDateList)))
-        previousDateLink (<span class="highlight-defined-builtin-function-name">concat</span> (<span class="highlight-defined-builtin-function-name">file-name-as-directory</span> <span class="string">"../../../"</span>)
-                                 (<span class="highlight-defined-builtin-function-name">file-name-as-directory</span> (<span class="highlight-defined-builtin-function-name">number-to-string</span> (<span class="highlight-defined-builtin-function-name">first</span> myPreviousDateList)))
-                                 (<span class="highlight-defined-builtin-function-name">file-name-as-directory</span> (<span class="highlight-defined-function-name">my0Padding</span> (<span class="highlight-defined-function-name">second</span> myPreviousDateList)))
-                                 (<span class="highlight-defined-builtin-function-name">file-name-as-directory</span> (<span class="highlight-defined-function-name">my0Padding</span> (<span class="highlight-defined-function-name">third</span> myPreviousDateList)))
-                                 <span class="string">"index.html"</span>))
+  (setq jc-myPreviousDateList (myDate prevdate)
+        prevdate (concat (my0Padding (cl-second jc-myPreviousDateList)) (my0Padding (cl-third jc-myPreviousDateList)))
+        jc-previousDateLink (concat (file-name-as-directory <span class="string">"../../../"</span>)
+                                    (file-name-as-directory (number-to-string (cl-first jc-myPreviousDateList)))
+                                    (file-name-as-directory (my0Padding (cl-second jc-myPreviousDateList)))
+                                    (file-name-as-directory (my0Padding (cl-third jc-myPreviousDateList)))
+                                    <span class="string">"index.html"</span>))
 
-  (<span class="keyword">setq</span> myTodayList (<span class="highlight-defined-function-name">myDate</span> today)
-        todayPath (<span class="highlight-defined-builtin-function-name">concat</span> (<span class="highlight-defined-builtin-function-name">file-name-as-directory</span> repositoryPath)
-                          (<span class="highlight-defined-builtin-function-name">file-name-as-directory</span> (<span class="highlight-defined-builtin-function-name">number-to-string</span> (<span class="highlight-defined-builtin-function-name">first</span> myTodayList)))
-                          (<span class="highlight-defined-builtin-function-name">file-name-as-directory</span> (<span class="highlight-defined-function-name">my0Padding</span> (<span class="highlight-defined-function-name">second</span> myTodayList)))
-                          (<span class="highlight-defined-builtin-function-name">file-name-as-directory</span> (<span class="highlight-defined-function-name">my0Padding</span> (<span class="highlight-defined-function-name">third</span> myTodayList))))
-        todayIndex (<span class="highlight-defined-builtin-function-name">concat</span> (<span class="highlight-defined-builtin-function-name">file-name-as-directory</span> todayPath)  <span class="string">"index.html"</span>)
-        todayDate  (<span class="highlight-defined-builtin-function-name">concat</span> (<span class="highlight-defined-builtin-function-name">number-to-string</span> (<span class="highlight-defined-builtin-function-name">first</span> myTodayList)) <span class="string">"/"</span> (<span class="highlight-defined-function-name">my0Padding</span> (<span class="highlight-defined-function-name">second</span> myTodayList)) <span class="string">"/"</span> (<span class="highlight-defined-function-name">my0Padding</span> (<span class="highlight-defined-function-name">third</span> myTodayList))))
+  (setq jc-myTodayList (myDate today)
+        jc-todayPath (concat (file-name-as-directory jc-repositoryPath)
+                             (file-name-as-directory (number-to-string (cl-first jc-myTodayList)))
+                             (file-name-as-directory (my0Padding (cl-second jc-myTodayList)))
+                             (file-name-as-directory (my0Padding (cl-third jc-myTodayList))))
+        jc-todayIndex (concat (file-name-as-directory jc-todayPath)  <span class="string">"index.html"</span>)
+        jc-todayDate  (concat (number-to-string (cl-first jc-myTodayList)) <span class="string">"/"</span> (my0Padding (cl-second jc-myTodayList)) <span class="string">"/"</span> (my0Padding (cl-third jc-myTodayList))))
 
-  (<span class="keyword">setq</span> todayNavigation
-        (<span class="highlight-defined-builtin-function-name">format</span> <span class="string">"&lt;p class=\"navigation\"&gt;
+  (setq jc-todayNavigation
+        (format <span class="string">"&lt;p class=\"navigation\"&gt;
             &lt;a href=\"%1$s\" hreflang=\"en\" rel=\"prev\"&gt;%2$s&lt;/a&gt;
             &lt;a href=\"../../../index.html\" hreflang=\"en\"&gt;index&lt;/a&gt;
         &lt;a href=\"%3$s\"&gt;gh-pages&lt;/a&gt;
             &lt;a href=\"../../../adventuresintechland.html\" hreflang=\"en\"&gt;todo&lt;/a&gt;
             &lt;a href=\"../../../tomorrow.html\" hreflang=\"en\" rel=\"next\"&gt;tomorrow&lt;/a&gt;
         &lt;/p&gt;"</span>
-                previousDateLink <span class="comment-delimiter">;;  </span><span class="comment">1$
-</span>                previousDate      <span class="comment-delimiter">;;  </span><span class="comment">2$
-</span>                ghPagesURL       <span class="comment-delimiter">;; </span><span class="comment">3$
+                jc-previousDateLink <span class="comment-delimiter">;;  </span><span class="comment">1$
+</span>                prevdate      <span class="comment-delimiter">;;  </span><span class="comment">2$
+</span>                jc-ghPagesURL       <span class="comment-delimiter">;; </span><span class="comment">3$
 </span>                ))
 
-  (<span class="keyword">setq</span> baseCSSLink <span class="string">"../../adventuresintechland.css"</span>)
-  (<span class="keyword">setq</span> dailyCSSLink <span class="string">"./adventuresintechland.css"</span>)
-
-  (<span class="keyword">setq</span> todayHeader
-        (<span class="highlight-defined-builtin-function-name">format</span> <span class="string">"&lt;html&gt;
+  (setq jc-todayHeader
+        (format <span class="string">"&lt;html&gt;
     &lt;head lang=\"en-us\"&gt;
         &lt;title&gt;%1$s&lt;/title&gt;
 
@@ -289,14 +316,14 @@ The contents has to be filled manually, later."</span>
         &lt;link rel=\"stylesheet\" type=\"text/css\" href=\"%3$s\" class=\"dailyCSS\"/&gt;
         &lt;meta charset=\"UTF-8\" /&gt;
     &lt;/head&gt;"</span>
-                myTitle      <span class="comment-delimiter">;;  </span><span class="comment">1$
-</span>                baseCSSLink  <span class="comment-delimiter">;;  </span><span class="comment">2$
-</span>                dailyCSSLink <span class="comment-delimiter">;;  </span><span class="comment">3$
-</span>                faviconURL   <span class="comment-delimiter">;;  </span><span class="comment">4$
+                title        <span class="comment-delimiter">;;  </span><span class="comment">1$
+</span>                jc-baseCSSLink  <span class="comment-delimiter">;;  </span><span class="comment">2$
+</span>                jc-dailyCSSLink <span class="comment-delimiter">;;  </span><span class="comment">3$
+</span>                jc-faviconURL   <span class="comment-delimiter">;;  </span><span class="comment">4$
 </span>                ))
 
-  (<span class="keyword">setq</span> todayTemplate
-        (<span class="highlight-defined-builtin-function-name">format</span> <span class="string">"%1$s
+  (setq jc-todayTemplate
+        (format <span class="string">"%1$s
     &lt;body&gt;
         %2$s
 
@@ -309,88 +336,66 @@ The contents has to be filled manually, later."</span>
         %2$s
     &lt;/body&gt;
 &lt;/html&gt;"</span>
-                todayHeader <span class="comment-delimiter">;;  </span><span class="comment">1$
-</span>                todayNavigation <span class="comment-delimiter">;;  </span><span class="comment">2$
-</span>                todayDate   <span class="comment-delimiter">;;  </span><span class="comment">3$
-</span>                myTitle     <span class="comment-delimiter">;;  </span><span class="comment">4$
-</span>                mySubtitle  <span class="comment-delimiter">;;  </span><span class="comment">5$
-</span>                myFirstParagraph ;; 6$
-                (<span class="highlight-defined-builtin-function-name">first</span> (<span class="highlight-defined-function-name">checkDayTracker)</span>) ;; 7$
-                (<span class="highlight-defined-function-name">third</span> (<span class="highlight-defined-function-name">checkDayTracker)</span>) ;; 8$
-                rssReferences ;; 9$
-                totalDays ;; 10$
+                jc-todayHeader  <span class="comment-delimiter">;;  </span><span class="comment">1$
+</span>                jc-todayNavigation  <span class="comment-delimiter">;;  </span><span class="comment">2$
+</span>                jc-todayDate    <span class="comment-delimiter">;;  </span><span class="comment">3$
+</span>                title       <span class="comment-delimiter">;;  </span><span class="comment">4$
+</span>                subtitle    <span class="comment-delimiter">;;  </span><span class="comment">5$
+</span>                firstpar <span class="comment-delimiter">;; </span><span class="comment">6$
+</span>                (cl-first (checkDayTracker)) <span class="comment-delimiter">;; </span><span class="comment">7$ season
+</span>                (cl-third (checkDayTracker)) <span class="comment-delimiter">;; </span><span class="comment">8$ days in season
+</span>                jc-rssReferences <span class="comment-delimiter">;; </span><span class="comment">9$
+</span>                (cl-second (checkDayTracker)) <span class="comment-delimiter">;; </span><span class="comment">10$ total days
+</span>                ))
 
-                ))
-
-  (<span class="highlight-defined-function-name">make-directory</span> todayPath <span class="highlight-defined-variable-name">t</span>)
-  (<span class="highlight-defined-function-name">myInsert</span> todayTemplate <span class="string">""</span> todayIndex)
-  (<span class="highlight-defined-function-name">myInsert</span> <span class="string">""</span> <span class="string">""</span> dailyCSSLink)
-  (<span class="highlight-defined-function-name">find-file</span> todayIndex))
+  (make-directory jc-todayPath t)
+  (myInsert jc-todayTemplate <span class="string">""</span> jc-todayIndex)
+  (myInsert <span class="string">""</span> <span class="string">""</span> jc-dailyCSSLink)
+  (myDailyRSSItem title today firstpar)
+  (updateDayTracker)
+  (find-file jc-todayIndex))
 
 <span class="comment-delimiter">;;;;;;;;;;;;;;;;;;;;;;;;;</span><span class="comment">
 </span>
 (<span class="keyword">defun</span> <span class="function-name">pageLink</span> ()
-  (<span class="highlight-defined-builtin-function-name">format</span> ))
+  <span class="doc">"To be defined."</span>
+  <span class="comment-delimiter">;;  </span><span class="comment">(format )
+</span>  )
 
 <span class="comment-delimiter">;;;;;;;;;;;;;;;;;;;;;;;;;</span><span class="comment">
 </span>
-(<span class="keyword">defun</span> <span class="function-name">myDailyRSSItem</span> (myTitle todayIndex pubDate myDescription)
-  <span class="doc">"inserts the daily RSS feed contents into the feed XML file"</span>
+(<span class="keyword">defun</span> <span class="function-name">myDailyRSSItem</span> (title date desc)
+  <span class="doc">"Insert the daily RSS feed with TITLE DATE and DESC."</span>
 <span class="comment-delimiter">;;;; </span><span class="comment">TODO add default value for link
-</span>  (<span class="keyword">interactive</span> (<span class="highlight-defined-builtin-function-name">list</span>
-                (<span class="highlight-defined-builtin-function-name">read-string</span> <span class="string">"Title: "</span>)
-                (<span class="highlight-defined-builtin-function-name">read-string</span> <span class="string">"Link: "</span>)
-                (<span class="highlight-defined-builtin-function-name">read-string</span> <span class="string">"Date: "</span> (<span class="highlight-defined-builtin-function-name">format-time-string</span> <span class="string">"%a, %d %b %Y %H:%m:%S UT"</span> (<span class="highlight-defined-builtin-function-name">current-time</span>) <span class="highlight-defined-variable-name">t</span>))
-                (<span class="highlight-defined-builtin-function-name">read-string</span> <span class="string">"Description: "</span>)))
-  (<span class="keyword">setq</span> myText  (<span class="highlight-defined-builtin-function-name">format</span> <span class="string">"&lt;item&gt;
+</span>  (interactive (list
+                (read-string <span class="string">"Title: "</span>)
+                (read-number <span class="string">"Date: "</span> (cl-fourth (decode-time (float-time) t)))
+                (read-string <span class="string">"Description: "</span>)))
+  
+  (setq jc-myText   (format <span class="string">"&lt;item&gt;
 &lt;title&gt;%1$s&lt;/title&gt;
-&lt;link&gt;%2$s&lt;/link&gt;
-&lt;guid&gt;%2$s&lt;/guid&gt;
+&lt;link&gt;https://brandelune.github.io/%2$s/index.html&lt;/link&gt;
+&lt;guid&gt;https://brandelune.github.io/%2$s/index.html&lt;/guid&gt;
 &lt;pubDate&gt;%3$s&lt;/pubDate&gt;
 &lt;description&gt;%4$s&lt;/description&gt;
 &lt;/item&gt;
 "</span>
-                        myTitle       <span class="comment-delimiter">;;  </span><span class="comment">1$
-</span>                        todayIndex    <span class="comment-delimiter">;;  </span><span class="comment">2$
-</span>                        pubDate       <span class="comment-delimiter">;;  </span><span class="comment">3$
-</span>                        myDescription <span class="comment-delimiter">;;  </span><span class="comment">4$
-</span>                        ))
-  (<span class="highlight-defined-function-name">myInsert</span>
-   myText
-   <span class="string">"&lt;!-- place new items above this line --&gt;"</span>   
-   rssFile)
-  (<span class="highlight-defined-function-name">find-file</span> rssFile))
+                            title    <span class="comment-delimiter">;;  </span><span class="comment">1$
+</span>                            (cl-fifth (myDate  date))  <span class="comment-delimiter">;;  </span><span class="comment">2$
+</span>                            (cl-fourth (myDate date))   <span class="comment-delimiter">;;  </span><span class="comment">3$
+</span>                            desc   <span class="comment-delimiter">;;  </span><span class="comment">4$
+</span>                            ))
+  (myInsert
+   jc-myText
+   <span class="string">"&lt;!-- place new items above this line --&gt;"</span>
+   jc-rssFile)
+  (find-file jc-rssFile))
 
 <span class="comment-delimiter">;;;;;;;;;;;;;;;;;;;;;;;;;</span><span class="comment">
 </span>
-(<span class="keyword">defun</span> updateDayTracker ()
-  <span class="doc">"Update the day tracker"</span>
-
-<span class="comment-delimiter">;;;; </span><span class="comment">TODO updateDayTracker
-;;;;    current season
-</span><span class="comment-delimiter">;;;;    </span><span class="comment">number of days in the current "season"
-</span><span class="comment-delimiter">;;;;    </span><span class="comment">total number of documented days
-</span><span class="comment-delimiter">;;;;    </span><span class="comment">link to "last day"
-</span><span class="comment-delimiter">;;;;    </span><span class="comment">index contents for the new day  -&gt; ?
-</span>
-  (<span class="keyword">save-current-buffer</span>
-    (<span class="highlight-defined-builtin-function-name">set-buffer</span> (<span class="highlight-defined-function-name">find-file-noselect</span> indexPath))
-    (<span class="highlight-defined-builtin-function-name">goto-char</span> (<span class="highlight-defined-builtin-function-name">point-min</span>))
-    (<span class="highlight-defined-builtin-function-name">search-forward-regexp</span> <span class="string">"</span><span class="string"><span class="regexp-grouping-backslash">\\</span></span><span class="string"><span class="regexp-grouping-construct">(</span></span><span class="string">[0-9]*\\.[0-9]*</span><span class="string"><span class="regexp-grouping-backslash">\\</span></span><span class="string"><span class="regexp-grouping-construct">)</span></span><span class="string"> </span><span class="string"><span class="regexp-grouping-backslash">\\</span></span><span class="string"><span class="regexp-grouping-construct">(</span></span><span class="string">[0-9]*</span><span class="string"><span class="regexp-grouping-backslash">\\</span></span><span class="string"><span class="regexp-grouping-construct">)</span></span><span class="string"> </span><span class="string"><span class="regexp-grouping-backslash">\\</span></span><span class="string"><span class="regexp-grouping-construct">(</span></span><span class="string">[0-9]*</span><span class="string"><span class="regexp-grouping-backslash">\\</span></span><span class="string"><span class="regexp-grouping-construct">)</span></span><span class="string"> </span><span class="string"><span class="regexp-grouping-backslash">\\</span></span><span class="string"><span class="regexp-grouping-construct">(</span></span><span class="string">[0-9]*</span><span class="string"><span class="regexp-grouping-backslash">\\</span></span><span class="string"><span class="regexp-grouping-construct">)</span></span><span class="string">"</span>)
-    (<span class="keyword">setq</span> timeStamp (<span class="highlight-defined-function-name">match-string</span> 1)
-          seasonNumber (match-string 2)
-          totalDays (<span class="highlight-defined-builtin-function-name">+</span> 1 (<span class="highlight-defined-builtin-function-name">string-to-number</span> (<span class="highlight-defined-function-name">match-string</span> 3)))
-          dayInSeason (<span class="highlight-defined-builtin-function-name">+</span> 1 (<span class="highlight-defined-builtin-function-name">string-to-number</span> (<span class="highlight-defined-function-name">match-string</span> 4)))
-          newMarker (<span class="highlight-defined-builtin-function-name">format</span> <span class="string">"%s %s %s %s\n"</span> (<span class="highlight-defined-builtin-function-name">float-time</span>) seasonNumber totalDays dayInSeason))
-    (<span class="highlight-defined-builtin-function-name">goto-char</span> (<span class="highlight-defined-builtin-function-name">point-min</span>))
-    (<span class="highlight-defined-builtin-function-name">insert</span> newMarker)
-    (<span class="highlight-defined-function-name">save-buffer</span>)
-    (<span class="highlight-defined-builtin-function-name">kill-buffer</span>)))
-
 
 (<span class="keyword">defun</span> <span class="function-name">UpdateRSSFeed</span> ()
-  <span class="doc">"Update the RSS feed"</span>
-
+  <span class="doc">"Update the RSS feed."</span>
 <span class="comment-delimiter">;;;; </span><span class="comment">TODO UpdateRSSFeed
 </span><span class="comment-delimiter">;;;;    </span><span class="comment">title
 </span><span class="comment-delimiter">;;;;    </span><span class="comment">date
@@ -399,25 +404,22 @@ The contents has to be filled manually, later."</span>
 </span>  )
 
 (<span class="keyword">defun</span> <span class="function-name">UpdatePreviousPage</span> ()
-  <span class="doc">"Update the previous page"</span>
-
+  <span class="doc">"Update the previous page."</span>
 <span class="comment-delimiter">;;;; </span><span class="comment">TODO UpdatePreviousPage
 </span><span class="comment-delimiter">;;;;    </span><span class="comment">"tomorrow" link
-</span>
-  )
+</span>  )
 
 (<span class="keyword">defun</span> <span class="function-name">CreateCurrentPage</span> ()
-  <span class="doc">"Create the page for the day"</span>
+  <span class="doc">"Create the page for the day."</span>
   )
 
 (<span class="keyword">defun</span> <span class="function-name">ManageDailyEntry</span> ()
-  <span class="doc">"Create the current page, update the main index, the RSS feed, the previous page"</span>
-  (<span class="highlight-defined-function-name">checkMarker</span>)
-  
+  <span class="doc">"Create the current page, update the main index, the RSS feed, the previous page."</span>
+  (checkDayTracker)
   )
 
 (<span class="keyword">defun</span> <span class="function-name">narrowToEditZone</span> ()
-  <span class="doc">"Narrow the index page to the area to edit"</span>
+  <span class="doc">"Narrow the index page to the area to edit."</span>
 <span class="comment-delimiter">;;;; </span><span class="comment">search id = episode
 </span><span class="comment-delimiter">;;;; </span><span class="comment">goto beginning of line
 </span><span class="comment-delimiter">;;;; </span><span class="comment">set mark
@@ -425,6 +427,9 @@ The contents has to be filled manually, later."</span>
 </span><span class="comment-delimiter">;;;; </span><span class="comment">goto to end of line
 </span><span class="comment-delimiter">;;;; </span><span class="comment">narrow-to-region
 </span>  )
-</pre>
+
+(<span class="keyword">provide</span> '<span class="constant">adventuresintechland</span>)
+<span class="comment-delimiter">;;; </span><span class="comment">adventuresintechland.el ends here
+</span></pre>
   </body>
 </html>
