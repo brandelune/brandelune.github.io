@@ -4,7 +4,8 @@ outputFile="index.html"
 
 htmlHead="<!doctype html>
 <html>
-  <head lang="en-us">
+  <head lang=\"en-us\">
+	<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />
     <title>Css index</title>
     <link rel=\"stylesheet\" type=\"text/css\" media=\"screen\" href=\"./2018/adventuresintechland.css\" />
     <meta charset=\"utf-8\" />
