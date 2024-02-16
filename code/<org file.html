@@ -1,0 +1,80 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <title></title>
+  <meta name="Generator" content="Cocoa HTML Writer">
+  <meta name="CocoaVersion" content="2113.6">
+  <style type="text/css">
+    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 14.0px Verdana; color: #1d1e1e}
+    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 14.0px Verdana; color: #0000ff}
+    p.p3 {margin: 0.0px 0.0px 0.0px 0.0px; font: 14.0px Verdana; color: #000000; min-height: 17.0px}
+    p.p4 {margin: 0.0px 0.0px 0.0px 0.0px; font: 14.0px Verdana; color: #000000}
+    p.p5 {margin: 0.0px 0.0px 0.0px 0.0px; font: 14.0px Verdana; color: #0016b0}
+    p.p6 {margin: 0.0px 0.0px 0.0px 0.0px; font: 14.0px Verdana; color: #408000}
+    span.s1 {color: #000000}
+    span.s2 {text-decoration: underline ; color: #6c05d3}
+    span.s3 {color: #0000ff}
+    span.s4 {color: #408000}
+    span.s5 {text-decoration: underline}
+    span.s6 {color: #0016b0}
+    span.s7 {color: #4415b0}
+    span.s8 {text-decoration: underline ; color: #0000ff}
+    span.s9 {text-decoration: underline ; color: #0016b0}
+    span.Apple-tab-span {white-space:pre}
+  </style>
+</head>
+<body>
+<p class="p1"><span class="s1"><b>use</b> </span><span class="s2">AppleScript</span><span class="s1"> </span><span class="s3">version</span><span class="s1"> "2.4" </span>-- Yosemite (10.10) or later</p>
+<p class="p2"><span class="s1"><b>use</b> </span><i>scripting additions</i></p>
+<p class="p3"><br></p>
+<p class="p3"><br></p>
+<p class="p4"><b>set</b> <span class="s4">myEmacsclient</span> <b>to</b> "~/Documents/Repositories/emacs/nextstep/Emacs.app/Contents/MacOS/bin/emacsclient"</p>
+<p class="p3"><br></p>
+<p class="p1"># create file in Finder</p>
+<p class="p4"><b>tell</b> <span class="s3"><i>application</i></span> "Finder"</p>
+<p class="p4"><span class="Apple-tab-span">	</span><b>try</b></p>
+<p class="p4"><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><b>set</b> <span class="s4">myFolder</span> <b>to</b> (<b>the</b> <span class="s2">target</span> <b>of</b> <b>the</b> <b>front</b> <span class="s3"><i>Finder window</i></span>) <b>as</b> <span class="s3"><i>alias</i></span></p>
+<p class="p4"><span class="Apple-tab-span">	</span><b>on</b> <b>error</b></p>
+<p class="p5"><span class="s1"><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span></span><span class="s5"><b>beep</b></span></p>
+<p class="p4"><span class="Apple-tab-span">	</span><b>end</b> <b>try</b></p>
+<p class="p3"><span class="Apple-tab-span">	</span></p>
+<p class="p6"><span class="s1"><span class="Apple-tab-span">	</span><b>set</b> </span>myFileName<span class="s1"> <b>to</b> </span><span class="s2">name</span><span class="s1"> <b>of</b> </span>myFolder</p>
+<p class="p3"><span class="Apple-tab-span">	</span></p>
+<p class="p5"><span class="s1"><span class="Apple-tab-span">	</span></span><span class="s5"><b>display dialog</b></span><span class="s1"> ¬</span></p>
+<p class="p4"><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span>"New text file name:" <span class="s6">default answer</span> <span class="s4">myFileName</span> &amp; ".org" <span class="s6">buttons</span> {"Cancel", "Create"} ¬</p>
+<p class="p5"><span class="s1"><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span></span>default button<span class="s1"> 2</span></p>
+<p class="p4"><span class="Apple-tab-span">	</span><b>set</b> <span class="s4">myFileName</span> <b>to</b> <span class="s7">text returned</span> <b>of</b> <span class="s2">result</span></p>
+<p class="p3"><span class="Apple-tab-span">	</span></p>
+<p class="p6"><span class="s1"><span class="Apple-tab-span">	</span><b>if</b> </span><span class="s8"><b>exists</b></span><span class="s1"> </span><span class="s3"><i>file</i></span><span class="s1"> </span>myFileName<span class="s1"> <b>of</b> </span>myFolder<span class="s1"> <b>then</b></span></p>
+<p class="p5"><span class="s1"><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span></span><span class="s5"><b>display alert</b></span><span class="s1"> ¬</span></p>
+<p class="p4"><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span>"A file named ‘" &amp; <span class="s4">myFileName</span> &amp; "’ already exists in this folder." <span class="s6">as</span> <span class="s7"><i>informational</i></span></p>
+<p class="p4"><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><b>return</b></p>
+<p class="p4"><span class="Apple-tab-span">	</span><b>end</b> <b>if</b></p>
+<p class="p3"><span class="Apple-tab-span">	</span></p>
+<p class="p6"><span class="s1"><span class="Apple-tab-span">	</span><b>set</b> </span>myPath<span class="s1"> <b>to</b> ((</span><span class="s2">POSIX path</span><span class="s1"> <b>of</b> </span>myFolder<span class="s1">) &amp; </span>myFileName<span class="s1">)</span></p>
+<p class="p4"><span class="Apple-tab-span">	</span><span class="s9"><b>do shell script</b></span> "touch " &amp; <span class="s2">quoted form</span> <b>of</b> <span class="s4">myPath</span></p>
+<p class="p3"><span class="Apple-tab-span">	</span></p>
+<p class="p1"><span class="s1"><span class="Apple-tab-span">	</span></span>#open file in Emacs</p>
+<p class="p5"><span class="s1"><span class="Apple-tab-span">	</span></span><span class="s5"><b>display dialog</b></span><span class="s1"> ¬</span></p>
+<p class="p4"><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span>"Open file with Emacs?" <span class="s6">buttons</span> {"Yes", "Cancel"} ¬</p>
+<p class="p5"><span class="s1"><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span></span>default button<span class="s1"> 1</span></p>
+<p class="p3"><span class="Apple-tab-span">	</span></p>
+<p class="p4"><span class="Apple-tab-span">	</span><b>if</b> <span class="s7">button returned</span> <b>of</b> <span class="s2">result</span> <b>is</b> "Yes" <b>then</b></p>
+<p class="p4"><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><b>try</b></p>
+<p class="p4"><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><b>tell</b> <span class="s3"><i>application</i></span> "System Events" <b>to</b> <b>tell</b> <span class="s3"><i>process</i></span> "Emacs" <b>to</b> <b>set</b> <span class="s2">frontmost</span> <b>to</b> <span class="s2"><i>true</i></span></p>
+<p class="p4"><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><b>on</b> <b>error</b></p>
+<p class="p4"><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><b>tell</b> <span class="s3"><i>application</i></span> "/Users/suzume/Documents/Code/emacs/nextstep/Emacs.app"</p>
+<p class="p2"><span class="s1"><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span></span><span class="s5"><b>activate</b></span></p>
+<p class="p4"><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="s8"><b>delay</b></span> 1</p>
+<p class="p4"><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><b>end</b> <b>tell</b></p>
+<p class="p4"><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><b>end</b> <b>try</b></p>
+<p class="p3"><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span></p>
+<p class="p6"><span class="s1"><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><b>set</b> </span>selectedFile<span class="s1"> <b>to</b> </span>myPath</p>
+<p class="p4"><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><b>set</b> <span class="s4">myCommand</span> <b>to</b> <span class="s4">myEmacsclient</span> &amp; " -n -e \"(find-file " &amp; "\\\"" &amp; <span class="s4">selectedFile</span> &amp; "\\\"" &amp; ")\""</p>
+<p class="p5"><span class="s1"><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span></span><span class="s5"><b>do shell script</b></span><span class="s1"> </span><span class="s4">myCommand</span></p>
+<p class="p4"><span class="Apple-tab-span">	</span><b>end</b> <b>if</b></p>
+<p class="p4"><b>end</b> <b>tell</b></p>
+</body>
+</html>
