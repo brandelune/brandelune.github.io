@@ -1,3 +1,58 @@
+* [2024-02-18 Sun]
+
+dailyIndex est appelé dans:
+- X
+
+myDailyRSSItem est appelé dans
+- dailyIndex
+
+myInsert est appelé dans:
+- dailyIndex
+- myDailyRSSItem
+
+myDate est appelé dans:
+- dailyIndex
+- myDailyRSSItem
+
+checkDayTracker est appelé dans:
+- dailyIndex
+- (ManageDailyEntry)
+
+updateDayTracker est appelé dans:
+- dailyIndex
+
+my0Padding est appelé dans:
+- dailyIndex
+- (myPreviousDayString)
+- (myNextDayString)
+
+myPreviousDayString est appelé dans:
+- X
+
+myNextDayString est appelé dans:
+- X
+
+pageLink est appelé dans:
+- X
+
+UpdateRSSFeed est appelé dans
+- X
+
+UpdatePreviousPage est appelé dans
+- X
+  
+CreateCurrentPage est appelé dans
+- X
+
+ManageDailyEntry est appelé dans
+- X
+
+narrowToEditZone est appelé dans
+- X
+
+
+
+
 * [2021-10-22 Fri] new beginnings, again
 ** I'm not sure how all that goes.
 
