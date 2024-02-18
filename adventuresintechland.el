@@ -16,18 +16,84 @@
 
 ;;; Code:
 (setq debug-on-error t)
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; constants
 (defconst jc-repositoryPath "/Users/suzume/Documents/Repositories/brandelune.github.io/")
 (defconst jc-dayTrackerPath (concat jc-repositoryPath "dayTracker.txt"))
 (defconst jc-rssFile (concat jc-repositoryPath "adventuresintechland.xml"))
 (defconst jc-indexPath (concat jc-repositoryPath "index.html"))
+
 (defconst jc-ghPagesURL "https://github.com/brandelune/brandelune.github.io/commits/gh-pages")
 (defconst jc-siteRoot "https://github.com/brandelune/brandelune.github.io/")
 (defconst jc-faviconURL "https://brandelune.github.io/favicon/")
 (defconst jc-rssReferences "<a href=\"https://brandelune.github.io/adventuresintechland.xml\"><img src=\"https://www.mozilla.org/media/img/trademarks/feed-icon-28x28.e077f1f611f0.png\" width=\"15px\" height=\"15px\" alt=\"rss feed\" /></a>")
 (defconst jc-baseCSSLink "../../adventuresintechland.css")
 (defconst jc-dailyCSSLink "./adventuresintechland.css")
+
+(defconst jc-todayNavigationContents "<p class=\"navigation\">
+            <a href=\"%1$s\" hreflang=\"en\" rel=\"prev\">%2$s</a>
+            <a href=\"../../../index.html\" hreflang=\"en\">index</a>
+	    <a href=\"%3$s\">gh-pages</a>
+            <a href=\"../../../adventuresintechland.html\" hreflang=\"en\">todo</a>
+            <a href=\"../../../tomorrow.html\" hreflang=\"en\" rel=\"next\">tomorrow</a>
+        </p>")
+
+(defconst jc-todayHeaderContents "<html>
+    <head lang=\"en-us\">
+        <title>%1$s</title>
+
+	<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />
+	<meta name=\"msapplication-TileColor\" content=\"#FFFFFF\" />
+	<meta name=\"msapplication-TileImage\" content=\"%4$sfavicon-144.png\" />
+	<meta name=\"msapplication-config\" content=\"%4$sbrowserconfig.xml\" />
+
+	<link rel=\"shortcut icon\" href=\"%4$sfavicon.ico\" />
+	<link rel=\"icon\" sizes=\"16x16 32x32 64x64\" href=\"%4$sfavicon.ico\" />
+	<link rel=\"icon\" type=\"image/png\" sizes=\"196x196\" href=\"%4$sfavicon-192.png\" />
+	<link rel=\"icon\" type=\"image/png\" sizes=\"160x160\" href=\"%4$sfavicon-160.png\" />
+	<link rel=\"icon\" type=\"image/png\" sizes=\"96x96\" href=\"%4$sfavicon-96.png\" />
+	<link rel=\"icon\" type=\"image/png\" sizes=\"64x64\" href=\"%4$sfavicon-64.png\" />
+	<link rel=\"icon\" type=\"image/png\" sizes=\"32x32\" href=\"%4$sfavicon-32.png\" />
+	<link rel=\"icon\" type=\"image/png\" sizes=\"16x16\" href=\"%4$sfavicon-16.png\" />
+	<link rel=\"apple-touch-icon\" href=\"%4$sfavicon-57.png\" />
+	<link rel=\"apple-touch-icon\" sizes=\"114x114\" href=\"%4$sfavicon-114.png\" />
+	<link rel=\"apple-touch-icon\" sizes=\"72x72\" href=\"%4$sfavicon-72.png\" />
+	<link rel=\"apple-touch-icon\" sizes=\"144x144\" href=\"%4$sfavicon-144.png\" />
+	<link rel=\"apple-touch-icon\" sizes=\"60x60\" href=\"%4$sfavicon-60.png\" />
+	<link rel=\"apple-touch-icon\" sizes=\"120x120\" href=\"%4$sfavicon-120.png\" />
+	<link rel=\"apple-touch-icon\" sizes=\"76x76\" href=\"%4$sfavicon-76.png\" />
+	<link rel=\"apple-touch-icon\" sizes=\"152x152\" href=\"%4$sfavicon-152.png\" />
+	<link rel=\"apple-touch-icon\" sizes=\"180x180\" href=\"%4$sfavicon-180.png\" />
+
+        <link rel=\"stylesheet\" type=\"text/css\" href=\"%2$s\" class=\"baseCSS\"/>
+        <link rel=\"stylesheet\" type=\"text/css\" href=\"%3$s\" class=\"dailyCSS\"/>
+        <meta charset=\"UTF-8\" />
+    </head>")
+
+(defconst jc-todayTemplateContents "%1$s
+    <body>
+        %2$s
+
+        <p id=\"episode\"><em>Adventures in Tech Land. Season %7$s. Episode %8$s</em></p>
+        <h1>%4$s %9$s</h1>
+        <p id=\"title item\">%3$s, %10$sth day</p>
+        <h2>%5$s</h2>
+        <p id=\"first sub-title item\">%6$s</p>
+
+        %2$s
+    </body>
+</html>")
+
+(defconst jc-myRSSTemplate "<item>
+<title>%1$s</title>
+<link>https://brandelune.github.io/%2$s/index.html</link>
+<guid>https://brandelune.github.io/%2$s/index.html</guid>
+<pubDate>%3$s</pubDate>
+<description>%4$s</description>
+</item>
+")
+
 ;;; variables
 (defvar jc-todayHeader)
 (defvar jc-myPreviousDateList)
@@ -140,11 +206,11 @@ at the end of the file, before the closing headers."
   "Create a plausible (year month DAY) list.
 Since I only enter a date for the current entry, I must compute the
 previous day and the next days according to what's plausible. It is
-expected that I enter a possible date.
+expected that I enter a possible date."
 
-  ;; (myDate 30) -> (2021 10 24)
 ;;;; TODO add error tests
-;;;; the date should be comprised between 1 and (28 to 31)"
+;;;; (myDate 29) in February 2024, leap year, returns something like
+;;;; (2024 2 29 "Sun, 29 Feb 2024 15:02:03 UT" "2024/2/29")
 
   (let* (
 		 (Today (decode-time (float-time)))
@@ -208,50 +274,14 @@ The contents has to be filled manually, later."
 		jc-todayDate  (concat (number-to-string (cl-first jc-myTodayList)) "/" (my0Padding (cl-second jc-myTodayList)) "/" (my0Padding (cl-third jc-myTodayList))))
 
   (setq jc-todayNavigation
-		(format "<p class=\"navigation\">
-            <a href=\"%1$s\" hreflang=\"en\" rel=\"prev\">%2$s</a>
-            <a href=\"../../../index.html\" hreflang=\"en\">index</a>
-	    <a href=\"%3$s\">gh-pages</a>
-            <a href=\"../../../adventuresintechland.html\" hreflang=\"en\">todo</a>
-            <a href=\"../../../tomorrow.html\" hreflang=\"en\" rel=\"next\">tomorrow</a>
-        </p>"
+		(format jc-todayNavigationContents
 				jc-previousDateLink ;;  1$
                 prevdate      ;;  2$
 				jc-ghPagesURL       ;; 3$
 				))
 
   (setq jc-todayHeader
-		(format "<html>
-    <head lang=\"en-us\">
-        <title>%1$s</title>
-
-	<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />
-	<meta name=\"msapplication-TileColor\" content=\"#FFFFFF\" />
-	<meta name=\"msapplication-TileImage\" content=\"%4$sfavicon-144.png\" />
-	<meta name=\"msapplication-config\" content=\"%4$sbrowserconfig.xml\" />
-
-	<link rel=\"shortcut icon\" href=\"%4$sfavicon.ico\" />
-	<link rel=\"icon\" sizes=\"16x16 32x32 64x64\" href=\"%4$sfavicon.ico\" />
-	<link rel=\"icon\" type=\"image/png\" sizes=\"196x196\" href=\"%4$sfavicon-192.png\" />
-	<link rel=\"icon\" type=\"image/png\" sizes=\"160x160\" href=\"%4$sfavicon-160.png\" />
-	<link rel=\"icon\" type=\"image/png\" sizes=\"96x96\" href=\"%4$sfavicon-96.png\" />
-	<link rel=\"icon\" type=\"image/png\" sizes=\"64x64\" href=\"%4$sfavicon-64.png\" />
-	<link rel=\"icon\" type=\"image/png\" sizes=\"32x32\" href=\"%4$sfavicon-32.png\" />
-	<link rel=\"icon\" type=\"image/png\" sizes=\"16x16\" href=\"%4$sfavicon-16.png\" />
-	<link rel=\"apple-touch-icon\" href=\"%4$sfavicon-57.png\" />
-	<link rel=\"apple-touch-icon\" sizes=\"114x114\" href=\"%4$sfavicon-114.png\" />
-	<link rel=\"apple-touch-icon\" sizes=\"72x72\" href=\"%4$sfavicon-72.png\" />
-	<link rel=\"apple-touch-icon\" sizes=\"144x144\" href=\"%4$sfavicon-144.png\" />
-	<link rel=\"apple-touch-icon\" sizes=\"60x60\" href=\"%4$sfavicon-60.png\" />
-	<link rel=\"apple-touch-icon\" sizes=\"120x120\" href=\"%4$sfavicon-120.png\" />
-	<link rel=\"apple-touch-icon\" sizes=\"76x76\" href=\"%4$sfavicon-76.png\" />
-	<link rel=\"apple-touch-icon\" sizes=\"152x152\" href=\"%4$sfavicon-152.png\" />
-	<link rel=\"apple-touch-icon\" sizes=\"180x180\" href=\"%4$sfavicon-180.png\" />
-
-        <link rel=\"stylesheet\" type=\"text/css\" href=\"%2$s\" class=\"baseCSS\"/>
-        <link rel=\"stylesheet\" type=\"text/css\" href=\"%3$s\" class=\"dailyCSS\"/>
-        <meta charset=\"UTF-8\" />
-    </head>"
+		(format jc-todayHeaderContents
                 title	     ;;  1$
                 jc-baseCSSLink  ;;  2$
                 jc-dailyCSSLink ;;  3$
@@ -259,19 +289,7 @@ The contents has to be filled manually, later."
 				))
 
   (setq jc-todayTemplate
-        (format "%1$s
-    <body>
-        %2$s
-
-        <p id=\"episode\"><em>Adventures in Tech Land. Season %7$s. Episode %8$s</em></p>
-        <h1>%4$s %9$s</h1>
-        <p id=\"title item\">%3$s, %10$sth day</p>
-        <h2>%5$s</h2>
-        <p id=\"first sub-title item\">%6$s</p>
-
-        %2$s
-    </body>
-</html>"
+        (format jc-todayTemplateContents
                 jc-todayHeader	;;  1$
 				jc-todayNavigation	;;  2$
                 jc-todayDate	;;  3$
@@ -301,21 +319,14 @@ The contents has to be filled manually, later."
 				(read-number "Date: " (cl-fourth (decode-time (float-time) t)))
 				(read-string "Description: ")))
   
-  (setq jc-myText	(format "<item>
-<title>%1$s</title>
-<link>https://brandelune.github.io/%2$s/index.html</link>
-<guid>https://brandelune.github.io/%2$s/index.html</guid>
-<pubDate>%3$s</pubDate>
-<description>%4$s</description>
-</item>
-"
+  (setq jc-myRSSTemplateContents	(format jc-myRSSTemplate
 							title    ;;  1$
 							(cl-fifth (myDate  date))  ;;  2$
 							(cl-fourth (myDate date))   ;;  3$
 							desc   ;;  4$
 							))
   (myInsert
-   jc-myText
+   jc-myRSSTemplateContents
    "<!-- place new items above this line -->"
    jc-rssFile)
   (find-file jc-rssFile))
