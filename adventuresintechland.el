@@ -45,6 +45,7 @@
 (defvar jc-myText)
 (defvar jc-timeStamp)
 (defvar jc-seasonNumber)
+(defvar monthMaxDay)
 
 (defun my0Padding (number)
   "Add a 0 string to one digit NUMBER.
@@ -157,16 +158,26 @@ expected that I enter a possible date.
 		 (thisYear (cl-sixth Today))
 		 (nextYear (+ thisYear 1))
 		 (lastYear (- thisYear 1))
-		 (dateDifference (- (cl-fourth Today) (abs day)))
+		 (monthMaxDay
+		  (cond
+			((member thisMonth '(1 3 5 7 8 10 12)) 31)
+			((member thisMonth '(4 6 9 11)) 30)
+			((and (= 2 thisMonth)
+				  (= 0 (mod (cl-sixth (decode-time (float-time))) 4))) 29)
+			(t 28)))
+		 (myDay (if (> day monthMaxDay) monthMaxDay day))
+		 (dateDifference (- (cl-fourth Today) (abs myDay)))
 		 (myMonth (cond ((> 24 (abs dateDifference)) thisMonth)
 						((natnump dateDifference) nextMonth)
 						(t lastMonth)))
 		 (myYear (cond ((= myMonth thisMonth) thisYear)
 					   ((and (= myMonth nextMonth) (= myMonth 1)) nextYear)
 					   (t lastYear)))
-		 (rssDate (format-time-string "%a, %d %b %Y %H:%m:%S UT" (current-time) t))
-		 (linkDate (format "%1$s/%2$s/%3$s" myYear myMonth day)))
-    (list myYear myMonth day rssDate linkDate)))
+		 (rssDate (concat (format-time-string "%a, " (current-time) t)
+						  (number-to-string myDay)
+						  (format-time-string " %b %Y %H:%m:%S UT" (current-time) t)))
+		 (linkDate (format "%1$s/%2$s/%3$s" myYear myMonth myDay)))
+    (list myYear myMonth myDay rssDate linkDate)))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;
 
