@@ -1,0 +1,367 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2024-02-18 Sun 15:15 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>&lrm;</title>
+<meta name="author" content="Jean-Christophe Helary" />
+<meta name="generator" content="Org Mode" />
+<style>
+  #content { max-width: 60em; margin: auto; }
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+    background-color: #f2f2f2;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    top: -8px;
+    right: 12px;
+    padding: 3px;
+    color: #555;
+    background-color: #f2f2f299;
+  }
+  pre.src:hover:before { display: inline; margin-top: 14px;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { }
+</style>
+</head>
+<body>
+<div id="content" class="content">
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#orgb231d63">1. <span class="timestamp-wrapper"><span class="timestamp">[2024-02-17 Sat] </span></span> Groundhog day</a>
+<ul>
+<li><a href="#orgf59476a">1.1. Step 1 &lt;h1&gt;</a></li>
+<li><a href="#orgf53051a">1.2. Step 2 &lt;h2&gt;</a></li>
+<li><a href="#orgfd34f3b">1.3. Step 3 &lt;p&gt;</a></li>
+<li><a href="#orgd14a168">1.4. Step 4 comments &lt;!&#x2013; &#x2026; &#x2013;&gt;</a></li>
+<li><a href="#org4a774d2">1.5. Step 5 &lt;main&gt;</a></li>
+<li><a href="#org5c5f39e">1.6. Step 6 indentation</a></li>
+<li><a href="#org926d23c">1.7. Step 7 &lt;img&gt;</a></li>
+<li><a href="#org553987a">1.8. Step 8 &lt;img src&gt;</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgb231d63" class="outline-2">
+<h2 id="orgb231d63"><span class="section-number-2">1.</span> <span class="timestamp-wrapper"><span class="timestamp">[2024-02-17 Sat] </span></span> Groundhog day</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+freeCodeCamp reboot 1/n.
+</p>
+
+<p>
+I wrote this in a new <code>draft.org</code> file that has headers for dates when I work on this. For now I <code>org-export-dispatch</code> to html the contents of the <code>org-tree-to-indirect-buffer</code> of the date I've completed and I do my thing with the <code>dailyIndex</code> function in <code>adventuresintechland.el</code>. I need to actually open the exported draft.html and copy-paste its contents in my daily file, but that's ok for now. Let's give that a try.
+</p>
+</div>
+
+<div id="outline-container-orgf59476a" class="outline-3">
+<h3 id="orgf59476a"><span class="section-number-3">1.1.</span> Step 1 &lt;h1&gt;</h3>
+<div class="outline-text-3" id="text-1-1">
+<p>
+First header.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-html">&lt;<span style="color: #0000ff;">h1</span>&gt;<span style="font-weight: bold; text-decoration: underline;">Groundhog day</span>&lt;/<span style="color: #0000ff;">h1</span>&gt;
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgf53051a" class="outline-3">
+<h3 id="orgf53051a"><span class="section-number-3">1.2.</span> Step 2 &lt;h2&gt;</h3>
+<div class="outline-text-3" id="text-1-2">
+<p>
+Second header.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-html">&lt;<span style="color: #0000ff;">h1</span>&gt;<span style="font-weight: bold; text-decoration: underline;">Groundhog day</span>&lt;/<span style="color: #0000ff;">h1</span>&gt;
+&lt;<span style="color: #0000ff;">h2</span>&gt;<span style="font-weight: bold; font-style: italic; text-decoration: underline;">My favourite day</span>&lt;/<span style="color: #0000ff;">h2</span>&gt;
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgfd34f3b" class="outline-3">
+<h3 id="orgfd34f3b"><span class="section-number-3">1.3.</span> Step 3 &lt;p&gt;</h3>
+<div class="outline-text-3" id="text-1-3">
+<p>
+Paragraph.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-html">&lt;<span style="color: #0000ff;">h1</span>&gt;<span style="font-weight: bold; text-decoration: underline;">Groundhog day</span>&lt;/<span style="color: #0000ff;">h1</span>&gt;
+&lt;<span style="color: #0000ff;">h2</span>&gt;<span style="font-weight: bold; font-style: italic; text-decoration: underline;">My favourite day</span>&lt;/<span style="color: #0000ff;">h2</span>&gt;
+&lt;<span style="color: #0000ff;">p</span>&gt;Weird day list&lt;/<span style="color: #0000ff;">p</span>&gt;
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgd14a168" class="outline-3">
+<h3 id="orgd14a168"><span class="section-number-3">1.4.</span> Step 4 comments &lt;!&#x2013; &#x2026; &#x2013;&gt;</h3>
+<div class="outline-text-3" id="text-1-4">
+<p>
+Comment, not displayed.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-html">&lt;<span style="color: #0000ff;">h1</span>&gt;<span style="font-weight: bold; text-decoration: underline;">Groundhog day</span>&lt;/<span style="color: #0000ff;">h1</span>&gt;
+&lt;<span style="color: #0000ff;">h2</span>&gt;<span style="font-weight: bold; font-style: italic; text-decoration: underline;">My favourite day</span>&lt;/<span style="color: #0000ff;">h2</span>&gt;
+&lt;<span style="color: #0000ff;">p</span>&gt;Weird day list&lt;/<span style="color: #0000ff;">p</span>&gt;
+<span style="color: #b22222;">&lt;!-- </span><span style="color: #b22222;">it's way too late, I should be in bed</span><span style="color: #b22222;"> --&gt;</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org4a774d2" class="outline-3">
+<h3 id="org4a774d2"><span class="section-number-3">1.5.</span> Step 5 &lt;main&gt;</h3>
+<div class="outline-text-3" id="text-1-5">
+<p>
+Main chunk of data, for meta analysis (SEO, etc.)
+</p>
+
+<div class="org-src-container">
+<pre class="src src-html">&lt;<span style="color: #0000ff;">main</span>&gt;
+  &lt;<span style="color: #0000ff;">h1</span>&gt;<span style="font-weight: bold; text-decoration: underline;">Groundhog day</span>&lt;/<span style="color: #0000ff;">h1</span>&gt;
+  &lt;<span style="color: #0000ff;">h2</span>&gt;<span style="font-weight: bold; font-style: italic; text-decoration: underline;">My favourite day</span>&lt;/<span style="color: #0000ff;">h2</span>&gt;
+  &lt;<span style="color: #0000ff;">p</span>&gt;Weird day list&lt;/<span style="color: #0000ff;">p</span>&gt;
+  <span style="color: #b22222;">&lt;!-- </span><span style="color: #b22222;">it's way too late, I should be in bed</span><span style="color: #b22222;"> --&gt;</span>
+&lt;/<span style="color: #0000ff;">main</span>&gt;
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org5c5f39e" class="outline-3">
+<h3 id="org5c5f39e"><span class="section-number-3">1.6.</span> Step 6 indentation</h3>
+<div class="outline-text-3" id="text-1-6">
+<p>
+Done already.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org926d23c" class="outline-3">
+<h3 id="org926d23c"><span class="section-number-3">1.7.</span> Step 7 &lt;img&gt;</h3>
+<div class="outline-text-3" id="text-1-7">
+<p>
+Images, without images.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-html">&lt;<span style="color: #0000ff;">main</span>&gt;
+  &lt;<span style="color: #0000ff;">h1</span>&gt;<span style="font-weight: bold; text-decoration: underline;">Groundhog day</span>&lt;/<span style="color: #0000ff;">h1</span>&gt;
+  &lt;<span style="color: #0000ff;">h2</span>&gt;<span style="font-weight: bold; font-style: italic; text-decoration: underline;">My favourite day</span>&lt;/<span style="color: #0000ff;">h2</span>&gt;
+  &lt;<span style="color: #0000ff;">p</span>&gt;Weird day list&lt;/<span style="color: #0000ff;">p</span>&gt;
+  <span style="color: #b22222;">&lt;!-- </span><span style="color: #b22222;">it's way too late, I should be in bed</span><span style="color: #b22222;"> --&gt;</span>
+  &lt;<span style="color: #0000ff;">img</span>/&gt;
+&lt;/<span style="color: #0000ff;">main</span>&gt;
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org553987a" class="outline-3">
+<h3 id="org553987a"><span class="section-number-3">1.8.</span> Step 8 &lt;img src&gt;</h3>
+<div class="outline-text-3" id="text-1-8">
+<p>
+Images, with images.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-html">&lt;<span style="color: #0000ff;">main</span>&gt;
+  &lt;<span style="color: #0000ff;">h1</span>&gt;<span style="font-weight: bold; text-decoration: underline;">Groundhog day</span>&lt;/<span style="color: #0000ff;">h1</span>&gt;
+  &lt;<span style="color: #0000ff;">h2</span>&gt;<span style="font-weight: bold; font-style: italic; text-decoration: underline;">My favourite day</span>&lt;/<span style="color: #0000ff;">h2</span>&gt;
+  &lt;<span style="color: #0000ff;">p</span>&gt;Weird day list&lt;/<span style="color: #0000ff;">p</span>&gt;
+  <span style="color: #b22222;">&lt;!-- </span><span style="color: #b22222;">it's way too late, I should be in bed</span><span style="color: #b22222;"> --&gt;</span>
+&lt;<span style="color: #0000ff;">img</span> <span style="color: #a0522d;">src</span>=<span style="color: #8b2252;">"https://www.closerweekly.com/wp-content/uploads/2015/04/bill-murray-groundhog-day.jpg"</span>&gt;
+&lt;/<span style="color: #0000ff;">main</span>&gt;
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: Jean-Christophe Helary</p>
+<p class="date">Created: 2024-02-18 Sun 15:15</p>
+<p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

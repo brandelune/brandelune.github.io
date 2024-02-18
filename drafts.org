@@ -1,0 +1,94 @@
+* [2024-02-17 Sat] Groundhog day
+
+freeCodeCamp reboot 1/n.
+
+I wrote this in a new ~draft.org~ file that has headers for dates when I work on this. For now I ~org-export-dispatch~ to html the contents of the ~org-tree-to-indirect-buffer~ of the date I've completed and I do my thing with the ~dailyIndex~ function in ~adventuresintechland.el~. I need to actually open the exported ~draft.html~ and copy-paste its contents in my daily file, but that's ok for now. Let's give that a try.
+
+** Step 1 <h1>
+
+First header.
+
+#+begin_src html
+  <h1>Groundhog day</h1>
+#+end_src
+
+** Step 2 <h2>
+
+Second header.
+
+#+begin_src html
+  <h1>Groundhog day</h1>
+  <h2>My favourite day</h2>
+#+end_src
+
+** Step 3 <p>
+
+Paragraph.
+
+#+begin_src html
+  <h1>Groundhog day</h1>
+  <h2>My favourite day</h2>
+  <p>Weird day list</p>
+#+end_src
+
+** Step 4 comments <!-- ... -->
+
+Comment, not displayed.
+
+#+begin_src html
+  <h1>Groundhog day</h1>
+  <h2>My favourite day</h2>
+  <p>Weird day list</p>
+  <!-- it's way too late, I should be in bed -->
+#+end_src
+
+** Step 5 <main>
+
+Main chunk of data, for meta analysis (SEO, etc.)
+
+#+begin_src html
+  <main>
+    <h1>Groundhog day</h1>
+    <h2>My favourite day</h2>
+    <p>Weird day list</p>
+    <!-- it's way too late, I should be in bed -->
+  </main>
+#+end_src
+
+** Step 6 indentation
+
+Done already.
+
+** Step 7 <img>
+
+Images, without images.
+
+#+begin_src html
+  <main>
+    <h1>Groundhog day</h1>
+    <h2>My favourite day</h2>
+    <p>Weird day list</p>
+    <!-- it's way too late, I should be in bed -->
+    <img/>
+  </main>
+#+end_src
+
+** Step 8 <img src>
+
+Images, with images.
+
+#+begin_src html
+  <main>
+    <h1>Groundhog day</h1>
+    <h2>My favourite day</h2>
+    <p>Weird day list</p>
+    <!-- it's way too late, I should be in bed -->
+  <img src="https://www.closerweekly.com/wp-content/uploads/2015/04/bill-murray-groundhog-day.jpg">
+  </main>
+#+end_src
+
+* [2024-02-18 Sun] Maracons
+
+freeCodeCamp reboot 2/n
+** Step 9 <img alt>
+
