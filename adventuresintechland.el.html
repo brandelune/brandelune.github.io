@@ -79,18 +79,84 @@
 </span>
 <span class="comment-delimiter">;;; </span><span class="comment">Code:
 </span>(setq debug-on-error t)
+
 <span class="comment-delimiter">;;;;;;;;;;;;;;;;;;;;;;;;;</span><span class="comment">
 </span><span class="comment-delimiter">;;; </span><span class="comment">constants
 </span>(defconst jc-repositoryPath <span class="string">"/Users/suzume/Documents/Repositories/brandelune.github.io/"</span>)
 (defconst jc-dayTrackerPath (concat jc-repositoryPath <span class="string">"dayTracker.txt"</span>))
 (defconst jc-rssFile (concat jc-repositoryPath <span class="string">"adventuresintechland.xml"</span>))
 (defconst jc-indexPath (concat jc-repositoryPath <span class="string">"index.html"</span>))
+
 (defconst jc-ghPagesURL <span class="string">"https://github.com/brandelune/brandelune.github.io/commits/gh-pages"</span>)
 (defconst jc-siteRoot <span class="string">"https://github.com/brandelune/brandelune.github.io/"</span>)
 (defconst jc-faviconURL <span class="string">"https://brandelune.github.io/favicon/"</span>)
 (defconst jc-rssReferences <span class="string">"&lt;a href=\"https://brandelune.github.io/adventuresintechland.xml\"&gt;&lt;img src=\"https://www.mozilla.org/media/img/trademarks/feed-icon-28x28.e077f1f611f0.png\" width=\"15px\" height=\"15px\" alt=\"rss feed\" /&gt;&lt;/a&gt;"</span>)
 (defconst jc-baseCSSLink <span class="string">"../../adventuresintechland.css"</span>)
 (defconst jc-dailyCSSLink <span class="string">"./adventuresintechland.css"</span>)
+
+(defconst jc-todayNavigationContents <span class="string">"&lt;p class=\"navigation\"&gt;
+            &lt;a href=\"%1$s\" hreflang=\"en\" rel=\"prev\"&gt;%2$s&lt;/a&gt;
+            &lt;a href=\"../../../index.html\" hreflang=\"en\"&gt;index&lt;/a&gt;
+        &lt;a href=\"%3$s\"&gt;gh-pages&lt;/a&gt;
+            &lt;a href=\"../../../adventuresintechland.html\" hreflang=\"en\"&gt;todo&lt;/a&gt;
+            &lt;a href=\"../../../tomorrow.html\" hreflang=\"en\" rel=\"next\"&gt;tomorrow&lt;/a&gt;
+        &lt;/p&gt;"</span>)
+
+(defconst jc-todayHeaderContents <span class="string">"&lt;html&gt;
+    &lt;head lang=\"en-us\"&gt;
+        &lt;title&gt;%1$s&lt;/title&gt;
+
+    &lt;meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" /&gt;
+    &lt;meta name=\"msapplication-TileColor\" content=\"#FFFFFF\" /&gt;
+    &lt;meta name=\"msapplication-TileImage\" content=\"%4$sfavicon-144.png\" /&gt;
+    &lt;meta name=\"msapplication-config\" content=\"%4$sbrowserconfig.xml\" /&gt;
+
+    &lt;link rel=\"shortcut icon\" href=\"%4$sfavicon.ico\" /&gt;
+    &lt;link rel=\"icon\" sizes=\"16x16 32x32 64x64\" href=\"%4$sfavicon.ico\" /&gt;
+    &lt;link rel=\"icon\" type=\"image/png\" sizes=\"196x196\" href=\"%4$sfavicon-192.png\" /&gt;
+    &lt;link rel=\"icon\" type=\"image/png\" sizes=\"160x160\" href=\"%4$sfavicon-160.png\" /&gt;
+    &lt;link rel=\"icon\" type=\"image/png\" sizes=\"96x96\" href=\"%4$sfavicon-96.png\" /&gt;
+    &lt;link rel=\"icon\" type=\"image/png\" sizes=\"64x64\" href=\"%4$sfavicon-64.png\" /&gt;
+    &lt;link rel=\"icon\" type=\"image/png\" sizes=\"32x32\" href=\"%4$sfavicon-32.png\" /&gt;
+    &lt;link rel=\"icon\" type=\"image/png\" sizes=\"16x16\" href=\"%4$sfavicon-16.png\" /&gt;
+    &lt;link rel=\"apple-touch-icon\" href=\"%4$sfavicon-57.png\" /&gt;
+    &lt;link rel=\"apple-touch-icon\" sizes=\"114x114\" href=\"%4$sfavicon-114.png\" /&gt;
+    &lt;link rel=\"apple-touch-icon\" sizes=\"72x72\" href=\"%4$sfavicon-72.png\" /&gt;
+    &lt;link rel=\"apple-touch-icon\" sizes=\"144x144\" href=\"%4$sfavicon-144.png\" /&gt;
+    &lt;link rel=\"apple-touch-icon\" sizes=\"60x60\" href=\"%4$sfavicon-60.png\" /&gt;
+    &lt;link rel=\"apple-touch-icon\" sizes=\"120x120\" href=\"%4$sfavicon-120.png\" /&gt;
+    &lt;link rel=\"apple-touch-icon\" sizes=\"76x76\" href=\"%4$sfavicon-76.png\" /&gt;
+    &lt;link rel=\"apple-touch-icon\" sizes=\"152x152\" href=\"%4$sfavicon-152.png\" /&gt;
+    &lt;link rel=\"apple-touch-icon\" sizes=\"180x180\" href=\"%4$sfavicon-180.png\" /&gt;
+
+        &lt;link rel=\"stylesheet\" type=\"text/css\" href=\"%2$s\" class=\"baseCSS\"/&gt;
+        &lt;link rel=\"stylesheet\" type=\"text/css\" href=\"%3$s\" class=\"dailyCSS\"/&gt;
+        &lt;meta charset=\"UTF-8\" /&gt;
+    &lt;/head&gt;"</span>)
+
+(defconst jc-todayTemplateContents <span class="string">"%1$s
+    &lt;body&gt;
+        %2$s
+
+        &lt;p id=\"episode\"&gt;&lt;em&gt;Adventures in Tech Land. Season %7$s. Episode %8$s&lt;/em&gt;&lt;/p&gt;
+        &lt;h1&gt;%4$s %9$s&lt;/h1&gt;
+        &lt;p id=\"title item\"&gt;%3$s, %10$sth day&lt;/p&gt;
+        &lt;h2&gt;%5$s&lt;/h2&gt;
+        &lt;p id=\"first sub-title item\"&gt;%6$s&lt;/p&gt;
+
+        %2$s
+    &lt;/body&gt;
+&lt;/html&gt;"</span>)
+
+(defconst jc-myRSSTemplate <span class="string">"&lt;item&gt;
+&lt;title&gt;%1$s&lt;/title&gt;
+&lt;link&gt;https://brandelune.github.io/%2$s/index.html&lt;/link&gt;
+&lt;guid&gt;https://brandelune.github.io/%2$s/index.html&lt;/guid&gt;
+&lt;pubDate&gt;%3$s&lt;/pubDate&gt;
+&lt;description&gt;%4$s&lt;/description&gt;
+&lt;/item&gt;
+"</span>)
+
 <span class="comment-delimiter">;;; </span><span class="comment">variables
 </span>(<span class="keyword">defvar</span> <span class="variable-name">jc-todayHeader</span>)
 (<span class="keyword">defvar</span> <span class="variable-name">jc-myPreviousDateList</span>)
@@ -203,12 +269,12 @@ at the end of the file, before the closing headers."</span>
   <span class="doc">"Create a plausible (year month DAY) list.
 Since I only enter a date for the current entry, I must compute the
 previous day and the next days according to what's plausible. It is
-expected that I enter a possible date.
+expected that I enter a possible date."</span>
 
-  ;; (myDate 30) -&gt; (2021 10 24)
-;;;; TODO add error tests
-;;;; the date should be comprised between 1 and (28 to 31)"</span>
-
+<span class="comment-delimiter">;;;; </span><span class="comment">TODO add error tests
+</span><span class="comment-delimiter">;;;; </span><span class="comment">(myDate 29) in February 2024, leap year, returns something like
+</span><span class="comment-delimiter">;;;; </span><span class="comment">(2024 2 29 "Sun, 29 Feb 2024 15:02:03 UT" "2024/2/29")
+</span>
   (<span class="keyword">let*</span> (
          (Today (decode-time (float-time)))
          (thisMonth (cl-fifth Today))
@@ -271,50 +337,14 @@ The contents has to be filled manually, later."</span>
         jc-todayDate  (concat (number-to-string (cl-first jc-myTodayList)) <span class="string">"/"</span> (my0Padding (cl-second jc-myTodayList)) <span class="string">"/"</span> (my0Padding (cl-third jc-myTodayList))))
 
   (setq jc-todayNavigation
-        (format <span class="string">"&lt;p class=\"navigation\"&gt;
-            &lt;a href=\"%1$s\" hreflang=\"en\" rel=\"prev\"&gt;%2$s&lt;/a&gt;
-            &lt;a href=\"../../../index.html\" hreflang=\"en\"&gt;index&lt;/a&gt;
-        &lt;a href=\"%3$s\"&gt;gh-pages&lt;/a&gt;
-            &lt;a href=\"../../../adventuresintechland.html\" hreflang=\"en\"&gt;todo&lt;/a&gt;
-            &lt;a href=\"../../../tomorrow.html\" hreflang=\"en\" rel=\"next\"&gt;tomorrow&lt;/a&gt;
-        &lt;/p&gt;"</span>
+        (format jc-todayNavigationContents
                 jc-previousDateLink <span class="comment-delimiter">;;  </span><span class="comment">1$
 </span>                prevdate      <span class="comment-delimiter">;;  </span><span class="comment">2$
 </span>                jc-ghPagesURL       <span class="comment-delimiter">;; </span><span class="comment">3$
 </span>                ))
 
   (setq jc-todayHeader
-        (format <span class="string">"&lt;html&gt;
-    &lt;head lang=\"en-us\"&gt;
-        &lt;title&gt;%1$s&lt;/title&gt;
-
-    &lt;meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" /&gt;
-    &lt;meta name=\"msapplication-TileColor\" content=\"#FFFFFF\" /&gt;
-    &lt;meta name=\"msapplication-TileImage\" content=\"%4$sfavicon-144.png\" /&gt;
-    &lt;meta name=\"msapplication-config\" content=\"%4$sbrowserconfig.xml\" /&gt;
-
-    &lt;link rel=\"shortcut icon\" href=\"%4$sfavicon.ico\" /&gt;
-    &lt;link rel=\"icon\" sizes=\"16x16 32x32 64x64\" href=\"%4$sfavicon.ico\" /&gt;
-    &lt;link rel=\"icon\" type=\"image/png\" sizes=\"196x196\" href=\"%4$sfavicon-192.png\" /&gt;
-    &lt;link rel=\"icon\" type=\"image/png\" sizes=\"160x160\" href=\"%4$sfavicon-160.png\" /&gt;
-    &lt;link rel=\"icon\" type=\"image/png\" sizes=\"96x96\" href=\"%4$sfavicon-96.png\" /&gt;
-    &lt;link rel=\"icon\" type=\"image/png\" sizes=\"64x64\" href=\"%4$sfavicon-64.png\" /&gt;
-    &lt;link rel=\"icon\" type=\"image/png\" sizes=\"32x32\" href=\"%4$sfavicon-32.png\" /&gt;
-    &lt;link rel=\"icon\" type=\"image/png\" sizes=\"16x16\" href=\"%4$sfavicon-16.png\" /&gt;
-    &lt;link rel=\"apple-touch-icon\" href=\"%4$sfavicon-57.png\" /&gt;
-    &lt;link rel=\"apple-touch-icon\" sizes=\"114x114\" href=\"%4$sfavicon-114.png\" /&gt;
-    &lt;link rel=\"apple-touch-icon\" sizes=\"72x72\" href=\"%4$sfavicon-72.png\" /&gt;
-    &lt;link rel=\"apple-touch-icon\" sizes=\"144x144\" href=\"%4$sfavicon-144.png\" /&gt;
-    &lt;link rel=\"apple-touch-icon\" sizes=\"60x60\" href=\"%4$sfavicon-60.png\" /&gt;
-    &lt;link rel=\"apple-touch-icon\" sizes=\"120x120\" href=\"%4$sfavicon-120.png\" /&gt;
-    &lt;link rel=\"apple-touch-icon\" sizes=\"76x76\" href=\"%4$sfavicon-76.png\" /&gt;
-    &lt;link rel=\"apple-touch-icon\" sizes=\"152x152\" href=\"%4$sfavicon-152.png\" /&gt;
-    &lt;link rel=\"apple-touch-icon\" sizes=\"180x180\" href=\"%4$sfavicon-180.png\" /&gt;
-
-        &lt;link rel=\"stylesheet\" type=\"text/css\" href=\"%2$s\" class=\"baseCSS\"/&gt;
-        &lt;link rel=\"stylesheet\" type=\"text/css\" href=\"%3$s\" class=\"dailyCSS\"/&gt;
-        &lt;meta charset=\"UTF-8\" /&gt;
-    &lt;/head&gt;"</span>
+        (format jc-todayHeaderContents
                 title        <span class="comment-delimiter">;;  </span><span class="comment">1$
 </span>                jc-baseCSSLink  <span class="comment-delimiter">;;  </span><span class="comment">2$
 </span>                jc-dailyCSSLink <span class="comment-delimiter">;;  </span><span class="comment">3$
@@ -322,19 +352,7 @@ The contents has to be filled manually, later."</span>
 </span>                ))
 
   (setq jc-todayTemplate
-        (format <span class="string">"%1$s
-    &lt;body&gt;
-        %2$s
-
-        &lt;p id=\"episode\"&gt;&lt;em&gt;Adventures in Tech Land. Season %7$s. Episode %8$s&lt;/em&gt;&lt;/p&gt;
-        &lt;h1&gt;%4$s %9$s&lt;/h1&gt;
-        &lt;p id=\"title item\"&gt;%3$s, %10$sth day&lt;/p&gt;
-        &lt;h2&gt;%5$s&lt;/h2&gt;
-        &lt;p id=\"first sub-title item\"&gt;%6$s&lt;/p&gt;
-
-        %2$s
-    &lt;/body&gt;
-&lt;/html&gt;"</span>
+        (format jc-todayTemplateContents
                 jc-todayHeader  <span class="comment-delimiter">;;  </span><span class="comment">1$
 </span>                jc-todayNavigation  <span class="comment-delimiter">;;  </span><span class="comment">2$
 </span>                jc-todayDate    <span class="comment-delimiter">;;  </span><span class="comment">3$
@@ -364,21 +382,14 @@ The contents has to be filled manually, later."</span>
                 (read-number <span class="string">"Date: "</span> (cl-fourth (decode-time (float-time) t)))
                 (read-string <span class="string">"Description: "</span>)))
   
-  (setq jc-myText   (format <span class="string">"&lt;item&gt;
-&lt;title&gt;%1$s&lt;/title&gt;
-&lt;link&gt;https://brandelune.github.io/%2$s/index.html&lt;/link&gt;
-&lt;guid&gt;https://brandelune.github.io/%2$s/index.html&lt;/guid&gt;
-&lt;pubDate&gt;%3$s&lt;/pubDate&gt;
-&lt;description&gt;%4$s&lt;/description&gt;
-&lt;/item&gt;
-"</span>
+  (setq jc-myRSSTemplateContents    (format jc-myRSSTemplate
                             title    <span class="comment-delimiter">;;  </span><span class="comment">1$
 </span>                            (cl-fifth (myDate  date))  <span class="comment-delimiter">;;  </span><span class="comment">2$
 </span>                            (cl-fourth (myDate date))   <span class="comment-delimiter">;;  </span><span class="comment">3$
 </span>                            desc   <span class="comment-delimiter">;;  </span><span class="comment">4$
 </span>                            ))
   (myInsert
-   jc-myText
+   jc-myRSSTemplateContents
    <span class="string">"&lt;!-- place new items above this line --&gt;"</span>
    jc-rssFile)
   (find-file jc-rssFile))
