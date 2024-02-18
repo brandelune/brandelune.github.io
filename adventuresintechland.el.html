@@ -41,6 +41,11 @@
         /* font-lock-variable-name-face */
         color: #a0522d;
       }
+      .warning {
+        /* font-lock-warning-face */
+        color: #ff0000;
+        font-weight: bold;
+      }
 
       a {
         color: inherit;
@@ -103,6 +108,7 @@
 (<span class="keyword">defvar</span> <span class="variable-name">jc-myText</span>)
 (<span class="keyword">defvar</span> <span class="variable-name">jc-timeStamp</span>)
 (<span class="keyword">defvar</span> <span class="variable-name">jc-seasonNumber</span>)
+(<span class="keyword">defvar</span> <span class="variable-name">monthMaxDay</span>)
 
 (<span class="keyword">defun</span> <span class="function-name">my0Padding</span> (number)
   <span class="doc">"Add a 0 string to one digit NUMBER.
@@ -139,24 +145,6 @@ This is used here to represent dates as in 01/01/2021"</span>
   (<span class="keyword">if</span> (&lt; number 10)
       (format <span class="string">"0%s"</span> number)
     (number-to-string number)))
-
-<span class="comment-delimiter">;;;;;;;;;;;;;;;;;;;;;;;;;</span><span class="comment">
-</span>
-(<span class="keyword">defun</span> <span class="function-name">myPreviousDayString</span> (myDate)
-  <span class="doc">"Substract 1 to MYDATE and 0-pads the result it if necessary.
-myDate is a 1 or 2 digits strings that represents a calendar day.
-This is used here to create the date string for the previous day."</span>
-  <span class="comment-delimiter">;; </span><span class="comment">(myPreviousDayString "9") -&gt; "08"
-</span>  (my0Padding (- (string-to-number myDate) 1)))
-
-<span class="comment-delimiter">;;;;;;;;;;;;;;;;;;;;;;;;;</span><span class="comment">
-</span>
-(<span class="keyword">defun</span> <span class="function-name">myNextDayString</span> (myDate)
-  <span class="doc">"Add 1 to MYDATE and 0-pads the result if necessary.
-myDate is a 1 or 2 digits strings that represents a calendar day.
-This is used here to create the date string for the next day."</span>
-  <span class="comment-delimiter">;; </span><span class="comment">(myNextDayString "8") -&gt; "09"
-</span>  (my0Padding (+ (string-to-number myDate) 1)))
 
 <span class="comment-delimiter">;;;;;;;;;;;;;;;;;;;;;;;;;</span><span class="comment">
 </span>
@@ -213,13 +201,14 @@ at the end of the file, before the closing headers."</span>
 </span>
 (<span class="keyword">defun</span> <span class="function-name">myDate</span> (day)
   <span class="doc">"Create a plausible (year month DAY) list.
-I don't remember for which purpose, but according to the emacs-devel
-thread that was born out of a related question, it looks like an estimate
-of the date/month/year since I only enter a date for the current entry"</span>
-  <span class="comment-delimiter">;; </span><span class="comment">(myDate 24) -&gt; (2021 10 24)
-</span><span class="comment-delimiter">;;;; </span><span class="comment">TODO add error tests
-</span><span class="comment-delimiter">;;;; </span><span class="comment">the date should be comprised between 1 and (28 to 31)"
-</span>
+Since I only enter a date for the current entry, I must compute the
+previous day and the next days according to what's plausible. It is
+expected that I enter a possible date.
+
+  ;; (myDate 30) -&gt; (2021 10 24)
+;;;; TODO add error tests
+;;;; the date should be comprised between 1 and (28 to 31)"</span>
+
   (<span class="keyword">let*</span> (
          (Today (decode-time (float-time)))
          (thisMonth (cl-fifth Today))
@@ -232,16 +221,26 @@ of the date/month/year since I only enter a date for the current entry"</span>
          (thisYear (cl-sixth Today))
          (nextYear (+ thisYear 1))
          (lastYear (- thisYear 1))
-         (dateDifference (- (cl-fourth Today) (abs day)))
+         (monthMaxDay
+          (<span class="keyword">cond</span>
+            ((member thisMonth '(1 3 5 7 8 10 12)) 31)
+            ((member thisMonth '(4 6 9 11)) 30)
+            ((and (= 2 thisMonth)
+                  (= 0 (mod (cl-sixth (decode-time (float-time))) 4))) <span class="warning">29)</span>
+            (t 28)))
+         (myDay (<span class="keyword">if</span> (&gt; day monthMaxDay) monthMaxDay day))
+         (dateDifference (- (cl-fourth Today) (abs myDay)))
          (myMonth (<span class="keyword">cond</span> ((&gt; 24 (abs dateDifference)) thisMonth)
                         ((natnump dateDifference) nextMonth)
                         (t lastMonth)))
          (myYear (<span class="keyword">cond</span> ((= myMonth thisMonth) thisYear)
                        ((and (= myMonth nextMonth) (= myMonth 1)) nextYear)
                        (t lastYear)))
-         (rssDate (format-time-string <span class="string">"%a, %d %b %Y %H:%m:%S UT"</span> (current-time) t))
-         (linkDate (format <span class="string">"%1$s/%2$s/%3$s"</span> myYear myMonth day)))
-    (list myYear myMonth day rssDate linkDate)))
+         (rssDate (concat (format-time-string <span class="string">"%a, "</span> (current-time) t)
+                          (number-to-string myDay)
+                          (format-time-string <span class="string">" %b %Y %H:%m:%S UT"</span> (current-time) t)))
+         (linkDate (format <span class="string">"%1$s/%2$s/%3$s"</span> myYear myMonth myDay)))
+    (list myYear myMonth myDay rssDate linkDate)))
 
 <span class="comment-delimiter">;;;;;;;;;;;;;;;;;;;;;;;;;</span><span class="comment">
 </span>
@@ -357,13 +356,6 @@ The contents has to be filled manually, later."</span>
 
 <span class="comment-delimiter">;;;;;;;;;;;;;;;;;;;;;;;;;</span><span class="comment">
 </span>
-(<span class="keyword">defun</span> <span class="function-name">pageLink</span> ()
-  <span class="doc">"To be defined."</span>
-  <span class="comment-delimiter">;;  </span><span class="comment">(format )
-</span>  )
-
-<span class="comment-delimiter">;;;;;;;;;;;;;;;;;;;;;;;;;</span><span class="comment">
-</span>
 (<span class="keyword">defun</span> <span class="function-name">myDailyRSSItem</span> (title date desc)
   <span class="doc">"Insert the daily RSS feed with TITLE DATE and DESC."</span>
 <span class="comment-delimiter">;;;; </span><span class="comment">TODO add default value for link
@@ -394,6 +386,35 @@ The contents has to be filled manually, later."</span>
 <span class="comment-delimiter">;;;;;;;;;;;;;;;;;;;;;;;;;</span><span class="comment">
 </span>
 
+<span class="comment-delimiter">;;;;;;;;; </span><span class="comment">(yet) Unused functions
+</span>
+<span class="comment-delimiter">;;;;;;;;;;;;;;;;;;;;;;;;;</span><span class="comment">
+</span>
+(<span class="keyword">defun</span> <span class="function-name">myPreviousDayString</span> (myDate)
+  <span class="doc">"Substract 1 to MYDATE and 0-pads the result it if necessary.
+myDate is a 1 or 2 digits strings that represents a calendar day.
+This is used here to create the date string for the previous day."</span>
+  <span class="comment-delimiter">;; </span><span class="comment">(myPreviousDayString "9") -&gt; "08"
+</span>  (my0Padding (- (string-to-number myDate) 1)))
+
+<span class="comment-delimiter">;;;;;;;;;;;;;;;;;;;;;;;;;</span><span class="comment">
+</span>
+(<span class="keyword">defun</span> <span class="function-name">myNextDayString</span> (myDate)
+  <span class="doc">"Add 1 to MYDATE and 0-pads the result if necessary.
+myDate is a 1 or 2 digits strings that represents a calendar day.
+This is used here to create the date string for the next day."</span>
+  <span class="comment-delimiter">;; </span><span class="comment">(myNextDayString "8") -&gt; "09"
+</span>  (my0Padding (+ (string-to-number myDate) 1)))
+
+<span class="comment-delimiter">;;;;;;;;;;;;;;;;;;;;;;;;;</span><span class="comment">
+</span>
+(<span class="keyword">defun</span> <span class="function-name">pageLink</span> ()
+  <span class="doc">"To be defined."</span>
+  <span class="comment-delimiter">;;  </span><span class="comment">(format )
+</span>  )
+
+<span class="comment-delimiter">;;;;;;;;;;;;;;;;;;;;;;;;;</span><span class="comment">
+</span>
 (<span class="keyword">defun</span> <span class="function-name">UpdateRSSFeed</span> ()
   <span class="doc">"Update the RSS feed."</span>
 <span class="comment-delimiter">;;;; </span><span class="comment">TODO UpdateRSSFeed
@@ -403,21 +424,29 @@ The contents has to be filled manually, later."</span>
 </span><span class="comment-delimiter">;;;;    </span><span class="comment">contents (first paragraph of current index ?)
 </span>  )
 
+<span class="comment-delimiter">;;;;;;;;;;;;;;;;;;;;;;;;;</span><span class="comment">
+</span>
 (<span class="keyword">defun</span> <span class="function-name">UpdatePreviousPage</span> ()
   <span class="doc">"Update the previous page."</span>
 <span class="comment-delimiter">;;;; </span><span class="comment">TODO UpdatePreviousPage
 </span><span class="comment-delimiter">;;;;    </span><span class="comment">"tomorrow" link
 </span>  )
 
+<span class="comment-delimiter">;;;;;;;;;;;;;;;;;;;;;;;;;</span><span class="comment">
+</span>
 (<span class="keyword">defun</span> <span class="function-name">CreateCurrentPage</span> ()
   <span class="doc">"Create the page for the day."</span>
   )
 
+<span class="comment-delimiter">;;;;;;;;;;;;;;;;;;;;;;;;;</span><span class="comment">
+</span>
 (<span class="keyword">defun</span> <span class="function-name">ManageDailyEntry</span> ()
   <span class="doc">"Create the current page, update the main index, the RSS feed, the previous page."</span>
   (checkDayTracker)
   )
 
+<span class="comment-delimiter">;;;;;;;;;;;;;;;;;;;;;;;;;</span><span class="comment">
+</span>
 (<span class="keyword">defun</span> <span class="function-name">narrowToEditZone</span> ()
   <span class="doc">"Narrow the index page to the area to edit."</span>
 <span class="comment-delimiter">;;;; </span><span class="comment">search id = episode
@@ -428,6 +457,8 @@ The contents has to be filled manually, later."</span>
 </span><span class="comment-delimiter">;;;; </span><span class="comment">narrow-to-region
 </span>  )
 
+<span class="comment-delimiter">;;;;;;;;;;;;;;;;;;;;;;;;;</span><span class="comment">
+</span>
 (<span class="keyword">provide</span> '<span class="constant">adventuresintechland</span>)
 <span class="comment-delimiter">;;; </span><span class="comment">adventuresintechland.el ends here
 </span></pre>
