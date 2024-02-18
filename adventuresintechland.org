@@ -12,16 +12,17 @@
 #+HTML_LINK_UP: https://github.com/brandelune/brandelune.github.io
 ----------
 * code
+** TODO [2024-02-18 Sun] Write a summary of the daily tasks          :admin:
 ** FIX [2021-10-23 Sat] clean up the code and make it all work again :elisp:
 ** CODE [#A] [2020-01-03 Fri] automate trivial updating tasks         :elisp:
-***  global index [[file:adventuresintechland.el::defun UpdateMainIndex]]
+***  global index adventuresintechland.el: UpdateMainIndex
 ****    number of days in the current "season"
 ****    total number of documented days
 ****    link to "last day"
 ****    index contents for the new day
-***  previous day [[file:adventuresintechland.el::defun UpdatePreviousPage]] 
+***  previous day adventuresintechland.el: UpdatePreviousPage
 ****    "tomorrow" link
-***  rss feed [[file:adventuresintechland.el::defun UpdateRSSFeed]]
+***  rss feed adventuresintechland.el: UpdateRSSFeed
 ****     title
 ****     date
 ****     link
@@ -77,10 +78,11 @@ And how to efficiently select
 ** CHECK [2018-11-11] add autocompletion for html/css                 :emacs:
 
 * TODO manage daily entries [9/9]
-DEADLINE: <2021-10-24 Sun ++1d>
+DEADLINE: <2024-02-19 Mon ++1d>
   :PROPERTIES:
-  :LAST_REPEAT: [2021-10-23 Sat 10:53]
+  :LAST_REPEAT: [2024-02-18 Sun 15:44]
   :END:
+  - State "DONE"       from "TODO"       [2024-02-18 Sun 15:44]
   - State "DONE"       from "TODO"       [2020-01-05 Sun 00:43]
   - State "DONE"       from "TODO"       [2020-01-02 Thu 02:45]
   - State "DONE"       from "TODO"       [2019-12-29 Sun 00:44]

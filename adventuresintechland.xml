@@ -350,6 +350,13 @@
 	  <pubDate>Mon, 25 Oct 2021 17:10:53 UT</pubDate>
 	  <description>I spent a lot of time on Sunday and Monday to cleanup the elisp code that I use to generate the RSS index and the daily page. Then I remembered that there was something about <code>setq</code> requiring to actually declare the variable before hand, and there was all this talk on the lists about scope, so I decided to ask for help on emacs-devel and I ended up with a suggestion to byte-compile the code to check the error messages and to use flymake to ensure I get proper advice when I code...</description>
 	</item>
+	<item>
+	  <title>Groundhog day</title>
+	  <link>https://brandelune.github.io/2024/2/18/index.html</link>
+	  <guid>https://brandelune.github.io/2024/2/18/index.html</guid>
+	  <pubDate>Sun, 18 Feb 2024 06:02:34 UT</pubDate>
+	  <description>I wrote this in a new <code>draft.org</code> file that has headers for dates when I work on this. For now I <code>org-export-dispatch</code> to html the contents of the <code>org-tree-to-indirect-buffer</code> of the date I've completed and I do my thing with the <code>dailyIndex</code> function in <code>adventuresintechland.el</code>. I need to actually open the exported draft.html and copy-paste its contents in my daily file, but that's ok for now. Let's give that a try.</description>
+	</item>
 	<!-- place new items above this line -->
   </channel>
 </rss>

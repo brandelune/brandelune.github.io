@@ -1,0 +1,187 @@
+<html>
+  <head lang="en-us">
+    <title>Groundhog day</title>
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta name="msapplication-TileColor" content="#FFFFFF" />
+	<meta name="msapplication-TileImage" content="https://brandelune.github.io/favicon/favicon-144.png" />
+	<meta name="msapplication-config" content="https://brandelune.github.io/favicon/browserconfig.xml" />
+
+	<link rel="shortcut icon" href="https://brandelune.github.io/favicon/favicon.ico" />
+	<link rel="icon" sizes="16x16 32x32 64x64" href="https://brandelune.github.io/favicon/favicon.ico" />
+	<link rel="icon" type="image/png" sizes="196x196" href="https://brandelune.github.io/favicon/favicon-192.png" />
+	<link rel="icon" type="image/png" sizes="160x160" href="https://brandelune.github.io/favicon/favicon-160.png" />
+	<link rel="icon" type="image/png" sizes="96x96" href="https://brandelune.github.io/favicon/favicon-96.png" />
+	<link rel="icon" type="image/png" sizes="64x64" href="https://brandelune.github.io/favicon/favicon-64.png" />
+	<link rel="icon" type="image/png" sizes="32x32" href="https://brandelune.github.io/favicon/favicon-32.png" />
+	<link rel="icon" type="image/png" sizes="16x16" href="https://brandelune.github.io/favicon/favicon-16.png" />
+	<link rel="apple-touch-icon" href="https://brandelune.github.io/favicon/favicon-57.png" />
+	<link rel="apple-touch-icon" sizes="114x114" href="https://brandelune.github.io/favicon/favicon-114.png" />
+	<link rel="apple-touch-icon" sizes="72x72" href="https://brandelune.github.io/favicon/favicon-72.png" />
+	<link rel="apple-touch-icon" sizes="144x144" href="https://brandelune.github.io/favicon/favicon-144.png" />
+	<link rel="apple-touch-icon" sizes="60x60" href="https://brandelune.github.io/favicon/favicon-60.png" />
+	<link rel="apple-touch-icon" sizes="120x120" href="https://brandelune.github.io/favicon/favicon-120.png" />
+	<link rel="apple-touch-icon" sizes="76x76" href="https://brandelune.github.io/favicon/favicon-76.png" />
+	<link rel="apple-touch-icon" sizes="152x152" href="https://brandelune.github.io/favicon/favicon-152.png" />
+	<link rel="apple-touch-icon" sizes="180x180" href="https://brandelune.github.io/favicon/favicon-180.png" />
+
+    <link rel="stylesheet" type="text/css" href="../../adventuresintechland.css" class="baseCSS"/>
+    <link rel="stylesheet" type="text/css" href="./adventuresintechland.css" class="dailyCSS"/>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <p class="navigation">
+      <a href="../../../2021/10/25/index.html" hreflang="en" rel="prev">(2021)1025</a>
+      <a href="../../../index.html" hreflang="en">index</a>
+	  <a href="https://github.com/brandelune/brandelune.github.io/commits/gh-pages">gh-pages</a>
+      <a href="../../../adventuresintechland.html" hreflang="en">todo</a>
+      <a href="../../../tomorrow.html" hreflang="en" rel="next">tomorrow</a>
+    </p>
+
+    <p id="episode"><em>Adventures in Tech Land. Season 4. Episode 1</em></p>
+    <h1>Groundhog day <a href="https://brandelune.github.io/adventuresintechland.xml"><img src="https://www.mozilla.org/media/img/trademarks/feed-icon-28x28.e077f1f611f0.png" width="15px" height="15px" alt="rss feed" /></a></h1>
+    <p id="title item">2024/02/18, 48th day</p>
+    <h2>freeCodeCamp reboot 1/n</h2>
+    <p id="first sub-title item">I wrote this in a new <code>draft.org</code> file that has headers for dates when I work on this. For now I <code>org-export-dispatch</code> to html the contents of the <code>org-tree-to-indirect-buffer</code> of the date I've completed and I do my thing with the <code>dailyIndex</code> function in <code>adventuresintechland.el</code>. I need to actually open the exported draft.html and copy-paste its contents in my daily file, but that's ok for now. Let's give that a try.</p>
+
+	<p>Ok. It works fine. There are a few issues to iron out. First the HTML that org-export generates is very verbose. I had to remove all the <code>id</code>, <code>class</code>, <code>style</code> things in it. Maye exporting to HTML is not the best way to do this. I could export to text and convert the <code>&lt;</code> and <code>&gt;</code>, and add the <code>&lt;pre&gt;</code> where required.</p>
+
+	<p>Then I had to manually add the <code>last day</code> navigation. It looks like I also have to manually modify the main index. But I probably had that automatically done in the past. So I'll need to check that. Also I had to manually copy <code>adventuresintechland.css</code> from the root of the project to the root of the year. I'm not sure why I choose to do have that set up this way. I'll probably update the main <code>adventuresintechland.org</code> file and be done with today.</p> 
+
+<div>
+<h3>Step 1 &lt;h1&gt;</h3>
+<div>
+<p>
+First header.
+</p>
+
+<div>
+<pre>&lt;h1&gt;Groundhog day&lt;/h1&gt;
+</pre>
+</div>
+</div>
+</div>
+
+<div>
+<h3>Step 2 &lt;h2&gt;</h3>
+<div>
+<p>
+Second header.
+</p>
+
+<div>
+<pre>&lt;h1&gt;Groundhog day&lt;/h1&gt;
+&lt;h2&gt;My favourite day&lt;/h2&gt;
+</pre>
+</div>
+</div>
+</div>
+
+<div>
+<h3>Step 3 &lt;p&gt;</h3>
+<div>
+<p>
+Paragraph.
+</p>
+
+<div>
+<pre>&lt;h1&gt;Groundhog day&lt;/h1&gt;
+&lt;h2&gt;My favourite day&lt;/h2&gt;
+&lt;p&gt;Weird day list&lt;/p&gt;
+</pre>
+</div>
+</div>
+</div>
+
+<div>
+<h3>Step 4 comments &lt;!&#x2013; &#x2026; &#x2013;&gt;</h3>
+<div>
+<p>
+Comment, not displayed.
+</p>
+
+<div>
+<pre>&lt;h1&gt;Groundhog day&lt;/h1&gt;
+&lt;h2&gt;My favourite day&lt;/h2&gt;
+&lt;p&gt;Weird day list&lt;/p&gt;
+&lt;!-- it's way too late, I should be in bed --&gt;
+</pre>
+</div>
+</div>
+</div>
+
+<div>
+<h3>Step 5 &lt;main&gt;</h3>
+<div>
+<p>
+Main chunk of data, for meta analysis (SEO, etc.)
+</p>
+
+<div>
+<pre>&lt;main&gt;
+  &lt;h1&gt;Groundhog day&lt;/h1&gt;
+  &lt;h2&gt;My favourite day&lt;/h2&gt;
+  &lt;p&gt;Weird day list&lt;/p&gt;
+  &lt;!-- it's way too late, I should be in bed --&gt;
+&lt;/main&gt;
+</pre>
+</div>
+</div>
+</div>
+
+<div>
+<h3>Step 6 indentation</h3>
+<div>
+<p>
+Done already.
+</p>
+</div>
+</div>
+
+<div>
+<h3>Step 7 &lt;img&gt;</h3>
+<div>
+<p>
+Images, without images.
+</p>
+
+<div>
+<pre>&lt;main&gt;
+  &lt;h1&gt;Groundhog day&lt;/h1&gt;
+  &lt;h2&gt;My favourite day&lt;/h2&gt;
+  &lt;p&gt;Weird day list&lt;/p&gt;
+  &lt;!-- it's way too late, I should be in bed --&gt;
+  &lt;img/&gt;
+&lt;/main&gt;
+</pre>
+</div>
+</div>
+</div>
+
+<div>
+<h3>Step 8 &lt;img src&gt;</h3>
+<div>
+<p>
+Images, with images.
+</p>
+
+<div>
+<pre>&lt;main&gt;
+  &lt;h1&gt;Groundhog day&lt;/h1&gt;
+  &lt;h2&gt;My favourite day&lt;/h2&gt;
+  &lt;p&gt;Weird day list&lt;/p&gt;
+  &lt;!-- it's way too late, I should be in bed --&gt;
+&lt;img src="https://www.closerweekly.com/wp-content/uploads/2015/04/bill-murray-groundhog-day.jpg"&gt;
+&lt;/main&gt;
+</pre>
+</div>
+
+    <p class="navigation">
+      <a href="../../../2021/10/25/index.html" hreflang="en" rel="prev">(2021)1025</a>
+      <a href="../../../index.html" hreflang="en">index</a>
+	  <a href="https://github.com/brandelune/brandelune.github.io/commits/gh-pages">gh-pages</a>
+      <a href="../../../adventuresintechland.html" hreflang="en">todo</a>
+      <a href="../../../tomorrow.html" hreflang="en" rel="next">tomorrow</a>
+    </p>
+  </body>
+</html>
