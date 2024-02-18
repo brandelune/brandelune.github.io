@@ -84,24 +84,6 @@ This is used here to represent dates as in 01/01/2021"
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(defun myPreviousDayString (myDate)
-  "Substract 1 to MYDATE and 0-pads the result it if necessary.
-myDate is a 1 or 2 digits strings that represents a calendar day.
-This is used here to create the date string for the previous day."
-  ;; (myPreviousDayString "9") -> "08"
-  (my0Padding (- (string-to-number myDate) 1)))
-
-;;;;;;;;;;;;;;;;;;;;;;;;;
-
-(defun myNextDayString (myDate)
-  "Add 1 to MYDATE and 0-pads the result if necessary.
-myDate is a 1 or 2 digits strings that represents a calendar day.
-This is used here to create the date string for the next day."
-  ;; (myNextDayString "8") -> "09"
-  (my0Padding (+ (string-to-number myDate) 1)))
-
-;;;;;;;;;;;;;;;;;;;;;;;;;
-
 (defun myInsert (myText myMarker myFile)
   "Insert MYTEXT at MYMARKER in MYFILE.
 This is used to insert the RSS part of the feed for that day
@@ -155,10 +137,11 @@ at the end of the file, before the closing headers."
 
 (defun myDate (day)
   "Create a plausible (year month DAY) list.
-I don't remember for which purpose, but according to the emacs-devel
-thread that was born out of a related question, it looks like an estimate
-of the date/month/year since I only enter a date for the current entry"
-  ;; (myDate 24) -> (2021 10 24)
+Since I only enter a date for the current entry, I must compute the
+previous day and the next days according to what's plausible. It is
+expected that I enter a possible date.
+
+  ;; (myDate 30) -> (2021 10 24)
 ;;;; TODO add error tests
 ;;;; the date should be comprised between 1 and (28 to 31)"
 
@@ -299,13 +282,6 @@ The contents has to be filled manually, later."
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(defun pageLink ()
-  "To be defined."
-  ;;  (format )
-  )
-
-;;;;;;;;;;;;;;;;;;;;;;;;;
-
 (defun myDailyRSSItem (title date desc)
   "Insert the daily RSS feed with TITLE DATE and DESC."
 ;;;; TODO add default value for link
@@ -336,6 +312,35 @@ The contents has to be filled manually, later."
 ;;;;;;;;;;;;;;;;;;;;;;;;;
 
 
+;;;;;;;;; (yet) Unused functions
+
+;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(defun myPreviousDayString (myDate)
+  "Substract 1 to MYDATE and 0-pads the result it if necessary.
+myDate is a 1 or 2 digits strings that represents a calendar day.
+This is used here to create the date string for the previous day."
+  ;; (myPreviousDayString "9") -> "08"
+  (my0Padding (- (string-to-number myDate) 1)))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(defun myNextDayString (myDate)
+  "Add 1 to MYDATE and 0-pads the result if necessary.
+myDate is a 1 or 2 digits strings that represents a calendar day.
+This is used here to create the date string for the next day."
+  ;; (myNextDayString "8") -> "09"
+  (my0Padding (+ (string-to-number myDate) 1)))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(defun pageLink ()
+  "To be defined."
+  ;;  (format )
+  )
+
+;;;;;;;;;;;;;;;;;;;;;;;;;
+
 (defun UpdateRSSFeed ()
   "Update the RSS feed."
 ;;;; TODO UpdateRSSFeed
@@ -345,20 +350,28 @@ The contents has to be filled manually, later."
 ;;;;    contents (first paragraph of current index ?)
   )
 
+;;;;;;;;;;;;;;;;;;;;;;;;;
+
 (defun UpdatePreviousPage ()
   "Update the previous page."
 ;;;; TODO UpdatePreviousPage
 ;;;;    "tomorrow" link
   )
 
+;;;;;;;;;;;;;;;;;;;;;;;;;
+
 (defun CreateCurrentPage ()
   "Create the page for the day."
   )
+
+;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (defun ManageDailyEntry ()
   "Create the current page, update the main index, the RSS feed, the previous page."
   (checkDayTracker)
   )
+
+;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (defun narrowToEditZone ()
   "Narrow the index page to the area to edit."
@@ -369,6 +382,8 @@ The contents has to be filled manually, later."
 ;;;; goto to end of line
 ;;;; narrow-to-region
   )
+
+;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (provide 'adventuresintechland)
 ;;; adventuresintechland.el ends here
