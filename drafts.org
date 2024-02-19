@@ -83,12 +83,191 @@ Images, with images.
     <h2>My favourite day</h2>
     <p>Weird day list</p>
     <!-- it's way too late, I should be in bed -->
-  <img src="https://www.closerweekly.com/wp-content/uploads/2015/04/bill-murray-groundhog-day.jpg">
+    <img src="https://www.closerweekly.com/wp-content/uploads/2015/04/bill-murray-groundhog-day.jpg">
   </main>
 #+end_src
 
-* [2024-02-18 Sun] Maracons
+* [2024-02-19 Mon] Maracons
 
 freeCodeCamp reboot 2/n
+
+The reboot was a good occasion to fix some templating code. I knew I had to put conditions on the day entered and make sure it conformed to what the month made possible. Like, we can't have a 30th in February, and in fact this year being a leap year we can have a 29th.
+
+It took me some time to get back to Emacs Lisp and understand the code but I came up with this:
+
+https://github.com/brandelune/brandelune.github.io/blob/1ce686edc8ab3df7a78e02a5a16b87df71391cc1/adventuresintechland.el#L227
+
+I also moved functions around, putting the unused ones at the end of the file, and putting some templating text into constants. Warning: I've not tested the code... 😅
+
+Oh. And "Macarons" because we had macarons yesterday.
+
 ** Step 9 <img alt>
 
+Images, with ~alt~ text.
+
+#+begin_src html
+  <main>
+    <h1>Groundhog day</h1>
+    <h2>My favourite day</h2>
+    <p>Weird day list</p>
+    <!-- it's way too late, I should be in bed -->
+    <img src="https://www.closerweekly.com/wp-content/uploads/2015/04/bill-murray-groundhog-day.jpg"
+         alt="Bill Murray with the captive groundhog">
+  </main>
+#+end_src
+** Step 10 <a> link
+
+Anchors to external links.
+
+#+begin_src html
+  <main>
+    <h1>Groundhog day</h1>
+    <h2>My favourite day</h2>
+    <p>Weird day list</p>
+    <!-- it's way too late, I should be in bed -->
+    <img src="https://www.closerweekly.com/wp-content/uploads/2015/04/bill-murray-groundhog-day.jpg"
+         alt="Bill Murray with the captive groundhog">
+    <a href="https://en.wikipedia.org/wiki/Groundhog_Day_(film)"></a>
+  </main>
+  #+end_src
+** Step 11 <a> link text
+
+Without the text, the link is not a link.
+
+#+begin_src html
+  <main>
+    <h1>Groundhog day</h1>
+    <h2>My favourite day</h2>
+    <p>Weird day list</p>
+    <!-- it's way too late, I should be in bed -->
+    <img src="https://www.closerweekly.com/wp-content/uploads/2015/04/bill-murray-groundhog-day.jpg"
+         alt="Bill Murray with the captive groundhog">
+    <a href="https://en.wikipedia.org/wiki/Groundhog_Day_(film)">Groundhog day movie page at Wikipedia</a>
+  </main>
+  #+end_src
+** Step 12 inline text links
+
+Any inline text can be turned into a link.
+
+#+begin_src html
+  <main>
+    <h1>Groundhog day</h1>
+    <h2>My favourite day</h2>
+    <p>Weird day list</p>
+    <!-- it's way too late, I should be in bed -->
+    <img src="https://www.closerweekly.com/wp-content/uploads/2015/04/bill-murray-groundhog-day.jpg"
+         alt="Bill Murray with the captive groundhog">
+    <p>There are plenty of <a href="https://duckduckgo.com/?q=groundhog+day+movie+pictures&t=osx&ia=images&iax=images">pictures of the Groundhog day movie</a> online.</p>
+    <a href="https://en.wikipedia.org/wiki/Groundhog_Day_(film)">Groundhog day movie page at Wikipedia</a>
+  </main>
+  #+end_src
+** Step 13 deleting the other link
+
+I can do that. But I won't.
+** [#A] Step 14 <a target>
+
+A "blank" target opens a new window.
+
+Cf. attribute reference at Mozilla.org: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a
+
+#+begin_src html
+  <main>
+    <h1>Groundhog day</h1>
+    <h2>My favourite day</h2>
+    <p>Weird day list</p>
+    <!-- it's way too late, I should be in bed -->
+    <img src="https://www.closerweekly.com/wp-content/uploads/2015/04/bill-murray-groundhog-day.jpg"
+         alt="Bill Murray with the captive groundhog">
+    <p>There are plenty of <a target="_blank"
+ href="https://duckduckgo.com/?q=groundhog+day+movie+pictures&t=osx&ia=images&iax=images">pictures of the Groundhog day movie</a> online.</p>
+    <a target="_blank" href="https://en.wikipedia.org/wiki/Groundhog_Day_(film)">Groundhog day movie page at Wikipedia</a>
+  </main>
+  #+end_src
+** Step 15 images links
+
+Anything can be turned into a link. Images too.
+
+#+begin_src html
+   <main>
+     <h1>Groundhog day</h1>
+     <h2>My favourite day</h2>
+     <p>Weird day list</p>
+     <!-- it's way too late, I should be in bed -->
+     <a alt="Groundhog day movie related videos"href="https://duckduckgo.com/?q=groundhog+day+movie+pictures&t=osx&ia=videos&iax=videos"><img src="https://www.closerweekly.com/wp-content/uploads/2015/04/bill-murray-groundhog-day.jpg"
+          alt="Bill Murray with the captive groundhog"></a>
+     <p>There are plenty of <a target="_blank"
+  href="https://duckduckgo.com/?q=groundhog+day+movie+pictures&t=osx&ia=images&iax=images">pictures of the Groundhog day movie</a> online.</p>
+     <a target="_blank" href="https://en.wikipedia.org/wiki/Groundhog_Day_(film)">Groundhog day movie page at Wikipedia</a>
+   </main>
+  #+end_src
+** Step 16 sections
+
+Sections section the contents...
+
+- Mozilla reference to ~main~: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/main
+
+  "The <main> HTML element represents the dominant content of the <body> of a document. The main content area consists of content that is directly related to or expands upon the central topic of a document, or the central functionality of an application."
+
+- Mozilla reference to ~section~: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/section
+
+  "The <section> HTML element represents a generic standalone section of a document, which doesn't have a more specific semantic element to represent it. Sections should always have a heading, with very few exceptions."
+
+#+begin_src html
+   <main>
+     <h1>Groundhog day</h1>
+     <section>
+       <h2>My favourite day</h2>
+       <p>Weird day list</p>
+       <!-- it's way too late, I should be in bed -->
+       <a alt="Groundhog day movie related videos"href="https://duckduckgo.com/?q=groundhog+day+movie+pictures&t=osx&ia=videos&iax=videos"><img src="https://www.closerweekly.com/wp-content/uploads/2015/04/bill-murray-groundhog-day.jpg"
+          alt="Bill Murray with the captive groundhog"></a>
+       <p>There are plenty of <a target="_blank"
+  href="https://duckduckgo.com/?q=groundhog+day+movie+pictures&t=osx&ia=images&iax=images">pictures of the Groundhog day movie</a> online.</p>
+       <a target="_blank" href="https://en.wikipedia.org/wiki/Groundhog_Day_(film)">Groundhog day movie page at Wikipedia</a>
+     </section>
+   </main>
+  #+end_src
+** Step 17 another section
+
+This one is empty.
+
+#+begin_src html
+   <main>
+     <h1>Groundhog day</h1>
+     <section>
+       <h2>My favourite day</h2>
+       <p>Weird day list</p>
+       <!-- it's way too late, I should be in bed -->
+       <a alt="Groundhog day movie related videos"href="https://duckduckgo.com/?q=groundhog+day+movie+pictures&t=osx&ia=videos&iax=videos"><img src="https://www.closerweekly.com/wp-content/uploads/2015/04/bill-murray-groundhog-day.jpg"
+          alt="Bill Murray with the captive groundhog"></a>
+       <p>There are plenty of <a target="_blank"
+  href="https://duckduckgo.com/?q=groundhog+day+movie+pictures&t=osx&ia=images&iax=images">pictures of the Groundhog day movie</a> online.</p>
+       <a target="_blank" href="https://en.wikipedia.org/wiki/Groundhog_Day_(film)">Groundhog day movie page at Wikipedia</a>
+     </section>
+     <section>
+     </section>
+   </main>
+  #+end_src
+** Step 18 contents for the new section
+
+Mozilla says a section should have a header.
+
+#+begin_src html
+   <main>
+     <h1>Groundhog day</h1>
+     <section>
+       <h2>My favourite day</h2>
+       <p>Weird day list</p>
+       <!-- it's way too late, I should be in bed -->
+       <a alt="Groundhog day movie related videos"href="https://duckduckgo.com/?q=groundhog+day+movie+pictures&t=osx&ia=videos&iax=videos"><img src="https://www.closerweekly.com/wp-content/uploads/2015/04/bill-murray-groundhog-day.jpg"
+          alt="Bill Murray with the captive groundhog"></a>
+       <p>There are plenty of <a target="_blank"
+  href="https://duckduckgo.com/?q=groundhog+day+movie+pictures&t=osx&ia=images&iax=images">pictures of the Groundhog day movie</a> online.</p>
+       <a target="_blank" href="https://en.wikipedia.org/wiki/Groundhog_Day_(film)">Groundhog day movie page at Wikipedia</a>
+     </section>
+     <section>
+       <h2>This movie is really good</h2>
+       
+     </section>
+   </main>
+  #+end_src
