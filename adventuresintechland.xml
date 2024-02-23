@@ -352,15 +352,15 @@
 	</item>
 	<item>
 	  <title>Groundhog day</title>
-	  <link>https://brandelune.github.io/2024/2/18/index.html</link>
-	  <guid>https://brandelune.github.io/2024/2/18/index.html</guid>
+	  <link>https://brandelune.github.io/2024/02/18/index.html</link>
+	  <guid>https://brandelune.github.io/2024/02/18/index.html</guid>
 	  <pubDate>Sun, 18 Feb 2024 06:02:34 UT</pubDate>
 	  <description>I wrote this in a new <code>draft.org</code> file that has headers for dates when I work on this. For now I <code>org-export-dispatch</code> to html the contents of the <code>org-tree-to-indirect-buffer</code> of the date I've completed and I do my thing with the <code>dailyIndex</code> function in <code>adventuresintechland.el</code>. I need to actually open the exported draft.html and copy-paste its contents in my daily file, but that's ok for now. Let's give that a try.</description>
 	</item>
 	<item>
 	  <title>Maracons</title>
-	  <link>https://brandelune.github.io/2024/2/19/index.html</link>
-	  <guid>https://brandelune.github.io/2024/2/19/index.html</guid>
+	  <link>https://brandelune.github.io/2024/02/19/index.html</link>
+	  <guid>https://brandelune.github.io/2024/02/19/index.html</guid>
 	  <pubDate>Mon, 19 Feb 2024 05:02:40 UT</pubDate>
 	  <description>The reboot was a good occasion to fix some templating code. I knew I had to put conditions on the day entered and make sure it conformed to what the month made possible. Like, we can't have a 30th in February, and in fact this year being a leap year we can have a 29th.
 	  </description>
