@@ -250,7 +250,35 @@ The contents has to be filled manually, later."
 	 oldLastDayHref
 	 newLastDayHref
 	 jc-indexPath))
+
+  ;; 2. replace the number of documented days update2
+  ;; old number is known
+  ;;
+  ;; <h2 id="update2">Logbook, 49 documented days</h2>
+  (let* ((oldTotaDaysH2 (format "<h2 id=\"update2\">Logbook, %1$s documented days</h2>"
+								(number-to-string totalDays)))
+		 (newTotalDaysH2 (format "<h2 id=\"update2\">Logbook, %1$s documented days</h2>"
+								 (number-to-string newTotalDays))))
+
+	(myReplace
+	 oldTotaDaysH2
+	 newTotalDaysH2
+	 jc-indexPath))
+
   
+  ;; 3. replace the season and episode number update3
+  ;; <h3 id="update3">Season 4, 2 episode</h3>
+
+;		  seasonNumber (match-string 2)
+;		  currentEpisode (string-to-number (match-string 4))
+;		  newSeasonEpisode (+ 1 currentEpisode))
+
+  ;; 4. add a link to the episode index update 4
+  ;; find <ul id="update4"> and add something below it (like the RSS update)
+  ;; <ul id="update4">
+  ;; <a href="./2024/02/19/index.html" hreflang="en" id="49">24/02/19</a> Macarons</li>
+
+
   ;; open modified files for verification
   (find-file jc-todayIndex)
   (find-file rootIndexFilePath)
