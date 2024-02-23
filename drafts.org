@@ -42,7 +42,7 @@ Comment, not displayed.
   <!-- it's way too late, I should be in bed -->
 #+end_src
 
-** Step 5 <main>
+** [#A] Step 5 <main>
 
 Main chunk of data, for meta analysis (SEO, etc.)
 
@@ -115,6 +115,18 @@ Images, with ~alt~ text.
          alt="Bill Murray with the captive groundhog">
   </main>
 #+end_src
+
+
+  <main>
+    <h1>Groundhog day</h1>
+    <h2>My favourite day</h2>
+    <p>Weird day list</p>
+    <!-- it's way too late, I should be in bed -->
+    <img src="https://www.closerweekly.com/wp-content/uploads/2015/04/bill-murray-groundhog-day.jpg"
+         alt="Bill Murray with the captive groundhog">
+  </main>
+
+
 ** Step 10 <a> link
 
 Anchors to external links.
@@ -164,7 +176,7 @@ Any inline text can be turned into a link.
 ** Step 13 deleting the other link
 
 I can do that. But I won't.
-** [#A] Step 14 <a target>
+** Step 14 <a target>
 
 A "blank" target opens a new window.
 
@@ -200,7 +212,7 @@ Anything can be turned into a link. Images too.
      <a target="_blank" href="https://en.wikipedia.org/wiki/Groundhog_Day_(film)">Groundhog day movie page at Wikipedia</a>
    </main>
   #+end_src
-** Step 16 sections
+** [#A] Step 16 ~<section>~
 
 Sections section the contents...
 
@@ -271,3 +283,261 @@ Mozilla says a section should have a header.
      </section>
    </main>
   #+end_src
+* [2024-02-20 Tue] Lots of elisp
+
+freeCodeCampe reboot 3/n
+
+The reboot is really happening. If only because I need a stimulating way to procrastinate and something to do to avoind being stuck all day on the horrors happening in Palestine at the moment.
+
+I managed to write some code that automatically updates a number of items in my templates.
+
+- the page of the day before now has an automatic link to today's page
+
+  https://github.com/brandelune/brandelune.github.io/blob/acba9b4160efa513c423eb10aa25aba0082b8e48/adventuresintechland.el#L220
+  
+- the main index page also automatically links to the "last day"
+- it also automatically updates the total number of days, the episode number in the season and the episode list
+  https://github.com/brandelune/brandelune.github.io/blob/acba9b4160efa513c423eb10aa25aba0082b8e48/adventuresintechland.el#L229
+
+- the "tommorow" page also has an automatic update for the "last day" link
+
+  https://github.com/brandelune/brandelune.github.io/blob/acba9b4160efa513c423eb10aa25aba0082b8e48/adventuresintechland.el#L287
+
+Besides for the fact that the code, the variable names and the whole process is a bit messy, I'm at a place where I don't have to manually do much any more. I can focus on actual practice in freeCodeCamp and other places.
+
+On the freeCodeCamp side, this time there are two things that I never used before. The ~<figure>~ tag that can have plenty of types of contents, but content should be self contained so that it can be moved to a different position in the document. The ~<figure>~ can have a caption in a ~<figcaption>~ tag. The ~<figcaption>~ can contain the ~accessible description~ of the ~<figure>~.
+
+https://developer.mozilla.org/en-US/docs/Glossary/Accessible_description
+
+The second thing is the ~<form>~ element, that's used to send information to a process somewhere else. It comes with an ~action~ attribute that does something to the data and can contain ~<input>~ elements to actually gather data. ~<input>~ elements can have various attributes, inluding ~type~, that describes the type of input, ~placeholder~ that gives a default value, ~name~ that names the input for processing in the target process, etc.
+
+https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form
+
+https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input
+
+Unlike the previous days, I'll just put small code blocks to emphasize the step content.
+
+** Step 19, ~<h3>~ heading
+
+Heading number shows hierarchy.
+
+#+begin_src html
+  <section>
+    <h2>This movie is really good</h2>
+    <h3>List of represented days</h3>
+  </section>
+  #+end_src
+** Step 20, ~<ul>~ unordered list
+
+List (empty for now) where items are not ordered.
+
+#+begin_src html
+  <section>
+    <h2>This movie is really good</h2>
+    <h3>List of represented days</h3>
+    <ul></ul>
+  </section>
+  #+end_src
+** Step 21, ~<li>~ list item
+
+The list contains list items
+
+#+begin_src html
+  <h3>List of represented days</h3>
+  <ul>
+    <li>First day</li>
+    <li>Second day</li>
+    <li>Third day</li>
+  </ul>
+  #+end_src
+** Step 22, Another image, under the list
+
+#+begin_src html
+  <h3>List of represented days</h3>
+  <ul>
+    <li>First day</li>
+    <li>Second day</li>
+    <li>Third day</li>
+  </ul>
+  <img alt="All the days of the year" src="https://helios-i.mashable.com/imagery/articles/03LkUHbeYe9Gf8qlIT9ock6/hero-image.fill.size_1248x702.v1612299679.jpg">
+  #+end_src
+** [#A] Step 23, ~<figure>~
+
+https://developer.mozilla.org/en-US/docs/Web/HTML/Element/figure
+
+"The ~<figure>~ HTML element represents self-contained content, potentially with an optional caption, which is specified using the ~<figcaption>~ element. The figure, its caption, and its contents are referenced as a single unit."
+
+#+begin_src html
+  <figure>
+    <imgg alt="All the days of the year" src="https://helios-i.mashable.com/imagery/articles/03LkUHbeYe9Gf8qlIT9ock6/hero-image.fill.size_1248x702.v1612299679.jpg">
+    <figcaption>I can't see the image, so I can't tell</figcaption>
+  </figure>
+  #+end_src
+** [#A] Step 24, ~<figcaption>~
+
+I'm not doing it again.
+
+https://developer.mozilla.org/en-US/docs/Web/HTML/Element/figcaption
+
+"The <figcaption> HTML element represents a caption or legend describing the rest of the contents of its parent <figure> element, providing the <figure> an accessible description."
+
+https://developer.mozilla.org/en-US/docs/Web/HTML/Element/figcaption
+** Step 25, ~<em>~ phasis
+
+Emphasizing blindness. It is possible to inline-stype ~<figcaption>~.
+
+
+#+begin_src html
+  <figuree>
+    <img alt="All the days of the year" src="https://helios-i.mashable.com/imagery/articles/03LkUHbeYe9Gf8qlIT9ock6/hero-image.fill.size_1248x702.v1612299679.jpg">
+    <figcaption>I <em>can't see</em> the image, so I can't tell</figcaption>
+  </figure>
+  #+end_src
+** Step 26, A ~<h3>~ under the ~<figure>~
+
+Starting another subsection.
+
+#+begin_src html
+  <sectionon>
+    <h2>This movie is really good</h2>
+    <h3>List of represented days</h3>
+    <ul>
+      <li>First day</li>
+      <li>Second day</li>
+      <li>Third day</li>
+    </ul>
+    <figure>
+      <img alt="All the days of the year" src="https://helios-i.mashable.com/imagery/articles/03LkUHbeYe9Gf8qlIT9ock6/hero-image.fill.size_1248x702.v1612299679.jpg">
+      <figcaption>I <em>can't see</em> the image, so I can't tell</figcaption>
+    </figure>
+    <h3>List of misrepresented days</h3>
+  </section>
+  #+end_src
+** Step 27, ~<ol>~ ordered lists
+
+Some days are more important than others.
+
+#+begin_src html
+  <h3>List of misrepresented days</h3>
+  <ol>
+    <li>Day A</li>
+    <li>Day A’</li>
+    <li>Day A’’</li>
+  </ol>
+  #+end_src
+** Step 28, another figure under the list
+Another figure under the list.
+
+#+begin_src html
+  <h3>List of misrepresented days</h3>
+  <ol>
+    <li>Day A</li>
+    <li>Day A’</li>
+    <li>Day A’’</li>
+  </ol>
+  <figure>
+    <img alt="Today, again?" src="https://i.insider.com/52de8d076da8113b6da3dcf7">
+    <figcaption>Dejà vu.</figcaption>
+  </figure>
+  #+end_src
+** Step 29, new ~<img>~
+
+Image added, above.
+** Step 30, new ~alt~
+
+~alt~ added, above.
+** Step 31, new ~<figcaption>~
+
+~<figcaption>~ added, above.
+
+** Step 32, ~<strong>~
+
+A strongly different way to emphasize.
+
+#+begin_src html
+  <figure>
+    <img alt="Today, again?" src="https://i.insider.com/52de8d076da8113b6da3dcf7">
+    <figcaption>Dejà <strong>vu</strong>.</figcaption>
+  </figure>
+  #+end_src
+  
+** Step 33, last ~<section>~
+
+#+begin_src html
+  <section>
+  </section>
+  #+end_src
+** Step 34, new ~<h2>~ inside the new section
+
+#+begin_src html
+  <section>
+  <h2>To know more about your potential days</h2>
+  </section>
+  #+end_src
+  
+** [#A] Step 35 ~<form>~
+
+At last, something new and exciting.
+
+#+begin_src html
+  <section>
+  <h2>To know more about your potential days</h2>
+  <form></form>
+  </section>
+  #+end_src
+** [#A] Step 36, ~action~ attribute
+
+#+begin_src html
+  <section>
+  <h2>To know more about your potential days</h2>
+  <form action="someplace.on.the.web/get.your.GD.calendar"></form>
+  </section>
+  #+end_src
+** [#A] Step 37, ~<input>~ element, to send data
+
+https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input
+
+#+begin_src html
+  <section>
+  <h2>To know more about your potential days</h2>
+  <form action="someplace.on.the.web/get.your.GD.calendar">
+    <input/>
+  </form>
+  </section>
+  #+end_src
+** [#A] Step 38, ~type~ attribute
+
+The ~input~ element can have lots of types. One is ~text~, to send text.
+
+#+begin_src html
+  <section>
+  <h2>To know more about your potential days</h2>
+  <form action="someplace.on.the.web/get.your.GD.calendar">
+    <input type="text"/>
+  </form>
+  </section>
+  #+end_src
+  
+** [#A] Step 39, name your input to access it later
+
+/In order for a form's data to be accessed by the location specified in the action attribute, you must give the text field a name attribute and assign it a value to represent the data being submitted./
+
+#+begin_src html
+  <section>
+  <h2>To know more about your potential days</h2>
+  <form action="someplace.on.the.web/get.your.GD.calendar">
+    <input type="text" name="yourEmail"/>
+  </form>
+  </section>
+  #+end_src
+** [#A] Step 40, placeholding hints
+
+#+begin_src html
+  <section>
+  <h2>To know more about your potential days</h2>
+  <form action="someplace.on.the.web/get.your.GD.calendar">
+    <input type="text" name="yourEmail" placeholder="myName@myserver.stuff"/>
+  </form>
+  </section>
+  #+end_src
+* 
