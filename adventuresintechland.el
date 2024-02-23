@@ -23,6 +23,7 @@
 (defconst jc-dayTrackerPath (concat jc-repositoryPath "dayTracker.txt"))
 (defconst jc-rssFile (concat jc-repositoryPath "adventuresintechland.xml"))
 (defconst jc-indexPath (concat jc-repositoryPath "index.html"))
+(defconst jc-tomorrowFile (concat jc-repositoryPath "tomorrow.html"))
 (defconst jc-tomorrow "<a href=\"../../../tomorrow.html\" hreflang=\"en\" rel=\"next\">tomorrow</a>")
 
 (defconst jc-ghPagesURL "https://github.com/brandelune/brandelune.github.io/commits/gh-pages")
@@ -299,6 +300,25 @@ The contents has to be filled manually, later."
 	 mainIndexTodayLiHref
 	 jc-indexPath))
 
+  ;; update the tomorrow file with the new "last day"
+
+    (let* ((oldLastDayHref (concat "<a href=\"./"
+							   (file-name-as-directory (number-to-string (cl-first jc-lastdayList)))
+							   (file-name-as-directory (my0Padding (cl-second jc-lastdayList)))
+							   (file-name-as-directory (my0Padding (cl-third jc-lastdayList)))
+							   "index.html\" hreflang=\"en\" rel=\"prev\" id=\"update1\">last day</a>"))
+		(newLastDayHref (concat "<a href=\"./"
+							   (file-name-as-directory (number-to-string (cl-first jc-todayList)))
+							   (file-name-as-directory (my0Padding (cl-second jc-todayList)))
+							   (file-name-as-directory (my0Padding (cl-third jc-todayList)))
+							   "index.html\" hreflang=\"en\" rel=\"prev\" id=\"update1\">last day</a>")))
+
+	(myReplace
+	 oldLastDayHref
+	 newLastDayHref
+	 jc-tomorrowFile))
+
+  
   ;; open modified files for verification
   (find-file jc-todayIndex)
   (find-file rootIndexFilePath)
