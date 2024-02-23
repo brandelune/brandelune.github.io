@@ -160,7 +160,7 @@ The contents has to be filled manually, later."
   (setq jc-todayList (myDate today)
 		jc-todaySubPath (concat (file-name-as-directory (number-to-string (cl-first jc-todayList)))
 							 (file-name-as-directory (my0Padding (cl-second jc-todayList)))
-							 (file-name-as-directory (my0Padding (cl-third jc-todayList))))
+							 (my0Padding (cl-third jc-todayList)))
 		jc-todayPath (concat (file-name-as-directory jc-repositoryPath)
 							 (file-name-as-directory jc-todaySubPath))
 		jc-todayRelativeIndex (concat (file-name-as-directory "../../../")
