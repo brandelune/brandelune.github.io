@@ -265,10 +265,21 @@ The contents has to be filled manually, later."
 	 newTotalDaysH2
 	 jc-indexPath))
 
-  
   ;; 3. replace the season and episode number update3
   ;; <h3 id="update3">Season 4, 2 episode</h3>
+  (let* ((oldSeasonDataH3 (format "<h3 id=\"update3\">Season %1$s, %2$s episodes</h3>"
+								  seasonNumber
+								  currentEpisode))
+		 (newSeasonDataH3 (format "<h3 id=\"update3\">Season %1$s, %2$s episodes</h3>"
+								  seasonNumber
+								  newSeasonEpisode)))
 
+	(myReplace
+	 oldSeasonDataH3
+	 newSeasonDataH3
+	 jc-indexPath))
+
+  
 ;		  seasonNumber (match-string 2)
 ;		  currentEpisode (string-to-number (match-string 4))
 ;		  newSeasonEpisode (+ 1 currentEpisode))
@@ -278,6 +289,15 @@ The contents has to be filled manually, later."
   ;; <ul id="update4">
   ;; <a href="./2024/02/19/index.html" hreflang="en" id="49">24/02/19</a> Macarons</li>
 
+  (let* ((update4Marker "<ul id=\"update4\">\n")
+		 (mainIndexTodayLiHref (format "<ul id=\"update4\">
+		  <li style=\"list-style-type:square;\"><a href=\"./%1$s/index.html\" hreflang=\"en\" id=\"%2$s\">%3$s</a> %4$s</li>
+"
+									   jc-todaySubPath
+									   newTotalDays
+									   (substring jc-todaySubPath 2)
+									   title
+									   )))
 
   ;; open modified files for verification
   (find-file jc-todayIndex)
