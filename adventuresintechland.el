@@ -219,13 +219,7 @@ The contents has to be filled manually, later."
   (save-current-buffer
     (set-buffer (find-file-noselect jc-dayTrackerPath))
     (goto-char (point-min))
-    (search-forward-regexp "\\([0-9]*\\.[0-9]*\\) \\([0-9]*\\) \\([0-9]*\\) \\([0-9]*\\)")
-    (let* ((seasonNumber (match-string 2))
-		   (jc-totalDays (+ 1 (string-to-number (match-string 3))))
-		   (jc-seasonEpisode (+ 1 (string-to-number (match-string 4))))
-		   (jc-newDayTracker (format "%s %s %s %s\n" (float-time) seasonNumber jc-totalDays jc-seasonEpisode)))
-      (goto-char (point-min))
-	  (insert jc-newDayTracker))
+	(insert (format "%s %s %s %s\n" (float-time) seasonNumber jc-totalDays jc-seasonEpisode))
 	(save-buffer)
 	(kill-buffer))
 
