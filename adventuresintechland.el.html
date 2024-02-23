@@ -33,6 +33,10 @@
         /* font-lock-keyword-face */
         color: #a020f0;
       }
+      .secondary-selection {
+        /* secondary-selection */
+        background-color: #ffff00;
+      }
       .string {
         /* font-lock-string-face */
         color: #8b2252;
@@ -86,6 +90,8 @@
 (defconst jc-dayTrackerPath (concat jc-repositoryPath <span class="string">"dayTracker.txt"</span>))
 (defconst jc-rssFile (concat jc-repositoryPath <span class="string">"adventuresintechland.xml"</span>))
 (defconst jc-indexPath (concat jc-repositoryPath <span class="string">"index.html"</span>))
+(defconst jc-tomorrowFile (concat jc-repositoryPath <span class="string">"tomorrow.html"</span>))
+(defconst jc-tomorrow <span class="string">"&lt;a href=\"../../../tomorrow.html\" hreflang=\"en\" rel=\"next\"&gt;tomorrow&lt;/a&gt;"</span>)
 
 (defconst jc-ghPagesURL <span class="string">"https://github.com/brandelune/brandelune.github.io/commits/gh-pages"</span>)
 (defconst jc-siteRoot <span class="string">"https://github.com/brandelune/brandelune.github.io/"</span>)
@@ -99,7 +105,7 @@
             &lt;a href=\"../../../index.html\" hreflang=\"en\"&gt;index&lt;/a&gt;
         &lt;a href=\"%3$s\"&gt;gh-pages&lt;/a&gt;
             &lt;a href=\"../../../adventuresintechland.html\" hreflang=\"en\"&gt;todo&lt;/a&gt;
-            &lt;a href=\"../../../tomorrow.html\" hreflang=\"en\" rel=\"next\"&gt;tomorrow&lt;/a&gt;
+            %4$s
         &lt;/p&gt;"</span>)
 
 (defconst jc-todayHeaderContents <span class="string">"&lt;html&gt;
@@ -158,114 +164,307 @@
 "</span>)
 
 <span class="comment-delimiter">;;; </span><span class="comment">variables
-</span>(<span class="keyword">defvar</span> <span class="variable-name">jc-todayHeader</span>)
-(<span class="keyword">defvar</span> <span class="variable-name">jc-myPreviousDateList</span>)
-(<span class="keyword">defvar</span> <span class="variable-name">jc-todayNavigation</span>)
+</span>(<span class="keyword">defvar</span> <span class="variable-name">jc-lastdayList</span>)
+(<span class="keyword">defvar</span> <span class="variable-name">jc-lastdayLink</span>)
+(<span class="keyword">defvar</span> <span class="variable-name">jc-lastdayDate</span>)
+
+(<span class="keyword">defvar</span> <span class="variable-name">jc-todayList</span>)
+(<span class="keyword">defvar</span> <span class="variable-name">jc-todayHeader</span>)
 (<span class="keyword">defvar</span> <span class="variable-name">jc-todayTemplate</span>)
-(<span class="keyword">defvar</span> <span class="variable-name">jc-myPreviousDateList</span>)
-(<span class="keyword">defvar</span> <span class="variable-name">jc-myTodayList</span>)
+(<span class="keyword">defvar</span> <span class="variable-name">jc-todayNavigation</span>)
 (<span class="keyword">defvar</span> <span class="variable-name">jc-todayPath</span>)
 (<span class="keyword">defvar</span> <span class="variable-name">jc-todayIndex</span>)
-(<span class="keyword">defvar</span> <span class="variable-name">jc-newTracker</span>)
-(<span class="keyword">defvar</span> <span class="variable-name">jc-dayInSeason</span>)
-(<span class="keyword">defvar</span> <span class="variable-name">jc-previousDateLink</span>)
 (<span class="keyword">defvar</span> <span class="variable-name">jc-todayDate</span>)
-(<span class="keyword">defvar</span> <span class="variable-name">jc-totalDays</span>)
-(<span class="keyword">defvar</span> <span class="variable-name">jc-myText</span>)
-(<span class="keyword">defvar</span> <span class="variable-name">jc-timeStamp</span>)
+
 (<span class="keyword">defvar</span> <span class="variable-name">jc-seasonNumber</span>)
+(<span class="keyword">defvar</span> <span class="variable-name">jc-seasonEpisode</span>)
+(<span class="keyword">defvar</span> <span class="variable-name">jc-totalDays</span>)
+
+(<span class="keyword">defvar</span> <span class="variable-name">jc-newDayTracker</span>)
 (<span class="keyword">defvar</span> <span class="variable-name">monthMaxDay</span>)
 
-(<span class="keyword">defun</span> <span class="function-name">my0Padding</span> (number)
+
+<span class="comment-delimiter">;;;;;;;;;;;;;;;;;;;;;;;;;</span><span class="comment">
+</span>(<span class="keyword">defun</span> <span class="function-name">dailyIndex</span> (today lastday title subtitle firstpar)
+  <span class="doc">"Create an html file for TODAY with LASTDAY TITLE SUBTITLE FIRSTPAR.
+The contents has to be filled manually, later."</span>
+
+  <span class="comment-delimiter">;; </span><span class="comment">Create values for the new index, based on yesterday's values in dayTracker.txt.
+</span>  (save-current-buffer
+    (set-buffer (find-file-noselect jc-dayTrackerPath))
+    (goto-char (point-min))
+    (search-forward-regexp <span class="string">"\\([0-9]*\\.[0-9]*\\) \\([0-9]*\\) \\([0-9]*\\) \\([0-9]*\\)"</span>)
+    (setq jc-lastdayDate (cl-fourth (decode-time (string-to-number (match-string 1))))
+          seasonNumber (match-string 2)
+          totalDays (string-to-number (match-string 3))
+          newTotalDays (+ 1 totalDays)
+          currentEpisode (string-to-number (match-string 4))
+          newSeasonEpisode (+ 1 currentEpisode))
+    (kill-buffer))
+
+  <span class="comment-delimiter">;; </span><span class="comment">Input data
+</span>  (interactive (list
+                (read-number <span class="string">"Date: "</span> (cl-fourth (decode-time (float-time))))
+                (read-number <span class="string">"Previous date: "</span> jc-lastdayDate)
+                (read-string <span class="string">"Title: "</span> )
+                (read-string <span class="string">"Sub-title: "</span>)
+                (read-string <span class="string">"First paragraph: "</span>)))
+
+  <span class="comment-delimiter">;; </span><span class="comment">Create data for last day
+</span>  (setq jc-lastdayList (myDate lastday)
+        jc-lastday (concat (my0Padding (cl-second jc-lastdayList)) (my0Padding (cl-third jc-lastdayList)))
+        jc-lastdayLink (concat (file-name-as-directory <span class="string">"../../../"</span>)
+                               (file-name-as-directory (number-to-string (cl-first jc-lastdayList)))
+                               (file-name-as-directory (my0Padding (cl-second jc-lastdayList)))
+                               (file-name-as-directory (my0Padding (cl-third jc-lastdayList)))
+                               <span class="string">"index.html"</span>)
+        jc-lastdayIndex (concat (file-name-as-directory jc-repositoryPath)
+                                (file-name-as-directory (number-to-string (cl-first jc-lastdayList)))
+                                (file-name-as-directory (my0Padding (cl-second jc-lastdayList)))
+                                (file-name-as-directory (my0Padding (cl-third jc-lastdayList)))
+                                <span class="string">"index.html"</span>))
+
+  <span class="comment-delimiter">;; </span><span class="comment">Create data for today
+</span>  (setq jc-todayList (myDate today)
+        jc-todaySubPath (concat (file-name-as-directory (number-to-string (cl-first jc-todayList)))
+                             (file-name-as-directory (my0Padding (cl-second jc-todayList)))
+                             (my0Padding (cl-third jc-todayList)))
+        jc-todayPath (concat (file-name-as-directory jc-repositoryPath)
+                             (file-name-as-directory jc-todaySubPath))
+        jc-todayRelativeIndex (concat (file-name-as-directory <span class="string">"../../../"</span>)
+                                      (file-name-as-directory jc-todaySubPath)
+                                      <span class="string">"index.html"</span>)
+        jc-todayIndex (concat (file-name-as-directory jc-todayPath)  <span class="string">"index.html"</span>)
+        jc-todayDate  (concat (number-to-string (cl-first jc-todayList)) <span class="string">"/"</span> (my0Padding (cl-second jc-todayList)) <span class="string">"/"</span> (my0Padding (cl-third jc-todayList)))
+        jc-todayLinkName (concat (my0Padding (cl-second jc-todayList)) (my0Padding (cl-third jc-todayList))))
+
+  <span class="comment-delimiter">;; </span><span class="comment">Create navigation
+</span>  (setq jc-todayNavigation
+        (format jc-todayNavigationContents
+                jc-lastdayLink <span class="comment-delimiter">;; </span><span class="comment">1$
+</span>                jc-lastday     <span class="comment-delimiter">;; </span><span class="comment">2$
+</span>                jc-ghPagesURL  <span class="comment-delimiter">;; </span><span class="comment">3$
+</span>                jc-tomorrow    <span class="comment-delimiter">;; </span><span class="comment">4$
+</span>                ))
+
+  <span class="comment-delimiter">;; </span><span class="comment">Create &lt;head&gt; contents
+</span>  (setq jc-todayHeader
+        (format jc-todayHeaderContents
+                title           <span class="comment-delimiter">;; </span><span class="comment">1$
+</span>                jc-baseCSSLink  <span class="comment-delimiter">;; </span><span class="comment">2$
+</span>                jc-dailyCSSLink <span class="comment-delimiter">;; </span><span class="comment">3$
+</span>                jc-faviconURL   <span class="comment-delimiter">;; </span><span class="comment">4$
+</span>                ))
+
+  <span class="comment-delimiter">;; </span><span class="comment">Create today's template
+</span>  (setq jc-todayTemplate
+        (format jc-todayTemplateContents
+                jc-todayHeader     <span class="comment-delimiter">;;  </span><span class="comment">1$
+</span>                jc-todayNavigation <span class="comment-delimiter">;;  </span><span class="comment">2$
+</span>                jc-todayDate       <span class="comment-delimiter">;;  </span><span class="comment">3$
+</span>                title              <span class="comment-delimiter">;;  </span><span class="comment">4$
+</span>                subtitle           <span class="comment-delimiter">;;  </span><span class="comment">5$
+</span>                firstpar           <span class="comment-delimiter">;;  </span><span class="comment">6$
+</span>                seasonNumber       <span class="comment-delimiter">;;  </span><span class="comment">7$
+</span>                jc-seasonEpisode   <span class="comment-delimiter">;;  </span><span class="comment">8$
+</span>                jc-rssReferences   <span class="comment-delimiter">;;  </span><span class="comment">9$
+</span>                jc-totalDays       <span class="comment-delimiter">;; </span><span class="comment">10$
+</span>                ))
+ 
+  (make-directory jc-todayPath t)
+  (myInsert jc-todayTemplate <span class="string">""</span> jc-todayIndex)
+  (myInsert <span class="string">""</span> <span class="string">""</span> jc-dailyCSSLink)
+  (myDailyRSSItem title today firstpar)
+
+  <span class="comment-delimiter">;; </span><span class="comment">TODO update the previous day page with the new "next day" value
+</span>  <span class="comment-delimiter">;; </span><span class="comment">(updateLastDayIndex)
+</span>  <span class="comment-delimiter">;; </span><span class="comment">TODO update the main index with the new "season/episode" data
+</span>  <span class="comment-delimiter">;; </span><span class="comment">(updateMainIndex)
+</span>  <span class="comment-delimiter">;; </span><span class="comment">TODO insert the daily content in the daily index
+</span>
+
+  <span class="comment-delimiter">;; </span><span class="comment">Update the dayTracker data
+</span>  (save-current-buffer
+    (set-buffer (find-file-noselect jc-dayTrackerPath))
+    (goto-char (point-min))
+    (insert (format <span class="string">"%s %s %s %s\n"</span> (float-time) seasonNumber jc-totalDays jc-seasonEpisode))
+    (save-buffer)
+    (kill-buffer))
+
+  <span class="comment-delimiter">;; </span><span class="comment">update the previous page
+</span>  (setq jc-todayDayAnchor
+        (concat <span class="string">"&lt;a href=\""</span> jc-todayRelativeIndex <span class="string">"\" hreflang=\"en\" rel=\"next\"&gt;"</span> jc-todayLinkName <span class="string">"&lt;/a&gt;"</span>))
+  
+  (myReplace
+   jc-tomorrow
+   jc-todayDayAnchor
+   jc-lastdayIndex)
+
+  <span class="comment-delimiter">;; </span><span class="comment">update the root index
+</span>  <span class="comment-delimiter">;; </span><span class="comment">rootIndexFilePath
+</span>  <span class="comment-delimiter">;; </span><span class="comment">1. replace the link to the "last day" update1
+</span>  (<span class="keyword">let*</span> ((oldLastDayHref (concat <span class="string">"&lt;a href=\"./"</span>
+                               (file-name-as-directory (number-to-string (cl-first jc-lastdayList)))
+                               (file-name-as-directory (my0Padding (cl-second jc-lastdayList)))
+                               (file-name-as-directory (my0Padding (cl-third jc-lastdayList)))
+                               <span class="string">"index.html\" hreflang=\"en\" rel=\"prev\" id=\"update1\"&gt;last day&lt;/a&gt;"</span>))
+        (newLastDayHref (concat <span class="string">"&lt;a href=\"./"</span>
+                               (file-name-as-directory (number-to-string (cl-first jc-todayList)))
+                               (file-name-as-directory (my0Padding (cl-second jc-todayList)))
+                               (file-name-as-directory (my0Padding (cl-third jc-todayList)))
+                               <span class="string">"index.html\" hreflang=\"en\" rel=\"prev\" id=\"update1\"&gt;last day&lt;/a&gt;"</span>)))
+
+    (myReplace
+     oldLastDayHref
+     newLastDayHref
+     jc-indexPath))
+
+  <span class="comment-delimiter">;; </span><span class="comment">2. replace the number of documented days update2
+</span>  <span class="comment-delimiter">;; </span><span class="comment">old number is known
+</span>  <span class="comment-delimiter">;;</span><span class="comment">
+</span>  <span class="comment-delimiter">;; </span><span class="comment">&lt;h2 id="update2"&gt;Logbook, 49 documented days&lt;/h2&gt;
+</span>  (<span class="keyword">let*</span> ((oldTotaDaysH2 (format <span class="string">"&lt;h2 id=\"update2\"&gt;Logbook, %1$s documented days&lt;/h2&gt;"</span>
+                                (number-to-string totalDays)))
+         (newTotalDaysH2 (format <span class="string">"&lt;h2 id=\"update2\"&gt;Logbook, %1$s documented days&lt;/h2&gt;"</span>
+                                 (number-to-string newTotalDays))))
+
+    (myReplace
+     oldTotaDaysH2
+     newTotalDaysH2
+     jc-indexPath))
+
+  <span class="comment-delimiter">;; </span><span class="comment">3. replace the season and episode number update3
+</span>  <span class="comment-delimiter">;; </span><span class="comment">&lt;h3 id="update3"&gt;Season 4, 2 episode&lt;/h3&gt;
+</span>  (<span class="keyword">let*</span> ((oldSeasonDataH3 (format <span class="string">"&lt;h3 id=\"update3\"&gt;Season %1$s, %2$s episodes&lt;/h3&gt;"</span>
+                                  seasonNumber
+                                  currentEpisode))
+         (newSeasonDataH3 (format <span class="string">"&lt;h3 id=\"update3\"&gt;Season %1$s, %2$s episodes&lt;/h3&gt;"</span>
+                                  seasonNumber
+                                  newSeasonEpisode)))
+
+    (myReplace
+     oldSeasonDataH3
+     newSeasonDataH3
+     jc-indexPath))
+
+  <span class="comment-delimiter">;; </span><span class="comment">4. add a link to the episode index update 4
+</span>  <span class="comment-delimiter">;; </span><span class="comment">find &lt;ul id="update4"&gt; and add something below it (like the RSS update)
+</span>  <span class="comment-delimiter">;; </span><span class="comment">&lt;ul id="update4"&gt;
+</span>  <span class="comment-delimiter">;; </span><span class="comment">&lt;a href="./2024/02/19/index.html" hreflang="en" id="49"&gt;24/02/19&lt;/a&gt; Macarons&lt;/li&gt;
+</span>
+  (<span class="keyword">let*</span> ((update4Marker <span class="string">"&lt;ul id=\"update4\"&gt;\n"</span>)
+         (mainIndexTodayLiHref (format <span class="string">"&lt;ul id=\"update4\"&gt;
+          &lt;li style=\"list-style-type:square;\"&gt;&lt;a href=\"./%1$s/index.html\" hreflang=\"en\" id=\"%2$s\"&gt;%3$s&lt;/a&gt; %4$s&lt;/li&gt;
+"</span>
+                                       jc-todaySubPath
+                                       newTotalDays
+                                       (substring jc-todaySubPath 2)
+                                       title
+                                       )))
+
+    (myReplace
+     update4Marker
+     mainIndexTodayLiHref
+     jc-indexPath))
+
+  <span class="comment-delimiter">;; </span><span class="comment">update the tomorrow file with the new "last day"
+</span>
+    (<span class="keyword">let*</span> ((oldLastDayHref (concat <span class="string">"&lt;a href=\"./"</span>
+                               (file-name-as-directory (number-to-string (cl-first jc-lastdayList)))
+                               (file-name-as-directory (my0Padding (cl-second jc-lastdayList)))
+                               (file-name-as-directory (my0Padding (cl-third jc-lastdayList)))
+                               <span class="string">"index.html\" hreflang=\"en\" rel=\"prev\" id=\"update1\"&gt;last day&lt;/a&gt;"</span>))
+        (newLastDayHref (concat <span class="string">"&lt;a href=\"./"</span>
+                               (file-name-as-directory (number-to-string (cl-first jc-todayList)))
+                               (file-name-as-directory (my0Padding (cl-second jc-todayList)))
+                               (file-name-as-directory (my0Padding (cl-third jc-todayList)))
+                               <span class="string">"index.html\" hreflang=\"en\" rel=\"prev\" id=\"update1\"&gt;last day&lt;/a&gt;"</span>)))
+
+    (myReplace
+     oldLastDayHref
+     newLastDayHref
+     jc-tomorrowFile))
+
+  
+  <span class="comment-delimiter">;; </span><span class="comment">open modified files for verification
+</span>  (find-file jc-todayIndex)
+  (find-file rootIndexFilePath)
+  (find-file jc-rssFile)
+)
+
+<span class="comment-delimiter">;;;;;;;;;;;;;;;;;;;;;;;;;</span><span class="comment">
+</span>
+(<span class="keyword">defun</span> <span class="function-name">myDailyRSSItem</span> (title date desc)
+  <span class="doc">"Insert the daily RSS feed with TITLE DATE and DESC."</span>
+<span class="comment-delimiter">;;;; </span><span class="comment">TODO add default value for link
+</span>  (interactive (list
+                (read-string <span class="string">"Title: "</span>)
+                (read-number <span class="string">"Date: "</span> (cl-fourth (decode-time (float-time) t)))
+                (read-string <span class="string">"Description: "</span>)))
+  
+  (<span class="keyword">let*</span> ((jc-myRSSTemplateContents  (format jc-myRSSTemplate
+                                            title <span class="comment-delimiter">;;  </span><span class="comment">1$
+</span>                                            (cl-fifth (myDate  date)) <span class="comment-delimiter">;;  </span><span class="comment">2$
+</span>                                            (cl-fourth (myDate date)) <span class="comment-delimiter">;;  </span><span class="comment">3$
+</span>                                            desc <span class="comment-delimiter">;;  </span><span class="comment">4$
+</span>                                            )))
+    (myInsert
+     jc-myRSSTemplateContents
+     <span class="string">"&lt;!-- place new items above this line --&gt;"</span>
+     jc-rssFile)
+    ))
+
+<span class="comment-delimiter">;;;;;;;;;;;;;;;;;;;;;;;;;</span><span class="comment">
+</span>(<span class="keyword">defun</span> <span class="function-name">updateOldPages</span> ()
+  <span class="doc">"Update the previous page and the general index."</span>
+  <span class="comment-delimiter">;; </span><span class="comment">TODO UpdatePreviousPage
+</span>  <span class="comment-delimiter">;;    </span><span class="comment">"tomorrow" link
+</span>  <span class="comment-delimiter">;; </span><span class="comment">how do I find the previous page ?
+</span>  <span class="comment-delimiter">;; </span><span class="comment">what kind of data do I have at this time ?
+</span>
+
+  <span class="comment-delimiter">;; </span><span class="comment">Update the general index
+</span>
+  (setq jc-lastDayAnchor
+        (concat <span class="string">"&lt;a href=\""</span> jc-lastdayLink <span class="string">"\" hreflang=\"en\" rel=\"prev\"&gt;last day&lt;/a&gt;"</span>)
+        jc-obsoleteAnchor
+        (concat <span class="string">"&lt;a href=\"./2024/02/19/index.html\" hreflang=\"en\" rel=\"prev\" id="</span>update5<span class="string">"&gt;last day&lt;/a&gt;"</span>)
+        (search-forward <span class="string">"update5"</span>)
+        (search-backward <span class="string">"&lt;a href"</span>)
+      
+        &lt;h2 id=<span class="string">"update2"</span>&gt;Logbook, 49 documented days&lt;/h2&gt;
+        &lt;h3 id=<span class="string">"update3"</span>&gt;Season 4, 2 episode&lt;/h3&gt;
+        &lt;ul id=<span class="string">"update4"</span>&gt;
+
+  
+))
+
+<span class="comment-delimiter">;;;;;;;;;;;;;;;;;;;;;;;;;</span><span class="comment">
+</span>(<span class="keyword">defun</span> <span class="function-name">ManageDailyEntry</span> ()
+  <span class="doc">"Create the current page, update the main index, the RSS feed, the previous page."</span>
+  )
+
+<span class="comment-delimiter">;;;;;;;;;;;;;;;;;;;;;;;;;</span><span class="comment">
+</span>(<span class="keyword">defun</span> <span class="function-name">my0Padding</span> (number)
   <span class="doc">"Add a 0 string to one digit NUMBER.
 This is used here to represent dates as in 01/01/2021"</span>
 
+  <span class="comment-delimiter">;; </span><span class="comment">string-pad "string" "length of padding" "thing to pad with" "pad from start if t"
+</span>  (string-pad (number-to-string number) 2 48 t))
+
+  <span class="comment-delimiter">;; </span><span class="comment">old code
+</span>  <span class="comment-delimiter">;; </span><span class="comment">(if (&lt; number 10)
+</span>  <span class="comment-delimiter">;;     </span><span class="comment">(format "0%s" number)
+</span>  <span class="comment-delimiter">;;   </span><span class="comment">(number-to-string number)))
+</span>
   <span class="comment-delimiter">;; </span><span class="comment">(my0Padding 3) -&gt; "03"
 </span>  <span class="comment-delimiter">;; </span><span class="comment">(my0Padding 10) -&gt; "10"
 </span>
-<span class="comment-delimiter">;;;; </span><span class="comment">TODO add option to "number-to-string" so that the padding can happen there
-</span><span class="comment-delimiter">;;;;  </span><span class="comment">// Defined in ~/Documents/Code/emacs/src/data.c
+  <span class="comment-delimiter">;; </span><span class="comment">TODO add option to "number-to-string" so that the padding can happen there
+</span>  <span class="comment-delimiter">;;  </span><span class="comment">// Defined in ~/Documents/Code/emacs/src/data.c
 </span>
-  <span class="comment-delimiter">;;   </span><span class="comment">DEFUN ("number-to-string", Fnumber_to_string, Snumber_to_string, 1, 1, 0,
-</span>  <span class="comment-delimiter">;;        </span><span class="comment">doc: /* Return the decimal representation of NUMBER as a string.
-</span>  <span class="comment-delimiter">;; </span><span class="comment">Uses a minus sign if negative.
-</span>  <span class="comment-delimiter">;; </span><span class="comment">NUMBER may be an integer or a floating point number.  */)
-</span>  <span class="comment-delimiter">;;   </span><span class="comment">(Lisp_Object number)
-</span>  <span class="comment-delimiter">;; </span><span class="comment">{
-</span>  <span class="comment-delimiter">;;   </span><span class="comment">char buffer[max (FLOAT_TO_STRING_BUFSIZE, INT_BUFSIZE_BOUND (EMACS_INT))];
-</span>  <span class="comment-delimiter">;;   </span><span class="comment">int len;
-</span>
-  <span class="comment-delimiter">;;   </span><span class="comment">CHECK_NUMBER (number);
-</span>
-  <span class="comment-delimiter">;;   </span><span class="comment">if (BIGNUMP (number))
-</span>  <span class="comment-delimiter">;;     </span><span class="comment">return bignum_to_string (number, 10);
-</span>
-  <span class="comment-delimiter">;;   </span><span class="comment">if (FLOATP (number))
-</span>  <span class="comment-delimiter">;;     </span><span class="comment">len = float_to_string (buffer, XFLOAT_DATA (number));
-</span>  <span class="comment-delimiter">;;   </span><span class="comment">else
-</span>  <span class="comment-delimiter">;;     </span><span class="comment">len = sprintf (buffer, "%"pI"d", XFIXNUM (number));
-</span>
-  <span class="comment-delimiter">;;   </span><span class="comment">return make_unibyte_string (buffer, len);
-</span>  <span class="comment-delimiter">;; </span><span class="comment">}
-</span>
-  (<span class="keyword">if</span> (&lt; number 10)
-      (format <span class="string">"0%s"</span> number)
-    (number-to-string number)))
-
 <span class="comment-delimiter">;;;;;;;;;;;;;;;;;;;;;;;;;</span><span class="comment">
-</span>
-(<span class="keyword">defun</span> <span class="function-name">myInsert</span> (myText myMarker myFile)
-  <span class="doc">"Insert MYTEXT at MYMARKER in MYFILE.
-This is used to insert the RSS part of the feed for that day
-at the end of the file, before the closing headers."</span>
-  (save-current-buffer
-    (set-buffer (find-file-noselect myFile))
-    (goto-char (point-min))
-    (<span class="keyword">if</span> (not (search-forward myMarker nil t))
-        (<span class="keyword">progn</span>
-          (kill-buffer)
-          (user-error (format <span class="string">"%s was not found"</span> myMarker)))
-      <span class="comment-delimiter">;; </span><span class="comment">user-error seems to abort the rest of the progn, hence the need to put kill-buffer above
-</span>      (<span class="keyword">progn</span>
-        (goto-char (point-min))
-        (goto-char (- (search-forward myMarker) (length myMarker)))
-        (insert myText)
-        (indent-region (point-min) (point-max))
-        (save-buffer)
-        (kill-buffer)))))
-
-<span class="comment-delimiter">;;;;;;;;;;;;;;;;;;;;;;;;;</span><span class="comment">
-</span>
-(<span class="keyword">defun</span> <span class="function-name">checkDayTracker</span> ()
-  <span class="doc">"Create values for the new index, based on yesterday's values."</span>
-  (save-current-buffer
-    (set-buffer (find-file-noselect jc-dayTrackerPath))
-    (goto-char (point-min))
-    (search-forward-regexp <span class="string">"\\([0-9]*\\.[0-9]*\\) \\([0-9]*\\) \\([0-9]*\\) \\([0-9]*\\)"</span>)
-    (<span class="keyword">let*</span>((seasonNumber (match-string 2))
-          (jc-totalDays (+ 1 (string-to-number (match-string 3))))
-          (jc-dayInSeason (+ 1 (string-to-number (match-string 4)))))
-      (kill-buffer)
-      (list seasonNumber jc-totalDays jc-dayInSeason))))
-
-(<span class="keyword">defun</span> <span class="function-name">updateDayTracker</span> ()
-  <span class="doc">"Update the dayTracker."</span>
-  (save-current-buffer
-    (set-buffer (find-file-noselect jc-dayTrackerPath))
-    (goto-char (point-min))
-    (search-forward-regexp <span class="string">"\\([0-9]*\\.[0-9]*\\) \\([0-9]*\\) \\([0-9]*\\) \\([0-9]*\\)"</span>)
-    (<span class="keyword">let*</span>((seasonNumber (match-string 2))
-          (jc-totalDays (+ 1 (string-to-number (match-string 3))))
-          (jc-dayInSeason (+ 1 (string-to-number (match-string 4))))
-          (jc-newTracker (format <span class="string">"%s %s %s %s\n"</span> (float-time) seasonNumber jc-totalDays jc-dayInSeason)))
-      (goto-char (point-min))
-      (insert jc-newTracker))
-    (save-buffer)
-    (kill-buffer)))
-
-<span class="comment-delimiter">;;;;;;;;;;;;;;;;;;;;;;;;;</span><span class="comment">
-</span>
-(<span class="keyword">defun</span> <span class="function-name">myDate</span> (day)
+</span>(<span class="keyword">defun</span> <span class="function-name">myDate</span> (day)
   <span class="doc">"Create a plausible (year month DAY) list.
 Since I only enter a date for the current entry, I must compute the
 previous day and the next days according to what's plausible. It is
@@ -280,10 +479,10 @@ expected that I enter a possible date."</span>
          (thisMonth (cl-fifth Today))
          (nextMonth (<span class="keyword">if</span> (= 12 thisMonth)
                         1
-                      (+ thisMonth 1)))
+                        (+ thisMonth 1)))
          (lastMonth (<span class="keyword">if</span> (= 1 thisMonth)
                         12
-                      (- thisMonth 1)))
+                        (- thisMonth 1)))
          (thisYear (cl-sixth Today))
          (nextYear (+ thisYear 1))
          (lastYear (- thisYear 1))
@@ -309,156 +508,58 @@ expected that I enter a possible date."</span>
     (list myYear myMonth myDay rssDate linkDate)))
 
 <span class="comment-delimiter">;;;;;;;;;;;;;;;;;;;;;;;;;</span><span class="comment">
-</span>
-(<span class="keyword">defun</span> <span class="function-name">dailyIndex</span> (today prevdate title subtitle firstpar)
-  <span class="doc">"Create an html file for TODAY with PREVDATE TITLE SUBTITLE FIRSTPAR.
-The contents has to be filled manually, later."</span>
-  (interactive (list
-                (read-number <span class="string">"Date: "</span> (cl-fourth (decode-time (float-time))))
-                (read-number <span class="string">"Previous date: "</span> (- (cl-third (myDate (cl-fourth (decode-time (float-time))))) 1))
-                (read-string <span class="string">"Title: "</span> )
-                (read-string <span class="string">"Sub-title: "</span>)
-                (read-string <span class="string">"First paragraph: "</span>)))
-
-  (setq jc-myPreviousDateList (myDate prevdate)
-        prevdate (concat (my0Padding (cl-second jc-myPreviousDateList)) (my0Padding (cl-third jc-myPreviousDateList)))
-        jc-previousDateLink (concat (file-name-as-directory <span class="string">"../../../"</span>)
-                                    (file-name-as-directory (number-to-string (cl-first jc-myPreviousDateList)))
-                                    (file-name-as-directory (my0Padding (cl-second jc-myPreviousDateList)))
-                                    (file-name-as-directory (my0Padding (cl-third jc-myPreviousDateList)))
-                                    <span class="string">"index.html"</span>))
-
-  (setq jc-myTodayList (myDate today)
-        jc-todayPath (concat (file-name-as-directory jc-repositoryPath)
-                             (file-name-as-directory (number-to-string (cl-first jc-myTodayList)))
-                             (file-name-as-directory (my0Padding (cl-second jc-myTodayList)))
-                             (file-name-as-directory (my0Padding (cl-third jc-myTodayList))))
-        jc-todayIndex (concat (file-name-as-directory jc-todayPath)  <span class="string">"index.html"</span>)
-        jc-todayDate  (concat (number-to-string (cl-first jc-myTodayList)) <span class="string">"/"</span> (my0Padding (cl-second jc-myTodayList)) <span class="string">"/"</span> (my0Padding (cl-third jc-myTodayList))))
-
-  (setq jc-todayNavigation
-        (format jc-todayNavigationContents
-                jc-previousDateLink <span class="comment-delimiter">;;  </span><span class="comment">1$
-</span>                prevdate      <span class="comment-delimiter">;;  </span><span class="comment">2$
-</span>                jc-ghPagesURL       <span class="comment-delimiter">;; </span><span class="comment">3$
-</span>                ))
-
-  (setq jc-todayHeader
-        (format jc-todayHeaderContents
-                title        <span class="comment-delimiter">;;  </span><span class="comment">1$
-</span>                jc-baseCSSLink  <span class="comment-delimiter">;;  </span><span class="comment">2$
-</span>                jc-dailyCSSLink <span class="comment-delimiter">;;  </span><span class="comment">3$
-</span>                jc-faviconURL   <span class="comment-delimiter">;;  </span><span class="comment">4$
-</span>                ))
-
-  (setq jc-todayTemplate
-        (format jc-todayTemplateContents
-                jc-todayHeader  <span class="comment-delimiter">;;  </span><span class="comment">1$
-</span>                jc-todayNavigation  <span class="comment-delimiter">;;  </span><span class="comment">2$
-</span>                jc-todayDate    <span class="comment-delimiter">;;  </span><span class="comment">3$
-</span>                title       <span class="comment-delimiter">;;  </span><span class="comment">4$
-</span>                subtitle    <span class="comment-delimiter">;;  </span><span class="comment">5$
-</span>                firstpar <span class="comment-delimiter">;; </span><span class="comment">6$
-</span>                (cl-first (checkDayTracker)) <span class="comment-delimiter">;; </span><span class="comment">7$ season
-</span>                (cl-third (checkDayTracker)) <span class="comment-delimiter">;; </span><span class="comment">8$ days in season
-</span>                jc-rssReferences <span class="comment-delimiter">;; </span><span class="comment">9$
-</span>                (cl-second (checkDayTracker)) <span class="comment-delimiter">;; </span><span class="comment">10$ total days
-</span>                ))
-
-  (make-directory jc-todayPath t)
-  (myInsert jc-todayTemplate <span class="string">""</span> jc-todayIndex)
-  (myInsert <span class="string">""</span> <span class="string">""</span> jc-dailyCSSLink)
-  (myDailyRSSItem title today firstpar)
-  (updateDayTracker)
-  (find-file jc-todayIndex))
+</span>(<span class="keyword">defun</span> <span class="function-name">myInsert</span> (myText myMarker myFile)
+  <span class="doc">"Insert MYTEXT at MYMARKER in MYFILE.
+This is used to insert the RSS part of the feed for that day
+at the end of the file, before the closing headers."</span>
+  (save-current-buffer
+    <span class="comment-delimiter">;; </span><span class="comment">Record which buffer is current; execute BODY; make that buffer current.
+</span>    (set-buffer (find-file-noselect myFile))
+    <span class="comment-delimiter">;; </span><span class="comment">Make buffer BUFFER-OR-NAME current for editing operations.
+</span>    <span class="comment-delimiter">;; </span><span class="comment">Read file FILENAME into a buffer and return the buffer.
+</span>    (goto-char (point-min))
+    <span class="comment-delimiter">;; </span><span class="comment">Set point to POSITION, a number or marker.
+</span>    <span class="comment-delimiter">;; </span><span class="comment">Return the minimum permissible value of point in the current buffer.
+</span>    (<span class="keyword">if</span> (not (search-forward myMarker nil t))
+        <span class="comment-delimiter">;; </span><span class="comment">Search forward from point for STRING.
+</span>        (<span class="keyword">progn</span>
+          (kill-buffer)
+          (user-error (format <span class="string">"%s was not found"</span> myMarker)))
+        <span class="comment-delimiter">;; </span><span class="comment">user-error seems to abort the rest of the progn, hence the need to put kill-buffer above
+</span>        (<span class="keyword">progn</span>
+          (goto-char (point-min))
+          (goto-char (- (search-forward myMarker) (length myMarker)))
+          (insert myText)
+          (indent-region (point-min) (point-max))
+          <span class="comment-delimiter">;; </span><span class="comment">not sure I want to indent if I use &lt;pre&gt; blocks in the inserted strings
+</span>          (save-buffer)
+          (kill-buffer)))))
 
 <span class="comment-delimiter">;;;;;;;;;;;;;;;;;;;;;;;;;</span><span class="comment">
-</span>
-(<span class="keyword">defun</span> <span class="function-name">myDailyRSSItem</span> (title date desc)
-  <span class="doc">"Insert the daily RSS feed with TITLE DATE and DESC."</span>
-<span class="comment-delimiter">;;;; </span><span class="comment">TODO add default value for link
-</span>  (interactive (list
-                (read-string <span class="string">"Title: "</span>)
-                (read-number <span class="string">"Date: "</span> (cl-fourth (decode-time (float-time) t)))
-                (read-string <span class="string">"Description: "</span>)))
-  
-  (setq jc-myRSSTemplateContents    (format jc-myRSSTemplate
-                            title    <span class="comment-delimiter">;;  </span><span class="comment">1$
-</span>                            (cl-fifth (myDate  date))  <span class="comment-delimiter">;;  </span><span class="comment">2$
-</span>                            (cl-fourth (myDate date))   <span class="comment-delimiter">;;  </span><span class="comment">3$
-</span>                            desc   <span class="comment-delimiter">;;  </span><span class="comment">4$
-</span>                            ))
-  (myInsert
-   jc-myRSSTemplateContents
-   <span class="string">"&lt;!-- place new items above this line --&gt;"</span>
-   jc-rssFile)
-  (find-file jc-rssFile))
+</span>(<span class="keyword">defun</span> <span class="function-name">myReplace</span> (fromString toString myFile)
+  <span class="doc">"Replace fromString with toString in MYFILE."</span>
+  (save-current-buffer
+    <span class="comment-delimiter">;; </span><span class="comment">Record which buffer is current; execute BODY; make that buffer current.
+</span>    (set-buffer (find-file-noselect myFile))
+    <span class="comment-delimiter">;; </span><span class="comment">Make buffer BUFFER-OR-NAME current for editing operations.
+</span>    <span class="comment-delimiter">;; </span><span class="comment">Read file FILENAME into a buffer and return the buffer.
+</span>    (goto-char (point-min))
+    <span class="comment-delimiter">;; </span><span class="comment">Set point to POSITION, a number or marker.
+</span>    <span class="comment-delimiter">;; </span><span class="comment">Return the minimum permissible value of point in the current buffer.
+</span>    (<span class="keyword">if</span> (not (search-forward fromString nil t))
+        <span class="comment-delimiter">;; </span><span class="comment">Search forward from point for STRING.
+</span>        (<span class="keyword">progn</span>
+          (kill-buffer)
+          (user-error (format <span class="string">"%s was not found"</span> fromString)))
+        <span class="comment-delimiter">;; </span><span class="comment">user-error seems to abort the rest of the progn, hence the need to put kill-buffer above
+</span>        (<span class="keyword">progn</span>
+          (goto-char (point-min))
+          (replace-string fromString toString)
+          (save-buffer)
+          (kill-buffer)))))
 
 <span class="comment-delimiter">;;;;;;;;;;;;;;;;;;;;;;;;;</span><span class="comment">
-</span>
-
-<span class="comment-delimiter">;;;;;;;;; </span><span class="comment">(yet) Unused functions
-</span>
-<span class="comment-delimiter">;;;;;;;;;;;;;;;;;;;;;;;;;</span><span class="comment">
-</span>
-(<span class="keyword">defun</span> <span class="function-name">myPreviousDayString</span> (myDate)
-  <span class="doc">"Substract 1 to MYDATE and 0-pads the result it if necessary.
-myDate is a 1 or 2 digits strings that represents a calendar day.
-This is used here to create the date string for the previous day."</span>
-  <span class="comment-delimiter">;; </span><span class="comment">(myPreviousDayString "9") -&gt; "08"
-</span>  (my0Padding (- (string-to-number myDate) 1)))
-
-<span class="comment-delimiter">;;;;;;;;;;;;;;;;;;;;;;;;;</span><span class="comment">
-</span>
-(<span class="keyword">defun</span> <span class="function-name">myNextDayString</span> (myDate)
-  <span class="doc">"Add 1 to MYDATE and 0-pads the result if necessary.
-myDate is a 1 or 2 digits strings that represents a calendar day.
-This is used here to create the date string for the next day."</span>
-  <span class="comment-delimiter">;; </span><span class="comment">(myNextDayString "8") -&gt; "09"
-</span>  (my0Padding (+ (string-to-number myDate) 1)))
-
-<span class="comment-delimiter">;;;;;;;;;;;;;;;;;;;;;;;;;</span><span class="comment">
-</span>
-(<span class="keyword">defun</span> <span class="function-name">pageLink</span> ()
-  <span class="doc">"To be defined."</span>
-  <span class="comment-delimiter">;;  </span><span class="comment">(format )
-</span>  )
-
-<span class="comment-delimiter">;;;;;;;;;;;;;;;;;;;;;;;;;</span><span class="comment">
-</span>
-(<span class="keyword">defun</span> <span class="function-name">UpdateRSSFeed</span> ()
-  <span class="doc">"Update the RSS feed."</span>
-<span class="comment-delimiter">;;;; </span><span class="comment">TODO UpdateRSSFeed
-</span><span class="comment-delimiter">;;;;    </span><span class="comment">title
-</span><span class="comment-delimiter">;;;;    </span><span class="comment">date
-</span><span class="comment-delimiter">;;;;    </span><span class="comment">link
-</span><span class="comment-delimiter">;;;;    </span><span class="comment">contents (first paragraph of current index ?)
-</span>  )
-
-<span class="comment-delimiter">;;;;;;;;;;;;;;;;;;;;;;;;;</span><span class="comment">
-</span>
-(<span class="keyword">defun</span> <span class="function-name">UpdatePreviousPage</span> ()
-  <span class="doc">"Update the previous page."</span>
-<span class="comment-delimiter">;;;; </span><span class="comment">TODO UpdatePreviousPage
-</span><span class="comment-delimiter">;;;;    </span><span class="comment">"tomorrow" link
-</span>  )
-
-<span class="comment-delimiter">;;;;;;;;;;;;;;;;;;;;;;;;;</span><span class="comment">
-</span>
-(<span class="keyword">defun</span> <span class="function-name">CreateCurrentPage</span> ()
-  <span class="doc">"Create the page for the day."</span>
-  )
-
-<span class="comment-delimiter">;;;;;;;;;;;;;;;;;;;;;;;;;</span><span class="comment">
-</span>
-(<span class="keyword">defun</span> <span class="function-name">ManageDailyEntry</span> ()
-  <span class="doc">"Create the current page, update the main index, the RSS feed, the previous page."</span>
-  (checkDayTracker)
-  )
-
-<span class="comment-delimiter">;;;;;;;;;;;;;;;;;;;;;;;;;</span><span class="comment">
-</span>
-(<span class="keyword">defun</span> <span class="function-name">narrowToEditZone</span> ()
+</span>(<span class="keyword">defun</span> <span class="function-name">narrowToEditZone</span> ()
   <span class="doc">"Narrow the index page to the area to edit."</span>
 <span class="comment-delimiter">;;;; </span><span class="comment">search id = episode
 </span><span class="comment-delimiter">;;;; </span><span class="comment">goto beginning of line
