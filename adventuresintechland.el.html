@@ -276,13 +276,6 @@ The contents has to be filled manually, later."</span>
   (myInsert <span class="string">""</span> <span class="string">""</span> jc-dailyCSSLink)
   (myDailyRSSItem title today firstpar)
 
-  <span class="comment-delimiter">;; </span><span class="comment">TODO update the previous day page with the new "next day" value
-</span>  <span class="comment-delimiter">;; </span><span class="comment">(updateLastDayIndex)
-</span>  <span class="comment-delimiter">;; </span><span class="comment">TODO update the main index with the new "season/episode" data
-</span>  <span class="comment-delimiter">;; </span><span class="comment">(updateMainIndex)
-</span>  <span class="comment-delimiter">;; </span><span class="comment">TODO insert the daily content in the daily index
-</span>
-
   <span class="comment-delimiter">;; </span><span class="comment">Update the dayTracker data
 </span>  (save-current-buffer
     (set-buffer (find-file-noselect jc-dayTrackerPath))
@@ -301,7 +294,6 @@ The contents has to be filled manually, later."</span>
    jc-lastdayIndex)
 
   <span class="comment-delimiter">;; </span><span class="comment">update the root index
-</span>  <span class="comment-delimiter">;; </span><span class="comment">rootIndexFilePath
 </span>  <span class="comment-delimiter">;; </span><span class="comment">1. replace the link to the "last day" update1
 </span>  (<span class="keyword">let*</span> ((oldLastDayHref (concat <span class="string">"&lt;a href=\"./"</span>
                                (file-name-as-directory (number-to-string (cl-first jc-lastdayList)))
@@ -320,9 +312,6 @@ The contents has to be filled manually, later."</span>
      jc-indexPath))
 
   <span class="comment-delimiter">;; </span><span class="comment">2. replace the number of documented days update2
-</span>  <span class="comment-delimiter">;; </span><span class="comment">old number is known
-</span>  <span class="comment-delimiter">;;</span><span class="comment">
-</span>  <span class="comment-delimiter">;; </span><span class="comment">&lt;h2 id="update2"&gt;Logbook, 49 documented days&lt;/h2&gt;
 </span>  (<span class="keyword">let*</span> ((oldTotaDaysH2 (format <span class="string">"&lt;h2 id=\"update2\"&gt;Logbook, %1$s documented days&lt;/h2&gt;"</span>
                                 (number-to-string totalDays)))
          (newTotalDaysH2 (format <span class="string">"&lt;h2 id=\"update2\"&gt;Logbook, %1$s documented days&lt;/h2&gt;"</span>
@@ -334,7 +323,6 @@ The contents has to be filled manually, later."</span>
      jc-indexPath))
 
   <span class="comment-delimiter">;; </span><span class="comment">3. replace the season and episode number update3
-</span>  <span class="comment-delimiter">;; </span><span class="comment">&lt;h3 id="update3"&gt;Season 4, 2 episode&lt;/h3&gt;
 </span>  (<span class="keyword">let*</span> ((oldSeasonDataH3 (format <span class="string">"&lt;h3 id=\"update3\"&gt;Season %1$s, %2$s episodes&lt;/h3&gt;"</span>
                                   seasonNumber
                                   currentEpisode))
@@ -348,11 +336,7 @@ The contents has to be filled manually, later."</span>
      jc-indexPath))
 
   <span class="comment-delimiter">;; </span><span class="comment">4. add a link to the episode index update 4
-</span>  <span class="comment-delimiter">;; </span><span class="comment">find &lt;ul id="update4"&gt; and add something below it (like the RSS update)
-</span>  <span class="comment-delimiter">;; </span><span class="comment">&lt;ul id="update4"&gt;
-</span>  <span class="comment-delimiter">;; </span><span class="comment">&lt;a href="./2024/02/19/index.html" hreflang="en" id="49"&gt;24/02/19&lt;/a&gt; Macarons&lt;/li&gt;
-</span>
-  (<span class="keyword">let*</span> ((update4Marker <span class="string">"&lt;ul id=\"update4\"&gt;\n"</span>)
+</span>  (<span class="keyword">let*</span> ((update4Marker <span class="string">"&lt;ul id=\"update4\"&gt;\n"</span>)
          (mainIndexTodayLiHref (format <span class="string">"&lt;ul id=\"update4\"&gt;
           &lt;li style=\"list-style-type:square;\"&gt;&lt;a href=\"./%1$s/index.html\" hreflang=\"en\" id=\"%2$s\"&gt;%3$s&lt;/a&gt; %4$s&lt;/li&gt;
 "</span>
@@ -368,8 +352,7 @@ The contents has to be filled manually, later."</span>
      jc-indexPath))
 
   <span class="comment-delimiter">;; </span><span class="comment">update the tomorrow file with the new "last day"
-</span>
-    (<span class="keyword">let*</span> ((oldLastDayHref (concat <span class="string">"&lt;a href=\"./"</span>
+</span>    (<span class="keyword">let*</span> ((oldLastDayHref (concat <span class="string">"&lt;a href=\"./"</span>
                                (file-name-as-directory (number-to-string (cl-first jc-lastdayList)))
                                (file-name-as-directory (my0Padding (cl-second jc-lastdayList)))
                                (file-name-as-directory (my0Padding (cl-third jc-lastdayList)))
@@ -393,8 +376,7 @@ The contents has to be filled manually, later."</span>
 )
 
 <span class="comment-delimiter">;;;;;;;;;;;;;;;;;;;;;;;;;</span><span class="comment">
-</span>
-(<span class="keyword">defun</span> <span class="function-name">myDailyRSSItem</span> (title date desc)
+</span>(<span class="keyword">defun</span> <span class="function-name">myDailyRSSItem</span> (title date desc)
   <span class="doc">"Insert the daily RSS feed with TITLE DATE and DESC."</span>
 <span class="comment-delimiter">;;;; </span><span class="comment">TODO add default value for link
 </span>  (interactive (list
@@ -413,31 +395,6 @@ The contents has to be filled manually, later."</span>
      <span class="string">"&lt;!-- place new items above this line --&gt;"</span>
      jc-rssFile)
     ))
-
-<span class="comment-delimiter">;;;;;;;;;;;;;;;;;;;;;;;;;</span><span class="comment">
-</span>(<span class="keyword">defun</span> <span class="function-name">updateOldPages</span> ()
-  <span class="doc">"Update the previous page and the general index."</span>
-  <span class="comment-delimiter">;; </span><span class="comment">TODO UpdatePreviousPage
-</span>  <span class="comment-delimiter">;;    </span><span class="comment">"tomorrow" link
-</span>  <span class="comment-delimiter">;; </span><span class="comment">how do I find the previous page ?
-</span>  <span class="comment-delimiter">;; </span><span class="comment">what kind of data do I have at this time ?
-</span>
-
-  <span class="comment-delimiter">;; </span><span class="comment">Update the general index
-</span>
-  (setq jc-lastDayAnchor
-        (concat <span class="string">"&lt;a href=\""</span> jc-lastdayLink <span class="string">"\" hreflang=\"en\" rel=\"prev\"&gt;last day&lt;/a&gt;"</span>)
-        jc-obsoleteAnchor
-        (concat <span class="string">"&lt;a href=\"./2024/02/19/index.html\" hreflang=\"en\" rel=\"prev\" id="</span>update5<span class="string">"&gt;last day&lt;/a&gt;"</span>)
-        (search-forward <span class="string">"update5"</span>)
-        (search-backward <span class="string">"&lt;a href"</span>)
-      
-        &lt;h2 id=<span class="string">"update2"</span>&gt;Logbook, 49 documented days&lt;/h2&gt;
-        &lt;h3 id=<span class="string">"update3"</span>&gt;Season 4, 2 episode&lt;/h3&gt;
-        &lt;ul id=<span class="string">"update4"</span>&gt;
-
-  
-))
 
 <span class="comment-delimiter">;;;;;;;;;;;;;;;;;;;;;;;;;</span><span class="comment">
 </span>(<span class="keyword">defun</span> <span class="function-name">ManageDailyEntry</span> ()
