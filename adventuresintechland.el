@@ -302,10 +302,8 @@ The contents has to be filled manually, later."
 	 jc-tomorrowFile))
 
   
-  ;; open modified files for verification
+  ;; open index file for completion
   (find-file jc-todayIndex)
-  (find-file rootIndexFilePath)
-  (find-file jc-rssFile)
 )
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;
