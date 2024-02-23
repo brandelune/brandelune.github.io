@@ -394,7 +394,7 @@ expected that I enter a possible date."
 		 (rssDate (concat (format-time-string "%a, " (current-time) t)
 						  (number-to-string myDay)
 						  (format-time-string " %b %Y %H:%m:%S UT" (current-time) t)))
-		 (linkDate (format "%1$s/%2$s/%3$s" myYear myMonth myDay)))
+		 (linkDate (format "%1$s/%2$s/%3$s" myYear (my0Padding myMonth) (my0Padding myDay))))
     (list myYear myMonth myDay rssDate linkDate)))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;
