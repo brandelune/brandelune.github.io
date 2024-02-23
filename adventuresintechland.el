@@ -128,8 +128,10 @@ The contents has to be filled manually, later."
     (search-forward-regexp "\\([0-9]*\\.[0-9]*\\) \\([0-9]*\\) \\([0-9]*\\) \\([0-9]*\\)")
     (setq jc-lastdayDate (cl-fourth (decode-time (string-to-number (match-string 1))))
 		  seasonNumber (match-string 2)
-		  jc-totalDays (+ 1 (string-to-number (match-string 3)))
-		  jc-seasonEpisode (+ 1 (string-to-number (match-string 4))))
+		  totalDays (string-to-number (match-string 3))
+		  newTotalDays (+ 1 totalDays)
+		  currentEpisode (string-to-number (match-string 4))
+		  newSeasonEpisode (+ 1 currentEpisode))
 	(kill-buffer))
 
   ;; Input data
