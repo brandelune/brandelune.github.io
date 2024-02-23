@@ -23,6 +23,7 @@
 (defconst jc-dayTrackerPath (concat jc-repositoryPath "dayTracker.txt"))
 (defconst jc-rssFile (concat jc-repositoryPath "adventuresintechland.xml"))
 (defconst jc-indexPath (concat jc-repositoryPath "index.html"))
+(defconst jc-tomorrow "<a href=\"../../../tomorrow.html\" hreflang=\"en\" rel=\"next\">tomorrow</a>")
 
 (defconst jc-ghPagesURL "https://github.com/brandelune/brandelune.github.io/commits/gh-pages")
 (defconst jc-siteRoot "https://github.com/brandelune/brandelune.github.io/")
@@ -36,7 +37,7 @@
             <a href=\"../../../index.html\" hreflang=\"en\">index</a>
 	    <a href=\"%3$s\">gh-pages</a>
             <a href=\"../../../adventuresintechland.html\" hreflang=\"en\">todo</a>
-            <a href=\"../../../tomorrow.html\" hreflang=\"en\" rel=\"next\">tomorrow</a>
+            %4$s
         </p>")
 
 (defconst jc-todayHeaderContents "<html>
@@ -141,27 +142,37 @@ The contents has to be filled manually, later."
 
   ;; Create data for last day
   (setq jc-lastdayList (myDate lastday)
-		lastday (concat (my0Padding (cl-second jc-lastdayList)) (my0Padding (cl-third jc-lastdayList)))
+		jc-lastday (concat (my0Padding (cl-second jc-lastdayList)) (my0Padding (cl-third jc-lastdayList)))
 		jc-lastdayLink (concat (file-name-as-directory "../../../")
-									(file-name-as-directory (number-to-string (cl-first jc-lastdayList)))
-									(file-name-as-directory (my0Padding (cl-second jc-lastdayList)))
-									(file-name-as-directory (my0Padding (cl-third jc-lastdayList)))
-									"index.html"))
+							   (file-name-as-directory (number-to-string (cl-first jc-lastdayList)))
+							   (file-name-as-directory (my0Padding (cl-second jc-lastdayList)))
+							   (file-name-as-directory (my0Padding (cl-third jc-lastdayList)))
+							   "index.html")
+		jc-lastdayIndex (concat (file-name-as-directory jc-repositoryPath)
+								(file-name-as-directory (number-to-string (cl-first jc-lastdayList)))
+								(file-name-as-directory (my0Padding (cl-second jc-lastdayList)))
+								(file-name-as-directory (my0Padding (cl-third jc-lastdayList)))
+								"index.html"))
 
   ;; Create data for today
   (setq jc-todayList (myDate today)
-		jc-todayPath (concat (file-name-as-directory jc-repositoryPath)
-							 (file-name-as-directory (number-to-string (cl-first jc-todayList)))
+		jc-todaySubPath (concat (file-name-as-directory (number-to-string (cl-first jc-todayList)))
 							 (file-name-as-directory (my0Padding (cl-second jc-todayList)))
 							 (file-name-as-directory (my0Padding (cl-third jc-todayList))))
+		jc-todayPath (concat (file-name-as-directory jc-repositoryPath)
+							 (file-name-as-directory jc-todaySubPath))
+		jc-todayRelativeIndex (concat (file-name-as-directory "../../../")
+									  (file-name-as-directory jc-todaySubPath)
+									  "index.html")
 		jc-todayIndex (concat (file-name-as-directory jc-todayPath)  "index.html")
-		jc-todayDate  (concat (number-to-string (cl-first jc-todayList)) "/" (my0Padding (cl-second jc-todayList)) "/" (my0Padding (cl-third jc-todayList))))
+		jc-todayDate  (concat (number-to-string (cl-first jc-todayList)) "/" (my0Padding (cl-second jc-todayList)) "/" (my0Padding (cl-third jc-todayList)))
+		jc-todayLinkName (concat (my0Padding (cl-second jc-todayList)) (my0Padding (cl-third jc-todayList))))
 
   ;; Create navigation
   (setq jc-todayNavigation
 		(format jc-todayNavigationContents
 				jc-lastdayLink ;; 1$
-                lastday        ;; 2$
+                jc-lastday     ;; 2$
 				jc-ghPagesURL  ;; 3$
 				jc-tomorrow    ;; 4$
 				))
@@ -218,14 +229,20 @@ The contents has to be filled manually, later."
 	(kill-buffer))
 
   ;; update the previous page
-  (setq jc-lastDayAnchor
-		(concat "<a href=\"" jc-lastdayLink "\" hreflang=\"en\" rel=\"next\">" lastday "</a>"))  
+  (setq jc-todayDayAnchor
+		(concat "<a href=\"" jc-todayRelativeIndex "\" hreflang=\"en\" rel=\"next\">" jc-todayLinkName "</a>"))
+  
   (myReplace
    jc-tomorrow
-   jc-lastDayAnchor
-   jc-lastdayLink)
-  )
+   jc-todayDayAnchor
+   jc-lastdayIndex)
 
+  ;; update the root index
+  ;; rootIndexFilePath
+  
+  (find-file jc-todayIndex)
+  (find-file rootIndexFilePath)
+)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;
 
