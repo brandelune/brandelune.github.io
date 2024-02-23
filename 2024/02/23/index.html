@@ -1,0 +1,389 @@
+<html>
+  <head lang="en-us">
+    <title>Lots of elisp again</title>
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta name="msapplication-TileColor" content="#FFFFFF" />
+	<meta name="msapplication-TileImage" content="https://brandelune.github.io/favicon/favicon-144.png" />
+	<meta name="msapplication-config" content="https://brandelune.github.io/favicon/browserconfig.xml" />
+
+	<link rel="shortcut icon" href="https://brandelune.github.io/favicon/favicon.ico" />
+	<link rel="icon" sizes="16x16 32x32 64x64" href="https://brandelune.github.io/favicon/favicon.ico" />
+	<link rel="icon" type="image/png" sizes="196x196" href="https://brandelune.github.io/favicon/favicon-192.png" />
+	<link rel="icon" type="image/png" sizes="160x160" href="https://brandelune.github.io/favicon/favicon-160.png" />
+	<link rel="icon" type="image/png" sizes="96x96" href="https://brandelune.github.io/favicon/favicon-96.png" />
+	<link rel="icon" type="image/png" sizes="64x64" href="https://brandelune.github.io/favicon/favicon-64.png" />
+	<link rel="icon" type="image/png" sizes="32x32" href="https://brandelune.github.io/favicon/favicon-32.png" />
+	<link rel="icon" type="image/png" sizes="16x16" href="https://brandelune.github.io/favicon/favicon-16.png" />
+	<link rel="apple-touch-icon" href="https://brandelune.github.io/favicon/favicon-57.png" />
+	<link rel="apple-touch-icon" sizes="114x114" href="https://brandelune.github.io/favicon/favicon-114.png" />
+	<link rel="apple-touch-icon" sizes="72x72" href="https://brandelune.github.io/favicon/favicon-72.png" />
+	<link rel="apple-touch-icon" sizes="144x144" href="https://brandelune.github.io/favicon/favicon-144.png" />
+	<link rel="apple-touch-icon" sizes="60x60" href="https://brandelune.github.io/favicon/favicon-60.png" />
+	<link rel="apple-touch-icon" sizes="120x120" href="https://brandelune.github.io/favicon/favicon-120.png" />
+	<link rel="apple-touch-icon" sizes="76x76" href="https://brandelune.github.io/favicon/favicon-76.png" />
+	<link rel="apple-touch-icon" sizes="152x152" href="https://brandelune.github.io/favicon/favicon-152.png" />
+	<link rel="apple-touch-icon" sizes="180x180" href="https://brandelune.github.io/favicon/favicon-180.png" />
+
+    <link rel="stylesheet" type="text/css" href="../../adventuresintechland.css" class="baseCSS"/>
+    <link rel="stylesheet" type="text/css" href="./adventuresintechland.css" class="dailyCSS"/>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <p class="navigation">
+      <a href="../../../2024/02/19/index.html" hreflang="en" rel="prev">0219</a>
+      <a href="../../../index.html" hreflang="en">index</a>
+	  <a href="https://github.com/brandelune/brandelune.github.io/commits/gh-pages">gh-pages</a>
+      <a href="../../../adventuresintechland.html" hreflang="en">todo</a>
+      <a href="../../../tomorrow.html" hreflang="en" rel="next">tomorrow</a>
+    </p>
+
+    <p id="episode"><em>Adventures in Tech Land. Season 4. Episode 3</em></p>
+    <h1>Lots of elisp again <a href="https://brandelune.github.io/adventuresintechland.xml"><img src="https://www.mozilla.org/media/img/trademarks/feed-icon-28x28.e077f1f611f0.png" width="15px" height="15px" alt="rss feed" /></a></h1>
+    <p id="title item">2024/02/23, 50th day</p>
+    <h2>freeCodeCampe reboot 3/n</h2>
+    <p id="first sub-title item">The reboot is really happening. If only because I need a stimulating way to procrastinate and something to do to avoid being stuck all day on the horrors happening in Palestine at the moment.</p>
+
+<p>
+I managed to write some code that automatically updates a number of items in my templates.
+</p>
+
+<ul>
+<li><p>
+the page of the day before now has an automatic link to today's page
+</p>
+
+<p>
+<a href="https://github.com/brandelune/brandelune.github.io/blob/acba9b4160efa513c423eb10aa25aba0082b8e48/adventuresintechland.el#L220">;; update the previous page</a>
+</p></li>
+
+<li><p>the main index page also automatically links to the "last day"</p></li>
+
+<li><p>it also automatically updates the total number of days, the episode number in the season and the episode list</p>
+  
+<p><a href="https://github.com/brandelune/brandelune.github.io/blob/acba9b4160efa513c423eb10aa25aba0082b8e48/adventuresintechland.el#L229">;; update the root index</a></p></li>
+
+<li><p>
+the "tommorrow" page also has an automatic update for the "last day" link
+</p>
+
+<p>
+<a href="https://github.com/brandelune/brandelune.github.io/blob/acba9b4160efa513c423eb10aa25aba0082b8e48/adventuresintechland.el#L287">;; update the tomorrow file with the new "last day"</a>
+</p></li>
+</ul>
+
+<p>
+Besides for the fact that the code, the variable names and the whole process is a bit messy, I'm at a place where I don't have to manually do much any more. I can focus on actual practice in freeCodeCamp and other places.
+</p>
+
+<p>
+On the freeCodeCamp side, this time there are two things that I never used before. The <code>&lt;figure&gt;</code> tag that can have plenty of types of contents, but content should be self-contained so that it can be moved to a different position in the document. The <code>&lt;figure&gt;</code> can have a caption in a <code>&lt;figcaption&gt;</code> tag. The <code>&lt;figcaption&gt;</code> can contain the <code>accessible description</code> of the <code>&lt;figure&gt;</code>.
+</p>
+
+<p>
+<a href="https://developer.mozilla.org/en-US/docs/Glossary/Accessible_description">https://developer.mozilla.org/en-US/docs/Glossary/Accessible_description</a>
+</p>
+
+<p>
+The second thing is the <code>&lt;form&gt;</code> element, that's used to send information to a process somewhere else. It comes with an <code>action</code> attribute that does something to the data and can contain <code>&lt;input&gt;</code> elements to actually gather data. <code>&lt;input&gt;</code> elements can have various attributes, including <code>type</code>, that describes the type of input, <code>placeholder</code> that gives a default value, <code>name</code> that names the input for processing in the target process, etc.
+</p>
+
+<p>
+<a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form">https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form</a>
+</p>
+
+<p>
+<a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input">https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input</a>
+</p>
+
+<p>
+Unlike the previous days, I'll just put small code blocks to emphasize the step content. I also added the real HTML so that it shows how it renders on the page.
+</p>
+
+<h3>Step 19, <code>&lt;h3&gt;</code> heading</h3>
+<p>
+Heading number shows hierarchy.
+</p>
+
+<pre>&lt;<span style="color: #0000ff;">section</span>&gt;
+  &lt;<span style="color: #0000ff;">h2</span>&gt;<span style="font-weight: bold; font-style: italic; text-decoration: underline;">This movie is really good</span>&lt;/<span style="color: #0000ff;">h2</span>&gt;
+  &lt;<span style="color: #0000ff;">h3</span>&gt;<span style="font-style: italic; text-decoration: underline;">List of represented days</span>&lt;/<span style="color: #0000ff;">h3</span>&gt;
+&lt;/<span style="color: #0000ff;">section</span>&gt;
+</pre>
+
+---
+<section>
+  <h2>This movie is really good</h2>
+  <h3>List of represented days</h3>
+</section>
+---
+
+<h3>Step 20, <code>&lt;ul&gt;</code> unordered list</h3>
+<p>
+List (empty for now) where items are not ordered.
+</p>
+
+<pre>&lt;<span style="color: #0000ff;">section</span>&gt;
+  &lt;<span style="color: #0000ff;">h2</span>&gt;<span style="font-weight: bold; font-style: italic; text-decoration: underline;">This movie is really good</span>&lt;/<span style="color: #0000ff;">h2</span>&gt;
+  &lt;<span style="color: #0000ff;">h3</span>&gt;<span style="font-style: italic; text-decoration: underline;">List of represented days</span>&lt;/<span style="color: #0000ff;">h3</span>&gt;
+  &lt;<span style="color: #0000ff;">ul</span>&gt;&lt;/<span style="color: #0000ff;">ul</span>&gt;
+&lt;/<span style="color: #0000ff;">section</span>&gt;
+</pre>
+<h3>Step 21, <code>&lt;li&gt;</code> list item</h3>
+<p>
+The list contains list items
+</p>
+
+<pre>&lt;<span style="color: #0000ff;">h3</span>&gt;<span style="font-style: italic; text-decoration: underline;">List of represented days</span>&lt;/<span style="color: #0000ff;">h3</span>&gt;
+&lt;<span style="color: #0000ff;">ul</span>&gt;
+  &lt;<span style="color: #0000ff;">li</span>&gt;First day&lt;/<span style="color: #0000ff;">li</span>&gt;
+  &lt;<span style="color: #0000ff;">li</span>&gt;Second day&lt;/<span style="color: #0000ff;">li</span>&gt;
+  &lt;<span style="color: #0000ff;">li</span>&gt;Third day&lt;/<span style="color: #0000ff;">li</span>&gt;
+&lt;/<span style="color: #0000ff;">ul</span>&gt;
+</pre>
+
+---
+<h3>List of represented days</h3>
+<ul>
+  <li>First day</li>
+  <li>Second day</li>
+  <li>Third day</li>
+</ul>
+---
+
+<h3>Step 22, Another image, under the list</h3>
+<pre>&lt;<span style="color: #0000ff;">h3</span>&gt;<span style="font-style: italic; text-decoration: underline;">List of represented days</span>&lt;/<span style="color: #0000ff;">h3</span>&gt;
+&lt;<span style="color: #0000ff;">ul</span>&gt;
+  &lt;<span style="color: #0000ff;">li</span>&gt;First day&lt;/<span style="color: #0000ff;">li</span>&gt;
+  &lt;<span style="color: #0000ff;">li</span>&gt;Second day&lt;/<span style="color: #0000ff;">li</span>&gt;
+  &lt;<span style="color: #0000ff;">li</span>&gt;Third day&lt;/<span style="color: #0000ff;">li</span>&gt;
+&lt;/<span style="color: #0000ff;">ul</span>&gt;
+&lt;<span style="color: #0000ff;">img</span> <span style="color: #a0522d;">alt</span>=<span style="color: #8b2252;">"All the days of the year"</span> <span style="color: #a0522d;">src</span>=<span style="color: #8b2252;">"https://helios-i.mashable.com/imagery/articles/03LkUHbeYe9Gf8qlIT9ock6/hero-image.fill.size_1248x702.v1612299679.jpg"</span>&gt;
+</pre>
+<h3>Step 23, <code>&lt;figure&gt;</code></h3>
+<p>
+<a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/figure">https://developer.mozilla.org/en-US/docs/Web/HTML/Element/figure</a>
+</p>
+
+<p>
+"The <code>&lt;figure&gt;</code> HTML element represents self-contained content, potentially with an optional caption, which is specified using the <code>&lt;figcaption&gt;</code> element. The figure, its caption, and its contents are referenced as a single unit."
+</p>
+
+<pre>&lt;<span style="color: #0000ff;">figure</span>&gt;
+  &lt;<span style="color: #0000ff;">imgg</span> <span style="color: #a0522d;">alt</span>=<span style="color: #8b2252;">"All the days of the year"</span> <span style="color: #a0522d;">src</span>=<span style="color: #8b2252;">"https://helios-i.mashable.com/imagery/articles/03LkUHbeYe9Gf8qlIT9ock6/hero-image.fill.size_1248x702.v1612299679.jpg"</span>&gt;
+  &lt;<span style="color: #0000ff;">figcaption</span>&gt;I can't see the image, so I can't tell&lt;/<span style="color: #0000ff;">figcaption</span>&gt;
+&lt;/<span style="color: #0000ff;">figure</span>&gt;
+</pre>
+
+---
+<figure>
+  <img alt="All the days of the year" src="https://helios-i.mashable.com/imagery/articles/03LkUHbeYe9Gf8qlIT9ock6/hero-image.fill.size_1248x702.v1612299679.jpg">
+  <figcaption>I can't see the image, so I can't tell</figcaption>
+</figure>
+---
+
+<h3>Step 24, <code>&lt;figcaption&gt;</code></h3>
+<p>
+I'm not doing it again.
+</p>
+
+<p>
+<a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/figcaption">https://developer.mozilla.org/en-US/docs/Web/HTML/Element/figcaption</a>
+</p>
+
+<p>
+"The &lt;figcaption&gt; HTML element represents a caption or legend describing the rest of the contents of its parent &lt;figure&gt; element, providing the &lt;figure&gt; an accessible description."
+</p>
+
+<p>
+<a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/figcaption">https://developer.mozilla.org/en-US/docs/Web/HTML/Element/figcaption</a>
+</p>
+<h3>Step 25, <code>&lt;em&gt;</code> phasis</h3>
+<p>
+Emphasizing blindness. It is possible to inline-stype <code>&lt;figcaption&gt;</code>.
+</p>
+
+
+<pre>&lt;<span style="color: #0000ff;">figuree</span>&gt;
+  &lt;<span style="color: #0000ff;">img</span> <span style="color: #a0522d;">alt</span>=<span style="color: #8b2252;">"All the days of the year"</span> <span style="color: #a0522d;">src</span>=<span style="color: #8b2252;">"https://helios-i.mashable.com/imagery/articles/03LkUHbeYe9Gf8qlIT9ock6/hero-image.fill.size_1248x702.v1612299679.jpg"</span>&gt;
+  &lt;<span style="color: #0000ff;">figcaption</span>&gt;I &lt;<span style="color: #0000ff;">em</span>&gt;<span style="font-style: italic;">can't see</span>&lt;/<span style="color: #0000ff;">em</span>&gt; the image, so I can't tell&lt;/<span style="color: #0000ff;">figcaption</span>&gt;
+&lt;/<span style="color: #0000ff;">figure</span>&gt;
+</pre>
+<h3>Step 26, A <code>&lt;h3&gt;</code> under the <code>&lt;figure&gt;</code></h3>
+<p>
+Starting another subsection.
+</p>
+
+<pre>&lt;<span style="color: #0000ff;">sectionon</span>&gt;
+  &lt;<span style="color: #0000ff;">h2</span>&gt;<span style="font-weight: bold; font-style: italic; text-decoration: underline;">This movie is really good</span>&lt;/<span style="color: #0000ff;">h2</span>&gt;
+  &lt;<span style="color: #0000ff;">h3</span>&gt;<span style="font-style: italic; text-decoration: underline;">List of represented days</span>&lt;/<span style="color: #0000ff;">h3</span>&gt;
+  &lt;<span style="color: #0000ff;">ul</span>&gt;
+    &lt;<span style="color: #0000ff;">li</span>&gt;First day&lt;/<span style="color: #0000ff;">li</span>&gt;
+    &lt;<span style="color: #0000ff;">li</span>&gt;Second day&lt;/<span style="color: #0000ff;">li</span>&gt;
+    &lt;<span style="color: #0000ff;">li</span>&gt;Third day&lt;/<span style="color: #0000ff;">li</span>&gt;
+  &lt;/<span style="color: #0000ff;">ul</span>&gt;
+  &lt;<span style="color: #0000ff;">figure</span>&gt;
+    &lt;<span style="color: #0000ff;">img</span> <span style="color: #a0522d;">alt</span>=<span style="color: #8b2252;">"All the days of the year"</span> <span style="color: #a0522d;">src</span>=<span style="color: #8b2252;">"https://helios-i.mashable.com/imagery/articles/03LkUHbeYe9Gf8qlIT9ock6/hero-image.fill.size_1248x702.v1612299679.jpg"</span>&gt;
+    &lt;<span style="color: #0000ff;">figcaption</span>&gt;I &lt;<span style="color: #0000ff;">em</span>&gt;<span style="font-style: italic;">can't see</span>&lt;/<span style="color: #0000ff;">em</span>&gt; the image, so I can't tell&lt;/<span style="color: #0000ff;">figcaption</span>&gt;
+  &lt;/<span style="color: #0000ff;">figure</span>&gt;
+  &lt;<span style="color: #0000ff;">h3</span>&gt;<span style="font-style: italic; text-decoration: underline;">List of misrepresented days</span>&lt;/<span style="color: #0000ff;">h3</span>&gt;
+&lt;/<span style="color: #0000ff;">section</span>&gt;
+</pre>
+<h3>Step 27, <code>&lt;ol&gt;</code> ordered lists</h3>
+<p>
+Some days are more important than others.
+</p>
+
+<pre>&lt;<span style="color: #0000ff;">h3</span>&gt;<span style="font-style: italic; text-decoration: underline;">List of misrepresented days</span>&lt;/<span style="color: #0000ff;">h3</span>&gt;
+&lt;<span style="color: #0000ff;">ol</span>&gt;
+  &lt;<span style="color: #0000ff;">li</span>&gt;Day A&lt;/<span style="color: #0000ff;">li</span>&gt;
+  &lt;<span style="color: #0000ff;">li</span>&gt;Day A&#8217;&lt;/<span style="color: #0000ff;">li</span>&gt;
+  &lt;<span style="color: #0000ff;">li</span>&gt;Day A&#8217;&#8217;&lt;/<span style="color: #0000ff;">li</span>&gt;
+&lt;/<span style="color: #0000ff;">ol</span>&gt;
+</pre>
+<h3>Step 28, another figure under the list</h3>
+<p>
+Another figure under the list.
+</p>
+
+<pre>&lt;<span style="color: #0000ff;">h3</span>&gt;<span style="font-style: italic; text-decoration: underline;">List of misrepresented days</span>&lt;/<span style="color: #0000ff;">h3</span>&gt;
+&lt;<span style="color: #0000ff;">ol</span>&gt;
+  &lt;<span style="color: #0000ff;">li</span>&gt;Day A&lt;/<span style="color: #0000ff;">li</span>&gt;
+  &lt;<span style="color: #0000ff;">li</span>&gt;Day A&#8217;&lt;/<span style="color: #0000ff;">li</span>&gt;
+  &lt;<span style="color: #0000ff;">li</span>&gt;Day A&#8217;&#8217;&lt;/<span style="color: #0000ff;">li</span>&gt;
+&lt;/<span style="color: #0000ff;">ol</span>&gt;
+&lt;<span style="color: #0000ff;">figure</span>&gt;
+  &lt;<span style="color: #0000ff;">img</span> <span style="color: #a0522d;">alt</span>=<span style="color: #8b2252;">"Today, again?"</span> <span style="color: #a0522d;">src</span>=<span style="color: #8b2252;">"https://i.insider.com/52de8d076da8113b6da3dcf7"</span>&gt;
+  &lt;<span style="color: #0000ff;">figcaption</span>&gt;Déjà vu.&lt;/<span style="color: #0000ff;">figcaption</span>&gt;
+&lt;/<span style="color: #0000ff;">figure</span>&gt;
+</pre>
+
+---
+<h3>List of misrepresented days</h3>
+<ol>
+  <li>Day A</li>
+  <li>Day A’</li>
+  <li>Day A’’</li>
+</ol>
+<figure>
+  <img alt="Today, again?" src="https://i.insider.com/52de8d076da8113b6da3dcf7">
+  <figcaption>Déjà vu.</figcaption>
+</figure>
+---
+
+<h3>Step 29, new <code>&lt;img&gt;</code></h3>
+<p>
+Image added, above.
+</p>
+<h3>Step 30, new <code>alt</code></h3>
+<p>
+<code>alt</code> added, above.
+</p>
+<h3>Step 31, new <code>&lt;figcaption&gt;</code></h3>
+<p>
+<code>&lt;figcaption&gt;</code> added, above.
+</p>
+
+<h3>Step 32, <code>&lt;strong&gt;</code></h3>
+<p>
+A strongly different way to emphasize.
+</p>
+
+<pre>&lt;<span style="color: #0000ff;">figure</span>&gt;
+  &lt;<span style="color: #0000ff;">img</span> <span style="color: #a0522d;">alt</span>=<span style="color: #8b2252;">"Today, again?"</span> <span style="color: #a0522d;">src</span>=<span style="color: #8b2252;">"https://i.insider.com/52de8d076da8113b6da3dcf7"</span>&gt;
+  &lt;<span style="color: #0000ff;">figcaption</span>&gt;Dej&#224; &lt;<span style="color: #0000ff;">strong</span>&gt;<span style="font-weight: bold;">vu</span>&lt;/<span style="color: #0000ff;">strong</span>&gt;.&lt;/<span style="color: #0000ff;">figcaption</span>&gt;
+&lt;/<span style="color: #0000ff;">figure</span>&gt;
+</pre>
+
+<h3>Step 33, last <code>&lt;section&gt;</code></h3>
+<pre>&lt;<span style="color: #0000ff;">section</span>&gt;
+&lt;/<span style="color: #0000ff;">section</span>&gt;
+</pre>
+<h3>Step 34, new <code>&lt;h2&gt;</code> inside the new section</h3>
+<pre>&lt;<span style="color: #0000ff;">section</span>&gt;
+&lt;<span style="color: #0000ff;">h2</span>&gt;<span style="font-weight: bold; font-style: italic; text-decoration: underline;">To know more about your potential days</span>&lt;/<span style="color: #0000ff;">h2</span>&gt;
+&lt;/<span style="color: #0000ff;">section</span>&gt;
+</pre>
+
+<h3>Step 35 <code>&lt;form&gt;</code></h3>
+<p>
+At last, something new and exciting.
+</p>
+
+<pre>&lt;<span style="color: #0000ff;">section</span>&gt;
+&lt;<span style="color: #0000ff;">h2</span>&gt;<span style="font-weight: bold; font-style: italic; text-decoration: underline;">To know more about your potential days</span>&lt;/<span style="color: #0000ff;">h2</span>&gt;
+&lt;<span style="color: #0000ff;">form</span>&gt;&lt;/<span style="color: #0000ff;">form</span>&gt;
+&lt;/<span style="color: #0000ff;">section</span>&gt;
+</pre>
+<h3>Step 36, <code>action</code> attribute</h3>
+<pre>&lt;<span style="color: #0000ff;">section</span>&gt;
+&lt;<span style="color: #0000ff;">h2</span>&gt;<span style="font-weight: bold; font-style: italic; text-decoration: underline;">To know more about your potential days</span>&lt;/<span style="color: #0000ff;">h2</span>&gt;
+&lt;<span style="color: #0000ff;">form</span> <span style="color: #a0522d;">action</span>=<span style="color: #8b2252;">"someplace.on.the.web/get.your.GD.calendar"</span>&gt;&lt;/<span style="color: #0000ff;">form</span>&gt;
+&lt;/<span style="color: #0000ff;">section</span>&gt;
+</pre>
+<h3>Step 37, <code>&lt;input&gt;</code> element, to send data</h3>
+<p>
+<a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input">https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input</a>
+</p>
+
+<pre>&lt;<span style="color: #0000ff;">section</span>&gt;
+&lt;<span style="color: #0000ff;">h2</span>&gt;<span style="font-weight: bold; font-style: italic; text-decoration: underline;">To know more about your potential days</span>&lt;/<span style="color: #0000ff;">h2</span>&gt;
+&lt;<span style="color: #0000ff;">form</span> <span style="color: #a0522d;">action</span>=<span style="color: #8b2252;">"someplace.on.the.web/get.your.GD.calendar"</span>&gt;
+  &lt;<span style="color: #0000ff;">input</span>/&gt;
+&lt;/<span style="color: #0000ff;">form</span>&gt;
+&lt;/<span style="color: #0000ff;">section</span>&gt;
+</pre>
+<h3>Step 38, <code>type</code> attribute</h3>
+<p>
+The <code>input</code> element can have lots of types. One is <code>text</code>, to send text.
+</p>
+
+<pre>&lt;<span style="color: #0000ff;">section</span>&gt;
+&lt;<span style="color: #0000ff;">h2</span>&gt;<span style="font-weight: bold; font-style: italic; text-decoration: underline;">To know more about your potential days</span>&lt;/<span style="color: #0000ff;">h2</span>&gt;
+&lt;<span style="color: #0000ff;">form</span> <span style="color: #a0522d;">action</span>=<span style="color: #8b2252;">"someplace.on.the.web/get.your.GD.calendar"</span>&gt;
+  &lt;<span style="color: #0000ff;">input</span> <span style="color: #a0522d;">type</span>=<span style="color: #8b2252;">"text"</span>/&gt;
+&lt;/<span style="color: #0000ff;">form</span>&gt;
+&lt;/<span style="color: #0000ff;">section</span>&gt;
+</pre>
+
+<h3>Step 39, name your input to access it later</h3>
+<p>
+<i>In order for a form's data to be accessed by the location specified in the action attribute, you must give the text field a name attribute and assign it a value to represent the data being submitted.</i>
+</p>
+
+<pre>&lt;<span style="color: #0000ff;">section</span>&gt;
+&lt;<span style="color: #0000ff;">h2</span>&gt;<span style="font-weight: bold; font-style: italic; text-decoration: underline;">To know more about your potential days</span>&lt;/<span style="color: #0000ff;">h2</span>&gt;
+&lt;<span style="color: #0000ff;">form</span> <span style="color: #a0522d;">action</span>=<span style="color: #8b2252;">"someplace.on.the.web/get.your.GD.calendar"</span>&gt;
+  &lt;<span style="color: #0000ff;">input</span> <span style="color: #a0522d;">type</span>=<span style="color: #8b2252;">"text"</span> <span style="color: #a0522d;">name</span>=<span style="color: #8b2252;">"yourEmail"</span>/&gt;
+&lt;/<span style="color: #0000ff;">form</span>&gt;
+&lt;/<span style="color: #0000ff;">section</span>&gt;
+</pre>
+<h3>Step 40, placeholding hints</h3>
+<pre>&lt;<span style="color: #0000ff;">section</span>&gt;
+&lt;<span style="color: #0000ff;">h2</span>&gt;<span style="font-weight: bold; font-style: italic; text-decoration: underline;">To know more about your potential days</span>&lt;/<span style="color: #0000ff;">h2</span>&gt;
+&lt;<span style="color: #0000ff;">form</span> <span style="color: #a0522d;">action</span>=<span style="color: #8b2252;">"someplace.on.the.web/get.your.GD.calendar"</span>&gt;
+  &lt;<span style="color: #0000ff;">input</span> <span style="color: #a0522d;">type</span>=<span style="color: #8b2252;">"text"</span> <span style="color: #a0522d;">name</span>=<span style="color: #8b2252;">"yourEmail"</span> <span style="color: #a0522d;">placeholder</span>=<span style="color: #8b2252;">"myName@myserver.stuff"</span>/&gt;
+&lt;/<span style="color: #0000ff;">form</span>&gt;
+&lt;/<span style="color: #0000ff;">section</span>&gt;
+</pre>
+
+---
+<section>
+<h2>To know more about your potential days</h2>
+<form action="someplace.on.the.web/get.your.GD.calendar">
+  <input type="text" name="yourEmail" placeholder="myName@myserver.stuff"/>
+</form>
+</section>
+---
+
+<p>Et voilà !</p>
+	
+    <p class="navigation">
+      <a href="../../../2024/02/19/index.html" hreflang="en" rel="prev">0219</a>
+      <a href="../../../index.html" hreflang="en">index</a>
+	  <a href="https://github.com/brandelune/brandelune.github.io/commits/gh-pages">gh-pages</a>
+      <a href="../../../adventuresintechland.html" hreflang="en">todo</a>
+      <a href="../../../tomorrow.html" hreflang="en" rel="next">tomorrow</a>
+    </p>
+  </body>
+</html>

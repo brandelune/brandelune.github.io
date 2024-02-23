@@ -365,6 +365,13 @@
 	  <description>The reboot was a good occasion to fix some templating code. I knew I had to put conditions on the day entered and make sure it conformed to what the month made possible. Like, we can't have a 30th in February, and in fact this year being a leap year we can have a 29th.
 	  </description>
 	</item>
+	<item>
+	  <title>Lots of elisp again</title>
+	  <link>https://brandelune.github.io/2024/02/23/index.html</link>
+	  <guid>https://brandelune.github.io/2024/02/23/index.html</guid>
+	  <pubDate>Fri, 23 Feb 2024 13:02:10 UT</pubDate>
+	  <description>The reboot is really happening. If only because I need a stimulating way to procrastinate and something to do to avoid being stuck all day on the horrors happening in Palestine at the moment.</description>
+	</item>
 	<!-- place new items above this line -->
   </channel>
 </rss>

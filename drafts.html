@@ -1,291 +1,656 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
-<!-- Created by htmlize-1.57 in css mode. -->
-<html>
-  <head>
-    <title>drafts.org::[2024-02-19 Mon] Maracons</title>
-    <style type="text/css">
-    <!--
-      body {
-        color: #000000;
-        background-color: #ffffff;
-      }
-      .bold {
-        /* bold */
-        font-weight: bold;
-      }
-      .bold-italic {
-        /* bold-italic */
-        font-weight: bold;
-        font-style: italic;
-      }
-      .comment {
-        /* font-lock-comment-face */
-        color: #b22222;
-      }
-      .comment-delimiter {
-        /* font-lock-comment-delimiter-face */
-        color: #b22222;
-      }
-      .custom {
-        /* (:foreground "red") */
-        color: #ff0000;
-      }
-      .custom-1 {
-        /* (:background "light yellow" :foreground "green4") */
-        color: #008b00;
-        background-color: #ffffe0;
-      }
-      .function-name {
-        /* font-lock-function-name-face */
-        color: #0000ff;
-      }
-      .org-block {
-      }
-      .org-block-begin-line {
-        /* org-block-begin-line */
-        color: #b22222;
-      }
-      .org-block-end-line {
-        /* org-block-end-line */
-        color: #b22222;
-      }
-      .org-code {
-        /* org-code */
-        color: #7f7f7f;
-      }
-      .org-date {
-        /* org-date */
-        color: #a020f0;
-        text-decoration: underline;
-      }
-      .org-hide {
-        /* org-hide */
-        color: #ffffff;
-      }
-      .org-level-1 {
-        /* org-level-1 */
-        color: #0000ff;
-      }
-      .org-level-2 {
-        /* org-level-2 */
-        color: #a0522d;
-      }
-      .org-link {
-        /* org-link */
-        color: #4169e1;
-        text-decoration: underline;
-      }
-      .string {
-        /* font-lock-string-face */
-        color: #8b2252;
-      }
-      .underline {
-        /* underline */
-        text-decoration: underline;
-      }
-      .variable-name {
-        /* font-lock-variable-name-face */
-        color: #a0522d;
-      }
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2024-02-23 Fri 22:23 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>&lrm;</title>
+<meta name="author" content="Jean-Christophe Helary" />
+<meta name="generator" content="Org Mode" />
+<style>
+  #content { max-width: 60em; margin: auto; }
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+    background-color: #f2f2f2;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    top: -8px;
+    right: 12px;
+    padding: 3px;
+    color: #555;
+    background-color: #f2f2f299;
+  }
+  pre.src:hover:before { display: inline; margin-top: 14px;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
 
-      a {
-        color: inherit;
-        background-color: inherit;
-        font: inherit;
-        text-decoration: inherit;
-      }
-      a:hover {
-        text-decoration: underline;
-      }
-    -->
-    </style>
-  </head>
-  <body>
-    <pre>
-<span class="org-level-1">* </span><span class="org-date">[2024-02-19 Mon]</span><span class="org-level-1"> Maracons</span>
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { }
+</style>
+</head>
+<body>
+<div id="content" class="content">
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#org4fad409">1. <span class="timestamp-wrapper"><span class="timestamp">[2024-02-20 Tue] </span></span> Lots of elisp</a>
+<ul>
+<li><a href="#org9451135">1.1. Step 19, <code>&lt;h3&gt;</code> heading</a></li>
+<li><a href="#org4852282">1.2. Step 20, <code>&lt;ul&gt;</code> unordered list</a></li>
+<li><a href="#org75c3611">1.3. Step 21, <code>&lt;li&gt;</code> list item</a></li>
+<li><a href="#org4cb264e">1.4. Step 22, Another image, under the list</a></li>
+<li><a href="#org4c1b154">1.5. Step 23, <code>&lt;figure&gt;</code></a></li>
+<li><a href="#orgc0d374a">1.6. Step 24, <code>&lt;figcaption&gt;</code></a></li>
+<li><a href="#org285aa72">1.7. Step 25, <code>&lt;em&gt;</code> phasis</a></li>
+<li><a href="#org3662400">1.8. Step 26, A <code>&lt;h3&gt;</code> under the <code>&lt;figure&gt;</code></a></li>
+<li><a href="#org7b5074c">1.9. Step 27, <code>&lt;ol&gt;</code> ordered lists</a></li>
+<li><a href="#org74ab309">1.10. Step 28, another figure under the list</a></li>
+<li><a href="#orgd130f93">1.11. Step 29, new <code>&lt;img&gt;</code></a></li>
+<li><a href="#org12e6377">1.12. Step 30, new <code>alt</code></a></li>
+<li><a href="#orgaad43ec">1.13. Step 31, new <code>&lt;figcaption&gt;</code></a></li>
+<li><a href="#org23def30">1.14. Step 32, <code>&lt;strong&gt;</code></a></li>
+<li><a href="#org860f5cb">1.15. Step 33, last <code>&lt;section&gt;</code></a></li>
+<li><a href="#orgc219e23">1.16. Step 34, new <code>&lt;h2&gt;</code> inside the new section</a></li>
+<li><a href="#org086bd59">1.17. Step 35 <code>&lt;form&gt;</code></a></li>
+<li><a href="#orga335b33">1.18. Step 36, <code>action</code> attribute</a></li>
+<li><a href="#org8e53747">1.19. Step 37, <code>&lt;input&gt;</code> element, to send data</a></li>
+<li><a href="#org373ace6">1.20. Step 38, <code>type</code> attribute</a></li>
+<li><a href="#org440c1bc">1.21. Step 39, name your input to access it later</a></li>
+<li><a href="#org348c9e3">1.22. Step 40, placeholding hints</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org4fad409" class="outline-2">
+<h2 id="org4fad409"><span class="section-number-2">1.</span> <span class="timestamp-wrapper"><span class="timestamp">[2024-02-20 Tue] </span></span> Lots of elisp</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+freeCodeCampe reboot 3/n
+</p>
 
-freeCodeCamp reboot 2/n
+<p>
+The reboot is really happening. If only because I need a stimulating way to procrastinate and something to do to avoind being stuck all day on the horrors happening in Palestine at the moment.
+</p>
 
-The reboot was a good occasion to fix some templating code. I knew I had to put conditions on the day entered and make sure it conformed to what the month made possible. Like, we can't have a 30th in February, and in fact this year being a leap year we can have a 29th.
+<p>
+I managed to write some code that automatically updates a number of items in my templates.
+</p>
 
-It took me some time to get back to Emacs Lisp and understand the code but I came up with this:
+<ul class="org-ul">
+<li><p>
+the page of the day before now has an automatic link to today's page
+</p>
 
-<span class="org-link"><a href="https://github.com/brandelune/brandelune.github.io/blob/1ce686edc8ab3df7a78e02a5a16b87df71391cc1/adventuresintechland.el#L227">https://github.com/brandelune/brandelune.github.io/blob/1ce686edc8ab3df7a78e02a5a16b87df71391cc1/adventuresintechland.el#L227</a></span>
+<p>
+<a href="https://github.com/brandelune/brandelune.github.io/blob/acba9b4160efa513c423eb10aa25aba0082b8e48/adventuresintechland.el#L220">https://github.com/brandelune/brandelune.github.io/blob/acba9b4160efa513c423eb10aa25aba0082b8e48/adventuresintechland.el#L220</a>
+</p></li>
 
-I also moved functions around, putting the unused ones at the end of the file, and putting some templating text into constants. Warning: I've not tested the code... &#128517;
+<li>the main index page also automatically links to the "last day"</li>
+<li>it also automatically updates the total number of days, the episode number in the season and the episode list
+<a href="https://github.com/brandelune/brandelune.github.io/blob/acba9b4160efa513c423eb10aa25aba0082b8e48/adventuresintechland.el#L229">https://github.com/brandelune/brandelune.github.io/blob/acba9b4160efa513c423eb10aa25aba0082b8e48/adventuresintechland.el#L229</a></li>
 
-Oh. And "Macarons" because we had macarons yesterday.
+<li><p>
+the "tommorow" page also has an automatic update for the "last day" link
+</p>
 
-<span class="org-hide">*</span><span class="org-level-2">* Step 9 &lt;img alt&gt;</span>
+<p>
+<a href="https://github.com/brandelune/brandelune.github.io/blob/acba9b4160efa513c423eb10aa25aba0082b8e48/adventuresintechland.el#L287">https://github.com/brandelune/brandelune.github.io/blob/acba9b4160efa513c423eb10aa25aba0082b8e48/adventuresintechland.el#L287</a>
+</p></li>
+</ul>
 
-Images, with <span class="org-code">alt</span> text.
+<p>
+Besides for the fact that the code, the variable names and the whole process is a bit messy, I'm at a place where I don't have to manually do much any more. I can focus on actual practice in freeCodeCamp and other places.
+</p>
 
-<span class="org-block-begin-line">#+begin_src html
-</span><span class="org-block">  &lt;</span><span class="org-block"><span class="function-name">main</span></span><span class="org-block">&gt;
-    &lt;</span><span class="org-block"><span class="function-name">h1</span></span><span class="org-block">&gt;</span><span class="org-block"><span class="underline"><span class="bold">Groundhog day</span></span></span><span class="org-block">&lt;/</span><span class="org-block"><span class="function-name">h1</span></span><span class="org-block">&gt;
-    &lt;</span><span class="org-block"><span class="function-name">h2</span></span><span class="org-block">&gt;</span><span class="org-block"><span class="underline"><span class="bold-italic">My favourite day</span></span></span><span class="org-block">&lt;/</span><span class="org-block"><span class="function-name">h2</span></span><span class="org-block">&gt;
-    &lt;</span><span class="org-block"><span class="function-name">p</span></span><span class="org-block">&gt;Weird day list&lt;/</span><span class="org-block"><span class="function-name">p</span></span><span class="org-block">&gt;
-    </span><span class="org-block"><span class="comment-delimiter">&lt;</span></span><span class="org-block"><span class="comment-delimiter"><span class="custom-1">!--</span></span></span><span class="org-block"><span class="comment-delimiter"> </span></span><span class="org-block"><span class="comment">it's way too late, I should be in bed</span></span><span class="org-block"><span class="comment-delimiter"> --&gt;</span></span><span class="org-block">
-    &lt;</span><span class="org-block"><span class="function-name">img</span></span><span class="org-block"> </span><span class="org-block"><span class="variable-name">src</span></span><span class="org-block">=</span><span class="org-block"><span class="string">"<a href="https://www.closerweekly.com/wp-content/uploads/2015/04/bill-murray-groundhog-day.jpg">https://www.closerweekly.com/wp-content/uploads/2015/04/bill-murray-groundhog-day.jpg</a>"</span></span><span class="org-block">
-         </span><span class="org-block"><span class="variable-name">alt</span></span><span class="org-block">=</span><span class="org-block"><span class="string">"Bill Murray with the captive groundhog"</span></span><span class="org-block">&gt;
-  &lt;/</span><span class="org-block"><span class="function-name">main</span></span><span class="org-block">&gt;
-</span><span class="org-block-end-line">#+end_src
-</span><span class="org-hide">*</span><span class="org-level-2">* Step 10 &lt;a&gt; link</span>
+<p>
+On the freeCodeCamp side, this time there are two things that I never used before. The <code>&lt;figure&gt;</code> tag that can have plenty of types of contents, but content should be self contained so that it can be moved to a different position in the document. The <code>&lt;figure&gt;</code> can have a caption in a <code>&lt;figcaption&gt;</code> tag. The <code>&lt;figcaption&gt;</code> can contain the <code>accessible description</code> of the <code>&lt;figure&gt;</code>.
+</p>
 
-Anchors to external links.
+<p>
+<a href="https://developer.mozilla.org/en-US/docs/Glossary/Accessible_description">https://developer.mozilla.org/en-US/docs/Glossary/Accessible_description</a>
+</p>
 
-<span class="org-block-begin-line">#+begin_src html
-</span><span class="org-block">  &lt;</span><span class="org-block"><span class="function-name">main</span></span><span class="org-block">&gt;
-    &lt;</span><span class="org-block"><span class="function-name">h1</span></span><span class="org-block">&gt;</span><span class="org-block"><span class="underline"><span class="bold">Groundhog day</span></span></span><span class="org-block">&lt;/</span><span class="org-block"><span class="function-name">h1</span></span><span class="org-block">&gt;
-    &lt;</span><span class="org-block"><span class="function-name">h2</span></span><span class="org-block">&gt;</span><span class="org-block"><span class="underline"><span class="bold-italic">My favourite day</span></span></span><span class="org-block">&lt;/</span><span class="org-block"><span class="function-name">h2</span></span><span class="org-block">&gt;
-    &lt;</span><span class="org-block"><span class="function-name">p</span></span><span class="org-block">&gt;Weird day list&lt;/</span><span class="org-block"><span class="function-name">p</span></span><span class="org-block">&gt;
-    </span><span class="org-block"><span class="comment-delimiter">&lt;</span></span><span class="org-block"><span class="comment-delimiter"><span class="custom-1">!--</span></span></span><span class="org-block"><span class="comment-delimiter"> </span></span><span class="org-block"><span class="comment">it's way too late, I should be in bed</span></span><span class="org-block"><span class="comment-delimiter"> --&gt;</span></span><span class="org-block">
-    &lt;</span><span class="org-block"><span class="function-name">img</span></span><span class="org-block"> </span><span class="org-block"><span class="variable-name">src</span></span><span class="org-block">=</span><span class="org-block"><span class="string">"<a href="https://www.closerweekly.com/wp-content/uploads/2015/04/bill-murray-groundhog-day.jpg">https://www.closerweekly.com/wp-content/uploads/2015/04/bill-murray-groundhog-day.jpg</a>"</span></span><span class="org-block">
-         </span><span class="org-block"><span class="variable-name">alt</span></span><span class="org-block">=</span><span class="org-block"><span class="string">"Bill Murray with the captive groundhog"</span></span><span class="org-block">&gt;
-    &lt;</span><span class="org-block"><span class="function-name">a</span></span><span class="org-block"> </span><span class="org-block"><span class="variable-name">href</span></span><span class="org-block">=</span><span class="org-block"><span class="string">"<a href="https://en.wikipedia.org/wiki/Groundhog_Day_(film)">https://en.wikipedia.org/wiki/Groundhog_Day_(film)</a>"</span></span><span class="org-block">&gt;&lt;/</span><span class="org-block"><span class="function-name">a</span></span><span class="org-block">&gt;
-  &lt;/</span><span class="org-block"><span class="function-name">main</span></span><span class="org-block">&gt;
-</span><span class="org-block-end-line">  #+end_src
-</span><span class="org-hide">*</span><span class="org-level-2">* Step 11 &lt;a&gt; link text</span>
+<p>
+The second thing is the <code>&lt;form&gt;</code> element, that's used to send information to a process somewhere else. It comes with an <code>action</code> attribute that does something to the data and can contain <code>&lt;input&gt;</code> elements to actually gather data. <code>&lt;input&gt;</code> elements can have various attributes, inluding <code>type</code>, that describes the type of input, <code>placeholder</code> that gives a default value, <code>name</code> that names the input for processing in the target process, etc.
+</p>
 
-Without the text, the link is not a link.
+<p>
+<a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form">https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form</a>
+</p>
 
-<span class="org-block-begin-line">#+begin_src html
-</span><span class="org-block">  &lt;</span><span class="org-block"><span class="function-name">main</span></span><span class="org-block">&gt;
-    &lt;</span><span class="org-block"><span class="function-name">h1</span></span><span class="org-block">&gt;</span><span class="org-block"><span class="underline"><span class="bold">Groundhog day</span></span></span><span class="org-block">&lt;/</span><span class="org-block"><span class="function-name">h1</span></span><span class="org-block">&gt;
-    &lt;</span><span class="org-block"><span class="function-name">h2</span></span><span class="org-block">&gt;</span><span class="org-block"><span class="underline"><span class="bold-italic">My favourite day</span></span></span><span class="org-block">&lt;/</span><span class="org-block"><span class="function-name">h2</span></span><span class="org-block">&gt;
-    &lt;</span><span class="org-block"><span class="function-name">p</span></span><span class="org-block">&gt;Weird day list&lt;/</span><span class="org-block"><span class="function-name">p</span></span><span class="org-block">&gt;
-    </span><span class="org-block"><span class="comment-delimiter">&lt;</span></span><span class="org-block"><span class="comment-delimiter"><span class="custom-1">!--</span></span></span><span class="org-block"><span class="comment-delimiter"> </span></span><span class="org-block"><span class="comment">it's way too late, I should be in bed</span></span><span class="org-block"><span class="comment-delimiter"> --&gt;</span></span><span class="org-block">
-    &lt;</span><span class="org-block"><span class="function-name">img</span></span><span class="org-block"> </span><span class="org-block"><span class="variable-name">src</span></span><span class="org-block">=</span><span class="org-block"><span class="string">"<a href="https://www.closerweekly.com/wp-content/uploads/2015/04/bill-murray-groundhog-day.jpg">https://www.closerweekly.com/wp-content/uploads/2015/04/bill-murray-groundhog-day.jpg</a>"</span></span><span class="org-block">
-         </span><span class="org-block"><span class="variable-name">alt</span></span><span class="org-block">=</span><span class="org-block"><span class="string">"Bill Murray with the captive groundhog"</span></span><span class="org-block">&gt;
-    &lt;</span><span class="org-block"><span class="function-name">a</span></span><span class="org-block"> </span><span class="org-block"><span class="variable-name">href</span></span><span class="org-block">=</span><span class="org-block"><span class="string">"<a href="https://en.wikipedia.org/wiki/Groundhog_Day_(film)">https://en.wikipedia.org/wiki/Groundhog_Day_(film)</a>"</span></span><span class="org-block">&gt;Groundhog day movie page at Wikipedia&lt;/</span><span class="org-block"><span class="function-name">a</span></span><span class="org-block">&gt;
-  &lt;/</span><span class="org-block"><span class="function-name">main</span></span><span class="org-block">&gt;
-</span><span class="org-block-end-line">  #+end_src
-</span><span class="org-hide">*</span><span class="org-level-2">* Step 12 inline text links</span>
+<p>
+<a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input">https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input</a>
+</p>
 
-Any inline text can be turned into a link.
+<p>
+Unlike the previous days, I'll just put small code blocks to emphasize the step content.
+</p>
+</div>
 
-<span class="org-block-begin-line">#+begin_src html
-</span><span class="org-block">  &lt;</span><span class="org-block"><span class="function-name">main</span></span><span class="org-block">&gt;
-    &lt;</span><span class="org-block"><span class="function-name">h1</span></span><span class="org-block">&gt;</span><span class="org-block"><span class="underline"><span class="bold">Groundhog day</span></span></span><span class="org-block">&lt;/</span><span class="org-block"><span class="function-name">h1</span></span><span class="org-block">&gt;
-    &lt;</span><span class="org-block"><span class="function-name">h2</span></span><span class="org-block">&gt;</span><span class="org-block"><span class="underline"><span class="bold-italic">My favourite day</span></span></span><span class="org-block">&lt;/</span><span class="org-block"><span class="function-name">h2</span></span><span class="org-block">&gt;
-    &lt;</span><span class="org-block"><span class="function-name">p</span></span><span class="org-block">&gt;Weird day list&lt;/</span><span class="org-block"><span class="function-name">p</span></span><span class="org-block">&gt;
-    </span><span class="org-block"><span class="comment-delimiter">&lt;</span></span><span class="org-block"><span class="comment-delimiter"><span class="custom-1">!--</span></span></span><span class="org-block"><span class="comment-delimiter"> </span></span><span class="org-block"><span class="comment">it's way too late, I should be in bed</span></span><span class="org-block"><span class="comment-delimiter"> --&gt;</span></span><span class="org-block">
-    &lt;</span><span class="org-block"><span class="function-name">img</span></span><span class="org-block"> </span><span class="org-block"><span class="variable-name">src</span></span><span class="org-block">=</span><span class="org-block"><span class="string">"<a href="https://www.closerweekly.com/wp-content/uploads/2015/04/bill-murray-groundhog-day.jpg">https://www.closerweekly.com/wp-content/uploads/2015/04/bill-murray-groundhog-day.jpg</a>"</span></span><span class="org-block">
-         </span><span class="org-block"><span class="variable-name">alt</span></span><span class="org-block">=</span><span class="org-block"><span class="string">"Bill Murray with the captive groundhog"</span></span><span class="org-block">&gt;
-    &lt;</span><span class="org-block"><span class="function-name">p</span></span><span class="org-block">&gt;There are plenty of &lt;</span><span class="org-block"><span class="function-name">a</span></span><span class="org-block"> </span><span class="org-block"><span class="variable-name">href</span></span><span class="org-block">=</span><span class="org-block"><span class="string">"<a href="https://duckduckgo.com/?q=groundhog+day+movie+pictures&amp;t=osx&amp;ia=images&amp;iax=images">https://duckduckgo.com/?q=groundhog+day+movie+pictures&amp;t=osx&amp;ia=images&amp;iax=images</a>"</span></span><span class="org-block">&gt;pictures of the Groundhog day movie&lt;/</span><span class="org-block"><span class="function-name">a</span></span><span class="org-block">&gt; online.&lt;/</span><span class="org-block"><span class="function-name">p</span></span><span class="org-block">&gt;
-    &lt;</span><span class="org-block"><span class="function-name">a</span></span><span class="org-block"> </span><span class="org-block"><span class="variable-name">href</span></span><span class="org-block">=</span><span class="org-block"><span class="string">"<a href="https://en.wikipedia.org/wiki/Groundhog_Day_(film)">https://en.wikipedia.org/wiki/Groundhog_Day_(film)</a>"</span></span><span class="org-block">&gt;Groundhog day movie page at Wikipedia&lt;/</span><span class="org-block"><span class="function-name">a</span></span><span class="org-block">&gt;
-  &lt;/</span><span class="org-block"><span class="function-name">main</span></span><span class="org-block">&gt;
-</span><span class="org-block-end-line">  #+end_src
-</span><span class="org-hide">*</span><span class="org-level-2">* Step 13 deleting the other link</span>
+<div id="outline-container-org9451135" class="outline-3">
+<h3 id="org9451135"><span class="section-number-3">1.1.</span> Step 19, <code>&lt;h3&gt;</code> heading</h3>
+<div class="outline-text-3" id="text-1-1">
+<p>
+Heading number shows hierarchy.
+</p>
 
-I can do that. But I won't.
-<span class="org-hide">*</span><span class="org-level-2">* </span><span class="org-level-2"><span class="custom">[#A]</span></span><span class="org-level-2"> Step 14 &lt;a target&gt;</span>
+<div class="org-src-container">
+<pre class="src src-html">&lt;<span style="color: #0000ff;">section</span>&gt;
+  &lt;<span style="color: #0000ff;">h2</span>&gt;<span style="font-weight: bold; font-style: italic; text-decoration: underline;">This movie is really good</span>&lt;/<span style="color: #0000ff;">h2</span>&gt;
+  &lt;<span style="color: #0000ff;">h3</span>&gt;<span style="font-style: italic; text-decoration: underline;">List of represented days</span>&lt;/<span style="color: #0000ff;">h3</span>&gt;
+&lt;/<span style="color: #0000ff;">section</span>&gt;
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org4852282" class="outline-3">
+<h3 id="org4852282"><span class="section-number-3">1.2.</span> Step 20, <code>&lt;ul&gt;</code> unordered list</h3>
+<div class="outline-text-3" id="text-1-2">
+<p>
+List (empty for now) where items are not ordered.
+</p>
 
-A "blank" target opens a new window.
+<div class="org-src-container">
+<pre class="src src-html">&lt;<span style="color: #0000ff;">section</span>&gt;
+  &lt;<span style="color: #0000ff;">h2</span>&gt;<span style="font-weight: bold; font-style: italic; text-decoration: underline;">This movie is really good</span>&lt;/<span style="color: #0000ff;">h2</span>&gt;
+  &lt;<span style="color: #0000ff;">h3</span>&gt;<span style="font-style: italic; text-decoration: underline;">List of represented days</span>&lt;/<span style="color: #0000ff;">h3</span>&gt;
+  &lt;<span style="color: #0000ff;">ul</span>&gt;&lt;/<span style="color: #0000ff;">ul</span>&gt;
+&lt;/<span style="color: #0000ff;">section</span>&gt;
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org75c3611" class="outline-3">
+<h3 id="org75c3611"><span class="section-number-3">1.3.</span> Step 21, <code>&lt;li&gt;</code> list item</h3>
+<div class="outline-text-3" id="text-1-3">
+<p>
+The list contains list items
+</p>
 
-Cf. attribute reference at Mozilla.org: <span class="org-link"><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a">https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a</a></span>
+<div class="org-src-container">
+<pre class="src src-html">&lt;<span style="color: #0000ff;">h3</span>&gt;<span style="font-style: italic; text-decoration: underline;">List of represented days</span>&lt;/<span style="color: #0000ff;">h3</span>&gt;
+&lt;<span style="color: #0000ff;">ul</span>&gt;
+  &lt;<span style="color: #0000ff;">li</span>&gt;First day&lt;/<span style="color: #0000ff;">li</span>&gt;
+  &lt;<span style="color: #0000ff;">li</span>&gt;Second day&lt;/<span style="color: #0000ff;">li</span>&gt;
+  &lt;<span style="color: #0000ff;">li</span>&gt;Third day&lt;/<span style="color: #0000ff;">li</span>&gt;
+&lt;/<span style="color: #0000ff;">ul</span>&gt;
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org4cb264e" class="outline-3">
+<h3 id="org4cb264e"><span class="section-number-3">1.4.</span> Step 22, Another image, under the list</h3>
+<div class="outline-text-3" id="text-1-4">
+<div class="org-src-container">
+<pre class="src src-html">&lt;<span style="color: #0000ff;">h3</span>&gt;<span style="font-style: italic; text-decoration: underline;">List of represented days</span>&lt;/<span style="color: #0000ff;">h3</span>&gt;
+&lt;<span style="color: #0000ff;">ul</span>&gt;
+  &lt;<span style="color: #0000ff;">li</span>&gt;First day&lt;/<span style="color: #0000ff;">li</span>&gt;
+  &lt;<span style="color: #0000ff;">li</span>&gt;Second day&lt;/<span style="color: #0000ff;">li</span>&gt;
+  &lt;<span style="color: #0000ff;">li</span>&gt;Third day&lt;/<span style="color: #0000ff;">li</span>&gt;
+&lt;/<span style="color: #0000ff;">ul</span>&gt;
+&lt;<span style="color: #0000ff;">img</span> <span style="color: #a0522d;">alt</span>=<span style="color: #8b2252;">"All the days of the year"</span> <span style="color: #a0522d;">src</span>=<span style="color: #8b2252;">"https://helios-i.mashable.com/imagery/articles/03LkUHbeYe9Gf8qlIT9ock6/hero-image.fill.size_1248x702.v1612299679.jpg"</span>&gt;
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org4c1b154" class="outline-3">
+<h3 id="org4c1b154"><span class="section-number-3">1.5.</span> Step 23, <code>&lt;figure&gt;</code></h3>
+<div class="outline-text-3" id="text-1-5">
+<p>
+<a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/figure">https://developer.mozilla.org/en-US/docs/Web/HTML/Element/figure</a>
+</p>
 
-<span class="org-block-begin-line">#+begin_src html
-</span><span class="org-block">  &lt;</span><span class="org-block"><span class="function-name">main</span></span><span class="org-block">&gt;
-    &lt;</span><span class="org-block"><span class="function-name">h1</span></span><span class="org-block">&gt;</span><span class="org-block"><span class="underline"><span class="bold">Groundhog day</span></span></span><span class="org-block">&lt;/</span><span class="org-block"><span class="function-name">h1</span></span><span class="org-block">&gt;
-    &lt;</span><span class="org-block"><span class="function-name">h2</span></span><span class="org-block">&gt;</span><span class="org-block"><span class="underline"><span class="bold-italic">My favourite day</span></span></span><span class="org-block">&lt;/</span><span class="org-block"><span class="function-name">h2</span></span><span class="org-block">&gt;
-    &lt;</span><span class="org-block"><span class="function-name">p</span></span><span class="org-block">&gt;Weird day list&lt;/</span><span class="org-block"><span class="function-name">p</span></span><span class="org-block">&gt;
-    </span><span class="org-block"><span class="comment-delimiter">&lt;</span></span><span class="org-block"><span class="comment-delimiter"><span class="custom-1">!--</span></span></span><span class="org-block"><span class="comment-delimiter"> </span></span><span class="org-block"><span class="comment">it's way too late, I should be in bed</span></span><span class="org-block"><span class="comment-delimiter"> --&gt;</span></span><span class="org-block">
-    &lt;</span><span class="org-block"><span class="function-name">img</span></span><span class="org-block"> </span><span class="org-block"><span class="variable-name">src</span></span><span class="org-block">=</span><span class="org-block"><span class="string">"<a href="https://www.closerweekly.com/wp-content/uploads/2015/04/bill-murray-groundhog-day.jpg">https://www.closerweekly.com/wp-content/uploads/2015/04/bill-murray-groundhog-day.jpg</a>"</span></span><span class="org-block">
-         </span><span class="org-block"><span class="variable-name">alt</span></span><span class="org-block">=</span><span class="org-block"><span class="string">"Bill Murray with the captive groundhog"</span></span><span class="org-block">&gt;
-    &lt;</span><span class="org-block"><span class="function-name">p</span></span><span class="org-block">&gt;There are plenty of &lt;</span><span class="org-block"><span class="function-name">a</span></span><span class="org-block"> </span><span class="org-block"><span class="variable-name">target</span></span><span class="org-block">=</span><span class="org-block"><span class="string">"_blank"</span></span><span class="org-block">
- </span><span class="org-block"><span class="variable-name">href</span></span><span class="org-block">=</span><span class="org-block"><span class="string">"<a href="https://duckduckgo.com/?q=groundhog+day+movie+pictures&amp;t=osx&amp;ia=images&amp;iax=images">https://duckduckgo.com/?q=groundhog+day+movie+pictures&amp;t=osx&amp;ia=images&amp;iax=images</a>"</span></span><span class="org-block">&gt;pictures of the Groundhog day movie&lt;/</span><span class="org-block"><span class="function-name">a</span></span><span class="org-block">&gt; online.&lt;/</span><span class="org-block"><span class="function-name">p</span></span><span class="org-block">&gt;
-    &lt;</span><span class="org-block"><span class="function-name">a</span></span><span class="org-block"> </span><span class="org-block"><span class="variable-name">target</span></span><span class="org-block">=</span><span class="org-block"><span class="string">"_blank"</span></span><span class="org-block"> </span><span class="org-block"><span class="variable-name">href</span></span><span class="org-block">=</span><span class="org-block"><span class="string">"<a href="https://en.wikipedia.org/wiki/Groundhog_Day_(film)">https://en.wikipedia.org/wiki/Groundhog_Day_(film)</a>"</span></span><span class="org-block">&gt;Groundhog day movie page at Wikipedia&lt;/</span><span class="org-block"><span class="function-name">a</span></span><span class="org-block">&gt;
-  &lt;/</span><span class="org-block"><span class="function-name">main</span></span><span class="org-block">&gt;
-</span><span class="org-block-end-line">  #+end_src
-</span><span class="org-hide">*</span><span class="org-level-2">* Step 15 images links</span>
+<p>
+"The <code>&lt;figure&gt;</code> HTML element represents self-contained content, potentially with an optional caption, which is specified using the <code>&lt;figcaption&gt;</code> element. The figure, its caption, and its contents are referenced as a single unit."
+</p>
 
-Anything can be turned into a link. Images too.
+<div class="org-src-container">
+<pre class="src src-html">&lt;<span style="color: #0000ff;">figure</span>&gt;
+  &lt;<span style="color: #0000ff;">imgg</span> <span style="color: #a0522d;">alt</span>=<span style="color: #8b2252;">"All the days of the year"</span> <span style="color: #a0522d;">src</span>=<span style="color: #8b2252;">"https://helios-i.mashable.com/imagery/articles/03LkUHbeYe9Gf8qlIT9ock6/hero-image.fill.size_1248x702.v1612299679.jpg"</span>&gt;
+  &lt;<span style="color: #0000ff;">figcaption</span>&gt;I can't see the image, so I can't tell&lt;/<span style="color: #0000ff;">figcaption</span>&gt;
+&lt;/<span style="color: #0000ff;">figure</span>&gt;
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgc0d374a" class="outline-3">
+<h3 id="orgc0d374a"><span class="section-number-3">1.6.</span> Step 24, <code>&lt;figcaption&gt;</code></h3>
+<div class="outline-text-3" id="text-1-6">
+<p>
+I'm not doing it again.
+</p>
 
-<span class="org-block-begin-line">#+begin_src html
-</span><span class="org-block">   &lt;</span><span class="org-block"><span class="function-name">main</span></span><span class="org-block">&gt;
-     &lt;</span><span class="org-block"><span class="function-name">h1</span></span><span class="org-block">&gt;</span><span class="org-block"><span class="underline"><span class="bold">Groundhog day</span></span></span><span class="org-block">&lt;/</span><span class="org-block"><span class="function-name">h1</span></span><span class="org-block">&gt;
-     &lt;</span><span class="org-block"><span class="function-name">h2</span></span><span class="org-block">&gt;</span><span class="org-block"><span class="underline"><span class="bold-italic">My favourite day</span></span></span><span class="org-block">&lt;/</span><span class="org-block"><span class="function-name">h2</span></span><span class="org-block">&gt;
-     &lt;</span><span class="org-block"><span class="function-name">p</span></span><span class="org-block">&gt;Weird day list&lt;/</span><span class="org-block"><span class="function-name">p</span></span><span class="org-block">&gt;
-     </span><span class="org-block"><span class="comment-delimiter">&lt;</span></span><span class="org-block"><span class="comment-delimiter"><span class="custom-1">!--</span></span></span><span class="org-block"><span class="comment-delimiter"> </span></span><span class="org-block"><span class="comment">it's way too late, I should be in bed</span></span><span class="org-block"><span class="comment-delimiter"> --&gt;</span></span><span class="org-block">
-     &lt;</span><span class="org-block"><span class="function-name">a</span></span><span class="org-block"> </span><span class="org-block"><span class="variable-name">alt</span></span><span class="org-block">=</span><span class="org-block"><span class="string">"Groundhog day movie related videos"</span></span><span class="org-block">href=</span><span class="org-block"><span class="string">"<a href="https://duckduckgo.com/?q=groundhog+day+movie+pictures&amp;t=osx&amp;ia=videos&amp;iax=videos">https://duckduckgo.com/?q=groundhog+day+movie+pictures&amp;t=osx&amp;ia=videos&amp;iax=videos</a>"</span></span><span class="org-block">&gt;&lt;</span><span class="org-block"><span class="function-name">img</span></span><span class="org-block"> </span><span class="org-block"><span class="variable-name">src</span></span><span class="org-block">=</span><span class="org-block"><span class="string">"<a href="https://www.closerweekly.com/wp-content/uploads/2015/04/bill-murray-groundhog-day.jpg">https://www.closerweekly.com/wp-content/uploads/2015/04/bill-murray-groundhog-day.jpg</a>"</span></span><span class="org-block">
-          </span><span class="org-block"><span class="variable-name">alt</span></span><span class="org-block">=</span><span class="org-block"><span class="string">"Bill Murray with the captive groundhog"</span></span><span class="org-block">&gt;&lt;/</span><span class="org-block"><span class="function-name">a</span></span><span class="org-block">&gt;
-     &lt;</span><span class="org-block"><span class="function-name">p</span></span><span class="org-block">&gt;There are plenty of &lt;</span><span class="org-block"><span class="function-name">a</span></span><span class="org-block"> </span><span class="org-block"><span class="variable-name">target</span></span><span class="org-block">=</span><span class="org-block"><span class="string">"_blank"</span></span><span class="org-block">
-  </span><span class="org-block"><span class="variable-name">href</span></span><span class="org-block">=</span><span class="org-block"><span class="string">"<a href="https://duckduckgo.com/?q=groundhog+day+movie+pictures&amp;t=osx&amp;ia=images&amp;iax=images">https://duckduckgo.com/?q=groundhog+day+movie+pictures&amp;t=osx&amp;ia=images&amp;iax=images</a>"</span></span><span class="org-block">&gt;pictures of the Groundhog day movie&lt;/</span><span class="org-block"><span class="function-name">a</span></span><span class="org-block">&gt; online.&lt;/</span><span class="org-block"><span class="function-name">p</span></span><span class="org-block">&gt;
-     &lt;</span><span class="org-block"><span class="function-name">a</span></span><span class="org-block"> </span><span class="org-block"><span class="variable-name">target</span></span><span class="org-block">=</span><span class="org-block"><span class="string">"_blank"</span></span><span class="org-block"> </span><span class="org-block"><span class="variable-name">href</span></span><span class="org-block">=</span><span class="org-block"><span class="string">"<a href="https://en.wikipedia.org/wiki/Groundhog_Day_(film)">https://en.wikipedia.org/wiki/Groundhog_Day_(film)</a>"</span></span><span class="org-block">&gt;Groundhog day movie page at Wikipedia&lt;/</span><span class="org-block"><span class="function-name">a</span></span><span class="org-block">&gt;
-   &lt;/</span><span class="org-block"><span class="function-name">main</span></span><span class="org-block">&gt;
-</span><span class="org-block-end-line">  #+end_src
-</span><span class="org-hide">*</span><span class="org-level-2">* Step 16 sections</span>
+<p>
+<a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/figcaption">https://developer.mozilla.org/en-US/docs/Web/HTML/Element/figcaption</a>
+</p>
 
-Sections section the contents...
+<p>
+"The &lt;figcaption&gt; HTML element represents a caption or legend describing the rest of the contents of its parent &lt;figure&gt; element, providing the &lt;figure&gt; an accessible description."
+</p>
 
-- Mozilla reference to <span class="org-code">main</span>: <span class="org-link"><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/main">https://developer.mozilla.org/en-US/docs/Web/HTML/Element/main</a></span>
+<p>
+<a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/figcaption">https://developer.mozilla.org/en-US/docs/Web/HTML/Element/figcaption</a>
+</p>
+</div>
+</div>
+<div id="outline-container-org285aa72" class="outline-3">
+<h3 id="org285aa72"><span class="section-number-3">1.7.</span> Step 25, <code>&lt;em&gt;</code> phasis</h3>
+<div class="outline-text-3" id="text-1-7">
+<p>
+Emphasizing blindness. It is possible to inline-stype <code>&lt;figcaption&gt;</code>.
+</p>
 
-  "The &lt;main&gt; HTML element represents the dominant content of the &lt;body&gt; of a document. The main content area consists of content that is directly related to or expands upon the central topic of a document, or the central functionality of an application."
 
-- Mozilla reference to <span class="org-code">section</span>: <span class="org-link"><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/section">https://developer.mozilla.org/en-US/docs/Web/HTML/Element/section</a></span>
+<div class="org-src-container">
+<pre class="src src-html">&lt;<span style="color: #0000ff;">figuree</span>&gt;
+  &lt;<span style="color: #0000ff;">img</span> <span style="color: #a0522d;">alt</span>=<span style="color: #8b2252;">"All the days of the year"</span> <span style="color: #a0522d;">src</span>=<span style="color: #8b2252;">"https://helios-i.mashable.com/imagery/articles/03LkUHbeYe9Gf8qlIT9ock6/hero-image.fill.size_1248x702.v1612299679.jpg"</span>&gt;
+  &lt;<span style="color: #0000ff;">figcaption</span>&gt;I &lt;<span style="color: #0000ff;">em</span>&gt;<span style="font-style: italic;">can't see</span>&lt;/<span style="color: #0000ff;">em</span>&gt; the image, so I can't tell&lt;/<span style="color: #0000ff;">figcaption</span>&gt;
+&lt;/<span style="color: #0000ff;">figure</span>&gt;
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org3662400" class="outline-3">
+<h3 id="org3662400"><span class="section-number-3">1.8.</span> Step 26, A <code>&lt;h3&gt;</code> under the <code>&lt;figure&gt;</code></h3>
+<div class="outline-text-3" id="text-1-8">
+<p>
+Starting another subsection.
+</p>
 
-  "The &lt;section&gt; HTML element represents a generic standalone section of a document, which doesn't have a more specific semantic element to represent it. Sections should always have a heading, with very few exceptions."
+<div class="org-src-container">
+<pre class="src src-html">&lt;<span style="color: #0000ff;">sectionon</span>&gt;
+  &lt;<span style="color: #0000ff;">h2</span>&gt;<span style="font-weight: bold; font-style: italic; text-decoration: underline;">This movie is really good</span>&lt;/<span style="color: #0000ff;">h2</span>&gt;
+  &lt;<span style="color: #0000ff;">h3</span>&gt;<span style="font-style: italic; text-decoration: underline;">List of represented days</span>&lt;/<span style="color: #0000ff;">h3</span>&gt;
+  &lt;<span style="color: #0000ff;">ul</span>&gt;
+    &lt;<span style="color: #0000ff;">li</span>&gt;First day&lt;/<span style="color: #0000ff;">li</span>&gt;
+    &lt;<span style="color: #0000ff;">li</span>&gt;Second day&lt;/<span style="color: #0000ff;">li</span>&gt;
+    &lt;<span style="color: #0000ff;">li</span>&gt;Third day&lt;/<span style="color: #0000ff;">li</span>&gt;
+  &lt;/<span style="color: #0000ff;">ul</span>&gt;
+  &lt;<span style="color: #0000ff;">figure</span>&gt;
+    &lt;<span style="color: #0000ff;">img</span> <span style="color: #a0522d;">alt</span>=<span style="color: #8b2252;">"All the days of the year"</span> <span style="color: #a0522d;">src</span>=<span style="color: #8b2252;">"https://helios-i.mashable.com/imagery/articles/03LkUHbeYe9Gf8qlIT9ock6/hero-image.fill.size_1248x702.v1612299679.jpg"</span>&gt;
+    &lt;<span style="color: #0000ff;">figcaption</span>&gt;I &lt;<span style="color: #0000ff;">em</span>&gt;<span style="font-style: italic;">can't see</span>&lt;/<span style="color: #0000ff;">em</span>&gt; the image, so I can't tell&lt;/<span style="color: #0000ff;">figcaption</span>&gt;
+  &lt;/<span style="color: #0000ff;">figure</span>&gt;
+  &lt;<span style="color: #0000ff;">h3</span>&gt;<span style="font-style: italic; text-decoration: underline;">List of misrepresented days</span>&lt;/<span style="color: #0000ff;">h3</span>&gt;
+&lt;/<span style="color: #0000ff;">section</span>&gt;
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org7b5074c" class="outline-3">
+<h3 id="org7b5074c"><span class="section-number-3">1.9.</span> Step 27, <code>&lt;ol&gt;</code> ordered lists</h3>
+<div class="outline-text-3" id="text-1-9">
+<p>
+Some days are more important than others.
+</p>
 
-<span class="org-block-begin-line">#+begin_src html
-</span><span class="org-block">   &lt;</span><span class="org-block"><span class="function-name">main</span></span><span class="org-block">&gt;
-     &lt;</span><span class="org-block"><span class="function-name">h1</span></span><span class="org-block">&gt;</span><span class="org-block"><span class="underline"><span class="bold">Groundhog day</span></span></span><span class="org-block">&lt;/</span><span class="org-block"><span class="function-name">h1</span></span><span class="org-block">&gt;
-     &lt;</span><span class="org-block"><span class="function-name">section</span></span><span class="org-block">&gt;
-       &lt;</span><span class="org-block"><span class="function-name">h2</span></span><span class="org-block">&gt;</span><span class="org-block"><span class="underline"><span class="bold-italic">My favourite day</span></span></span><span class="org-block">&lt;/</span><span class="org-block"><span class="function-name">h2</span></span><span class="org-block">&gt;
-       &lt;</span><span class="org-block"><span class="function-name">p</span></span><span class="org-block">&gt;Weird day list&lt;/</span><span class="org-block"><span class="function-name">p</span></span><span class="org-block">&gt;
-       </span><span class="org-block"><span class="comment-delimiter">&lt;</span></span><span class="org-block"><span class="comment-delimiter"><span class="custom-1">!--</span></span></span><span class="org-block"><span class="comment-delimiter"> </span></span><span class="org-block"><span class="comment">it's way too late, I should be in bed</span></span><span class="org-block"><span class="comment-delimiter"> --&gt;</span></span><span class="org-block">
-       &lt;</span><span class="org-block"><span class="function-name">a</span></span><span class="org-block"> </span><span class="org-block"><span class="variable-name">alt</span></span><span class="org-block">=</span><span class="org-block"><span class="string">"Groundhog day movie related videos"</span></span><span class="org-block">href=</span><span class="org-block"><span class="string">"<a href="https://duckduckgo.com/?q=groundhog+day+movie+pictures&amp;t=osx&amp;ia=videos&amp;iax=videos">https://duckduckgo.com/?q=groundhog+day+movie+pictures&amp;t=osx&amp;ia=videos&amp;iax=videos</a>"</span></span><span class="org-block">&gt;&lt;</span><span class="org-block"><span class="function-name">img</span></span><span class="org-block"> </span><span class="org-block"><span class="variable-name">src</span></span><span class="org-block">=</span><span class="org-block"><span class="string">"<a href="https://www.closerweekly.com/wp-content/uploads/2015/04/bill-murray-groundhog-day.jpg">https://www.closerweekly.com/wp-content/uploads/2015/04/bill-murray-groundhog-day.jpg</a>"</span></span><span class="org-block">
-          </span><span class="org-block"><span class="variable-name">alt</span></span><span class="org-block">=</span><span class="org-block"><span class="string">"Bill Murray with the captive groundhog"</span></span><span class="org-block">&gt;&lt;/</span><span class="org-block"><span class="function-name">a</span></span><span class="org-block">&gt;
-       &lt;</span><span class="org-block"><span class="function-name">p</span></span><span class="org-block">&gt;There are plenty of &lt;</span><span class="org-block"><span class="function-name">a</span></span><span class="org-block"> </span><span class="org-block"><span class="variable-name">target</span></span><span class="org-block">=</span><span class="org-block"><span class="string">"_blank"</span></span><span class="org-block">
-  </span><span class="org-block"><span class="variable-name">href</span></span><span class="org-block">=</span><span class="org-block"><span class="string">"<a href="https://duckduckgo.com/?q=groundhog+day+movie+pictures&amp;t=osx&amp;ia=images&amp;iax=images">https://duckduckgo.com/?q=groundhog+day+movie+pictures&amp;t=osx&amp;ia=images&amp;iax=images</a>"</span></span><span class="org-block">&gt;pictures of the Groundhog day movie&lt;/</span><span class="org-block"><span class="function-name">a</span></span><span class="org-block">&gt; online.&lt;/</span><span class="org-block"><span class="function-name">p</span></span><span class="org-block">&gt;
-       &lt;</span><span class="org-block"><span class="function-name">a</span></span><span class="org-block"> </span><span class="org-block"><span class="variable-name">target</span></span><span class="org-block">=</span><span class="org-block"><span class="string">"_blank"</span></span><span class="org-block"> </span><span class="org-block"><span class="variable-name">href</span></span><span class="org-block">=</span><span class="org-block"><span class="string">"<a href="https://en.wikipedia.org/wiki/Groundhog_Day_(film)">https://en.wikipedia.org/wiki/Groundhog_Day_(film)</a>"</span></span><span class="org-block">&gt;Groundhog day movie page at Wikipedia&lt;/</span><span class="org-block"><span class="function-name">a</span></span><span class="org-block">&gt;
-     &lt;/</span><span class="org-block"><span class="function-name">section</span></span><span class="org-block">&gt;
-   &lt;/</span><span class="org-block"><span class="function-name">main</span></span><span class="org-block">&gt;
-</span><span class="org-block-end-line">  #+end_src
-</span><span class="org-hide">*</span><span class="org-level-2">* Step 17 another section</span>
+<div class="org-src-container">
+<pre class="src src-html">&lt;<span style="color: #0000ff;">h3</span>&gt;<span style="font-style: italic; text-decoration: underline;">List of misrepresented days</span>&lt;/<span style="color: #0000ff;">h3</span>&gt;
+&lt;<span style="color: #0000ff;">ol</span>&gt;
+  &lt;<span style="color: #0000ff;">li</span>&gt;Day A&lt;/<span style="color: #0000ff;">li</span>&gt;
+  &lt;<span style="color: #0000ff;">li</span>&gt;Day A&#8217;&lt;/<span style="color: #0000ff;">li</span>&gt;
+  &lt;<span style="color: #0000ff;">li</span>&gt;Day A&#8217;&#8217;&lt;/<span style="color: #0000ff;">li</span>&gt;
+&lt;/<span style="color: #0000ff;">ol</span>&gt;
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org74ab309" class="outline-3">
+<h3 id="org74ab309"><span class="section-number-3">1.10.</span> Step 28, another figure under the list</h3>
+<div class="outline-text-3" id="text-1-10">
+<p>
+Another figure under the list.
+</p>
 
-This one is empty.
+<div class="org-src-container">
+<pre class="src src-html">&lt;<span style="color: #0000ff;">h3</span>&gt;<span style="font-style: italic; text-decoration: underline;">List of misrepresented days</span>&lt;/<span style="color: #0000ff;">h3</span>&gt;
+&lt;<span style="color: #0000ff;">ol</span>&gt;
+  &lt;<span style="color: #0000ff;">li</span>&gt;Day A&lt;/<span style="color: #0000ff;">li</span>&gt;
+  &lt;<span style="color: #0000ff;">li</span>&gt;Day A&#8217;&lt;/<span style="color: #0000ff;">li</span>&gt;
+  &lt;<span style="color: #0000ff;">li</span>&gt;Day A&#8217;&#8217;&lt;/<span style="color: #0000ff;">li</span>&gt;
+&lt;/<span style="color: #0000ff;">ol</span>&gt;
+&lt;<span style="color: #0000ff;">figure</span>&gt;
+  &lt;<span style="color: #0000ff;">img</span> <span style="color: #a0522d;">alt</span>=<span style="color: #8b2252;">"Today, again?"</span> <span style="color: #a0522d;">src</span>=<span style="color: #8b2252;">"https://i.insider.com/52de8d076da8113b6da3dcf7"</span>&gt;
+  &lt;<span style="color: #0000ff;">figcaption</span>&gt;Dej&#224; vu.&lt;/<span style="color: #0000ff;">figcaption</span>&gt;
+&lt;/<span style="color: #0000ff;">figure</span>&gt;
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgd130f93" class="outline-3">
+<h3 id="orgd130f93"><span class="section-number-3">1.11.</span> Step 29, new <code>&lt;img&gt;</code></h3>
+<div class="outline-text-3" id="text-1-11">
+<p>
+Image added, above.
+</p>
+</div>
+</div>
+<div id="outline-container-org12e6377" class="outline-3">
+<h3 id="org12e6377"><span class="section-number-3">1.12.</span> Step 30, new <code>alt</code></h3>
+<div class="outline-text-3" id="text-1-12">
+<p>
+<code>alt</code> added, above.
+</p>
+</div>
+</div>
+<div id="outline-container-orgaad43ec" class="outline-3">
+<h3 id="orgaad43ec"><span class="section-number-3">1.13.</span> Step 31, new <code>&lt;figcaption&gt;</code></h3>
+<div class="outline-text-3" id="text-1-13">
+<p>
+<code>&lt;figcaption&gt;</code> added, above.
+</p>
+</div>
+</div>
 
-<span class="org-block-begin-line">#+begin_src html
-</span><span class="org-block">   &lt;</span><span class="org-block"><span class="function-name">main</span></span><span class="org-block">&gt;
-     &lt;</span><span class="org-block"><span class="function-name">h1</span></span><span class="org-block">&gt;</span><span class="org-block"><span class="underline"><span class="bold">Groundhog day</span></span></span><span class="org-block">&lt;/</span><span class="org-block"><span class="function-name">h1</span></span><span class="org-block">&gt;
-     &lt;</span><span class="org-block"><span class="function-name">section</span></span><span class="org-block">&gt;
-       &lt;</span><span class="org-block"><span class="function-name">h2</span></span><span class="org-block">&gt;</span><span class="org-block"><span class="underline"><span class="bold-italic">My favourite day</span></span></span><span class="org-block">&lt;/</span><span class="org-block"><span class="function-name">h2</span></span><span class="org-block">&gt;
-       &lt;</span><span class="org-block"><span class="function-name">p</span></span><span class="org-block">&gt;Weird day list&lt;/</span><span class="org-block"><span class="function-name">p</span></span><span class="org-block">&gt;
-       </span><span class="org-block"><span class="comment-delimiter">&lt;</span></span><span class="org-block"><span class="comment-delimiter"><span class="custom-1">!--</span></span></span><span class="org-block"><span class="comment-delimiter"> </span></span><span class="org-block"><span class="comment">it's way too late, I should be in bed</span></span><span class="org-block"><span class="comment-delimiter"> --&gt;</span></span><span class="org-block">
-       &lt;</span><span class="org-block"><span class="function-name">a</span></span><span class="org-block"> </span><span class="org-block"><span class="variable-name">alt</span></span><span class="org-block">=</span><span class="org-block"><span class="string">"Groundhog day movie related videos"</span></span><span class="org-block">href=</span><span class="org-block"><span class="string">"<a href="https://duckduckgo.com/?q=groundhog+day+movie+pictures&amp;t=osx&amp;ia=videos&amp;iax=videos">https://duckduckgo.com/?q=groundhog+day+movie+pictures&amp;t=osx&amp;ia=videos&amp;iax=videos</a>"</span></span><span class="org-block">&gt;&lt;</span><span class="org-block"><span class="function-name">img</span></span><span class="org-block"> </span><span class="org-block"><span class="variable-name">src</span></span><span class="org-block">=</span><span class="org-block"><span class="string">"<a href="https://www.closerweekly.com/wp-content/uploads/2015/04/bill-murray-groundhog-day.jpg">https://www.closerweekly.com/wp-content/uploads/2015/04/bill-murray-groundhog-day.jpg</a>"</span></span><span class="org-block">
-          </span><span class="org-block"><span class="variable-name">alt</span></span><span class="org-block">=</span><span class="org-block"><span class="string">"Bill Murray with the captive groundhog"</span></span><span class="org-block">&gt;&lt;/</span><span class="org-block"><span class="function-name">a</span></span><span class="org-block">&gt;
-       &lt;</span><span class="org-block"><span class="function-name">p</span></span><span class="org-block">&gt;There are plenty of &lt;</span><span class="org-block"><span class="function-name">a</span></span><span class="org-block"> </span><span class="org-block"><span class="variable-name">target</span></span><span class="org-block">=</span><span class="org-block"><span class="string">"_blank"</span></span><span class="org-block">
-  </span><span class="org-block"><span class="variable-name">href</span></span><span class="org-block">=</span><span class="org-block"><span class="string">"<a href="https://duckduckgo.com/?q=groundhog+day+movie+pictures&amp;t=osx&amp;ia=images&amp;iax=images">https://duckduckgo.com/?q=groundhog+day+movie+pictures&amp;t=osx&amp;ia=images&amp;iax=images</a>"</span></span><span class="org-block">&gt;pictures of the Groundhog day movie&lt;/</span><span class="org-block"><span class="function-name">a</span></span><span class="org-block">&gt; online.&lt;/</span><span class="org-block"><span class="function-name">p</span></span><span class="org-block">&gt;
-       &lt;</span><span class="org-block"><span class="function-name">a</span></span><span class="org-block"> </span><span class="org-block"><span class="variable-name">target</span></span><span class="org-block">=</span><span class="org-block"><span class="string">"_blank"</span></span><span class="org-block"> </span><span class="org-block"><span class="variable-name">href</span></span><span class="org-block">=</span><span class="org-block"><span class="string">"<a href="https://en.wikipedia.org/wiki/Groundhog_Day_(film)">https://en.wikipedia.org/wiki/Groundhog_Day_(film)</a>"</span></span><span class="org-block">&gt;Groundhog day movie page at Wikipedia&lt;/</span><span class="org-block"><span class="function-name">a</span></span><span class="org-block">&gt;
-     &lt;/</span><span class="org-block"><span class="function-name">section</span></span><span class="org-block">&gt;
-     &lt;</span><span class="org-block"><span class="function-name">section</span></span><span class="org-block">&gt;
-     &lt;/</span><span class="org-block"><span class="function-name">section</span></span><span class="org-block">&gt;
-   &lt;/</span><span class="org-block"><span class="function-name">main</span></span><span class="org-block">&gt;
-</span><span class="org-block-end-line">  #+end_src
-</span><span class="org-hide">*</span><span class="org-level-2">* Step 18 contents for the new section</span>
+<div id="outline-container-org23def30" class="outline-3">
+<h3 id="org23def30"><span class="section-number-3">1.14.</span> Step 32, <code>&lt;strong&gt;</code></h3>
+<div class="outline-text-3" id="text-1-14">
+<p>
+A strongly different way to emphasize.
+</p>
 
-Mozilla says a section should have a header.
+<div class="org-src-container">
+<pre class="src src-html">&lt;<span style="color: #0000ff;">figure</span>&gt;
+  &lt;<span style="color: #0000ff;">img</span> <span style="color: #a0522d;">alt</span>=<span style="color: #8b2252;">"Today, again?"</span> <span style="color: #a0522d;">src</span>=<span style="color: #8b2252;">"https://i.insider.com/52de8d076da8113b6da3dcf7"</span>&gt;
+  &lt;<span style="color: #0000ff;">figcaption</span>&gt;Dej&#224; &lt;<span style="color: #0000ff;">strong</span>&gt;<span style="font-weight: bold;">vu</span>&lt;/<span style="color: #0000ff;">strong</span>&gt;.&lt;/<span style="color: #0000ff;">figcaption</span>&gt;
+&lt;/<span style="color: #0000ff;">figure</span>&gt;
+</pre>
+</div>
+</div>
+</div>
 
-<span class="org-block-begin-line">#+begin_src html
-</span><span class="org-block">   &lt;</span><span class="org-block"><span class="function-name">main</span></span><span class="org-block">&gt;
-     &lt;</span><span class="org-block"><span class="function-name">h1</span></span><span class="org-block">&gt;</span><span class="org-block"><span class="underline"><span class="bold">Groundhog day</span></span></span><span class="org-block">&lt;/</span><span class="org-block"><span class="function-name">h1</span></span><span class="org-block">&gt;
-     &lt;</span><span class="org-block"><span class="function-name">section</span></span><span class="org-block">&gt;
-       &lt;</span><span class="org-block"><span class="function-name">h2</span></span><span class="org-block">&gt;</span><span class="org-block"><span class="underline"><span class="bold-italic">My favourite day</span></span></span><span class="org-block">&lt;/</span><span class="org-block"><span class="function-name">h2</span></span><span class="org-block">&gt;
-       &lt;</span><span class="org-block"><span class="function-name">p</span></span><span class="org-block">&gt;Weird day list&lt;/</span><span class="org-block"><span class="function-name">p</span></span><span class="org-block">&gt;
-       </span><span class="org-block"><span class="comment-delimiter">&lt;</span></span><span class="org-block"><span class="comment-delimiter"><span class="custom-1">!--</span></span></span><span class="org-block"><span class="comment-delimiter"> </span></span><span class="org-block"><span class="comment">it's way too late, I should be in bed</span></span><span class="org-block"><span class="comment-delimiter"> --&gt;</span></span><span class="org-block">
-       &lt;</span><span class="org-block"><span class="function-name">a</span></span><span class="org-block"> </span><span class="org-block"><span class="variable-name">alt</span></span><span class="org-block">=</span><span class="org-block"><span class="string">"Groundhog day movie related videos"</span></span><span class="org-block">href=</span><span class="org-block"><span class="string">"<a href="https://duckduckgo.com/?q=groundhog+day+movie+pictures&amp;t=osx&amp;ia=videos&amp;iax=videos">https://duckduckgo.com/?q=groundhog+day+movie+pictures&amp;t=osx&amp;ia=videos&amp;iax=videos</a>"</span></span><span class="org-block">&gt;&lt;</span><span class="org-block"><span class="function-name">img</span></span><span class="org-block"> </span><span class="org-block"><span class="variable-name">src</span></span><span class="org-block">=</span><span class="org-block"><span class="string">"<a href="https://www.closerweekly.com/wp-content/uploads/2015/04/bill-murray-groundhog-day.jpg">https://www.closerweekly.com/wp-content/uploads/2015/04/bill-murray-groundhog-day.jpg</a>"</span></span><span class="org-block">
-          </span><span class="org-block"><span class="variable-name">alt</span></span><span class="org-block">=</span><span class="org-block"><span class="string">"Bill Murray with the captive groundhog"</span></span><span class="org-block">&gt;&lt;/</span><span class="org-block"><span class="function-name">a</span></span><span class="org-block">&gt;
-       &lt;</span><span class="org-block"><span class="function-name">p</span></span><span class="org-block">&gt;There are plenty of &lt;</span><span class="org-block"><span class="function-name">a</span></span><span class="org-block"> </span><span class="org-block"><span class="variable-name">target</span></span><span class="org-block">=</span><span class="org-block"><span class="string">"_blank"</span></span><span class="org-block">
-  </span><span class="org-block"><span class="variable-name">href</span></span><span class="org-block">=</span><span class="org-block"><span class="string">"<a href="https://duckduckgo.com/?q=groundhog+day+movie+pictures&amp;t=osx&amp;ia=images&amp;iax=images">https://duckduckgo.com/?q=groundhog+day+movie+pictures&amp;t=osx&amp;ia=images&amp;iax=images</a>"</span></span><span class="org-block">&gt;pictures of the Groundhog day movie&lt;/</span><span class="org-block"><span class="function-name">a</span></span><span class="org-block">&gt; online.&lt;/</span><span class="org-block"><span class="function-name">p</span></span><span class="org-block">&gt;
-       &lt;</span><span class="org-block"><span class="function-name">a</span></span><span class="org-block"> </span><span class="org-block"><span class="variable-name">target</span></span><span class="org-block">=</span><span class="org-block"><span class="string">"_blank"</span></span><span class="org-block"> </span><span class="org-block"><span class="variable-name">href</span></span><span class="org-block">=</span><span class="org-block"><span class="string">"<a href="https://en.wikipedia.org/wiki/Groundhog_Day_(film)">https://en.wikipedia.org/wiki/Groundhog_Day_(film)</a>"</span></span><span class="org-block">&gt;Groundhog day movie page at Wikipedia&lt;/</span><span class="org-block"><span class="function-name">a</span></span><span class="org-block">&gt;
-     &lt;/</span><span class="org-block"><span class="function-name">section</span></span><span class="org-block">&gt;
-     &lt;</span><span class="org-block"><span class="function-name">section</span></span><span class="org-block">&gt;
-       &lt;</span><span class="org-block"><span class="function-name">h2</span></span><span class="org-block">&gt;</span><span class="org-block"><span class="underline"><span class="bold-italic">This movie is really good</span></span></span><span class="org-block">&lt;/</span><span class="org-block"><span class="function-name">h2</span></span><span class="org-block">&gt;
-       
-     &lt;/</span><span class="org-block"><span class="function-name">section</span></span><span class="org-block">&gt;
-   &lt;/</span><span class="org-block"><span class="function-name">main</span></span><span class="org-block">&gt;
-</span><span class="org-block-end-line">  #+end_src
-</span></pre>
-  </body>
+<div id="outline-container-org860f5cb" class="outline-3">
+<h3 id="org860f5cb"><span class="section-number-3">1.15.</span> Step 33, last <code>&lt;section&gt;</code></h3>
+<div class="outline-text-3" id="text-1-15">
+<div class="org-src-container">
+<pre class="src src-html">&lt;<span style="color: #0000ff;">section</span>&gt;
+&lt;/<span style="color: #0000ff;">section</span>&gt;
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgc219e23" class="outline-3">
+<h3 id="orgc219e23"><span class="section-number-3">1.16.</span> Step 34, new <code>&lt;h2&gt;</code> inside the new section</h3>
+<div class="outline-text-3" id="text-1-16">
+<div class="org-src-container">
+<pre class="src src-html">&lt;<span style="color: #0000ff;">section</span>&gt;
+&lt;<span style="color: #0000ff;">h2</span>&gt;<span style="font-weight: bold; font-style: italic; text-decoration: underline;">To know more about your potential days</span>&lt;/<span style="color: #0000ff;">h2</span>&gt;
+&lt;/<span style="color: #0000ff;">section</span>&gt;
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org086bd59" class="outline-3">
+<h3 id="org086bd59"><span class="section-number-3">1.17.</span> Step 35 <code>&lt;form&gt;</code></h3>
+<div class="outline-text-3" id="text-1-17">
+<p>
+At last, something new and exciting.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-html">&lt;<span style="color: #0000ff;">section</span>&gt;
+&lt;<span style="color: #0000ff;">h2</span>&gt;<span style="font-weight: bold; font-style: italic; text-decoration: underline;">To know more about your potential days</span>&lt;/<span style="color: #0000ff;">h2</span>&gt;
+&lt;<span style="color: #0000ff;">form</span>&gt;&lt;/<span style="color: #0000ff;">form</span>&gt;
+&lt;/<span style="color: #0000ff;">section</span>&gt;
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orga335b33" class="outline-3">
+<h3 id="orga335b33"><span class="section-number-3">1.18.</span> Step 36, <code>action</code> attribute</h3>
+<div class="outline-text-3" id="text-1-18">
+<div class="org-src-container">
+<pre class="src src-html">&lt;<span style="color: #0000ff;">section</span>&gt;
+&lt;<span style="color: #0000ff;">h2</span>&gt;<span style="font-weight: bold; font-style: italic; text-decoration: underline;">To know more about your potential days</span>&lt;/<span style="color: #0000ff;">h2</span>&gt;
+&lt;<span style="color: #0000ff;">form</span> <span style="color: #a0522d;">action</span>=<span style="color: #8b2252;">"someplace.on.the.web/get.your.GD.calendar"</span>&gt;&lt;/<span style="color: #0000ff;">form</span>&gt;
+&lt;/<span style="color: #0000ff;">section</span>&gt;
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org8e53747" class="outline-3">
+<h3 id="org8e53747"><span class="section-number-3">1.19.</span> Step 37, <code>&lt;input&gt;</code> element, to send data</h3>
+<div class="outline-text-3" id="text-1-19">
+<p>
+<a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input">https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input</a>
+</p>
+
+<div class="org-src-container">
+<pre class="src src-html">&lt;<span style="color: #0000ff;">section</span>&gt;
+&lt;<span style="color: #0000ff;">h2</span>&gt;<span style="font-weight: bold; font-style: italic; text-decoration: underline;">To know more about your potential days</span>&lt;/<span style="color: #0000ff;">h2</span>&gt;
+&lt;<span style="color: #0000ff;">form</span> <span style="color: #a0522d;">action</span>=<span style="color: #8b2252;">"someplace.on.the.web/get.your.GD.calendar"</span>&gt;
+  &lt;<span style="color: #0000ff;">input</span>/&gt;
+&lt;/<span style="color: #0000ff;">form</span>&gt;
+&lt;/<span style="color: #0000ff;">section</span>&gt;
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org373ace6" class="outline-3">
+<h3 id="org373ace6"><span class="section-number-3">1.20.</span> Step 38, <code>type</code> attribute</h3>
+<div class="outline-text-3" id="text-1-20">
+<p>
+The <code>input</code> element can have lots of types. One is <code>text</code>, to send text.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-html">&lt;<span style="color: #0000ff;">section</span>&gt;
+&lt;<span style="color: #0000ff;">h2</span>&gt;<span style="font-weight: bold; font-style: italic; text-decoration: underline;">To know more about your potential days</span>&lt;/<span style="color: #0000ff;">h2</span>&gt;
+&lt;<span style="color: #0000ff;">form</span> <span style="color: #a0522d;">action</span>=<span style="color: #8b2252;">"someplace.on.the.web/get.your.GD.calendar"</span>&gt;
+  &lt;<span style="color: #0000ff;">input</span> <span style="color: #a0522d;">type</span>=<span style="color: #8b2252;">"text"</span>/&gt;
+&lt;/<span style="color: #0000ff;">form</span>&gt;
+&lt;/<span style="color: #0000ff;">section</span>&gt;
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org440c1bc" class="outline-3">
+<h3 id="org440c1bc"><span class="section-number-3">1.21.</span> Step 39, name your input to access it later</h3>
+<div class="outline-text-3" id="text-1-21">
+<p>
+<i>In order for a form's data to be accessed by the location specified in the action attribute, you must give the text field a name attribute and assign it a value to represent the data being submitted.</i>
+</p>
+
+<div class="org-src-container">
+<pre class="src src-html">&lt;<span style="color: #0000ff;">section</span>&gt;
+&lt;<span style="color: #0000ff;">h2</span>&gt;<span style="font-weight: bold; font-style: italic; text-decoration: underline;">To know more about your potential days</span>&lt;/<span style="color: #0000ff;">h2</span>&gt;
+&lt;<span style="color: #0000ff;">form</span> <span style="color: #a0522d;">action</span>=<span style="color: #8b2252;">"someplace.on.the.web/get.your.GD.calendar"</span>&gt;
+  &lt;<span style="color: #0000ff;">input</span> <span style="color: #a0522d;">type</span>=<span style="color: #8b2252;">"text"</span> <span style="color: #a0522d;">name</span>=<span style="color: #8b2252;">"yourEmail"</span>/&gt;
+&lt;/<span style="color: #0000ff;">form</span>&gt;
+&lt;/<span style="color: #0000ff;">section</span>&gt;
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org348c9e3" class="outline-3">
+<h3 id="org348c9e3"><span class="section-number-3">1.22.</span> Step 40, placeholding hints</h3>
+<div class="outline-text-3" id="text-1-22">
+<div class="org-src-container">
+<pre class="src src-html">&lt;<span style="color: #0000ff;">section</span>&gt;
+&lt;<span style="color: #0000ff;">h2</span>&gt;<span style="font-weight: bold; font-style: italic; text-decoration: underline;">To know more about your potential days</span>&lt;/<span style="color: #0000ff;">h2</span>&gt;
+&lt;<span style="color: #0000ff;">form</span> <span style="color: #a0522d;">action</span>=<span style="color: #8b2252;">"someplace.on.the.web/get.your.GD.calendar"</span>&gt;
+  &lt;<span style="color: #0000ff;">input</span> <span style="color: #a0522d;">type</span>=<span style="color: #8b2252;">"text"</span> <span style="color: #a0522d;">name</span>=<span style="color: #8b2252;">"yourEmail"</span> <span style="color: #a0522d;">placeholder</span>=<span style="color: #8b2252;">"myName@myserver.stuff"</span>/&gt;
+&lt;/<span style="color: #0000ff;">form</span>&gt;
+&lt;/<span style="color: #0000ff;">section</span>&gt;
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: Jean-Christophe Helary</p>
+<p class="date">Created: 2024-02-23 Fri 22:23</p>
+<p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
 </html>
