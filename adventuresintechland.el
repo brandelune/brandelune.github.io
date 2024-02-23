@@ -279,11 +279,6 @@ The contents has to be filled manually, later."
 	 newSeasonDataH3
 	 jc-indexPath))
 
-  
-;		  seasonNumber (match-string 2)
-;		  currentEpisode (string-to-number (match-string 4))
-;		  newSeasonEpisode (+ 1 currentEpisode))
-
   ;; 4. add a link to the episode index update 4
   ;; find <ul id="update4"> and add something below it (like the RSS update)
   ;; <ul id="update4">
@@ -298,6 +293,11 @@ The contents has to be filled manually, later."
 									   (substring jc-todaySubPath 2)
 									   title
 									   )))
+
+	(myReplace
+	 update4Marker
+	 mainIndexTodayLiHref
+	 jc-indexPath))
 
   ;; open modified files for verification
   (find-file jc-todayIndex)
@@ -315,17 +315,17 @@ The contents has to be filled manually, later."
 				(read-number "Date: " (cl-fourth (decode-time (float-time) t)))
 				(read-string "Description: ")))
   
-  (setq jc-myRSSTemplateContents	(format jc-myRSSTemplate
+  (let* ((jc-myRSSTemplateContents	(format jc-myRSSTemplate
 											title ;;  1$
 											(cl-fifth (myDate  date)) ;;  2$
 											(cl-fourth (myDate date)) ;;  3$
 											desc ;;  4$
-											))
-  (myInsert
-   jc-myRSSTemplateContents
-   "<!-- place new items above this line -->"
-   jc-rssFile)
-  )
+											)))
+	(myInsert
+	 jc-myRSSTemplateContents
+	 "<!-- place new items above this line -->"
+	 jc-rssFile)
+	))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;
 (defun updateOldPages ()
