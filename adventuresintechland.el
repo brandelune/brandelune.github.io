@@ -234,6 +234,22 @@ The contents has to be filled manually, later."
 
   ;; update the root index
   ;; rootIndexFilePath
+  ;; 1. replace the link to the "last day" update1
+  (let* ((oldLastDayHref (concat "<a href=\"./"
+							   (file-name-as-directory (number-to-string (cl-first jc-lastdayList)))
+							   (file-name-as-directory (my0Padding (cl-second jc-lastdayList)))
+							   (file-name-as-directory (my0Padding (cl-third jc-lastdayList)))
+							   "index.html\" hreflang=\"en\" rel=\"prev\" id=\"update1\">last day</a>"))
+		(newLastDayHref (concat "<a href=\"./"
+							   (file-name-as-directory (number-to-string (cl-first jc-todayList)))
+							   (file-name-as-directory (my0Padding (cl-second jc-todayList)))
+							   (file-name-as-directory (my0Padding (cl-third jc-todayList)))
+							   "index.html\" hreflang=\"en\" rel=\"prev\" id=\"update1\">last day</a>")))
+
+	(myReplace
+	 oldLastDayHref
+	 newLastDayHref
+	 jc-indexPath))
   
   ;; open modified files for verification
   (find-file jc-todayIndex)
