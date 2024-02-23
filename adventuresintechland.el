@@ -211,7 +211,6 @@ The contents has to be filled manually, later."
   ;; TODO update the main index with the new "season/episode" data
   ;; (updateMainIndex)
   ;; TODO insert the daily content in the daily index
-  (find-file jc-todayIndex)
 
 
   ;; Update the dayTracker data
@@ -332,10 +331,10 @@ expected that I enter a possible date."
 		 (thisMonth (cl-fifth Today))
 		 (nextMonth (if (= 12 thisMonth)
 						1
-					  (+ thisMonth 1)))
+						(+ thisMonth 1)))
 		 (lastMonth (if (= 1 thisMonth)
 						12
-					  (- thisMonth 1)))
+						(- thisMonth 1)))
 		 (thisYear (cl-sixth Today))
 		 (nextYear (+ thisYear 1))
 		 (lastYear (- thisYear 1))
