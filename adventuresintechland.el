@@ -209,13 +209,6 @@ The contents has to be filled manually, later."
   (myInsert "" "" jc-dailyCSSLink)
   (myDailyRSSItem title today firstpar)
 
-  ;; TODO update the previous day page with the new "next day" value
-  ;; (updateLastDayIndex)
-  ;; TODO update the main index with the new "season/episode" data
-  ;; (updateMainIndex)
-  ;; TODO insert the daily content in the daily index
-
-
   ;; Update the dayTracker data
   (save-current-buffer
     (set-buffer (find-file-noselect jc-dayTrackerPath))
@@ -234,7 +227,6 @@ The contents has to be filled manually, later."
    jc-lastdayIndex)
 
   ;; update the root index
-  ;; rootIndexFilePath
   ;; 1. replace the link to the "last day" update1
   (let* ((oldLastDayHref (concat "<a href=\"./"
 							   (file-name-as-directory (number-to-string (cl-first jc-lastdayList)))
@@ -253,9 +245,6 @@ The contents has to be filled manually, later."
 	 jc-indexPath))
 
   ;; 2. replace the number of documented days update2
-  ;; old number is known
-  ;;
-  ;; <h2 id="update2">Logbook, 49 documented days</h2>
   (let* ((oldTotaDaysH2 (format "<h2 id=\"update2\">Logbook, %1$s documented days</h2>"
 								(number-to-string totalDays)))
 		 (newTotalDaysH2 (format "<h2 id=\"update2\">Logbook, %1$s documented days</h2>"
@@ -267,7 +256,6 @@ The contents has to be filled manually, later."
 	 jc-indexPath))
 
   ;; 3. replace the season and episode number update3
-  ;; <h3 id="update3">Season 4, 2 episode</h3>
   (let* ((oldSeasonDataH3 (format "<h3 id=\"update3\">Season %1$s, %2$s episodes</h3>"
 								  seasonNumber
 								  currentEpisode))
@@ -281,10 +269,6 @@ The contents has to be filled manually, later."
 	 jc-indexPath))
 
   ;; 4. add a link to the episode index update 4
-  ;; find <ul id="update4"> and add something below it (like the RSS update)
-  ;; <ul id="update4">
-  ;; <a href="./2024/02/19/index.html" hreflang="en" id="49">24/02/19</a> Macarons</li>
-
   (let* ((update4Marker "<ul id=\"update4\">\n")
 		 (mainIndexTodayLiHref (format "<ul id=\"update4\">
 		  <li style=\"list-style-type:square;\"><a href=\"./%1$s/index.html\" hreflang=\"en\" id=\"%2$s\">%3$s</a> %4$s</li>
@@ -301,7 +285,6 @@ The contents has to be filled manually, later."
 	 jc-indexPath))
 
   ;; update the tomorrow file with the new "last day"
-
     (let* ((oldLastDayHref (concat "<a href=\"./"
 							   (file-name-as-directory (number-to-string (cl-first jc-lastdayList)))
 							   (file-name-as-directory (my0Padding (cl-second jc-lastdayList)))
@@ -326,7 +309,6 @@ The contents has to be filled manually, later."
 )
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;
-
 (defun myDailyRSSItem (title date desc)
   "Insert the daily RSS feed with TITLE DATE and DESC."
 ;;;; TODO add default value for link
@@ -346,31 +328,6 @@ The contents has to be filled manually, later."
 	 "<!-- place new items above this line -->"
 	 jc-rssFile)
 	))
-
-;;;;;;;;;;;;;;;;;;;;;;;;;
-(defun updateOldPages ()
-  "Update the previous page and the general index."
-  ;; TODO UpdatePreviousPage
-  ;;    "tomorrow" link
-  ;; how do I find the previous page ?
-  ;; what kind of data do I have at this time ?
-
-
-  ;; Update the general index
-
-  (setq jc-lastDayAnchor
-		(concat "<a href=\"" jc-lastdayLink "\" hreflang=\"en\" rel=\"prev\">last day</a>")
-		jc-obsoleteAnchor
-		(concat "<a href=\"./2024/02/19/index.html\" hreflang=\"en\" rel=\"prev\" id="update5">last day</a>")
-		(search-forward "update5")
-		(search-backward "<a href")
-  	  
-		<h2 id="update2">Logbook, 49 documented days</h2>
-		<h3 id="update3">Season 4, 2 episode</h3>
-		<ul id="update4">
-
-  
-))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;
 (defun ManageDailyEntry ()
