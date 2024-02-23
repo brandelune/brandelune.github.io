@@ -389,6 +389,7 @@ at the end of the file, before the closing headers."
 		  (user-error (format "%s was not found" fromString)))
 		;; user-error seems to abort the rest of the progn, hence the need to put kill-buffer above
 		(progn
+		  (goto-char (point-min))
 		  (replace-string fromString toString)
 		  (save-buffer)
 		  (kill-buffer)))))
