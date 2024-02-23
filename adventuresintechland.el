@@ -239,8 +239,10 @@ The contents has to be filled manually, later."
   ;; update the root index
   ;; rootIndexFilePath
   
+  ;; open modified files for verification
   (find-file jc-todayIndex)
   (find-file rootIndexFilePath)
+  (find-file jc-rssFile)
 )
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -263,7 +265,6 @@ The contents has to be filled manually, later."
    jc-myRSSTemplateContents
    "<!-- place new items above this line -->"
    jc-rssFile)
-  (find-file jc-rssFile)
   )
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;
